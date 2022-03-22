@@ -34,3 +34,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+cosmetology/package-lock.json
+cosmetology/package.json
