@@ -22,8 +22,8 @@
     - string
     - must be unique
     - regex
- 
- 
+
+
 ## stylist
 - name * 
     - string
@@ -40,8 +40,8 @@
 - hours * 
     - number
     - after a visit is finished (aka the stylist checks them out), the time it took adds to the stylist's hours
- 
- 
+
+
 ## visit
 <!-- BASIC INFORMATION -->
 - client * 
@@ -67,9 +67,9 @@
 - allergies
 - health conditions
     - all strings, use the same options that were listed on the example site
- 
+
 # routes
- 
+
 ## home page
 - get new visit
 - find client
