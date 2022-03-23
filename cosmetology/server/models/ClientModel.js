@@ -20,7 +20,6 @@ const ClientSchema = new Schema({
     dob: {
         // (date of birth)
         // type: Date 
-        // i guess ^ 
     },
 
     //* all of these can be radio buttons on the form. ~~~~~~~~~~~
@@ -32,13 +31,14 @@ const ClientSchema = new Schema({
     hairPorosity:{},
     hairElasticity:{},
     hairLength:{},
+    //! these can be strings OR NULL in case a user doesn't know/want to enter this info
     //* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     allergies:{
-        type: String
+        type: String || null
     },
     medicalInfo:{
-        type: String
+        type: String || null
     }
 })
 

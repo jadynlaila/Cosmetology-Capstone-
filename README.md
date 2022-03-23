@@ -1,5 +1,6 @@
 # models
 
+ 
 ## client
 <!-- BASIC INFORMATION -->
 - name * 
@@ -73,4 +74,3 @@
 - get new visit
 - find client
 - find stylist
-

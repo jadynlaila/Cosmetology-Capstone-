@@ -2,26 +2,34 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const StylistSchema = new Schema({
-    client: { type: Schema.Types.ObjectId, ref: "Client" },
-    stylist: { type: Schema.Types.ObjectId, ref: "Stylist" },
-    date: {
-        type: Date
-    },
-    style: {
-        type: String
-    },
-    notes: {
-        type: String
-    },
-    duration:{
-        // we calculate this by subtracting check out from check in 
-    },
-    checkIn: {
-        type: Date
-    },
-    checkOut: {
-        type: Date
-    }
-})
+  clients: { type: Schema.Types.ObjectId, ref: "Client" },
+  teacher: { type: Schema.Types.ObjectId, ref: "Stylist" },
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+    pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
+  },
+  pin: {
+      type: String,
+      pattern: /^\d{4}$/
+    //! THIS PATTERN HASN'T BEEN DOUBLE CHECKED YET!!!!!
+  },
+//* tracking hours per semester
+  s1hours:{
+      type: Number
+  },
+  s2hours: {
+      type: Number
+  },
+  s3hours: {
+      type: Number
+  },
+  s4hours: {
+      type: Number
+  }
+ 
+
+});
 
 module.exports = mongoose.model("Stylist", StylistSchema);
