@@ -1,0 +1,1 @@
+// this will be to display either the teachers or the students profile
