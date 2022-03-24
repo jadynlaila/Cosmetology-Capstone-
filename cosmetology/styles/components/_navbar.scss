@@ -1,0 +1,28 @@
+@use "../themes/defaultTheme" as *;
+@use "../util/mixins" as *;
+@use "../util/variables" as *;
+
+nav {
+  overflow: hidden;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  color: $secondary;
+  background-color: $primary;
+  height: 3rem;
+  padding: 10px;
+  justify-content: right;
+  align-items: center;
+  .logo {
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+  }
+  nav-list {
+    h3 {
+      color: $secondary;
+    }
+  }
+}
