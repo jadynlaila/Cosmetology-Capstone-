@@ -59,7 +59,7 @@ const createStylist = async (req, res) => {
     s4hours,
   } = req.body;
 
-
+  
 
   try {
     return res.status(200).json();
