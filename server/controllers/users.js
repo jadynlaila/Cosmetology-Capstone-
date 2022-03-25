@@ -3,6 +3,38 @@ const ClientModel = require("../models/ClientModel");
 const TeacherModel = require("../models/TeacherModel");
 const VisitModel = require("../models/VisitModel");
 
+
+const getPinValid = async (req, res) => {
+  const { pin } = req.params;
+  try {
+
+    const teacherPins = TeacherModel.find({pin: pin})
+    const stylistPins = StylistModel.find({pin: pin});
+
+    if (stylistPins !== pin && teacherPins !== pin) {
+      //pin is correct
+    }
+
+
+    
+
+    const test = usernameRegex.test(username);
+    if (!(test || usernameRegex.test(username))) {
+      return res.status(401).send("Invalid username");
+    }
+
+    const user = await UserModel.findOne({
+      username: username.toLowerCase(),
+    });
+    if (user) return res.status(401).send("Username already taken");
+
+    return res.status(200).send("Available");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(`There was a server error`);
+  }
+};
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE A STYLIST
 
@@ -27,6 +59,8 @@ const createStylist = async (req, res) => {
     s4hours,
   } = req.body;
 
+
+
   try {
     return res.status(200).json();
   } catch (error) {
@@ -34,23 +68,6 @@ const createStylist = async (req, res) => {
     return res.status(500).send("Server Error @ createStylist");
   }
 };
-
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EDIT STYLIST
-.put('/stylist/:stylistId')
-req.params {stylistId}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-const updateStylist = async (req, res) => {
-  const { stylistId } = req.params;
-  try {
-    return res.status(200).json();
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Server Error @ updateStylist");
-  }
-};
-
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE A NEW CLIENT
@@ -87,20 +104,6 @@ const createClient = async (req, res) => {
     return res.status(500).send("Server Error @ createClient");
   }
 };
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EDIT CLIENT
-.put('/client/:clientId')
-req.params {clientId}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-const updateClient = async (req, res) => {
-  const { clientId } = req.params;
-  try {
-    return res.status(200).json();
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Server Error @ updateClient");
-  }
-};
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE A NEW TEACHER
@@ -118,25 +121,6 @@ const createTeacher = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createTeacher");
-  }
-};
-
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EDIT TEACHER
-
-we'll have a little edit button on the teacher profile where they can edit their basic information if needed
-....or not because that seems a bit unnecessary
-
-.post('/teacher')
-req.params {teacherId}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-const updateTeacher = async (req, res) => {
-  const { teacherId } = req.params;
-  try {
-    return res.status(200).json();
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("server error @ updateTeacher");
   }
 };
 
