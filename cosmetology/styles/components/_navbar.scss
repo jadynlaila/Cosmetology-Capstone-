@@ -12,17 +12,16 @@ nav {
   color: $secondary;
   background-color: $primary;
   height: 3rem;
-  padding: 10px;
-  justify-content: right;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   align-items: center;
-  .logo {
-    position: absolute;
-    left: 0;
-    top: 1.5rem;
-  }
+  justify-content: space-between;
   nav-list {
+    
     h3 {
-      color: $secondary;
+      position: relative;
     }
   }
 }

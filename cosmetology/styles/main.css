@@ -123,15 +123,13 @@ nav {
   color: white;
   background-color: orange;
   height: 3rem;
-  padding: 10px;
-  justify-content: right;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   align-items: center;
-}
-nav .logo {
-  position: absolute;
-  left: 0;
-  top: 1.5rem;
+  justify-content: space-between;
 }
 nav nav-list h3 {
-  color: white;
+  position: relative;
 }/*# sourceMappingURL=main.css.map */
