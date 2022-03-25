@@ -11,7 +11,7 @@ all the info in the req body is coming from the signup form
 there should be a check *first thing* when the signup form is submitted
 if there was no teacher code entered, *then* this will run
 
-.post('/')
+.post('/stylist')
 req.body {clients, teacher, email, pin, s1hours, s2hours, s3hours, s4hours }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createStylist = async (req, res) => {
@@ -34,6 +34,23 @@ const createStylist = async (req, res) => {
     return res.status(500).send("Server Error @ createStylist");
   }
 };
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+EDIT STYLIST
+.put('/stylist/:stylistId')
+req.params {stylistId}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+const updateStylist = async (req, res) => {
+  const { stylistId } = req.params;
+  try {
+    return res.status(200).json();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Server Error @ updateStylist");
+  }
+};
+
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE A NEW CLIENT
@@ -70,6 +87,20 @@ const createClient = async (req, res) => {
     return res.status(500).send("Server Error @ createClient");
   }
 };
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+EDIT CLIENT
+.put('/client/:clientId')
+req.params {clientId}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+const updateClient = async (req, res) => {
+  const { clientId } = req.params;
+  try {
+    return res.status(200).json();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Server Error @ updateClient");
+  }
+};
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE A NEW TEACHER
@@ -90,7 +121,6 @@ const createTeacher = async (req, res) => {
   }
 };
 
-
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 EDIT TEACHER
 
@@ -98,50 +128,20 @@ we'll have a little edit button on the teacher profile where they can edit their
 ....or not because that seems a bit unnecessary
 
 .post('/teacher')
-req.body = {name, email, pin, students}
+req.params {teacherId}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-const editTeacher = async (req, res) => {
-  const { id } = req.body;
+const updateTeacher = async (req, res) => {
+  const { teacherId } = req.params;
   try {
     return res.status(200).json();
   } catch (error) {
     console.log(error);
-    return res.status(500).send("server error @ editTeacher");
+    return res.status(500).send("server error @ updateTeacher");
   }
 };
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-DELETE A POST
-.delete('/:postId')
-req.params {postId}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-const deletePost = async (req, res) => {
-  try {
-    const { userId } = req;
-    const { postId } = req.params;
-
-    const post = await PostModel.findById(postId);
-
-    if (!post) return res.status(403).send("Post not found");
-
-    const user = await UserModel.findById(userId);
-    if (post.user.toString() !== userId) {
-      if (user.role === "admin") {
-        await post.remove();
-        return res.status(200).send("Post deleted successfully");
-      } else {
-        return res.status(401).send("Unauthorized");
-      }
-    }
-
-    await post.remove();
-    return res.status(200).send("Post deleted successfully");
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Server Error @ deletePost");
-  }
-};
+//! eerything below this is copy and pasted from an old project so it can be ignored for now
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 LIKE A POST
