@@ -1,0 +1,19 @@
+{
+  "name": "cosmetology-capstone-",
+  "version": "1.0.0",
+  "description": "<!-- BASIC INFORMATION -->\r - name * \r     - string\r - image \r     - string\r - email * \r     - string\r     - use regex to check if its a westmec email\r     - must be unique\r - visits * \r     - array of visit refs \r - service * \r     - string\r     - what does the client want\r - address * \r     - string\r - number * \r     - string\r     - must be unique\r     - regex",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jadynlaila/Cosmetology-Capstone-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jadynlaila/Cosmetology-Capstone-/issues"
+  },
+  "homepage": "https://github.com/jadynlaila/Cosmetology-Capstone-#readme"
+}
