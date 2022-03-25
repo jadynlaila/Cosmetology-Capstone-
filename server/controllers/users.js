@@ -2,21 +2,17 @@ const StylistModel = require("../models/StylistModel");
 const ClientModel = require("../models/ClientModel");
 const TeacherModel = require("../models/TeacherModel");
 const VisitModel = require("../models/VisitModel");
-
+const { async } = require("regenerator-runtime");
 
 const getPinValid = async (req, res) => {
   const { pin } = req.params;
   try {
-
-    const teacherPins = TeacherModel.find({pin: pin})
-    const stylistPins = StylistModel.find({pin: pin});
+    const teacherPins = TeacherModel.find({ pin: pin });
+    const stylistPins = StylistModel.find({ pin: pin });
 
     if (stylistPins !== pin && teacherPins !== pin) {
       //pin is correct
     }
-
-
-    
 
     const test = usernameRegex.test(username);
     if (!(test || usernameRegex.test(username))) {
@@ -124,7 +120,6 @@ const createTeacher = async (req, res) => {
   }
 };
 
-
 //! eerything below this is copy and pasted from an old project so it can be ignored for now
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -133,26 +128,7 @@ LIKE A POST
 req.params {postId}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-const likePost = async (req, res) => {
-  try {
-    const { postId } = req.params;
-    const { userId } = req;
 
-    const post = await PostModel.findById(postId);
-    if (!post) return res.status(403).send("Post not found");
-
-    const isLiked = post.likes.find((like) => like.user.toString() === userId);
-    if (isLiked) return res.status(401).send("post already liked");
-
-    await post.likes.unshift({ user: userId });
-    await post.save();
-
-    return res.status(200).send("Post liked");
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Server Error @ likePost");
-  }
-};
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 UNLIKE A POST

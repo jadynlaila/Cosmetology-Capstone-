@@ -1,6 +1,6 @@
 
-const fs = require("fs")
-const cloudinary = require("cloudinary").v2;
+import { unlinkSync } from "fs";
+import { v2 as cloudinary } from "cloudinary";
 
 const uploadProfilePic = async(req,res) => {
     try {
@@ -11,7 +11,7 @@ const uploadProfilePic = async(req,res) => {
                 folder: "Profile Pics"
             }
         )
-        fs.unlinkSync(req.files.image.tempFilePath)
+        unlinkSync(req.files.image.tempFilePath)
         res.status(200).json({src: src.secure_url})
         
     } catch (error) {
@@ -20,4 +20,4 @@ const uploadProfilePic = async(req,res) => {
     }
 }
 
-module.exports = {uploadProfilePic}
+export default {uploadProfilePic}
