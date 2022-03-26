@@ -4,6 +4,11 @@ const TeacherModel = require("../models/TeacherModel");
 const VisitModel = require("../models/VisitModel");
 const { async } = require("regenerator-runtime");
 
+const defaultProfilePic = require("../util/defaultPic")
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
+
+
 const getPinValid = async (req, res) => {
   const { pin } = req.params;
   try {
@@ -55,9 +60,40 @@ const createStylist = async (req, res) => {
     s4hours,
   } = req.body;
 
-  
+  if(!pin.length < 4) {
+    return res.status(401).send("Pin must be atleast 4 characters long")
+  }
 
   try {
+
+    let stylist;
+    stylist = await StylistModel.findOne({email: email.toLowerCase()});
+    if(stylist) return res.status(401).send("Email is already in use")
+
+    stylist = new StylistModel({
+      name,
+      email: email.toLowerCase(),
+      pin,
+      profilePicURL: req.body.profilePicURL || defaultProfilePic,
+    })
+
+    //! Didnt know what to do with the hours
+
+    stylist.pin = await bcrypt.hash(pin, 10)
+    stylist = await stylist.save();
+
+    const payload = {stylistID: stylist._id};
+    jwt.sign(
+      payload,
+      process.env.JWT_SECERT,
+      {expiresIn: "2d"},
+      (err, token) => {
+        if(err) throw err;
+        res.status(200).json(token)
+      }
+    )
+
+
     return res.status(200).json();
   } catch (error) {
     console.log(error);
@@ -94,7 +130,31 @@ const createClient = async (req, res) => {
   } = req.body;
 
   try {
-    return res.status(200).json();
+
+    let client;
+    client = await ClientModel.findOne({email: email.toLowerCase()})
+    if(client) res.status(401).send("Email already in use")
+
+    client = new ClientModel({
+      name,
+      email: email.toLowerCase(),
+      address,
+      phone,
+      dob,
+      hairCondition,
+      scalpCondition,
+      hairTexture,
+      growthPatterns,
+      hairDensity,
+      hairPorosity,
+      hairElasticity,
+      hairLength,
+    })
+
+    client = await client.save();
+
+
+    return res.status(200).json({client});
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createClient");
@@ -112,8 +172,34 @@ req.body = {name, email, pin, students}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createTeacher = async (req, res) => {
   const { name, email, pin, students } = req.body;
+
+  
   try {
-    return res.status(200).json();
+
+    let teacher;
+    teacher = await TeacherModel.findOne({email: email.toLowerCase()})
+    if(teacher) return res.status(401).send("Email already in use")
+
+    teacher = new TeacherModel({
+      name,
+      email: email.toLowerCase(),
+      pin,
+      students,
+    })
+
+    teacher.pin = await bcrypt.hash(pin, 10);
+    teacher = await teacher.save()
+
+    const payload = { userID: user._id };
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: "2d" },
+      (err, token) => {
+        if (err) throw err;
+        res.status(200).json(token);
+      }
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createTeacher");
@@ -253,13 +339,7 @@ const deleteComment = async (req, res) => {
 };
 
 module.exports = {
-  deleteComment,
-  createComment,
-  getLikes,
-  unlikePost,
-  likePost,
-  createPost,
-  getAllPosts,
-  getPostById,
-  deletePost,
+  createStylist,
+  createClient,
+  createTeacher
 };
