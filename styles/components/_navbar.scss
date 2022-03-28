@@ -3,9 +3,10 @@
 @use "../util/variables" as *;
 
 nav {
+  z-index: 99;
   overflow: hidden;
   display: flex;
-  position: absolute;
+  position: static;
   top: 0;
   right: 0;
   left: 0;

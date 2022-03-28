@@ -2,6 +2,33 @@
 @use '../util/mixins' as *;
 @use '../util/variables' as *;
 
+.main-container{
+  .new-visit, .new-client{
+    display: flex;
+    width: 200px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: inset $light-shadow;
+    background-color: $primary-4;
+    padding: 25px 40px;
+  }
+  .upcoming-clients, .active-clients{
+    border: 1px solid black;
+    width: 50%;
+    height: 50%;
+  }
+  .radial-buttons{
+    position: static;
+    left: 0;
+  }
+  .client-lists{
+    position: static;
+    right: 0;
+  }
+}
 .container {
   padding: 0 2rem;
 }
