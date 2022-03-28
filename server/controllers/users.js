@@ -96,7 +96,6 @@ const createClient = async (req, res) => {
     hairElasticity,
     hairLength,
   } = req.body;
-
   try {
     return res.status(200).json();
   } catch (error) {
