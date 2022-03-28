@@ -10,18 +10,29 @@ nav {
   right: 0;
   left: 0;
   color: $secondary;
-  background-color: $primary;
-  height: 3rem;
+  background-color: $primary-4;
+  height: 5rem;
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
   align-items: center;
   justify-content: space-between;
-  nav-list {
-    
+  box-shadow: $light-shadow;
+  .image-container{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+
+  }
+  
+  .nav-link {
+    cursor: pointer;
     h3 {
-        cursor: pointer;
+      font-size: 2rem;
+      &:hover,&:active {
+        text-shadow: $text-dark-shadow;
+      }
     }
   }
 }
