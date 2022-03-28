@@ -61,7 +61,7 @@
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 .grid {
@@ -123,15 +123,13 @@ nav {
   color: white;
   background-color: orange;
   height: 3rem;
-  padding: 10px;
-  justify-content: right;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   align-items: center;
-}
-nav .logo {
-  position: absolute;
-  left: 0;
-  top: 1.5rem;
+  justify-content: space-between;
 }
 nav nav-list h3 {
-  color: white;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */

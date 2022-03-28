@@ -15,6 +15,11 @@ const StylistSchema = new Schema({
       pattern: /^\d{4}$/
     //! THIS PATTERN HASN'T BEEN DOUBLE CHECKED YET!!!!!
   },
+  profilePicURL: {type: String},
+    newMsgPopup: {
+        type: Boolean,
+        default: true
+    },
 //* tracking hours per semester
   s1hours:{
       type: Number

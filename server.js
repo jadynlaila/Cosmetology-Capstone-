@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 //* NEXT APP SETUP */
 const next = require("next");
 //!create a check for development vs production
-const dev = process.env.NODE_ENV !== "production";
+const dev = process.env.NODE_ENV !== "development";
 //! there are giant error warnings that pop us when in dev.
 const nextApp = next({ dev });
 //! this is a built in next router that will handle ALL requests made to the server
