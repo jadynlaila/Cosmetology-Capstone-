@@ -15,11 +15,7 @@ const TeacherSchema = new Schema({
   },
   pin: {
       type: String,
-      default: 1234
-    //!we realized that since we have the teacher models and student models separate, we have no (quick) way to check that all pins are unique,
-    //!meaning that students and teachers could potentially have the same pin
-    //!so we figured we could give the teachers a default pin which could double as the code they need to enter on signup 
-    //! second session if u think this is stupid and dumb tell us please
+      required: true
   }
 });
 

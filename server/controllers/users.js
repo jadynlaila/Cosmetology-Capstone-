@@ -3,6 +3,38 @@ const ClientModel = require("../models/ClientModel");
 const TeacherModel = require("../models/TeacherModel");
 const VisitModel = require("../models/VisitModel");
 
+
+const getPinValid = async (req, res) => {
+  const { pin } = req.params;
+  try {
+
+    const teacherPins = TeacherModel.find({pin: pin})
+    const stylistPins = StylistModel.find({pin: pin});
+
+    if (stylistPins !== pin && teacherPins !== pin) {
+      //pin is correct
+    }
+
+
+    
+
+    const test = usernameRegex.test(username);
+    if (!(test || usernameRegex.test(username))) {
+      return res.status(401).send("Invalid username");
+    }
+
+    const user = await UserModel.findOne({
+      username: username.toLowerCase(),
+    });
+    if (user) return res.status(401).send("Username already taken");
+
+    return res.status(200).send("Available");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(`There was a server error`);
+  }
+};
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE A STYLIST
 
@@ -11,7 +43,7 @@ all the info in the req body is coming from the signup form
 there should be a check *first thing* when the signup form is submitted
 if there was no teacher code entered, *then* this will run
 
-.post('/')
+.post('/stylist')
 req.body {clients, teacher, email, pin, s1hours, s2hours, s3hours, s4hours }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createStylist = async (req, res) => {
@@ -26,6 +58,8 @@ const createStylist = async (req, res) => {
     s3hours,
     s4hours,
   } = req.body;
+
+
 
   try {
     return res.status(200).json();
@@ -91,57 +125,7 @@ const createTeacher = async (req, res) => {
 };
 
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EDIT TEACHER
-
-we'll have a little edit button on the teacher profile where they can edit their basic information if needed
-....or not because that seems a bit unnecessary
-
-.post('/teacher')
-req.body = {name, email, pin, students}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-const editTeacher = async (req, res) => {
-  const { id } = req.body;
-  try {
-    return res.status(200).json();
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("server error @ editTeacher");
-  }
-};
-
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-DELETE A POST
-.delete('/:postId')
-req.params {postId}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-const deletePost = async (req, res) => {
-  try {
-    const { userId } = req;
-    const { postId } = req.params;
-
-    const post = await PostModel.findById(postId);
-
-    if (!post) return res.status(403).send("Post not found");
-
-    const user = await UserModel.findById(userId);
-    if (post.user.toString() !== userId) {
-      if (user.role === "admin") {
-        await post.remove();
-        return res.status(200).send("Post deleted successfully");
-      } else {
-        return res.status(401).send("Unauthorized");
-      }
-    }
-
-    await post.remove();
-    return res.status(200).send("Post deleted successfully");
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Server Error @ deletePost");
-  }
-};
+//! eerything below this is copy and pasted from an old project so it can be ignored for now
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 LIKE A POST
