@@ -8,7 +8,8 @@ const ClientSchema = new Schema({
     },
     email: {
         type: String,
-        required: [true, 'client must enter a email']
+        required: true,
+        unique: true
     },
     address: {
         type: String,
