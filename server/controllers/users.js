@@ -9,6 +9,13 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 
+const isEmail = require("validator/lib/isEmail")
+const validatorPhone = require("validator/lib/isMobilePhone")
+const isAddress = /\d+\w+\s\w+\s\w+/;
+
+
+
+
 const getPinValid = async (req, res) => {
   const { pin } = req.params;
   try {
@@ -58,7 +65,7 @@ const createStylist = async (req, res) => {
     s2hours,
     s3hours,
     s4hours,
-  } = req.body;
+  } = req.body.user;
 
   if(!pin.length < 4) {
     return res.status(401).send("Pin must be atleast 4 characters long")
@@ -127,7 +134,14 @@ const createClient = async (req, res) => {
     hairPorosity,
     hairElasticity,
     hairLength,
-  } = req.body;
+  } = req.body.user;
+
+  if(!isEmail(email)) return res.status(401).send("InValid")
+
+  if(!validatorPhone(phone)) return res.status(401).send("InValid")
+
+  if(!isAddress(address)) return res.status(401).send("InValid")
+
   try {
 
     let client;

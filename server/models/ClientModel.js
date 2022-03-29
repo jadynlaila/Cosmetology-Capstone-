@@ -8,29 +8,43 @@ const ClientSchema = new Schema({
     },
     email: {
         type: String,
-        //! will need regex to make sure this is a valid email
+        required: true
     },
     address: {
-        type: String
-        //! will need regex for this
+        type: String,
     },
     phone: {
-        //! will need regex for this
+        type: String,
     },
     dob: {
-        // (date of birth)
-        // type: Date 
+        type: Date,
     },
 
     //* all of these can be radio buttons on the form. ~~~~~~~~~~~
-    hairCondition:{},
-    scalpCondition:{},
-    hairTexture:{},
-    growthPatterns:{},
-    hairDensity:{},
-    hairPorosity:{},
-    hairElasticity:{},
-    hairLength:{},
+    hairCondition:{
+        type: String || null
+    },
+    scalpCondition:{
+        type: String || null
+    },
+    hairTexture:{
+        type: String || null
+    },
+    growthPatterns:{
+        type: String || null
+    },
+    hairDensity:{
+        type: String || null
+    },
+    hairPorosity:{
+        type: String || null
+    },
+    hairElasticity:{
+        type: String || null
+    },
+    hairLength:{
+        type: String || null
+    },
     //! these can be strings OR NULL in case a user doesn't know/want to enter this info
     //* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
