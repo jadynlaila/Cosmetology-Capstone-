@@ -26,11 +26,20 @@ nav {
     font-size: 2rem;
 
   }
-  
+  .identifier{
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    width: 99%;
+    text-align: center;
+  }
   .nav-link {
+    
+    z-index: 99;
     cursor: pointer;
     h3 {
       font-size: 2rem;
+      transition: all .3s ease;
       &:hover,&:active {
         text-shadow: $text-dark-shadow;
       }
