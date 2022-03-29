@@ -8,6 +8,11 @@ import Navbar from './components/layout/Navbar'
 const signup = () => {
   return (<>
     <Navbar/>
+
+    <Form >
+
+
+    </Form>
     </>
   )
 }
