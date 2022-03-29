@@ -63,13 +63,8 @@ const createStylist = async (req, res) => {
     s4hours,
   } = req.body;
 
-<<<<<<< Updated upstream
   if(pin.length < 4) {
     return res.status(401).send("Pin must be atleast 4 characters long")
-=======
-  if (!pin.length < 4) {
-    return res.status(401).send("Pin must be atleast 4 characters long");
->>>>>>> Stashed changes
   }
 
   try {
@@ -81,7 +76,6 @@ const createStylist = async (req, res) => {
       name,
       email: email.toLowerCase(),
       pin,
-<<<<<<< Updated upstream
       // profilePicURL: req.body.profilePicURL || defaultProfilePic,
     })
 
@@ -101,26 +95,6 @@ const createStylist = async (req, res) => {
     //   }
     // )
 
-=======
-      profilePicURL: req.body.profilePicURL || defaultProfilePic,
-    });
-
-    //! Didnt know what to do with the hours
-
-    stylist.pin = await bcrypt.hash(pin, 10);
-    stylist = await stylist.save();
-
-    const payload = { stylistID: stylist._id };
-    jwt.sign(
-      payload,
-      process.env.JWT_SECERT,
-      { expiresIn: "2d" },
-      (err, token) => {
-        if (err) throw err;
-        res.status(200).json(token);
-      }
-    );
->>>>>>> Stashed changes
 
     return res.status(200).json(stylist);
   } catch (error) {
@@ -157,19 +131,11 @@ const createClient = async (req, res) => {
     hairLength,
   } = req.body;
 
-<<<<<<< Updated upstream
   // if(!isEmail(email)) return res.status(401).send("InValid")
 
   // if(!validatorPhone(phone)) return res.status(401).send("InValid")
 
   // if(!isAddress(address)) return res.status(401).send("InValid")
-=======
-  if (!isEmail(email)) return res.status(401).send("InValid");
-
-  if (!validatorPhone(phone)) return res.status(401).send("InValid");
-
-  if (!isAddress(address)) return res.status(401).send("InValid");
->>>>>>> Stashed changes
 
   try {
     let client;
@@ -228,7 +194,6 @@ const createTeacher = async (req, res) => {
     teacher.pin = await bcrypt.hash(pin, 10);
     teacher = await teacher.save();
 
-<<<<<<< Updated upstream
     // const payload = { userID: user._id };
     // jwt.sign(
     //   payload,
@@ -240,18 +205,6 @@ const createTeacher = async (req, res) => {
     //   }
     // );
     return res.status(200).json(teacher);
-=======
-    const payload = { userID: user._id };
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: "2d" },
-      (err, token) => {
-        if (err) throw err;
-        res.status(200).json(token);
-      }
-    );
->>>>>>> Stashed changes
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createTeacher");
