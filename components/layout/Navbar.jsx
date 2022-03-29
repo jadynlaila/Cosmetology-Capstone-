@@ -17,15 +17,12 @@ const Navbar = () => {
         />
         <h1>Hairstyling</h1>
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
       </div>
       {isTeacher ? 
       <div className="identifier">
         <h3>
           Teacher
         </h3>
-=======
->>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       </div>
