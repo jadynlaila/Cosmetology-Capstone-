@@ -4,29 +4,51 @@
 
 .main-container{
   .new-visit, .new-client{
+    font-size: 1.5rem;
     display: flex;
-    width: 200px;
+    width: 250px;
     height: 100px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border-radius: 50%;
-    box-shadow: inset $light-shadow;
-    background-color: $primary-4;
+    border-radius: 45px;
+    box-shadow: $light-shadow;
+    background-color: $primary-5;
     padding: 25px 40px;
+    margin: 10vw auto;
+
+    &:active, &:focus, &:hover{
+      border: $primary-5 3px solid;
+      background-color: white;
+      color: $primary-5;
+      transition: all .1s ease;
+    }
   }
   .upcoming-clients, .active-clients{
-    border: 1px solid black;
-    width: 50%;
-    height: 50%;
+    box-shadow: $light-shadow;
+    width: 90%;
+    height: 300px;
+    margin: 10px auto;
+    border-radius: $radius;
+    .header{
+      border-radius: $radius $radius  0 0;
+      background-color: $primary-4;
+      font-size: 1.5rem;
+      padding: 7.5px;
+    }
+    .content{
+      padding: 7.5px;
+    }
   }
   .radial-buttons{
-    position: static;
+    position: absolute;
     left: 0;
+    width: 50%;
   }
   .client-lists{
-    position: static;
+    position: absolute;
     right: 0;
+    width: 50%;
   }
 }
 .container {
