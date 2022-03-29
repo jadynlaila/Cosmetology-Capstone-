@@ -28,6 +28,9 @@ app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
 
 //*ROUTERS */
+const postUserRoutes = require("./server/routes/postUserRoutes");
+
+app.use("/api/v1/login", postUserRoutes);
 
 app.use()
 

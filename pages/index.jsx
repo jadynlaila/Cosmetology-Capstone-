@@ -41,7 +41,6 @@ const index = ({ name }) => {
           <div className="new-visit">
             <h1>New Visit</h1>
           </div>
-
           {/* This needs to have an onClick to render the form for new clients ~~~~ This is if they aren't in the system from a previous visit*/}
           <div className="new-client">
             <h1>New Client</h1>
