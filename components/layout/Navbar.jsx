@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 // import LoginOrSignup from "./loginOrSignup";
 import { Button } from "semantic-ui-react";
+import isTeacher from "../../pages/profile"
 
-const Navbar = () => {
+const Navbar = (isTeacher) => {
   const [loggedIn, setLoggedIn] = useState(false);
   return (
     <nav>
