@@ -1,9 +1,10 @@
-@use '../themes/defaultTheme' as *;
-@use '../util/mixins' as *;
-@use '../util/variables' as *;
+@use "../themes/defaultTheme" as *;
+@use "../util/mixins" as *;
+@use "../util/variables" as *;
 
-.main-container{
-  .new-visit, .new-client{
+.main-container {
+  .new-visit,
+  .new-client {
     font-size: 1.5rem;
     display: flex;
     width: 250px;
@@ -17,35 +18,43 @@
     padding: 25px 40px;
     margin: 10vw auto;
 
-    &:active, &:focus, &:hover{
+    &:active,
+    &:focus,
+    &:hover {
       border: $primary-5 3px solid;
       background-color: white;
       color: $primary-5;
-      transition: all .1s ease;
+      transition: all 0.1s ease;
     }
   }
-  .upcoming-clients, .active-clients{
+  .upcoming-clients,
+  .active-clients {
     box-shadow: $light-shadow;
     width: 90%;
     height: 300px;
-    margin: 10px auto;
+    margin: 50px auto;
     border-radius: $radius;
-    .header{
-      border-radius: $radius $radius  0 0;
+    .header {
+      border-radius: $radius $radius 0 0;
       background-color: $primary-4;
       font-size: 1.5rem;
       padding: 7.5px;
     }
-    .content{
+    .content {
+      height: 255px;
+      overflow-y: scroll;
       padding: 7.5px;
+      .name {
+        // margin: auto;
+      }
     }
   }
-  .radial-buttons{
+  .radial-buttons {
     position: absolute;
     left: 0;
     width: 50%;
   }
-  .client-lists{
+  .client-lists {
     position: absolute;
     right: 0;
     width: 50%;
@@ -114,8 +123,8 @@
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .grid {

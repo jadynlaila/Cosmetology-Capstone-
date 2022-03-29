@@ -1,4 +1,5 @@
-.main-container .new-visit, .main-container .new-client {
+.main-container .new-visit,
+.main-container .new-client {
   font-size: 1.5rem;
   display: flex;
   width: 250px;
@@ -12,26 +13,34 @@
   padding: 25px 40px;
   margin: 10vw auto;
 }
-.main-container .new-visit:active, .main-container .new-visit:focus, .main-container .new-visit:hover, .main-container .new-client:active, .main-container .new-client:focus, .main-container .new-client:hover {
+.main-container .new-visit:active, .main-container .new-visit:focus, .main-container .new-visit:hover,
+.main-container .new-client:active,
+.main-container .new-client:focus,
+.main-container .new-client:hover {
   border: #ffbe33 3px solid;
   background-color: white;
   color: #ffbe33;
   transition: all 0.1s ease;
 }
-.main-container .upcoming-clients, .main-container .active-clients {
+.main-container .upcoming-clients,
+.main-container .active-clients {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 90%;
   height: 300px;
-  margin: 10px auto;
+  margin: 50px auto;
   border-radius: 0.25rem;
 }
-.main-container .upcoming-clients .header, .main-container .active-clients .header {
+.main-container .upcoming-clients .header,
+.main-container .active-clients .header {
   border-radius: 0.25rem 0.25rem 0 0;
   background-color: #ffb10a;
   font-size: 1.5rem;
   padding: 7.5px;
 }
-.main-container .upcoming-clients .content, .main-container .active-clients .content {
+.main-container .upcoming-clients .content,
+.main-container .active-clients .content {
+  height: 255px;
+  overflow-y: scroll;
   padding: 7.5px;
 }
 .main-container .radial-buttons {
