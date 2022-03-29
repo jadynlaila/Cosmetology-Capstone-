@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const StylistSchema = new Schema({
+  name: {type: String, required: true},
   clients: { type: Schema.Types.ObjectId, ref: "Client" },
   teacher: { type: Schema.Types.ObjectId, ref: "Stylist" },
   email: {
@@ -12,14 +13,11 @@ const StylistSchema = new Schema({
   },
   pin: {
       type: String,
-      pattern: /^\d{4}$/
+      pattern: /^\d{4}$/,
+      required: true
     //! THIS PATTERN HASN'T BEEN DOUBLE CHECKED YET!!!!!
   },
   profilePicURL: {type: String},
-    newMsgPopup: {
-        type: Boolean,
-        default: true
-    },
 //* tracking hours per semester
   s1hours:{
       type: Number
