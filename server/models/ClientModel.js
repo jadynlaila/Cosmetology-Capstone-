@@ -8,37 +8,64 @@ const ClientSchema = new Schema({
     },
     email: {
         type: String,
-        //! will need regex to make sure this is a valid email
+        required: [true, 'client must enter a email']
     },
     address: {
-        type: String
-        //! will need regex for this
+        type: String,
+        required: [true, 'client must enter a address']
     },
     phone: {
-        //! will need regex for this
+        type: String,
+        required: [true, 'client must enter a phone']
     },
     dob: {
-        // (date of birth)
-        // type: Date 
+        type: Date,
+        required: [true, 'client must enter a dob']
     },
 
     //* all of these can be radio buttons on the form. ~~~~~~~~~~~
-    hairCondition:{},
-    scalpCondition:{},
-    hairTexture:{},
-    growthPatterns:{},
-    hairDensity:{},
-    hairPorosity:{},
-    hairElasticity:{},
-    hairLength:{},
+    hairCondition:{
+        type: Boolean || null,
+        required: false
+    },
+    scalpCondition:{
+        type: Boolean || null,
+        required: false
+    },
+    hairTexture:{
+        type: Boolean || null,
+        required: false
+    },
+    growthPatterns:{
+        type: Boolean || null,
+        required: false
+    },
+    hairDensity:{
+        type: Boolean || null,
+        required: false
+    },
+    hairPorosity:{
+        type: Boolean || null,
+        required: false
+    },
+    hairElasticity:{
+        type: Boolean || null,
+        required: false
+    },
+    hairLength:{
+        type: Boolean || null,
+        required: false
+    },
     //! these can be strings OR NULL in case a user doesn't know/want to enter this info
     //* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     allergies:{
-        type: String || null
+        type: String || null,
+        required: [true, 'if not applicable type N/A']
     },
     medicalInfo:{
-        type: String || null
+        type: String || null,
+        required: [true, 'if not applicable type N/A']
     }
 })
 
