@@ -1,27 +1,57 @@
-.main-container .new-visit, .main-container .new-client {
+.main-container .new-visit,
+.main-container .new-client {
+  font-size: 1.5rem;
   display: flex;
-  width: 200px;
+  width: 250px;
   height: 100px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border-radius: 50%;
-  box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.1);
-  background-color: #ffb10a;
+  border-radius: 45px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: #ffbe33;
   padding: 25px 40px;
+  margin: 10vw auto;
 }
-.main-container .upcoming-clients, .main-container .active-clients {
-  border: 1px solid black;
-  width: 50%;
-  height: 50%;
+.main-container .new-visit:active, .main-container .new-visit:focus, .main-container .new-visit:hover,
+.main-container .new-client:active,
+.main-container .new-client:focus,
+.main-container .new-client:hover {
+  border: #ffbe33 3px solid;
+  background-color: white;
+  color: #ffbe33;
+  transition: all 0.1s ease;
+}
+.main-container .upcoming-clients,
+.main-container .active-clients {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  height: 300px;
+  margin: 50px auto;
+  border-radius: 0.25rem;
+}
+.main-container .upcoming-clients .header,
+.main-container .active-clients .header {
+  border-radius: 0.25rem 0.25rem 0 0;
+  background-color: #ffb10a;
+  font-size: 1.5rem;
+  padding: 7.5px;
+}
+.main-container .upcoming-clients .content,
+.main-container .active-clients .content {
+  height: 255px;
+  overflow-y: scroll;
+  padding: 7.5px;
 }
 .main-container .radial-buttons {
-  position: static;
+  position: absolute;
   left: 0;
+  width: 50%;
 }
 .main-container .client-lists {
-  position: static;
+  position: absolute;
   right: 0;
+  width: 50%;
 }
 
 .container {
@@ -163,11 +193,20 @@ nav .image-container {
   align-items: center;
   font-size: 2rem;
 }
+nav .identifier {
+  font-size: 2rem;
+  color: black;
+  position: absolute;
+  width: 99%;
+  text-align: center;
+}
 nav .nav-link {
+  z-index: 99;
   cursor: pointer;
 }
 nav .nav-link h3 {
   font-size: 2rem;
+  transition: all 0.3s ease;
 }
 nav .nav-link h3:hover, nav .nav-link h3:active {
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
@@ -175,6 +214,7 @@ nav .nav-link h3:hover, nav .nav-link h3:active {
 
 html,
 body {
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;

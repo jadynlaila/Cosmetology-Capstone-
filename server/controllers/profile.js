@@ -9,14 +9,14 @@ GET PROFILE
 req.params {id}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const getProfile = async (req, res) => {
-    const { id } = req.params;
-    try {
-        return res.status(200).json();
-      } catch (error) {
-        console.log(error);
-        return res.status(500).send("Server Error @ updateStylist");
-      }
-}
+  const { id } = req.params;
+  try {
+    return res.status(200).json();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Server Error @ updateStylist");
+  }
+};
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 EDIT STYLIST
@@ -67,21 +67,6 @@ const updateTeacher = async (req, res) => {
     return res.status(500).send("server error @ updateTeacher");
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const getProfile = async (req, res) => {
 //   try {

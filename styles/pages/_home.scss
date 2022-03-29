@@ -1,32 +1,63 @@
-@use '../themes/defaultTheme' as *;
-@use '../util/mixins' as *;
-@use '../util/variables' as *;
+@use "../themes/defaultTheme" as *;
+@use "../util/mixins" as *;
+@use "../util/variables" as *;
 
-.main-container{
-  .new-visit, .new-client{
+.main-container {
+  .new-visit,
+  .new-client {
+    font-size: 1.5rem;
     display: flex;
-    width: 200px;
+    width: 250px;
     height: 100px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border-radius: 50%;
-    box-shadow: inset $light-shadow;
-    background-color: $primary-4;
+    border-radius: 45px;
+    box-shadow: $light-shadow;
+    background-color: $primary-5;
     padding: 25px 40px;
+    margin: 10vw auto;
+
+    &:active,
+    &:focus,
+    &:hover {
+      border: $primary-5 3px solid;
+      background-color: white;
+      color: $primary-5;
+      transition: all 0.1s ease;
+    }
   }
-  .upcoming-clients, .active-clients{
-    border: 1px solid black;
-    width: 50%;
-    height: 50%;
+  .upcoming-clients,
+  .active-clients {
+    box-shadow: $light-shadow;
+    width: 90%;
+    height: 300px;
+    margin: 50px auto;
+    border-radius: $radius;
+    .header {
+      border-radius: $radius $radius 0 0;
+      background-color: $primary-4;
+      font-size: 1.5rem;
+      padding: 7.5px;
+    }
+    .content {
+      height: 255px;
+      overflow-y: scroll;
+      padding: 7.5px;
+      .name {
+        // margin: auto;
+      }
+    }
   }
-  .radial-buttons{
-    position: static;
+  .radial-buttons {
+    position: absolute;
     left: 0;
+    width: 50%;
   }
-  .client-lists{
-    position: static;
+  .client-lists {
+    position: absolute;
     right: 0;
+    width: 50%;
   }
 }
 .container {
@@ -92,8 +123,8 @@
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .grid {
