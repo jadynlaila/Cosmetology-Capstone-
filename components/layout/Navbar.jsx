@@ -21,8 +21,16 @@ const Navbar = (isTeacher) => {
       {isTeacher ? 
       <div className="identifier">
         <h3>
-          Teacher
+          Teacher 
         </h3>
+
+        <Image
+          className="logo"
+          src={"/apple.png"}
+          alt="logo"
+          height="64"
+          width="53.95"
+        />
       </div>
       : " "}
       <div className="nav-link">

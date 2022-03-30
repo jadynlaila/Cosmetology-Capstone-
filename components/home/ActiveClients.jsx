@@ -1,13 +1,43 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { baseURL } from "../../pages/util/baseURL";
+import axios from "axios";
+import { Segment } from "semantic-ui-react";
 
-//* goes through client model and finds clients who's date of appointment is equal to the current date
-//* also checks that they are NOT active
-//* returns the user's name and time of check in 
-//* as of 3/25 the client schema isn't 100% completed, it just needs a few final touches 
 const ActiveClients = () => {
-  return (
-      <Segment></Segment>
-  )
-}
+  const [clients, setClients] = useState([]);
+  const [activeClients, setActiveClients] = useState([]);
 
-export default ActiveClients
+  useEffect(() => {
+    const getClients = async () => {
+      try {
+        const res = await axios.get(`${baseURL}/api/v1/client`);
+        console.log(res.data.clients);
+        setClients(res.data.clients);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getClients();
+  }, []);
+
+  return (
+    <>
+      <div className="header">
+        Active Clients
+          </div>
+        <div className="content">
+          {clients.map((client) => {
+            return (
+              <div className="person">
+                <h5 className="name">{client.name}</h5>
+                <h5 className="time">11:13 pm</h5>
+                <h5 className="date">3/30/2022</h5>
+              </div>
+            );
+          })}
+        </div>
+    </>
+  );
+};
+
+export default ActiveClients;

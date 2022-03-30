@@ -17,7 +17,9 @@ const StylistSchema = new Schema({
       required: true
     //! THIS PATTERN HASN'T BEEN DOUBLE CHECKED YET!!!!!
   },
-  profilePicURL: {type: String},
+  profilePicURL: {
+    type: String
+  },
 //* tracking hours per semester
   s1hours:{
       type: Number

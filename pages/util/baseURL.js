@@ -1,1 +1,1 @@
-export const baseURL = `http://localhost:${port.env.PORT || 3000}`
+export const baseURL = `http://localhost:${process.env.PORT || 3000}`
