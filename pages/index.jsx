@@ -3,10 +3,10 @@ import { Grid, Form, Divider } from "semantic-ui-react"
 import Head from 'next/head'
 import Image from 'next/image'
 import Navbar from '../components/layout/Navbar'
-// import NewVisitForm from '../components/layout/NewVisitForm'
-// import NewClientForm from '../components/layout/NewClientForm'
-import ActiveClients from '../components/layout/AcitveClients'
-import UpcomingClients from '../components/layout/UpcomingClients'
+// import NewVisitForm from '../components/home/NewVisitForm'
+// import NewClientForm from '../components/home/NewClientForm'
+import ActiveClients from '../components/home/ActiveClients';
+import UpcomingClients from '../components/home/UpcomingClients'
 
 
 const index = ({ name }) => {

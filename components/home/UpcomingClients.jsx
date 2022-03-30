@@ -6,16 +6,17 @@ import { Segment } from "semantic-ui-react";
 //* displays their name, preferred stylist,time of appointment, and the date they scheduled
 const UpcomingClients = () => {
 
-    
+
 
   return (
-    <Segment.Group horizontal>
-        <Segment>{client.name}</Segment>
-        <Segment.Group raised>
-        <Segment>{visit.preferredStylist}</Segment>
-        <Segment>{visit.time}</Segment>
-        </Segment.Group>
-    </Segment.Group>
+    // <Segment.Group horizontal>
+    //     <Segment>{client.name}</Segment>
+    //     <Segment.Group raised>
+    //     <Segment>{visit.preferredStylist}</Segment>
+    //     <Segment>{visit.time}</Segment>
+    //     </Segment.Group>
+    // </Segment.Group>
+    <></>
   )
 }
 
