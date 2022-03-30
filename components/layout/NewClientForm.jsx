@@ -1,8 +1,7 @@
 import React from 'react'
 import { Button, Header, Image, Modal, Checkbox, Form } from 'semantic-ui-react'
 
-function newClientForm() {
-  const [open, setOpen] = React.useState(false)
+function newClientForm(open) {
     // onclick button <button class="ui button">Show Modal</button>
   return (
     <Modal
