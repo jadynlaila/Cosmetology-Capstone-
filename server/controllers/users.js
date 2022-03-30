@@ -2,7 +2,7 @@ const StylistModel = require("../models/StylistModel");
 const ClientModel = require("../models/ClientModel");
 const TeacherModel = require("../models/TeacherModel");
 const VisitModel = require("../models/VisitModel");
-const { async } = require("regenerator-runtime");
+
 
 const defaultProfilePic = require("../util/defaultPic");
 const bcrypt = require("bcrypt");
@@ -76,13 +76,13 @@ const createStylist = async (req, res) => {
       name,
       email: email.toLowerCase(),
       pin,
-      // profilePicURL: req.body.profilePicURL || defaultProfilePic,
+      profilePicURL: req.body.profilePicURL || defaultProfilePic,
     })
 
     //! Didnt know what to do with the hours
 
-    // stylist.pin = await bcrypt.hash(pin, 10)
-    // stylist = await stylist.save();
+    stylist.pin = await bcrypt.hash(pin, 10)
+    stylist = await stylist.save();
 
     // const payload = {stylistID: stylist._id};
     // jwt.sign(
@@ -96,7 +96,7 @@ const createStylist = async (req, res) => {
     // )
 
 
-    return res.status(200).json(stylist);
+    
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createStylist");
@@ -129,6 +129,8 @@ const createClient = async (req, res) => {
     hairPorosity,
     hairElasticity,
     hairLength,
+    allergies,
+    medicalInfo
   } = req.body;
 
   // if(!isEmail(email)) return res.status(401).send("InValid")
@@ -156,11 +158,13 @@ const createClient = async (req, res) => {
       hairPorosity,
       hairElasticity,
       hairLength,
+      allergies,
+      medicalInfo
     });
 
     client = await client.save();
 
-    return res.status(200).json({ client });
+    return res.status(200).json( client );
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createClient");
@@ -204,7 +208,7 @@ const createTeacher = async (req, res) => {
     //     res.status(200).json(token);
     //   }
     // );
-    return res.status(200).json(teacher);
+    
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createTeacher");
@@ -213,133 +217,7 @@ const createTeacher = async (req, res) => {
 
 //! everything below this is copy and pasted from an old project so it can be ignored for now
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-LIKE A POST
-.post('/like/:postId')
-req.params {postId}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-UNLIKE A POST
-.put('/like/:postId')
-req.params {postId}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-const unlikePost = async (req, res) => {
-  try {
-    const { postId } = req.params;
-    const { userId } = req;
-
-    const post = await PostModel.findById(postId);
-    if (!post) return res.status(403).send("Post not found");
-
-    const likedIndex = post.likes.findIndex(
-      (like) => like.user.toString() === userId
-    );
-
-    if (likedIndex === -1) return res.status(403).send("post not liked");
-
-    await post.likes.splice(likedIndex, 1);
-    await post.save();
-
-    return res.status(200).send("post unliked");
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Server Error @ unlikePost");
-  }
-};
-
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-GET ALL LIKES ON A POST
-.get('/like/:postId)
-req.params {postId}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-const getLikes = async (req, res) => {
-  try {
-    const { postId } = req.params;
-
-    const post = await PostModel.findById(postId).populate("likes.user");
-    if (!post) return res.status(403).send("Post not found");
-
-    return res.status(200).json(post.likes);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Server Error @ getLikes");
-  }
-};
-
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-CREATE A COMMENT
-.post('/comment/:postId)
-req.params {postId}
-req.body {text}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-const createComment = async (req, res) => {
-  try {
-    const { postId } = req.params;
-    const { text } = req.body;
-
-    if (!text) return res.status(403).send("Text required");
-    const post = await PostModel.findById(postId);
-    if (!post) return res.status(403).send("Post not found");
-
-    const newComment = {
-      user: req.userId,
-      _id: uuid(),
-      text,
-    };
-
-    await post.comments.unshift(newComment);
-    await post.save();
-
-    return res.status(200).json(newComment._id);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Server Error @ createComment");
-  }
-};
-
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-DELETE A COMMENT
-.delete('/comment/:postId/:commentId)
-req.params {postId, commentId}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-const deleteComment = async (req, res) => {
-  try {
-    const { postId, commentId } = req.params;
-    const { userId } = req;
-
-    const post = await PostModel.findById(postId);
-    if (!post) return res.status(403).send("Post not found");
-
-    const comment = post.comments.find((comment) => comment._id === commentId);
-    if (!comment) return res.status(403).send("Comment not found");
-
-    const user = await UserModel.findById(userId);
-
-    const deleteComment = async () => {
-      const indexOf = post.comments.indexOf(comment);
-      await post.comments.splice(indexOf, 1);
-      await post.save();
-
-      return res.status(200).send("comment deleted");
-    };
-
-    if (comment.user.toString() !== userId) {
-      if (user.role === "admin") {
-        await deleteComment();
-      } else {
-        return res.status(401).send("unauthorized");
-      }
-    }
-
-    await deleteComment();
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Server Error @ createComment");
-  }
-};
 
 module.exports = {
   createStylist,
