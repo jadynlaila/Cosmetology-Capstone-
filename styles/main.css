@@ -221,11 +221,14 @@ nav .image-container {
   font-size: 2rem;
 }
 nav .identifier {
+  display: flex;
   font-size: 2rem;
   color: black;
   position: absolute;
   width: 99%;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 nav .nav-link {
   z-index: 99;
