@@ -6,6 +6,7 @@ const ClientSchema = new Schema({
         type: String,
         required: [true, 'client must enter a name']
     },
+    visits: { type: Schema.Types.ObjectId, ref: "Visit" },
     email: {
         type: String,
         required: true,

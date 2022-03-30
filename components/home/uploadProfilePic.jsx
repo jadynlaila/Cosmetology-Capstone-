@@ -7,7 +7,7 @@ const uploadProfilePic = async(req, res) => {
             req.files.image.tempFilePath,
             {
                 use_filename: true,
-                folder: "Social Session 1"
+                folder: "hair"
             });
         fs.unlinkSync(req.files.image.tempFilePath)
         return res.status(200).json({src: src.secure_url})   
