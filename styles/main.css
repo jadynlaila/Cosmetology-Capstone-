@@ -246,12 +246,9 @@ nav .nav-link h3:hover, nav .nav-link h3:active {
 }
 
 .numpad {
-  width: 400px;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: 5vw 5vw 5vw;
+  grid-template-rows: 5vw 5vw 5vw 5vw;
 }
 .numpad .button {
   border-radius: 50px;
@@ -261,7 +258,6 @@ nav .nav-link h3:hover, nav .nav-link h3:active {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1 0 33.3333%;
   background-color: #ffbe33;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.25);

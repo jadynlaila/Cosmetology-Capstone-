@@ -13,7 +13,9 @@ const NumPad = () => {
       <div class="button">7</div>
       <div class="button">8</div>
       <div class="button">9</div>
+      <div class="button"> 10</div>
       <div class="button">0</div>
+      <div class="button"> <i class="arrow left icon"></i> </div>
     </div>
     </>
   );
