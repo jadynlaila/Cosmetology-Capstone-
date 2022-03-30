@@ -247,26 +247,27 @@ nav .nav-link h3:hover, nav .nav-link h3:active {
 
 .numpad {
   display: grid;
-  grid-template-columns: 5vw 5vw 5vw;
-  grid-template-rows: 5vw 5vw 5vw 5vw;
+  grid-template-columns: 7vw 7vw 7vw;
+  grid-template-rows: 7vw 7vw 7vw 7vw;
+  margin: auto;
+  gap: 10px;
 }
 .numpad .button {
   border-radius: 50px;
-  height: 33.333%;
-  width: 33.333%;
   margin: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ffbe33;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
-.numpad .button:nth-of-type(10) {
-  flex-basis: 66.6667%;
+  color: #fffaec;
+  width: 100%;
+  height: 100%;
 }
 .numpad .button:hover {
-  background-color: #e69d00;
+  cursor: pointer;
+  background-color: white;
+  color: #ffbe33;
+  border: 3px solid #ffbe33;
   transition: all 0.1s ease;
 }
 

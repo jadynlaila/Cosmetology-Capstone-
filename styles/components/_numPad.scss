@@ -2,36 +2,35 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 
-$button: $primary-5;
-$active: darken($primary-5, 15%);
-
 * {
   box-sizing: border-box;
 }
 .numpad {
   display: grid;
-  grid-template-columns: 5vw 5vw 5vw;
-  grid-template-rows: 5vw 5vw 5vw 5vw;
-
+  grid-template-columns: 7vw 7vw 7vw;
+  grid-template-rows: 7vw 7vw 7vw 7vw;
+  margin: auto;
+  gap: 10px;
+  
   .button {
     border-radius: 50px;
-    height: 33.333%;
-    width: 33.333%;
     margin: 10px;
     
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $button;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background-color: $primary-5;
+    color: $secondary;
+    width: 100%;
+    height: 100%;
     
-    &:nth-of-type(10) {
-      flex-basis: 66.6667%;
-    }
+    
     
     &:hover {
-      background-color: $active;
+      cursor: pointer;
+      background-color: white;
+      color: $primary-5;
+      border: 3px solid $primary-5;
       transition: all .1s ease;
     }
   }
