@@ -3,10 +3,10 @@ import { Grid, Form, Divider } from "semantic-ui-react"
 import Head from 'next/head'
 import Image from 'next/image'
 import Navbar from '../components/layout/Navbar'
-// import NewVisitForm from '../components/home/NewVisitForm'
-// import NewClientForm from '../components/home/NewClientForm'
-import ActiveClients from '../components/home/ActiveClients';
+// import NewVisitForm from '../components/layout/NewVisitForm'
+import ActiveClients from '../components/home/ActiveClients'
 import UpcomingClients from '../components/home/UpcomingClients'
+import NewClientForm from '../components/home/NewClientForm'
 
 
 const index = ({ name }) => {
@@ -14,6 +14,7 @@ const index = ({ name }) => {
   //? Is that the for the pin for clocking in?
 
   //* UseStates//
+  const [open, setOpen] = useState(false);
   const [media, setMedia] = useState(null);
   const [mediaPreview, setMediaPreview] = useState(null);
 
@@ -43,7 +44,7 @@ const index = ({ name }) => {
           </div>
           {/* This needs to have an onClick to render the form for new clients ~~~~ This is if they aren't in the system from a previous visit*/}
           <div className="new-client">
-            <h1>New Client</h1>
+          <NewClientForm open={open} setOpen={setOpen}/>
           </div>
         </div>
 
