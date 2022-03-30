@@ -39,13 +39,13 @@ const index = ({ name }) => {
 
         {/* This needs to have an onClick function that renders the dropdown  */}
         <div className="radial-buttons">
+        <div className="new-client">
+          <NewClientForm open={open} setOpen={setOpen}/>
+          </div>
           <div className="new-visit">
             <h1>New Visit</h1>
           </div>
           {/* This needs to have an onClick to render the form for new clients ~~~~ This is if they aren't in the system from a previous visit*/}
-          <div className="new-client">
-          <NewClientForm open={open} setOpen={setOpen}/>
-          </div>
         </div>
 
 

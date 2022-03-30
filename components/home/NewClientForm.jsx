@@ -20,7 +20,7 @@ const NewClientForm = () => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<h1>Show Modal</h1>}
+      trigger={<h1>New Client</h1>}
     >
       <Modal.Header>New Client</Modal.Header>
       <Modal.Content>
