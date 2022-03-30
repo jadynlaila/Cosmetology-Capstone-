@@ -33,7 +33,6 @@ const postUserRoutes = require("./server/routes/postUserRoutes");
 app.use("/api/v1/client", postUserRoutes)
 app.use("/api/v1/signup", postUserRoutes)
 
-app.use()
 
 //*SOCKETS */
 

@@ -40,8 +40,14 @@
 .main-container .upcoming-clients .content,
 .main-container .active-clients .content {
   height: 255px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 7.5px;
+}
+.main-container .upcoming-clients .content .name,
+.main-container .active-clients .content .name {
+  border-bottom: 1px solid #cecfcf;
+  padding: 0;
+  margin: 0;
 }
 .main-container .radial-buttons {
   position: absolute;
