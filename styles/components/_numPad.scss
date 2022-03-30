@@ -1,0 +1,44 @@
+@use "../themes/defaultTheme" as *;
+@use "../util/mixins" as *;
+@use "../util/variables" as *;
+
+$button: $primary-5;
+$active: darken($primary-5, 15%);
+
+* {
+  box-sizing: border-box;
+}
+.numpad {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+
+  .button {
+    border-radius: 50px;
+    height: 33.333%;
+    width: 33.333%;
+    margin: 10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 0 33.3333%;
+    
+    
+    background-color: $button;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    
+    &:nth-of-type(10) {
+      flex-basis: 66.6667%;
+    }
+    
+    &:hover {
+      background-color: $active;
+      transition: all .1s ease;
+    }
+  }
+}

@@ -71,7 +71,6 @@
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -240,6 +239,39 @@ nav .nav-link h3 {
 }
 nav .nav-link h3:hover, nav .nav-link h3:active {
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.numpad {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.numpad .button {
+  border-radius: 50px;
+  height: 33.333%;
+  width: 33.333%;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 33.3333%;
+  background-color: #ffbe33;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.numpad .button:nth-of-type(10) {
+  flex-basis: 66.6667%;
+}
+.numpad .button:hover {
+  background-color: #e69d00;
+  transition: all 0.1s ease;
 }
 
 html,

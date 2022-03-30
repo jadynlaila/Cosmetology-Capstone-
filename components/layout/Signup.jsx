@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import { Input, UI, Fluid, Icon, Container } from "semantic-ui-react";
 
 const Signup = () => {
-  return (
-    <div>signup</div>
-  )
-}
+  return <></>;
+};
 
-export default Signup
+export default Signup;
