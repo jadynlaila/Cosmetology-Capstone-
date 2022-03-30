@@ -46,11 +46,13 @@
   overflow-y: auto;
   padding: 7.5px;
 }
-.main-container .upcoming-clients .content .name,
-.main-container .active-clients .content .name {
+.main-container .upcoming-clients .content .person,
+.main-container .active-clients .content .person {
   border-bottom: 1px solid #cecfcf;
-  padding: 0;
+  padding: 0 40px;
   margin: 0;
+  display: flex;
+  justify-content: space-between;
 }
 .main-container .radial-buttons {
   position: absolute;

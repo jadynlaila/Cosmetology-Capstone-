@@ -50,10 +50,12 @@
 
 
 
-      .name {
+      .person {
         border-bottom: 1px solid $grey-8;
-        padding: 0;
+        padding: 0 40px;
         margin: 0;
+        display: flex;
+        justify-content: space-between;
       }
     }
   }
