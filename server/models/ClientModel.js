@@ -26,35 +26,35 @@ const ClientSchema = new Schema({
 
     //* all of these can be radio buttons on the form. ~~~~~~~~~~~
     hairCondition:{
-        type: Boolean || null,
+        type: String || Boolean || null,
         required: false
     },
     scalpCondition:{
-        type: Boolean || null,
+        type: String || Boolean || null,
         required: false
     },
     hairTexture:{
-        type: Boolean || null,
+        type: String || Boolean || null,
         required: false
     },
     growthPatterns:{
-        type: Boolean || null,
+        type: String || Boolean || null,
         required: false
     },
     hairDensity:{
-        type: Boolean || null,
+        type: String || Boolean || null,
         required: false
     },
     hairPorosity:{
-        type: Boolean || null,
+        type: String || Boolean || null,
         required: false
     },
     hairElasticity:{
-        type: Boolean || null,
+        type: String || Boolean || null,
         required: false
     },
     hairLength:{
-        type: Boolean || null,
+        type: String || Boolean || null,
         required: false
     },
     //! these can be strings OR NULL in case a user doesn't know/want to enter this info
