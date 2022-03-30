@@ -9,13 +9,14 @@ const UpcomingClients = () => {
 
 
   return (
-    <Segment.Group horizontal>
-        <Segment>{client.name}</Segment>
-        <Segment.Group raised>
-        <Segment>{visit.preferredStylist}</Segment>
-        <Segment>{visit.time}</Segment>
-        </Segment.Group>
-    </Segment.Group>
+    // <Segment.Group horizontal>
+    //     <Segment>{client.name}</Segment>
+    //     <Segment.Group raised>
+    //     <Segment>{visit.preferredStylist}</Segment>
+    //     <Segment>{visit.time}</Segment>
+    //     </Segment.Group>
+    // </Segment.Group>
+    <></>
   )
 }
 
