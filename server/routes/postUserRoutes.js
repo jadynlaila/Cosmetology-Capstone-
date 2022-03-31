@@ -1,8 +1,9 @@
 const router = require("express").Router();
-const { createStylist, createClient, createTeacher } = require('../controllers/users');
+const { createStylist, createClient, createTeacher, loginStylist } = require('../controllers/users');
 
-router.route('/stylist').post(createStylist);
+router.route('/signup').post(createStylist);
 router.route('/').post(createClient);
-router.route('/teacher').post(createTeacher)
+router.route('/tsignup').post(createTeacher)
+router.route('/login').post(loginStylist)
 
 module.exports = router;
