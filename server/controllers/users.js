@@ -95,7 +95,7 @@ const createStylist = async (req, res) => {
     //   }
     // )
 
-
+    return res.status(200).send("Account Created")
     
   } catch (error) {
     console.log(error);
@@ -208,12 +208,27 @@ const createTeacher = async (req, res) => {
     //     res.status(200).json(token);
     //   }
     // );
-    
+    return res.status(200).send("Account Created")
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createTeacher");
   }
 };
+
+const loginStylist = (req,res) => {
+  const {pin} = req.body.stylist;
+  if(!pin) return res.status(401).send("Invalid Pin")
+  if(pin < 4) return res.status(401).send("Pin must be 4 char long")
+
+  try{
+    // const stylist = await
+  } catch(error){
+    console.log(error);
+    return res.status(500).send("Error @ loginStylist")
+  }
+
+
+}
 
 //! everything below this is copy and pasted from an old project so it can be ignored for now
 
@@ -223,4 +238,5 @@ module.exports = {
   createStylist,
   createClient,
   createTeacher,
+  loginStylist
 };

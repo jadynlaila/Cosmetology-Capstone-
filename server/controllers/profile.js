@@ -12,22 +12,13 @@ req.params {id}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const getProfileStylist = async (req, res) => {
   try {
-    const stylist = await StylistModel.findOne({stylist: stylist._id}).populate("stylist")
+    const {id} = req.params;
+    const stylist = await StylistModel.findOne({stylist: id})
     if(!stylist) return res.status(404).send("Stylist not Found :|")
 
-    const {
-      name,
-      clients,
-      teacher,
-      email,
-      profilePicURL,
-      s1hours,
-      s2hours,
-      s3hours,
-      s4hours,
-    } = stylist
+    return res.status(200).json(stylist)
 
-    return res.status(200).json(stylist);
+    
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ getProfileStylist");
@@ -35,14 +26,8 @@ const getProfileStylist = async (req, res) => {
 };
 const getProfileTeacher = async (req, res) => {
   try {
-    const teacher = await TeacherModel.findOne({teacher: teacher._id}).populate("teacher")
+    const teacher = await TeacherModel.findOne({teacher: teacher._id})
     if(!teacher) return res.status(404).send("Teacher not Found :|")
-
-    const {
-      students,
-      name,
-      email,
-    } = teacher
 
     return res.status(200).json(teacher);
   } catch (error) {
