@@ -2,7 +2,7 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 
-nav {
+#nav {
   z-index: 99;
   overflow: hidden;
   display: flex;
@@ -24,6 +24,9 @@ nav {
     display: flex;
     align-items: center;
     font-size: 2rem;
+    h1{
+      margin: auto;
+    }
 
   }
   .identifier{

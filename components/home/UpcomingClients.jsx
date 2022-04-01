@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Segment } from "semantic-ui-react";
+// import { Segment } from "semantic-ui-react";
 
 //* goes through visit model and checks for visits whose 'active' attribute are true.
 //* it's gonna have to go through the client model as well (remember the visit model has a client ref) to get their name
