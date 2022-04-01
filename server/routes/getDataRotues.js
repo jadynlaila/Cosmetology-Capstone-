@@ -1,4 +1,8 @@
+const { getProfileStylist } = require("../controllers/profile");
+
 const router = require("express").Router();
+
+
 
 /* 
 here is where the:
@@ -10,3 +14,9 @@ active clients data will load from when displayed on the right of the page when 
 more here:
 
 */
+
+router.route('/profile/:id').get(getProfileStylist)
+router.route('')
+
+
+module.exports = router

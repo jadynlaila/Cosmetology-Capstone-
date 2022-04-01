@@ -10,6 +10,8 @@ const personalProfile = () => {
   const [isTeacher, setIsTeacher] = useState(false)
   return (<>
     <Navbar/>
+
+    
     </>
   );
 };
