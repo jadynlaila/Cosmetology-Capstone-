@@ -4,7 +4,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
 import Signup from "../components/layout/signup";
-import Login from "../components/layout/login";
 import NumPad from "../components/layout/numpad";
 
 
