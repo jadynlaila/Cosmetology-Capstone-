@@ -31,14 +31,16 @@ app.use(fileUpload({ useTempFiles: true }));
 //*ROUTERS */
 const postUserRoutes = require("./server/routes/postUserRoutes");
 const clientRoutes = require('./server/routes/clientRoutes');
-const getDataRoutes = require("./server/routes/getDataRotues")
+const getDataRoutes = require("./server/routes/getDataRoutes");
+const visitRoutes = require('./server/routes/visitRoutes');
 
 // Experimental
 const profileRoutes = require('./server/routes/profileRoute')
 
 app.use("/api/v1/client", postUserRoutes)
 app.use('/api/v1/client', clientRoutes);
-app.use("/api/v1/signup", postUserRoutes)
+app.use("/api/v1/signup", postUserRoutes);
+app.use('/api/v1/visit', visitRoutes)
 
 //Experimental
 app.use("/api/v1/profile", profileRoutes)

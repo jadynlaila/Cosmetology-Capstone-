@@ -11,7 +11,6 @@ const ActiveClients = () => {
     const getClients = async () => {
       try {
         const res = await axios.get(`${baseURL}/api/v1/client`);
-        console.log(res.data.clients);
         setClients(res.data.clients);
       } catch (error) {
         console.log(error);
@@ -20,6 +19,7 @@ const ActiveClients = () => {
     getClients();
   }, []);
 
+  
   return (
     <>
       <div className="header">
