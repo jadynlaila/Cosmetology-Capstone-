@@ -39,9 +39,9 @@ const index = ({ name }) => {
 
         {/* This needs to have an onClick function that renders the dropdown  */}
         <div className="radial-buttons">
-        <div className="new-client">
+        
           <NewClientForm open={open} setOpen={setOpen}/>
-          </div>
+          
           <div className="new-visit">
             <h1>New Visit</h1>
           </div>

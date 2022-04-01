@@ -195,7 +195,7 @@
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, #ffbe33), color-stop(0.66, #ffb10a), color-stop(0.99, #ffbe33));
 }
 
-nav {
+#nav {
   z-index: 99;
   overflow: hidden;
   display: flex;
@@ -214,12 +214,15 @@ nav {
   justify-content: space-between;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-nav .image-container {
+#nav .image-container {
   display: flex;
   align-items: center;
   font-size: 2rem;
 }
-nav .identifier {
+#nav .image-container h1 {
+  margin: auto;
+}
+#nav .identifier {
   display: flex;
   font-size: 2rem;
   color: black;
@@ -229,15 +232,15 @@ nav .identifier {
   justify-content: center;
   gap: 20px;
 }
-nav .nav-link {
+#nav .nav-link {
   z-index: 99;
   cursor: pointer;
 }
-nav .nav-link h3 {
+#nav .nav-link h3 {
   font-size: 2rem;
   transition: all 0.3s ease;
 }
-nav .nav-link h3:hover, nav .nav-link h3:active {
+#nav .nav-link h3:hover, #nav .nav-link h3:active {
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
 

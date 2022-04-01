@@ -1,4 +1,5 @@
 // import sass from "sass"
+// import '../styles/normalize.css'
 import '../styles/main.css'
 import "semantic-ui-css/semantic.min.css"
 
