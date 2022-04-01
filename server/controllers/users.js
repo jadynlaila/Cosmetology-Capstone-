@@ -230,13 +230,13 @@ const loginStylist = (req,res) => {
 
 }
 
-//! everything below this is copy and pasted from an old project so it can be ignored for now
-
-
 
 module.exports = {
   createStylist,
   createClient,
   createTeacher,
-  loginStylist
+  loginStylist,
+  
 };
+
+
