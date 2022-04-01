@@ -10,7 +10,7 @@ const NumPad = ({ setPinInput}) => {
       <div class="button" onClick={() => setPinInput((prev) => prev + '2')} accessKey="2">2</div>
       <div class="button" onClick={() => setPinInput((prev) => prev + '3')} accessKey="3">3</div>
       <div class="button" onClick={() => setPinInput((prev) => prev + '4')} accessKey="4">4</div>
-      <div class="button" onClick={() => setPinInput((prev) => prev + '5')} accessKey="5">5</div>
+      <div class="button" onClick={() => setPinInput((prev) => prev + '5')} accessKey="5">5</div> 
       <div class="button" onClick={() => setPinInput((prev) => prev + '6')} accessKey="6">6</div>
       <div class="button" onClick={() => setPinInput((prev) => prev + '7')} accessKey="7">7</div>
       <div class="button" onClick={() => setPinInput((prev) => prev + '8')} accessKey="8">8</div>
