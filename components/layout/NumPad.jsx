@@ -3,6 +3,8 @@ import React from "react";
 const NumPad = ({ setPinInput}) => {
   return (
     <>
+      
+    <div className="container">
     <div className="numpad">
       <div class="button" onClick={() => setPinInput((prev) => prev + '1')} accessKey="1">1</div>
       <div class="button" onClick={() => setPinInput((prev) => prev + '2')} accessKey="2">2</div>
@@ -16,6 +18,7 @@ const NumPad = ({ setPinInput}) => {
       <div class="button" accessKey=""></div>
       <div class="button" onClick={() => setPinInput((prev) => prev + '0')} accessKey="0">0</div>
       <div class="button" onClick={() => setPinInput((prev) => prev.substring(0, prev.length-1))}><i class="angle left icon"></i></div>
+    </div>
     </div>
     </>
   );

@@ -255,9 +255,6 @@
   height: 80vh;
   flex-direction: column;
 }
-.container div .textbox {
-  border: black 1px solid;
-}
 .container .numpad {
   display: grid;
   grid-template-columns: 7vw 7vw 7vw;
