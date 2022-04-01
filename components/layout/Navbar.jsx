@@ -20,9 +20,9 @@ const Navbar = (isTeacher) => {
       </div>
       {isTeacher ?
         <div className="identifier">
-          <h3>
+          <h1>
             Teacher
-          </h3>
+          </h1>
 
           <Image
             className="logo"

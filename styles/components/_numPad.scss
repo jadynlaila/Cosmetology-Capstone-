@@ -5,6 +5,15 @@
 * {
   box-sizing: border-box;
 }
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  flex-direction: column;
+  div{.textbox{
+    border: black 1px solid;
+  }}
 .numpad {
   display: grid;
   grid-template-columns: 7vw 7vw 7vw;
@@ -15,7 +24,6 @@
   .button {
     border-radius: 50px;
     margin: 10px;
-    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +33,6 @@
     height: 100%;
     
     
-    
     &:hover {
       cursor: pointer;
       background-color: white;
@@ -33,5 +40,10 @@
       border: 3px solid $primary-5;
       transition: all .1s ease;
     }
+    #disabled{
+      display: none;
+      background-color: none;
+    }
   }
+}
 }

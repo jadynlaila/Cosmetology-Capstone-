@@ -248,14 +248,24 @@
   box-sizing: border-box;
 }
 
-.numpad {
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  flex-direction: column;
+}
+.container div .textbox {
+  border: black 1px solid;
+}
+.container .numpad {
   display: grid;
   grid-template-columns: 7vw 7vw 7vw;
   grid-template-rows: 7vw 7vw 7vw 7vw;
   margin: auto;
   gap: 10px;
 }
-.numpad .button {
+.container .numpad .button {
   border-radius: 50px;
   margin: 10px;
   display: flex;
@@ -266,12 +276,16 @@
   width: 100%;
   height: 100%;
 }
-.numpad .button:hover {
+.container .numpad .button:hover {
   cursor: pointer;
   background-color: white;
   color: #ffbe33;
   border: 3px solid #ffbe33;
   transition: all 0.1s ease;
+}
+.container .numpad .button #disabled {
+  display: none;
+  background-color: none;
 }
 
 html,
