@@ -41,6 +41,8 @@ app.use("/api/v1/client", postUserRoutes)
 app.use('/api/v1/client', clientRoutes);
 app.use("/api/v1/signup", postUserRoutes);
 app.use('/api/v1/visit', visitRoutes)
+app.use("/api/v1/stylist", getDataRoutes)
+app.use("/api/v1/teacher", profileRoutes)
 
 //Experimental
 app.use("/api/v1/profile", profileRoutes)

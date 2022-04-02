@@ -1,4 +1,4 @@
-const { getProfileStylist } = require("../controllers/profile");
+const { getProfileStylist, getProfileTeacher, updateStylist } = require("../controllers/profile");
 
 const router = require("express").Router();
 
@@ -15,8 +15,9 @@ more here:
 
 */
 
-router.route('/profile/:id').get(getProfileStylist)
-router.route('')
+router.route('/profile/:id').get(getProfileStylist).put(updateStylist)
+
+
 
 
 module.exports = router

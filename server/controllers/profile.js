@@ -13,7 +13,7 @@ req.params {id}
 const getProfileStylist = async (req, res) => {
   try {
     const {id} = req.params;
-    const stylist = await StylistModel.findOne({stylist: id})
+    const stylist = await StylistModel.findOne({_id: id})
     if(!stylist) return res.status(404).send("Stylist not Found :|")
 
     return res.status(200).json(stylist)
@@ -26,7 +26,8 @@ const getProfileStylist = async (req, res) => {
 };
 const getProfileTeacher = async (req, res) => {
   try {
-    const teacher = await TeacherModel.findOne({teacher: teacher._id})
+    const {id} = req.params;
+    const teacher = await TeacherModel.findOne({_id: id})
     if(!teacher) return res.status(404).send("Teacher not Found :|")
 
     return res.status(200).json(teacher);
@@ -43,9 +44,31 @@ req.params {stylistId}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 const updateStylist = async (req, res) => {
-  const { stylistId } = req.params;
+  const {
+    body: {email, name, profilePicURL},
+    params: {id}
+  } = req;
   try {
-    return res.status(200).json();
+    if(!email){
+      return res.status(200).send("Please update Email or leave the same")
+      
+    }
+    if(!name){
+      return res.status(200).send("Please update Name or leave the same")
+    }
+    if(!profilePicURL){
+      return res.status(200).send("Please update Profile Picture or leave the same")
+    }
+
+    const stylist = await StylistModel.findByIdAndUpdate(
+      {_id: id},
+      req.body,
+      {new: true, runValidators: true}
+    )
+    if(!stylist){
+      return res.status(200).send(`No stylist with id of ${id}`)
+    }
+    return res.status(200).json({stylist});
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ updateStylist");
@@ -77,9 +100,28 @@ we'll have a little edit button on the teacher profile where they can edit their
 req.params {teacherId}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const updateTeacher = async (req, res) => {
-  const { teacherId } = req.params;
+  const {
+    body: {email, name},
+    params: {id}
+  } = req;
   try {
-    return res.status(200).json();
+    if(!email){
+      return res.status(200).send("Please update Email or leave the same")
+      
+    }
+    if(!name){
+      return res.status(200).send("Please update Name or leave the same")
+    }
+
+    const teacher = await TeacherModel.findByIdAndUpdate(
+      {_id: id},
+      req.body,
+      {new: true, runValidators: true}
+    )
+    if(!teacher){
+      return res.status(200).send(`No Teacher with id of ${id}`)
+    }
+    return res.status(200).json({teacher});
   } catch (error) {
     console.log(error);
     return res.status(500).send("server error @ updateTeacher");
@@ -103,4 +145,4 @@ const updatePassword = async (req, res) => {
 };
 
 
-module.exports = {getProfileStylist, getProfileTeacher}
+module.exports = {getProfileStylist, getProfileTeacher, updateStylist, updateTeacher}
