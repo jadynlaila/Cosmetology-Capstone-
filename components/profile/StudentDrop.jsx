@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { baseURL } from "../../pages/util/baseURL";
+import axios from "axios";
+import { Accordion, Container } from "semantic-ui-react";
 
 const StudentDrop = () => {
   return (
-    <div>StudentDrop</div>
+    <Container>
+      <Accordion>
+      </Accordion>
+    </Container>
   )
 }
 

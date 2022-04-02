@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import StudentDrop from "./StudentDrop";
 
 const StudentProfile = () => {
-  return (
-    <div>StudentProfile</div>
-  )
-}
+  return <StudentDrop />;
+};
 
-export default StudentProfile
+export default StudentProfile;
