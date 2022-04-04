@@ -47,15 +47,21 @@
       height: 34vh;
       overflow-y: auto;
       padding: 7.5px;
-
-
-
+      display: flex;
+      flex-direction: column;
+      
+      
       .person {
+        width: 100%;
         border-bottom: 1px solid $grey-8;
-        padding: 0 40px;
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
+        padding: 20px 0  20px 0;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        
+        .name, .time, .date{
+          margin: auto;
+
+        }
       }
     }
   }
@@ -207,4 +213,8 @@
     color-stop(0.66, $primary-4),
     color-stop(0.99, $primary-5)
   );
+}
+
+.up:hover {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
 }
