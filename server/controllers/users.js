@@ -208,7 +208,7 @@ const createTeacher = async (req, res) => {
     //     res.status(200).json(token);
     //   }
     // );
-    return res.status(200).send("Account Created")
+    return res.status(200).send("Account  Created")
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createTeacher");
