@@ -8,7 +8,7 @@ import NumPad from "../components/layout/numpad";
 const login = () => {
   const [pinInput, setPinInput] = useState('')
   return (
-    <>
+    <div id="login">
       <Navbar />
       {/* <Form>
       </Form> */}
@@ -23,11 +23,10 @@ const login = () => {
             </g>
           </svg>
         </div>
-        <input className="dottedPassword" type="password" value={pinInput} />
-        <div id="button-backspace" onClick={() => setPinInput((prev) => prev.substring(0, prev.length - 1))}><i class="angle left icon"></i></div>
+        <input maxlength="4" className="dottedPassword" type="password" value={pinInput} />
       </div>
       <NumPad pinInput={pinInput} setPinInput={setPinInput} />
-    </>
+      </div>
   );
 };
 

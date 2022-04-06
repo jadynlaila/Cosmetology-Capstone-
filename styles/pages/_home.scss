@@ -3,6 +3,7 @@
 @use "../util/variables" as *;
 
 .main-container {
+  user-select: none;
   .new-visit,
   .new-client {
     font-size: 1.5rem;
@@ -24,7 +25,8 @@
       border: $primary-5 3.5px solid;
       background-color: white;
       color: $primary-5;
-      transition: all 0.1s ease;
+      transition: all 0.25s ease;
+      letter-spacing: 0.3px;
     }
   }
   .upcoming-clients,
@@ -46,21 +48,29 @@
     .content {
       height: 34vh;
       overflow-y: auto;
-      padding: 7.5px;
+      // padding: 7.5px;
       display: flex;
       flex-direction: column;
-      
-      
+      .underlined {
+        width: auto;
+        height: 1px;
+        background-color: $grey-8;
+      }
+
       .person {
         width: 100%;
-        border-bottom: 1px solid $grey-8;
-        padding: 20px 0  20px 0;
+        // border-bottom: 1px solid $grey-8;
+        padding: 20px 0 20px 0;
         display: grid;
         grid-template-columns: 33% 33% 33%;
-        
-        .name, .time, .date{
-          margin: auto;
+        &:hover{
+          background: radial-gradient($secondary 99%,  $primary-9 1%);
+        }
 
+        .name,
+        .time,
+        .date {
+          margin: auto;
         }
       }
     }

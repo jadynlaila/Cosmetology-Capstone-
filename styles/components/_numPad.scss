@@ -9,15 +9,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 70vh;
   flex-direction: column;
 
   .numpad {
     display: grid;
-    grid-template-columns: 7vw 7vw 7vw;
-    grid-template-rows: 7vw 7vw 7vw 7vw;
-    margin: auto;
-    gap: 10px;
+    grid-template-columns: 8vw 8vw 8vw;
+    grid-template-rows: 8vw 8vw 8vw 8vw;
+    margin: 20px auto;
+    user-select:none;
+
+    // gap: 10px;
     #disapear {
       background-color: transparent;
       color: transparent;
@@ -27,15 +29,15 @@
       }
     }
     .button {
-      border-radius: 45px;
-      margin: 10px;
+      border-radius: 50%;
+      margin: auto;
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: $primary-5;
       color: $secondary;
-      width: 100%;
-      height: 100%;
+      width: 90%;
+      height: 90%;
       font-size: 3rem;
 
       &:hover {
@@ -43,7 +45,7 @@
         background-color: white;
         color: $primary-5;
         border: 3px solid $primary-5;
-        transition: all 0.1s ease;
+        transition: all 0.25s ease;
       }
       #disabled {
         display: none;

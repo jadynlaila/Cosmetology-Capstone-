@@ -3,6 +3,7 @@
 @use "../util/variables" as *;
 
 #nav {
+  user-select: none;
   z-index: 99;
   overflow: hidden;
   display: flex;
@@ -38,12 +39,32 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+    h1{
+      margin: auto 0;
+    }
   }
   .nav-link {
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 99;
     cursor: pointer;
+    gap: 20px;
+    button{
+      background-color: $secondary;
+      color: $primary-4;
+      padding: 5px;
+      border-radius: $radius;
+      border: $primary-7 2px solid;
+      transition: $transition;
+      &:hover{
+        box-shadow: $light-shadow;
+        // box-shadow: none;
+      }
+    }
+
     h3 {
+      margin: auto;
       font-size: 2rem;
       transition: all .3s ease;
       &:hover,&:active {

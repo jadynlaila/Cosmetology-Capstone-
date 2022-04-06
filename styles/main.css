@@ -1,3 +1,9 @@
+.main-container {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
 .main-container .new-visit,
 .main-container .new-client {
   font-size: 1.5rem;
@@ -20,7 +26,8 @@
   border: hsl(41deg, 100%, 60%) 3.5px solid;
   background-color: white;
   color: hsl(41deg, 100%, 60%);
-  transition: all 0.1s ease;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
 }
 .main-container .upcoming-clients,
 .main-container .active-clients {
@@ -44,19 +51,29 @@
 .main-container .active-clients .content {
   height: 34vh;
   overflow-y: auto;
-  padding: 7.5px;
   display: flex;
   flex-direction: column;
+}
+.main-container .upcoming-clients .content .underlined,
+.main-container .active-clients .content .underlined {
+  width: auto;
+  height: 1px;
+  background-color: hsl(170deg, 1%, 81%);
 }
 .main-container .upcoming-clients .content .person,
 .main-container .active-clients .content .person {
   width: 100%;
-  border-bottom: 1px solid hsl(170deg, 1%, 81%);
   padding: 20px 0 20px 0;
   display: grid;
   grid-template-columns: 33% 33% 33%;
 }
-.main-container .upcoming-clients .content .person .name, .main-container .upcoming-clients .content .person .time, .main-container .upcoming-clients .content .person .date,
+.main-container .upcoming-clients .content .person:hover,
+.main-container .active-clients .content .person:hover {
+  background: radial-gradient(rgb(255, 250, 236) 99%, hsl(41deg, 100%, 88%) 1%);
+}
+.main-container .upcoming-clients .content .person .name,
+.main-container .upcoming-clients .content .person .time,
+.main-container .upcoming-clients .content .person .date,
 .main-container .active-clients .content .person .name,
 .main-container .active-clients .content .person .time,
 .main-container .active-clients .content .person .date {
@@ -207,29 +224,41 @@
   box-shadow: inset 0 -3.25em 0 0 var(--hover);
 }
 
+#login {
+  overflow: hidden;
+}
+
 #input-field {
-  border: black 1px solid;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
+  margin: 30px auto;
   height: 3rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 #input-field input.dottedPassword {
-  height: -webkit-fill-available;
-  height: -moz-available;
-  height: fill;
-  border: blue 1px solid;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: hsl(41deg, 100%, 60%);
+  margin-left: 0.45rem;
+  margin-bottom: 0.195rem;
+  z-index: 99;
+  letter-spacing: 1.1rem;
+  height: 24px;
+  max-height: 24px;
+  width: 150px;
+  font-size: 5rem;
   border-radius: 0.25rem 0 0 0.25rem;
-}
-#input-field #button-backspace {
-  height: -webkit-fill-available;
-  height: -moz-available;
-  height: fill;
-  background-color: hsl(41deg, 100%, 60%);
+  padding: 1;
 }
 
 .confirmation-dots {
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -250,7 +279,7 @@
   transition: all 100ms ease-out;
   fill: white;
   stroke-width: 2px;
-  stroke: black;
+  stroke: hsl(41deg, 100%, 60%);
   outline-offset: -2px;
   outline-width: 2px;
 }
@@ -267,6 +296,10 @@
 }
 
 #nav {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   z-index: 99;
   overflow: hidden;
   display: flex;
@@ -303,11 +336,30 @@
   justify-content: center;
   gap: 20px;
 }
+#nav .identifier h1 {
+  margin: auto 0;
+}
 #nav .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 99;
   cursor: pointer;
+  gap: 20px;
+}
+#nav .nav-link button {
+  background-color: rgb(255, 250, 236);
+  color: hsl(41deg, 100%, 52%);
+  padding: 5px;
+  border-radius: 0.25rem;
+  border: hsl(41deg, 100%, 74%) 2px solid;
+  transition: all 0.2s linear;
+}
+#nav .nav-link button:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 #nav .nav-link h3 {
+  margin: auto;
   font-size: 2rem;
   transition: all 0.3s ease;
 }
@@ -323,15 +375,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 70vh;
   flex-direction: column;
 }
 .container .numpad {
   display: grid;
-  grid-template-columns: 7vw 7vw 7vw;
-  grid-template-rows: 7vw 7vw 7vw 7vw;
-  margin: auto;
-  gap: 10px;
+  grid-template-columns: 8vw 8vw 8vw;
+  grid-template-rows: 8vw 8vw 8vw 8vw;
+  margin: 20px auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .container .numpad #disapear {
   background-color: transparent;
@@ -342,15 +397,15 @@
   cursor: default;
 }
 .container .numpad .button {
-  border-radius: 45px;
-  margin: 10px;
+  border-radius: 50%;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: hsl(41deg, 100%, 60%);
   color: rgb(255, 250, 236);
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   font-size: 3rem;
 }
 .container .numpad .button:hover {
@@ -358,7 +413,7 @@
   background-color: white;
   color: hsl(41deg, 100%, 60%);
   border: 3px solid hsl(41deg, 100%, 60%);
-  transition: all 0.1s ease;
+  transition: all 0.25s ease;
 }
 .container .numpad .button #disabled {
   display: none;

@@ -28,11 +28,15 @@ const ActiveClients = () => {
         <div className="content">
           {clients.map((client) => {
             return (
+              <>
               <div className="person up">
                 <h5 className="name">{client.name}</h5>
                 <h5 className="time">11:13 pm</h5>
                 <h5 className="date">3/30/2022</h5>
               </div>
+              <span className="underlined"></span>
+              <span className="underlined-hover"></span>
+              </>
             );
           })}
         </div>

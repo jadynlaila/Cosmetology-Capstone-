@@ -34,6 +34,7 @@ const Navbar = (isTeacher) => {
         </div>
         : " "}
       <div className="nav-link">
+        <button className="signup">New User?</button>
         <h3>{loggedIn ? "Logout" : "Login"}</h3>
       </div>
     </div>
