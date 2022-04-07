@@ -1,27 +1,48 @@
-import React from 'react'
+import React from "react";
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Checkbox,
+  Form,
+} from "semantic-ui-react";
 
-//* form will collect all of the visit data
-//* needs to collect client's email, preferred stylist, date of appt, time of appt, requested style, and any notes the client would like to give
-const NewVisitForm = ({name, handleChange}) => {
+//* form will ONLY collect client info. this will not create a new visit at all, just a new client
+//* the form is going to collect a name, email, address, phone number, dob, allergies, relevant medical issues  and then will have a drop down for advanced information
+//* then we'll have a drop down if they want to enter the advanced client information
+//* all the advanced client information can be found in the schema
+// onclick button <button class="ui button">Show Modal</button>
+const NewVisitForm = () => {
+  const [open, setOpen] = React.useState(false)
   return (
-    <>
-    <Grid>
-        <Grid.Column>
-            <Form>
-                <Form.Input 
-                label="Name"
-                required
-                placeholder="Name"
-                value={name}
-                onChange={handleChange}
-                icon="user"
-                iconPosition="left"
-                />
-            </Form>
-        </Grid.Column>
-    </Grid>
-    </>
-  )
+    <Modal
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      trigger={<div className="new-visit"><h1>New Visit</h1></div>}
+    >
+      <Modal.Header>New Visit</Modal.Header>
+      <Modal.Content>
+        {/* FORM FIELD */}
+        <Form>
+          
+        </Form>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button color="black" onClick={() => setOpen(false)}>
+          Cancel
+        </Button>
+        <Button
+          content="Submit"
+          labelPosition="right"
+          icon="checkmark"
+          onClick={() => setOpen(false)}
+          positive
+        />
+      </Modal.Actions>
+    </Modal>
+  );
 }
 
-export default NewVisitForm
+export default NewVisitForm;
