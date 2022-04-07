@@ -1,8 +1,21 @@
+import { type } from "language-tags";
 import React from "react";
 
+
 const NumPad = ({ setPinInput }) => {
+  // const typeChar = async () => {
+  //   let typed = jsdom.getElementById('pinInput').textContent 
+  //   character += typed
+  //   console.log(typed, character);
+  //   const character = await element.evaluate(el => el.textContent, element);
+  // }
   return (
     <>
+
+
+
+
+
 
       <div className="container">
         <div className="numpad">

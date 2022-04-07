@@ -27,7 +27,7 @@
   background-color: white;
   color: hsl(41deg, 100%, 60%);
   transition: all 0.25s ease;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.15px;
 }
 .main-container .upcoming-clients,
 .main-container .active-clients {
@@ -66,10 +66,13 @@
   padding: 20px 0 20px 0;
   display: grid;
   grid-template-columns: 33% 33% 33%;
+  background: white;
+  transition: all 0.2s linear;
 }
 .main-container .upcoming-clients .content .person:hover,
 .main-container .active-clients .content .person:hover {
-  background: radial-gradient(rgb(255, 250, 236) 99%, hsl(41deg, 100%, 88%) 1%);
+  background: hsl(41deg, 100%, 88%);
+  cursor: pointer;
 }
 .main-container .upcoming-clients .content .person .name,
 .main-container .upcoming-clients .content .person .time,

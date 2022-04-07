@@ -23,7 +23,7 @@ const login = () => {
             </g>
           </svg>
         </div>
-        <input maxlength="4" className="dottedPassword" type="password" value={pinInput} />
+        <input id="pinInput" maxlength="4" className="dottedPassword" type="password" value={pinInput} />
       </div>
       <NumPad pinInput={pinInput} setPinInput={setPinInput} />
       </div>
