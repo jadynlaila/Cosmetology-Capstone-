@@ -46,7 +46,6 @@ const NewClientForm = () => {
             <label>DOB:</label>
             <input placeholder="DOB..." />
           </Form.Field>
-          <Button type="submit">Submit</Button>
         </Form>
       </Modal.Content>
       <Modal.Actions>
