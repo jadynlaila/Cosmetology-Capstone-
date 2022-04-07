@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 // import LoginOrSignup from "./loginOrSignup";
 // import { Button } from "semantic-ui-react";
-import isTeacher from "../../pages/profile"
+import isTeacher from "../../pages/profile";
+import { Button } from "semantic-ui-react";
+import Link from "next/link";
 
 const Navbar = (isTeacher) => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -16,13 +18,14 @@ const Navbar = (isTeacher) => {
           height="56.25"
           width="112.5"
         />
-        <h1>Hairstyling</h1>
+        <div>
+            <h1>Hairstyling</h1>
+        </div>
       </div>
-      {isTeacher ?
+
+      {isTeacher ? (
         <div className="identifier">
-          <h1>
-            Teacher
-          </h1>
+          <h1>Teacher</h1>
 
           <Image
             className="logo"
@@ -32,10 +35,16 @@ const Navbar = (isTeacher) => {
             width="53.95"
           />
         </div>
-        : " "}
+      ) : (
+        " "
+      )}
       <div className="nav-link">
-        <button className="signup">New User?</button>
-        <h3>{loggedIn ? "Logout" : "Login"}</h3>
+        <Link href="/signup">
+          <Button className="signup">New User?</Button>
+        </Link>
+        <Link href="/login">
+          <h3>{loggedIn ? "Logout" : "Login"}</h3>
+        </Link>
       </div>
     </div>
   );
