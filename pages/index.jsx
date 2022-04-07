@@ -7,6 +7,7 @@ import Navbar from '../components/layout/Navbar'
 import ActiveClients from '../components/home/ActiveClients'
 import UpcomingClients from '../components/home/UpcomingClients'
 import NewClientForm from '../components/home/NewClientForm'
+import NewVisitForm from '../components/home/NewVisitForm'
 
 
 const index = ({ name }) => {
@@ -42,9 +43,7 @@ const index = ({ name }) => {
         
           <NewClientForm open={open} setOpen={setOpen}/>
           
-          <div className="new-visit">
-            <h1>New Visit</h1>
-          </div>
+          <NewVisitForm open={open} setOpen={setOpen}/>
           {/* This needs to have an onClick to render the form for new clients ~~~~ This is if they aren't in the system from a previous visit*/}
         </div>
 
