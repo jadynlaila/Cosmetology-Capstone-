@@ -2,12 +2,25 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 
-
-#login{
+.grid-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 49% 2% 49%;
+  span.divide {
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    width: 2px;
+    background-color: $primary-5;
+  }
+}
+#login {
   overflow: hidden;
 }
 #input-field {
-  
   // border: black 1px solid;
   display: flex;
   align-items: center;
@@ -16,12 +29,10 @@
   height: 3rem;
   user-select: none;
   input.dottedPassword {
-    
-    
     user-select: none;
     color: $primary-5;
-    margin-left: .45rem;
-    margin-bottom: .195rem;
+    margin-left: 0.45rem;
+    margin-bottom: 0.195rem;
     z-index: 99;
     letter-spacing: 1.1rem;
     height: 24px;
@@ -29,7 +40,7 @@
     width: 150px;
     font-size: 5rem;
     // border: blue 1px solid;
-    border-radius: $radius 0 0 $radius ;
+    border-radius: $radius 0 0 $radius;
     padding: 1;
   }
   // #button-backspace{
@@ -43,11 +54,9 @@
   //   position: absolute;
   //   right: 40%;
   //   user-select: none;
-    
 
   // }
 }
-
 
 .confirmation-dots {
   position: absolute;

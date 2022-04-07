@@ -35,7 +35,7 @@ const ActiveClients = () => {
                 <h5 className="date">3/30/2022</h5>
               </div>
               <span className="underlined"></span>
-              <span className="underlined-hover"></span>
+              
               </>
             );
           })}

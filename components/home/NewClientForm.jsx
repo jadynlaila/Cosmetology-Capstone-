@@ -25,28 +25,30 @@ const NewClientForm = () => {
       <Modal.Header>New Client</Modal.Header>
       <Modal.Content>
         {/* FORM FIELD */}
-        <Form>
-          <Form.Field>
-            <label>Name:</label>
-            <input placeholder="Name" />
-          </Form.Field>
-          <Form.Field>
-            <label>Email:</label>
-            <input placeholder="Last Name" />
-          </Form.Field>
-          <Form.Field>
-            <label>Address:</label>
-            <input placeholder="Address..." />
-          </Form.Field>
-          <Form.Field>
-            <label>Phone Number:</label>
-            <input placeholder="Phone Number..." />
-          </Form.Field>
-          <Form.Field>
-            <label>DOB:</label>
-            <input placeholder="DOB..." />
-          </Form.Field>
-        </Form>
+        <div className="form-container">
+          <Form>
+            <Form.Field>
+              <label>Name:</label>
+              <input placeholder="Name" />
+            </Form.Field>
+            <Form.Field>
+              <label>Email:</label>
+              <input placeholder="Last Name" />
+            </Form.Field>
+            <Form.Field>
+              <label>Address:</label>
+              <input placeholder="Address..." />
+            </Form.Field>
+            <Form.Field>
+              <label>Phone Number:</label>
+              <input placeholder="Phone Number..." />
+            </Form.Field>
+            <Form.Field>
+              <label>DOB:</label>
+              <input placeholder="DOB..." />
+            </Form.Field>
+          </Form>
+        </div>
       </Modal.Content>
       <Modal.Actions>
         <Button color="black" onClick={() => setOpen(false)}>

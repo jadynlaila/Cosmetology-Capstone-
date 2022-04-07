@@ -26,7 +26,7 @@
       background-color: white;
       color: $primary-5;
       transition: all 0.25s ease;
-      letter-spacing: 0.15px;
+      letter-spacing: 0.5px;
     }
   }
   .upcoming-clients,
@@ -60,12 +60,12 @@
       .person {
         width: 100%;
         // border-bottom: 1px solid $grey-8;
-        padding: 20px 0 20px 0;
+        padding: 10px 0 10px 0;
         display: grid;
         grid-template-columns: 33% 33% 33%;
         background: white;
         transition: $transition;
-        &:hover{
+        &:hover {
           background: $primary-9;
           cursor: pointer;
         }
@@ -230,4 +230,53 @@
 
 .up:hover {
   box-shadow: inset 0 -3.25em 0 0 var(--hover);
+}
+
+//* Modal styles
+.header {
+  background-color: $primary-4 !important;
+}
+.header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+}
+
+.form-container{
+  padding: 30px;
+}
+
+
+// new Client and new visit specific styles !this changes the default semantic
+.content {
+  padding: 0 !important;
+  .form {
+    .results {
+      #person {
+        width: 100%;
+        // border-bottom: 1px solid $grey-8;
+        padding: 10px 0 10px 0;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        background: white;
+        transition: $transition;
+        border: .2px solid;
+        &:hover {
+          background: $primary-9;
+          cursor: pointer;
+        }
+
+        .name,
+        .email,
+        .phoneNumber {
+          margin: auto;
+        }
+      }
+    .underlined {
+        width: 100% !important;
+        height: 1px !important;
+        background-color: $grey-8 !important;
+      }
+    }
+  }
 }
