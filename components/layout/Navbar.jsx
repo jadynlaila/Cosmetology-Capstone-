@@ -25,6 +25,19 @@ const Navbar = (isTeacher) => {
 
       {isTeacher ? (
         <div className="identifier">
+          <h1>Student</h1>
+
+          <Image
+            className="logo profile-logo"
+            src={"/bigChung.webp"}
+            alt="logo"
+            height="64"
+            width="64"
+            style="padding: 10px;"
+          />
+        </div>
+      ) : (
+        <div className="identifier">
           <h1>Teacher</h1>
 
           <Image
@@ -35,8 +48,6 @@ const Navbar = (isTeacher) => {
             width="53.95"
           />
         </div>
-      ) : (
-        " "
       )}
       <div className="nav-link">
         <Link href="/signup">

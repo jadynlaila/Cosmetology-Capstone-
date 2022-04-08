@@ -35,10 +35,14 @@
     font-size: 2rem;
     color: black;
     position: absolute;
-    width: 99%;
+    right: 0;
+    left: 0;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
+    padding: 10px;
+
     h1{
       margin: auto 0;
     }
@@ -72,4 +76,11 @@
       }
     }
   }
+}
+
+.profile-logo{
+  border-radius: 50%;
+  border: 2px solid $primary-7 !important;
+  transition: all .5s ease;
+  // padding: 10px !important; 
 }

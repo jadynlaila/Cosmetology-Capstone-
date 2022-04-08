@@ -3,3 +3,10 @@
 @use '../util/variables' as *;
 
 
+.dimmer{
+  background: transparent !important;
+  z-index: 1 !important;
+  .modal{
+    
+  }
+}

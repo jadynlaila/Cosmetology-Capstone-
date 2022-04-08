@@ -355,6 +355,10 @@
   stroke: red;
 }
 
+.dimmer {
+  background: transparent !important;
+  z-index: 1 !important;
+}
 #nav {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -391,10 +395,13 @@
   font-size: 2rem;
   color: black;
   position: absolute;
-  width: 99%;
+  right: 0;
+  left: 0;
+  width: 100%;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
+  padding: 10px;
 }
 #nav .identifier h1 {
   margin: auto 0;
@@ -425,6 +432,12 @@
 }
 #nav .nav-link h3:hover, #nav .nav-link h3:active {
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.profile-logo {
+  border-radius: 50%;
+  border: 2px solid hsl(32deg, 100%, 74%) !important;
+  transition: all 0.5s ease;
 }
 
 * {
