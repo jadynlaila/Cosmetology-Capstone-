@@ -27,17 +27,20 @@ const ActiveClients = () => {
           </div>
         <div className="content">
           {clients.map((client) => {
-            return (
-              <>
-              <div className="person up">
-                <h5 className="name">{client.name}</h5>
-                <h5 className="time">11:13 pm</h5>
-                <h5 className="date">3/30/2022</h5>
-              </div>
-              <span className="underlined"></span>
-              
-              </>
-            );
+            if(client.active) {
+              console.log(`${client.name} is active`);
+              return (
+                <>
+                <div className="person up">
+                  <h5 className="name">{client.name}</h5>
+                  <h5 className="time">11:13 pm</h5>
+                  <h5 className="date">3/30/2022</h5>
+                </div>
+                <span className="underlined"></span>
+                
+                </>
+              );
+            }
           })}
         </div>
     </>
