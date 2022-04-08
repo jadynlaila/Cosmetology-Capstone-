@@ -1,8 +1,5 @@
 .main-container {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .main-container .new-visit,
 .main-container .new-client {
@@ -294,16 +291,10 @@
   justify-content: center;
   margin: 30px auto;
   height: 3rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 #input-field input.dottedPassword {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   color: hsl(32deg, 100%, 60%);
   margin-left: 0.45rem;
   margin-bottom: 0.195rem;
@@ -325,10 +316,8 @@
   align-items: center;
 }
 .confirmation-dots.error {
-  -webkit-animation-name: shake;
-          animation-name: shake;
-  -webkit-animation-duration: 300ms;
-          animation-duration: 300ms;
+  animation-name: shake;
+  animation-duration: 300ms;
 }
 .confirmation-dots svg {
   height: 24px;
@@ -356,10 +345,7 @@
 }
 
 #nav {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   z-index: 99;
   overflow: hidden;
   display: flex;
@@ -443,10 +429,7 @@
   grid-template-columns: 8vw 8vw 8vw;
   grid-template-rows: 8vw 8vw 8vw 8vw;
   margin: 20px auto;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .container .numpad #disapear {
   background-color: transparent;
