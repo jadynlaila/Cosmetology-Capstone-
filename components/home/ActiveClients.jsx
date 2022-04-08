@@ -27,6 +27,13 @@ const ActiveClients = () => {
           </div>
         <div className="content">
           {clients.map((client) => {
+            console.log(client)
+            if(client.active) {
+              console.log(`${client.name} is active`);
+            }
+            if(!client.active) {
+              console.log(`${client.name} is not active`)
+            }
             return (
               <>
               <div className="person up">

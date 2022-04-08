@@ -130,7 +130,8 @@ const createClient = async (req, res) => {
     hairElasticity,
     hairLength,
     allergies,
-    medicalInfo
+    medicalInfo,
+    active
   } = req.body;
 
   // if(!isEmail(email)) return res.status(401).send("InValid")
@@ -159,7 +160,8 @@ const createClient = async (req, res) => {
       hairElasticity,
       hairLength,
       allergies,
-      medicalInfo
+      medicalInfo,
+      active
     });
 
     client = await client.save();
