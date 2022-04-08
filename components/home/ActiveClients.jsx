@@ -28,7 +28,7 @@ const ActiveClients = () => {
         <div className="content">
           {clients.map((client) => {
             if(client.active = true) {
-              console.log('found one bitch')
+              console.log('found one')
               console.log(client);
             }
             return (
