@@ -24,7 +24,7 @@ const signup = () => {
                 <Form.Field>
                   <label>Teacher</label>
                   <div class="ui fluid selection dropdown">
-                    <input type="hidden" name="user">
+                    <input type="hidden" name="user" />
                       <i class="dropdown icon"></i>
                       <div class="default text">Select Friend</div>
                       <div class="menu">
