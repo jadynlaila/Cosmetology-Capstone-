@@ -29,22 +29,22 @@ app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
 
 //*ROUTERS */
-const postUserRoutes = require("./server/routes/postUserRoutes");
+const signupRoutes = require("./server/routes/signupRoutes");
 const clientRoutes = require('./server/routes/clientRoutes');
-const getDataRoutes = require("./server/routes/getDataRoutes");
+const stylistRoutes = require("./server/routes/stylistRoutes");
 const visitRoutes = require('./server/routes/visitRoutes');
-const profileRoutes = require('./server/routes/profileRoute')
+const teacherRoutes = require('./server/routes/teacherRoutes')
 
 
 
 app.use('/api/v1/client', clientRoutes);
-app.use("/api/v1/signup", postUserRoutes);
+app.use("/api/v1/signup", signupRoutes);
 app.use('/api/v1/visit', visitRoutes)
-app.use("/api/v1/stylist", getDataRoutes)
-app.use("/api/v1/teacher", profileRoutes)
+app.use("/api/v1/stylist", stylistRoutes)
+app.use("/api/v1/teacher", teacherRoutes)
 
-//Experimental
-app.use("/api/v1/profile", profileRoutes)
+// //Experimental
+// app.use("/api/v1/profile", profileRoutes)
 
 
 //*SOCKETS */

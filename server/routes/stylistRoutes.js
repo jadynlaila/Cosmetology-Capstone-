@@ -20,4 +20,5 @@ router.route('/profile/:id').get(getProfileStylist).put(updateStylist)
 
 
 
+
 module.exports = router
