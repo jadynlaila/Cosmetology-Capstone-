@@ -5,4 +5,5 @@ const { } = require('../controllers/users');
 router.route('/').get();
 router.route("/profile/:id").get(getProfileTeacher).put(updateTeacher)
 
+
 module.exports = router;
