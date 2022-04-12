@@ -1,5 +1,7 @@
-// import e from "express";
+import axios from "axios";
 import React, {useState} from "react";
+import { baseURL } from "../../pages/util/baseURL";
+
 import {
   Button,
   Header,
@@ -18,12 +20,40 @@ import {
 
 // onclick button <button class="ui button">Show Modal</button>
 const NewClientForm = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [adress, setAdress] = useState('')
-  const [phone, setPhone] = useState('')
-  const [DOB, setDOB] = useState('')
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
+  const [newClient, setNewClient] = useState({
+    name: '',
+    email: '',
+    address: '',
+    phone: '',
+    DOB: ''
+  })
+
+  const {name, email, address, phone, DOB} = newClient
+  
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setNewClient((prev) => ({ ...prev, [name]: value}));
+  }
+  
+  const handleSubmit = async (e) =>{
+    e.preventDefault()
+    setLoading(true)
+  
+    try{
+      const res = await axios.post(`${baseURL}/api/v1/signup`);
+      //!!!!check this route
+      {newClient}
+
+
+
+    }catch{
+      //error chatch here
+    }
+    
+    setLoading(false)
+  }
 
   return (
     <Modal
@@ -47,7 +77,7 @@ const NewClientForm = () => {
             </Form.Field>
             <Form.Field>
               <label>Address:</label>
-              <input onChange={handleChange} name="adress" placeholder="Address..." value={adress} />
+              <input onChange={handleChange} name="adress" placeholder="Address..." value={address} />
             </Form.Field>
             <Form.Field>
               <label>Phone Number:</label>
@@ -81,20 +111,6 @@ const NewClientForm = () => {
 
 // make a handle submit that will check that all required fields have something in them 
 // send an axios request to where the createClient is 
-
-const handleChange = (e) => {
-  const {name, email, adress, phone, DOB } = e.target;
-
-}
-
-const handleSubmit = async (e) =>{
-  e.preventDefault()
-  setLoading(true)
-
-  
-  
-  setLoading(false)
-}
 
 
 export default NewClientForm;

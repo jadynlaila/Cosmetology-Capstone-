@@ -127,7 +127,7 @@ const createClient = async (req, res) => {
     growthPatterns,
     hairDensity,
     hairPorosity,
-    hairElasticity,
+    hairElasticity, 
     hairLength,
     allergies,
     medicalInfo,

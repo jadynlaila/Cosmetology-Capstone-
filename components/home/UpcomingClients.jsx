@@ -29,7 +29,17 @@ const UpcomingClients = () => {
   return (
     <>
       {clients.map((client) => {
-        return <div>{client.active}</div>;
+        return (
+          <>
+          <div className="person up">
+            <h5 className="name">{client.name}</h5>
+            <h5 className="time">11:13 pm</h5>
+            <h5 className="date">3/30/2022</h5>
+          </div>
+          <span className="underlined"></span>
+          
+          </>
+        );
       })}
     </>
   );
