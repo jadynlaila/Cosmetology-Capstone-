@@ -358,8 +358,8 @@
 .signupPage {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   border-radius: 0.35rem;
-  width: 35%;
-  margin: 100px auto;
+  width: 30rem;
+  margin: 100px auto auto auto;
 }
 .signupPage .header {
   border-radius: 0.35rem 0.35rem 0 0;
