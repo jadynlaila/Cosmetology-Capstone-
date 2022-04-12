@@ -1,5 +1,8 @@
 .main-container {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .main-container .new-visit,
 .main-container .new-client {
@@ -32,13 +35,13 @@
   width: 90%;
   height: 40vh;
   margin: 20px auto;
-  border-radius: 0.25rem;
+  border-radius: 0.35rem;
 }
 .main-container .upcoming-clients .header,
 .main-container .active-clients .header {
   display: flex;
   align-items: center;
-  border-radius: 0.25rem 0.25rem 0 0;
+  border-radius: 0.35rem 0.35rem 0 0;
   background-color: hsl(32deg, 93%, 54%);
   font-size: 1.5rem;
   padding: 7.5px;
@@ -291,10 +294,16 @@
   justify-content: center;
   margin: 30px auto;
   height: 3rem;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 #input-field input.dottedPassword {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   color: hsl(32deg, 100%, 60%);
   margin-left: 0.45rem;
   margin-bottom: 0.195rem;
@@ -304,7 +313,7 @@
   max-height: 24px;
   width: 150px;
   font-size: 5rem;
-  border-radius: 0.25rem 0 0 0.25rem;
+  border-radius: 0.35rem 0 0 0.35rem;
   padding: 1;
 }
 
@@ -316,8 +325,10 @@
   align-items: center;
 }
 .confirmation-dots.error {
-  animation-name: shake;
-  animation-duration: 300ms;
+  -webkit-animation-name: shake;
+          animation-name: shake;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
 }
 .confirmation-dots svg {
   height: 24px;
@@ -344,12 +355,41 @@
   stroke: red;
 }
 
-.dimmer {
-  background: transparent !important;
-  z-index: 1 !important;
+.signupPage {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 0.35rem;
+  width: 35%;
+  margin: 100px auto;
 }
+.signupPage .header {
+  border-radius: 0.35rem 0.35rem 0 0;
+  padding: 10px !important;
+  width: 100% !important;
+}
+.signupPage footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+.signupPage footer button {
+  margin: 20px 20px 20px 0 !important;
+}
+
+.ui.label {
+  display: flex !important;
+  background-color: transparent !important;
+  align-items: center !important;
+  justify-self: center !important;
+}
+.ui.label span, .ui.label h3 {
+  margin: auto;
+}
+
 #nav {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   z-index: 99;
   overflow: hidden;
   display: flex;
@@ -404,7 +444,7 @@
   background-color: rgb(255, 250, 236);
   color: hsl(32deg, 93%, 54%);
   padding: 5px;
-  border-radius: 0.25rem;
+  border-radius: 0.35rem;
   border: hsl(32deg, 100%, 74%) 2px solid;
   transition: all 0.2s linear;
 }
@@ -442,7 +482,10 @@
   grid-template-columns: 8vw 8vw 8vw;
   grid-template-rows: 8vw 8vw 8vw 8vw;
   margin: 20px auto;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .container .numpad #disapear {
   background-color: transparent;
