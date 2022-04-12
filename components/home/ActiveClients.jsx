@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { baseURL } from "../../pages/util/baseURL";
 import axios from "axios";
 import { Segment } from "semantic-ui-react";
+import { func } from "prop-types";
 
 const ActiveClients = () => {
   const [clients, setClients] = useState([]);
@@ -11,6 +12,7 @@ const ActiveClients = () => {
     const getClients = async () => {
       try {
         const res = await axios.get(`${baseURL}/api/v1/client`);
+        console.log(res.data.clients);
         setClients(res.data.clients);
       } catch (error) {
         console.log(error);
@@ -19,30 +21,41 @@ const ActiveClients = () => {
     getClients();
   }, []);
 
-  
+  const checkOut = async (id) => {
+    try {
+      
+      const res = await axios.put(`${baseURL}/api/v1/client/checkOut`, {id})
+      console.log(id);
+      setClients((prev) => prev.filter((client) => client._id !== id));
+      console.log(res.data);
+      console.log(clients);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="header">
         Active Clients
-          </div>
-        <div className="content">
-          {clients.map((client) => {
-            if(client.active) {
-              console.log(`${client.name} is active`);
-              return (
-                <>
-                <div className="person up">
+        <button></button>
+      </div>
+      <div className="content">
+        {clients.map((client) => {
+          if (client.active) {
+            return (
+              <>
+                <div className="person up" onClick={() => checkOut(client._id)}>
                   <h5 className="name">{client.name}</h5>
                   <h5 className="time">11:13 pm</h5>
                   <h5 className="date">3/30/2022</h5>
                 </div>
                 <span className="underlined"></span>
-                
-                </>
-              );
-            }
-          })}
-        </div>
+              </>
+            );
+          }
+        })}
+      </div>
     </>
   );
 };
