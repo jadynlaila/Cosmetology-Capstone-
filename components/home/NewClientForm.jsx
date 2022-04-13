@@ -22,17 +22,21 @@ import {
 // onclick button <button class="ui button">Show Modal</button>
 const NewClientForm = () => {
   const [open, setOpen] = useState(false);
-  const [errorMsg, seterrorMsg] = useState(null)
+  const [errorMsg, seterrorMsg] = useState(null);
+  const [openAdvancedInfo, setOpenAdvancedInfo] = useState(false)
 
   const [newClient, setNewClient] = useState({
     name: '',
     email: '',
     address: '',
     phone: '',
-    dob: ''
+    dob: '',
+    medicalInfo: '',
+    allergies: '',
+    hairCondition: ''
   })
 
-  const {name, email, address, phone, dob} = newClient
+  const {name, email, address, phone, dob, medicalInfo, allergies, hairCondition} = newClient
   
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -84,6 +88,26 @@ const NewClientForm = () => {
               <label>DOB:</label>
               <input onChange={handleChange} name="dob" placeholder="DOB..." value={dob} />
             </Form.Field>
+            <Form.Field>
+              <label>Allergies:</label>
+              <input onChange={handleChange} name='allergies' placeholder='Allergies...' value={allergies} />
+            </Form.Field>
+            <Form.Field>
+              <label>Medical Info:</label>
+              <input onChange={handleChange} name='medicalInfo' placeholder='Relevant Medical Info...' value={medicalInfo} />
+            </Form.Field>
+
+            {/* make a button that changes a state from true to false
+              make a check for if true then it shows the rest of the Form.fields
+              */}
+
+              <Button onClick={() => setOpenAdvancedInfo(true)}>Open Advanced Info</Button>
+              {openAdvancedInfo ? (<>
+                <Form.Field>
+                  <label>Hair Condition</label>
+                  <input onChange={handleChange} name='hairCondition' placeholder='Hair Condition' value={hairCondition} />
+                </Form.Field>
+              </>) : (<></>)}
           </Form>
         </div>
       </Modal.Content>
