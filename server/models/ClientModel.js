@@ -11,6 +11,7 @@ const ClientSchema = new Schema({
         type: String,
         required: true,
         unique: true
+        //! regex here
     },
     address: {
         type: String,
