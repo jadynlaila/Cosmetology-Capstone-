@@ -1,16 +1,21 @@
+const G = require("glob");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ClientSchema = new Schema({
     name: {
         type: String,
-        required: [true, 'client must enter a name']
+        required: [true, 'client must enter a name'],
+        pattern: /[a-zA-Z]+/g
+
     },
     visits: { type: Schema.Types.ObjectId, ref: "Visit" },
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        pattern: /[a-zA-Z]+/g
+        //! regex here
     },
     address: {
         type: String,
@@ -18,10 +23,11 @@ const ClientSchema = new Schema({
     },
     phone: {
         type: String,
-        required: [true, 'client must enter a phone']
+        required: [true, 'client must enter a phone'],
+        pattern: /([0-9]+(-[0-9]+)+)/
     },
     dob: {
-        type: Date,
+        type: String,
         required: [true, 'client must enter a dob']
     },
     active: {
@@ -68,11 +74,9 @@ const ClientSchema = new Schema({
 
     allergies:{
         type: String || null,
-        required: [true, 'if not applicable type N/A']
     },
     medicalInfo:{
         type: String || null,
-        required: [true, 'if not applicable type N/A']
     }
 })
 

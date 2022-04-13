@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {useState} from "react";
 import { baseURL } from "../../pages/util/baseURL";
 
+
 import {
   Button,
   Header,
@@ -9,6 +10,7 @@ import {
   Modal,
   Checkbox,
   Form,
+  Divider
 } from "semantic-ui-react";
 
 //* form will ONLY collect client info. this will not create a new visit at all, just a new client
@@ -21,16 +23,28 @@ import {
 // onclick button <button class="ui button">Show Modal</button>
 const NewClientForm = () => {
   const [open, setOpen] = useState(false);
+  const [errorMsg, seterrorMsg] = useState(null);
+  const [openAdvancedInfo, setOpenAdvancedInfo] = useState(false)
 
   const [newClient, setNewClient] = useState({
     name: '',
     email: '',
     address: '',
     phone: '',
-    DOB: ''
+    dob: '',
+    medicalInfo: '',
+    allergies: '',
+    hairCondition: '',
+    scalpCondition: '',
+    hairTexture: '',
+    growthPatterns: '',
+    hairDensity: '',
+    hairPorosity: '',
+    hairElasticity: '',
+    hairLength: ''
   })
 
-  const {name, email, address, phone, DOB} = newClient
+  const {name, email, address, phone, dob, medicalInfo, allergies, hairCondition, scalpCondition, hairTexture, growthPatterns, hairDensity, hairPorosity, hairElasticity, hairLength} = newClient
   
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -39,20 +53,15 @@ const NewClientForm = () => {
   
   const handleSubmit = async (e) =>{
     e.preventDefault()
-    setLoading(true)
-  
+    console.log("handlesubmit running");
     try{
-      const res = await axios.post(`${baseURL}/api/v1/signup`);
-      //!!!!check this route
-      {newClient}
-
-
-
-    }catch{
-      //error chatch here
+      console.log(newClient);
+      const res = await axios.post(`${baseURL}/api/v1/client`, {newClient})
+      console.log(res.data);
+      setOpen(false);
+    }catch (error){
+      console.log(error);
     }
-    
-    setLoading(false)
   }
 
   return (
@@ -77,7 +86,7 @@ const NewClientForm = () => {
             </Form.Field>
             <Form.Field>
               <label>Address:</label>
-              <input onChange={handleChange} name="adress" placeholder="Address..." value={address} />
+              <input onChange={handleChange} name="address" placeholder="Address..." value={address} />
             </Form.Field>
             <Form.Field>
               <label>Phone Number:</label>
@@ -85,8 +94,57 @@ const NewClientForm = () => {
             </Form.Field>
             <Form.Field>
               <label>DOB:</label>
-              <input onChange={handleChange} name="DOB" placeholder="DOB..." value={DOB} />
+              <input onChange={handleChange} name="dob" placeholder="DOB..." value={dob} />
             </Form.Field>
+            <Form.Field>
+              <label>Allergies:</label>
+              <input onChange={handleChange} name='allergies' placeholder='Allergies...' value={allergies} />
+            </Form.Field>
+            <Form.Field>
+              <label>Medical Info:</label>
+              <input onChange={handleChange} name='medicalInfo' placeholder='Relevant Medical Info...' value={medicalInfo} />
+            </Form.Field>
+
+            {/* make a button that changes a state from true to false
+              make a check for if true then it shows the rest of the Form.fields
+              */}
+
+              <Button onClick={() => setOpenAdvancedInfo(!openAdvancedInfo)}>Open Advanced Info</Button>
+              {openAdvancedInfo ? (<>
+                <Divider />
+                <Form.Field>
+                  <label>Hair Condition</label>
+                  <input onChange={handleChange} name='hairCondition' placeholder='Hair Condition' value={hairCondition} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Scalp Condition</label>
+                  <input onChange={handleChange} name='scalpCondition' placeholder='Scalp Condition' value={scalpCondition} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Texture</label>
+                  <input onChange={handleChange} name='hairTexture' placeholder='Hair Texture' value={hairTexture} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Growth Patterns</label>
+                  <input onChange={handleChange} name='growthPatterns' placeholder='Growth Patterns' value={growthPatterns} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Density</label>
+                  <input onChange={handleChange} name='hairDensity' placeholder='Hair Density' value={hairDensity} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Porosity</label>
+                  <input onChange={handleChange} name='hairPorosity' placeholder='Hair Porosity' value={hairPorosity} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Elasticity</label>
+                  <input onChange={handleChange} name='hairElasticity' placeholder='Hair Elasticity' value={hairElasticity} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Length</label>
+                  <input onChange={handleChange} name='hairLength' placeholder='Hair Length' value={hairLength} />
+                </Form.Field>
+              </>) : (<></>)}
           </Form>
         </div>
       </Modal.Content>
@@ -98,7 +156,8 @@ const NewClientForm = () => {
           content="Submit"
           labelPosition="right"
           icon="checkmark"
-          onClick={() => setOpen(false)}
+          onClick={handleSubmit}
+          //onSubmit={handleSubmit}
           positive
           />
       </Modal.Actions>

@@ -12,6 +12,7 @@ import axios from 'axios';
 import { baseURL } from "../../pages/util/baseURL";
 
 
+
 //* form will ONLY collect client info. this will not create a new visit at all, just a new client
 //* the form is going to collect a name, email, address, phone number, dob, allergies, relevant medical issues  and then will have a drop down for advanced information
 //* then we'll have a drop down if they want to enter the advanced client information
