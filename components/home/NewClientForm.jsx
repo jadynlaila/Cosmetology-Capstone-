@@ -21,6 +21,7 @@ import {
 // onclick button <button class="ui button">Show Modal</button>
 const NewClientForm = () => {
   const [open, setOpen] = useState(false);
+  const [errorMsg, seterrorMsg] = useState(null)
 
   const [newClient, setNewClient] = useState({
     name: '',
@@ -42,14 +43,17 @@ const NewClientForm = () => {
     setLoading(true)
   
     try{
-      const res = await axios.post(`${baseURL}/api/v1/signup`);
+      const res = await axios.post(`/api/v1/signup`, {
+        newClient
+      });
       //!!!!check this route
-      {newClient}
+      // {newClient}
 
 
 
-    }catch{
+    }catch(error){
       //error chatch here
+      seterrorMsg(error)
     }
     
     setLoading(false)
