@@ -1,12 +1,21 @@
 import React from "react";
 import StudentDrop from "./StudentDrop";
-import { Form, Container, Button } from "semantic-ui-react";
+import {
+  Form,
+  Container,
+  Button,
+  Segment,
+  Label,
+  Header,
+} from "semantic-ui-react";
 import Image from "next/image";
 
 const StudentProfile = () => {
   return (
     <>
-      <Container>
+      <Header>Signup</Header>
+      <div className="form-container">
+      <Segment textAlign="center">
         <Image
           className="logo profile-logo"
           src={"/bigChung.webp"}
@@ -17,28 +26,15 @@ const StudentProfile = () => {
         />
 
         <Form>
-          <Form.Group inline>
-            <Form.Field>
-              <label>First & Last Name</label>
-              <label>Email</label>
-              <label>Teacher</label>
-              <label>Hours</label>
-            </Form.Field>
-          </Form.Group>
-        </Form>
-
-        <br/>
-
-        <Form>
           <Form.Group widths="equal">
             <Form.Field label="Name" placeholder="Name" />
             <Form.Field label="Email" placeholder="Email" />
             <Form.Field label="Teacher" placeholder="Teacher" />
             <Form.Field label="Hours" placeholder="Hours" />
           </Form.Group>
-          
         </Form>
-      </Container>
+        </Segment>
+      </div>
     </>
   );
 };
