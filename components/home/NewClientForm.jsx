@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {useState} from "react";
 import { baseURL } from "../../pages/util/baseURL";
 
+
 import {
   Button,
   Header,
@@ -39,20 +40,13 @@ const NewClientForm = () => {
   
   const handleSubmit = async (e) =>{
     e.preventDefault()
-    setLoading(true)
-  
+    console.log("handlesubmit running");
     try{
-      const res = await axios.post(`${baseURL}/api/v1/signup`);
-      //!!!!check this route
-      {newClient}
-
-
-
-    }catch{
-      //error chatch here
+      const res = await axios.post(`${baseURL}/api/v1/client`, {newClient})
+      console.log(res.data);
+    }catch (error){
+      console.log(error);
     }
-    
-    setLoading(false)
   }
 
   return (
@@ -77,7 +71,7 @@ const NewClientForm = () => {
             </Form.Field>
             <Form.Field>
               <label>Address:</label>
-              <input onChange={handleChange} name="adress" placeholder="Address..." value={address} />
+              <input onChange={handleChange} name="address" placeholder="Address..." value={address} />
             </Form.Field>
             <Form.Field>
               <label>Phone Number:</label>
@@ -98,7 +92,8 @@ const NewClientForm = () => {
           content="Submit"
           labelPosition="right"
           icon="checkmark"
-          onClick={() => setOpen(false)}
+          onClick={handleSubmit}
+          //onSubmit={handleSubmit}
           positive
           />
       </Modal.Actions>

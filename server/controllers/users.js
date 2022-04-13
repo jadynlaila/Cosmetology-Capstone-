@@ -127,7 +127,7 @@ const createClient = async (req, res) => {
     growthPatterns,
     hairDensity,
     hairPorosity,
-    hairElasticity, 
+    hairElasticity,
     hairLength,
     allergies,
     medicalInfo,
@@ -141,8 +141,8 @@ const createClient = async (req, res) => {
   // if(!isAddress(address)) return res.status(401).send("InValid")
 
   try {
-    let client;
-    client = await ClientModel.findOne({ email: email.toLowerCase() });
+    
+    let client = await ClientModel.find({ email: email.toLowerCase() });
     if (client) res.status(401).send("Email already in use");
 
     client = new ClientModel({
