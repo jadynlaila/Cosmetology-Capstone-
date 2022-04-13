@@ -21,7 +21,7 @@ const ClientSchema = new Schema({
         required: [true, 'client must enter a phone']
     },
     dob: {
-        type: Date,
+        type: String,
         required: [true, 'client must enter a dob']
     },
     active: {
@@ -68,11 +68,9 @@ const ClientSchema = new Schema({
 
     allergies:{
         type: String || null,
-        required: [true, 'if not applicable type N/A']
     },
     medicalInfo:{
         type: String || null,
-        required: [true, 'if not applicable type N/A']
     }
 })
 

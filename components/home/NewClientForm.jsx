@@ -29,10 +29,10 @@ const NewClientForm = () => {
     email: '',
     address: '',
     phone: '',
-    DOB: ''
+    dob: ''
   })
 
-  const {name, email, address, phone, DOB} = newClient
+  const {name, email, address, phone, dob} = newClient
   
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -43,8 +43,10 @@ const NewClientForm = () => {
     e.preventDefault()
     console.log("handlesubmit running");
     try{
+      console.log(newClient);
       const res = await axios.post(`${baseURL}/api/v1/client`, {newClient})
       console.log(res.data);
+      //! set modal false 
     }catch (error){
       console.log(error);
     }
@@ -80,7 +82,7 @@ const NewClientForm = () => {
             </Form.Field>
             <Form.Field>
               <label>DOB:</label>
-              <input onChange={handleChange} name="DOB" placeholder="DOB..." value={DOB} />
+              <input onChange={handleChange} name="dob" placeholder="DOB..." value={dob} />
             </Form.Field>
           </Form>
         </div>

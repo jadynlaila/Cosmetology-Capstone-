@@ -35,7 +35,7 @@ const getPinValid = async (req, res) => {
     return res.status(200).send("Available");
   } catch (error) {
     console.log(error);
-    res.status(500).send(`There was a server error`);
+    return res.status(500).send(`There was a server error`);
   }
 };
 
@@ -132,18 +132,19 @@ const createClient = async (req, res) => {
     allergies,
     medicalInfo,
     active
-  } = req.body;
+  } = req.body.newClient;
 
   // if(!isEmail(email)) return res.status(401).send("InValid")
 
   // if(!validatorPhone(phone)) return res.status(401).send("InValid")
 
   // if(!isAddress(address)) return res.status(401).send("InValid")
-
   try {
+    console.log(dob);
+    console.log(req.body);
+    // let client = await ClientModel.find({ email: email.toLowerCase() });
+    // if (client) return res.status(401).send("Email already in use");
     
-    let client = await ClientModel.find({ email: email.toLowerCase() });
-    if (client) res.status(401).send("Email already in use");
 
     client = new ClientModel({
       name,
