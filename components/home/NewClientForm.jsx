@@ -10,6 +10,7 @@ import {
   Modal,
   Checkbox,
   Form,
+  Divider
 } from "semantic-ui-react";
 
 //* form will ONLY collect client info. this will not create a new visit at all, just a new client
@@ -33,10 +34,17 @@ const NewClientForm = () => {
     dob: '',
     medicalInfo: '',
     allergies: '',
-    hairCondition: ''
+    hairCondition: '',
+    scalpCondition: '',
+    hairTexture: '',
+    growthPatterns: '',
+    hairDensity: '',
+    hairPorosity: '',
+    hairElasticity: '',
+    hairLength: ''
   })
 
-  const {name, email, address, phone, dob, medicalInfo, allergies, hairCondition} = newClient
+  const {name, email, address, phone, dob, medicalInfo, allergies, hairCondition, scalpCondition, hairTexture, growthPatterns, hairDensity, hairPorosity, hairElasticity, hairLength} = newClient
   
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -50,7 +58,7 @@ const NewClientForm = () => {
       console.log(newClient);
       const res = await axios.post(`${baseURL}/api/v1/client`, {newClient})
       console.log(res.data);
-      //! set modal false 
+      setOpen(false);
     }catch (error){
       console.log(error);
     }
@@ -101,11 +109,40 @@ const NewClientForm = () => {
               make a check for if true then it shows the rest of the Form.fields
               */}
 
-              <Button onClick={() => setOpenAdvancedInfo(true)}>Open Advanced Info</Button>
+              <Button onClick={() => setOpenAdvancedInfo(!openAdvancedInfo)}>Open Advanced Info</Button>
               {openAdvancedInfo ? (<>
+                <Divider />
                 <Form.Field>
                   <label>Hair Condition</label>
                   <input onChange={handleChange} name='hairCondition' placeholder='Hair Condition' value={hairCondition} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Scalp Condition</label>
+                  <input onChange={handleChange} name='scalpCondition' placeholder='Scalp Condition' value={scalpCondition} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Texture</label>
+                  <input onChange={handleChange} name='hairTexture' placeholder='Hair Texture' value={hairTexture} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Growth Patterns</label>
+                  <input onChange={handleChange} name='growthPatterns' placeholder='Growth Patterns' value={growthPatterns} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Density</label>
+                  <input onChange={handleChange} name='hairDensity' placeholder='Hair Density' value={hairDensity} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Porosity</label>
+                  <input onChange={handleChange} name='hairPorosity' placeholder='Hair Porosity' value={hairPorosity} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Elasticity</label>
+                  <input onChange={handleChange} name='hairElasticity' placeholder='Hair Elasticity' value={hairElasticity} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Hair Length</label>
+                  <input onChange={handleChange} name='hairLength' placeholder='Hair Length' value={hairLength} />
                 </Form.Field>
               </>) : (<></>)}
           </Form>
