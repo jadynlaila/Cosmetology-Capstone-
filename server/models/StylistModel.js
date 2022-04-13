@@ -9,13 +9,14 @@ const StylistSchema = new Schema({
     type: String,
     unique: true,
     required: true,
-    pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
+    pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@west-mec.org/g
   },
   pin: {
       type: String,
       pattern: /^\d{4}$/,
       required: true
     //! THIS PATTERN HASN'T BEEN DOUBLE CHECKED YET!!!!!
+    //it works np
   },
   profilePicURL: {
     type: String

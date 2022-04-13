@@ -18,9 +18,9 @@ const Navbar = (isTeacher) => {
           height="56.25"
           width="112.5"
         />
-        <div>
+        <Link href={"/"}>
             <h1>Hairstyling</h1>
-        </div>
+        </Link>
       </div>
 
       {isTeacher ? (

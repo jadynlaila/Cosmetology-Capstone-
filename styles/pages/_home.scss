@@ -31,6 +31,7 @@
   }
   .upcoming-clients,
   .active-clients {
+    background-color: $secondary;
     box-shadow: $light-shadow;
     width: 90%;
     height: 40vh;
@@ -64,9 +65,10 @@
         display: grid;
         grid-template-columns: 33% 33% 33%;
         background: white;
-        transition: $transition;
+        // transition: $transition;
         &:hover {
-          background: $primary-9;
+          background-color: $primary-8;
+          // color: $secondary;
           cursor: pointer;
         }
 
@@ -156,13 +158,13 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
+// .grid {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-wrap: wrap;
+//   max-width: 800px;
+// }
 
 .card {
   margin: 1rem;

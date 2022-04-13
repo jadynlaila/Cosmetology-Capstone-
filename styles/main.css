@@ -31,6 +31,7 @@
 }
 .main-container .upcoming-clients,
 .main-container .active-clients {
+  background-color: rgb(255, 253, 250);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 90%;
   height: 40vh;
@@ -67,11 +68,10 @@
   display: grid;
   grid-template-columns: 33% 33% 33%;
   background: white;
-  transition: all 0.2s linear;
 }
 .main-container .upcoming-clients .content .person:hover,
 .main-container .active-clients .content .person:hover {
-  background: hsl(32deg, 100%, 88%);
+  background-color: hsl(32deg, 100%, 81%);
   cursor: pointer;
 }
 .main-container .upcoming-clients .content .person .name,
@@ -156,14 +156,6 @@
   padding: 0.75rem;
   font-size: 1.1rem;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
 }
 
 .card {
@@ -284,6 +276,27 @@
   background-color: hsl(32deg, 100%, 60%);
 }
 
+.split-screen-container {
+  background-color: rgb(255, 253, 250);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 0.35rem;
+  width: 75%;
+  margin: 100px auto;
+}
+.split-screen-container .header {
+  border-radius: 0.35rem 0.35rem 0 0;
+  padding: 10px !important;
+  width: 100% !important;
+}
+.split-screen-container footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+.split-screen-container footer button {
+  margin: 20px 20px 20px 0 !important;
+}
+
 #login {
   overflow: hidden;
 }
@@ -360,6 +373,7 @@
   border-radius: 0.35rem;
   width: 30rem;
   margin: 100px auto auto auto;
+  background-color: rgb(255, 253, 250);
 }
 .signupPage .header {
   border-radius: 0.35rem 0.35rem 0 0;
@@ -397,7 +411,7 @@
   top: 0;
   right: 0;
   left: 0;
-  color: rgb(255, 250, 236);
+  color: rgb(255, 253, 250);
   background-color: hsl(32deg, 93%, 54%);
   height: 5rem;
   padding-left: 30px;
@@ -409,12 +423,17 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 #nav .image-container {
+  z-index: 99;
   display: flex;
   align-items: center;
   font-size: 2rem;
 }
 #nav .image-container h1 {
   margin: auto;
+}
+#nav .image-container h1:hover {
+  cursor: pointer;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
 #nav .identifier {
   display: flex;
@@ -441,7 +460,7 @@
   gap: 20px;
 }
 #nav .nav-link button {
-  background-color: rgb(255, 250, 236);
+  background-color: rgb(255, 253, 250);
   color: hsl(32deg, 93%, 54%);
   padding: 5px;
   border-radius: 0.35rem;
@@ -502,7 +521,7 @@
   align-items: center;
   justify-content: center;
   background-color: hsl(32deg, 100%, 60%);
-  color: rgb(255, 250, 236);
+  color: rgb(255, 253, 250);
   width: 90%;
   height: 90%;
   font-size: 3rem;
@@ -525,6 +544,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  background-color: rgb(255, 253, 250) !important;
 }
 
 a {
