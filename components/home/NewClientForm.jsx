@@ -22,6 +22,7 @@ import {
 // onclick button <button class="ui button">Show Modal</button>
 const NewClientForm = () => {
   const [open, setOpen] = useState(false);
+  const [errorMsg, seterrorMsg] = useState(null)
 
   const [newClient, setNewClient] = useState({
     name: '',

@@ -28,6 +28,8 @@ const UpcomingClients = () => {
 
   return (
     <>
+        <div className="header">Upcoming Clients</div>
+        <div className="content">
       {clients.map((client) => {
         return (
           <>
@@ -37,10 +39,11 @@ const UpcomingClients = () => {
             <h5 className="date">3/30/2022</h5>
           </div>
           <span className="underlined"></span>
-          
           </>
         );
       })}
+
+      </div>
     </>
   );
 };

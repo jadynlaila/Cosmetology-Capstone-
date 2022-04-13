@@ -1,29 +1,32 @@
 import React, { useState } from "react";
-import { Grid, Form, Divider, Button } from "semantic-ui-react";
+import { Grid, Form, Divider, Button, Segment } from "semantic-ui-react";
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
 import NumPad from "../components/layout/numpad";
 import Signup from "../components/layout/Signup";
+import fill from "fill-range";
 
 const login = () => {
   const [pinInput, setPinInput] = useState('')
   return (
     <div id="login">
       <Navbar />
+      <Segment>
+        <Grid columns={2} width={fill}>
+          <Grid.Column width={8}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Signup />
+            </div>
+          </Grid.Column>
+          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+          <Grid.Column width={8}>
+            {/* <Login/> */}
+          </Grid.Column>
+        </Grid>
 
-      <div className="grid-container">
-        {/* <Form>
-      </Form> */}
-        <div id="input-field">
-          <input id="pinInput" type="password" value={pinInput} />
-        </div>
-        <span className="divide"></span>
-        <div id="signup">
-          <Signup />
-        </div>
-        {/* <NumPad pinInput={pinInput} setPinInput={setPinInput} /> */}
-      </div>
+        <Divider vertical >OR</Divider>
+      </Segment>
     </div>
   );
 };
