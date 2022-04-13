@@ -5,7 +5,7 @@ import TeacherDropdown from "../Signup/Dropdown";
 const Signup = () => {
   const [teacherSignedIn, setTeacherSignedIn] = useState(true)
   return <>
-  <div className="signupPage">
+  
         <Header>Signup</Header>
         {/* FORM FIELD */}
         <div className="form-container">
@@ -39,7 +39,7 @@ const Signup = () => {
             </Form>
           }
         </div>
-        <Divider />
+        <Divider fitted/>
         <footer>
           <Button
             content="Next"
@@ -49,7 +49,7 @@ const Signup = () => {
             positive
           />
         </footer>
-      </div>
+      
   </>;
 };
 
