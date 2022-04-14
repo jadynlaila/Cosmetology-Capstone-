@@ -21,16 +21,21 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: $light-shadow;
-  .image-container{
+  .image-container {
+    
+    z-index: 99;
     display: flex;
     align-items: center;
     font-size: 2rem;
-    h1{
+    h1 {
       margin: auto;
+      &:hover{
+        cursor: pointer;
+        text-shadow: $text-dark-shadow;
+      }
     }
-
   }
-  .identifier{
+  .identifier {
     display: flex;
     font-size: 2rem;
     color: black;
@@ -43,7 +48,7 @@
     gap: 10px;
     padding: 10px;
 
-    h1{
+    h1 {
       margin: auto 0;
     }
   }
@@ -54,14 +59,14 @@
     z-index: 99;
     cursor: pointer;
     gap: 20px;
-    button{
+    button {
       background-color: $secondary;
       color: $primary-4;
       padding: 5px;
       border-radius: $radius;
       border: $primary-7 2px solid;
       transition: $transition;
-      &:hover{
+      &:hover {
         box-shadow: $light-shadow;
         // box-shadow: none;
       }
@@ -70,17 +75,18 @@
     h3 {
       margin: auto;
       font-size: 2rem;
-      transition: all .3s ease;
-      &:hover,&:active {
+      transition: all 0.3s ease;
+      &:hover,
+      &:active {
         text-shadow: $text-dark-shadow;
       }
     }
   }
 }
 
-.profile-logo{
+.profile-logo {
   border-radius: 50%;
   border: 2px solid $primary-7 !important;
-  transition: all .5s ease;
-  // padding: 10px !important; 
+  transition: all 0.5s ease;
+  // padding: 10px !important;
 }

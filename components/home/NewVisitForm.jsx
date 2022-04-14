@@ -10,6 +10,7 @@ import {
 } from "semantic-ui-react";
 import axios from 'axios';
 import { baseURL } from "../../pages/util/baseURL";
+import SearchComp from "../layout/SearchComp";
 
 
 
@@ -48,14 +49,15 @@ const NewVisitForm = () => {
       <Modal.Header>
         <h2>New Visit</h2>
         <div class="ui right aligned category search">
-          <div class="ui icon input">
+          <SearchComp clients={clients} />
+          {/* <div class="ui icon input">
             <input
               class="prompt"
               type="text"
               placeholder="Search Clients"
             ></input>
             <i class="search icon"></i>
-          </div>
+          </div> */}
         </div>
       </Modal.Header>
       <Modal.Content>

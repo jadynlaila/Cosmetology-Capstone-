@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { baseURL } from "../../pages/util/baseURL";
 import axios from "axios";
-import { Segment } from "semantic-ui-react";
+import { Segment, Divider } from "semantic-ui-react";
 import { func } from "prop-types";
 
 const ActiveClients = () => {
@@ -42,19 +42,21 @@ const ActiveClients = () => {
     <>
       <div className="header">
         Active Clients
-        <button></button>
+        {/* <button></button> */}
       </div>
       <div className="content">
         {clients.map((client) => {
           if (client.active) {
             return (
               <>
+              {/* <Divider fitted/> */}
                 <div className="person up" onClick={() => checkOut(client._id)}>
                   //!change that onclick so that instead of running the checkout function, it toggles your 'opencheckout' to be true or false
                   <h5 className="name">{client.name}</h5>
                   <h5 className="time">11:13 pm</h5>
                   <h5 className="date">3/30/2022</h5>
                 </div>
+                {/* <Divider fitted/> */}
                 <span className="underlined"></span>
                 //!you can do the check for 'opencheckout' here, and then if the opencheckout is true,
                 //!it'll have a little input box that asks for the stylists pin and has a 'done' button 
