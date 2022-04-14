@@ -1,6 +1,6 @@
 import React from "react";
 import StudentDrop from "./StudentDrop";
-import { Form, Container, Button } from "semantic-ui-react";
+import { Table,Form, Container, Button, Divider } from "semantic-ui-react";
 import Image from "next/image";
 
 const StudentProfile = () => {
