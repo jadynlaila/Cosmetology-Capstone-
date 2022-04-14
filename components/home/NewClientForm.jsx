@@ -12,6 +12,7 @@ import {
   Form,
   Divider
 } from "semantic-ui-react";
+import { date } from "language-tags";
 
 //* form will ONLY collect client info. this will not create a new visit at all, just a new client
 //* the form is going to collect a name, email, address, phone number, dob, allergies, relevant medical issues  and then will have a drop down for advanced information
@@ -31,7 +32,7 @@ const NewClientForm = () => {
     email: '',
     address: '',
     phone: '',
-    dob: '',
+    dob: date,
     medicalInfo: '',
     allergies: '',
     hairCondition: '',
@@ -94,7 +95,7 @@ const NewClientForm = () => {
             </Form.Field>
             <Form.Field>
               <label>DOB:</label>
-              <input onChange={handleChange} name="dob" placeholder="DOB..." value={dob} />
+              <input onChange={handleChange} name="dob" placeholder="DOB..." value={dob} type="date" />
             </Form.Field>
             <Form.Field>
               <label>Allergies:</label>
@@ -109,7 +110,7 @@ const NewClientForm = () => {
               make a check for if true then it shows the rest of the Form.fields
               */}
 
-              <Button onClick={() => setOpenAdvancedInfo(!openAdvancedInfo)}>Open Advanced Info</Button>
+              <Button onClick={() => setOpenAdvancedInfo(!openAdvancedInfo)}>{!openAdvancedInfo ? "Open advanced Info" : "Close Advanced Info"}</Button>
               {openAdvancedInfo ? (<>
                 <Divider />
                 <Form.Field>

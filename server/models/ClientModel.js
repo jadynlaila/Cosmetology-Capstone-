@@ -1,4 +1,5 @@
 const G = require("glob");
+const { date } = require("language-tags");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -27,7 +28,7 @@ const ClientSchema = new Schema({
         pattern: /([0-9]+(-[0-9]+)+)/
     },
     dob: {
-        type: String,
+        type: Date,
         required: [true, 'client must enter a dob']
     },
     active: {
