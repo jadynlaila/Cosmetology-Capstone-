@@ -32,7 +32,7 @@ const NewClientForm = () => {
     email: '',
     address: '',
     phone: '',
-    dob: date,
+    dob: Date,
     medicalInfo: '',
     allergies: '',
     hairCondition: '',

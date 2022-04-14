@@ -126,6 +126,7 @@ const NewVisitForm = () => {
                         name="date"
                         placeholder="Date of Appointment"
                         value={date}
+                        type="Date"
                       />
                     </Form.Field>
                     <Form.Field>
@@ -135,6 +136,7 @@ const NewVisitForm = () => {
                         name="time"
                         placeholder="Time of Appointment"
                         value={time}
+                        type='date'
                       />
                     </Form.Field>
                     <Form.Field>
@@ -177,7 +179,7 @@ const NewVisitForm = () => {
           content="Submit"
           labelPosition="right"
           icon="checkmark"
-          onClick={() => setOpen(false)}
+          onClick={handleSubmit}
           positive
         />
       </Modal.Actions>
