@@ -7,6 +7,7 @@ import { func } from "prop-types";
 const ActiveClients = () => {
   const [clients, setClients] = useState([]);
   const [activeClients, setActiveClients] = useState([]);
+  const [openCheckOut, setopenCheckOut] = useState(false);
 
   useEffect(() => {
     const getClients = async () => {
@@ -34,25 +35,32 @@ const ActiveClients = () => {
     }
   };
 
+
   return (
+
+   
     <>
       <div className="header">
         Active Clients
-        {/* <button></button> */}
       </div>
       <div className="content">
         {clients.map((client) => {
           if (client.active) {
             return (
               <>
-              {/* <Divider fitted/> */}
                 <div className="person up" onClick={() => checkOut(client._id)}>
+                  {/* //!change that onclick so that instead of running the checkout function, it toggles your 'opencheckout' to be true or false */}
                   <h5 className="name">{client.name}</h5>
                   <h5 className="time">11:13 pm</h5>
                   <h5 className="date">3/30/2022</h5>
                 </div>
-                {/* <Divider fitted/> */}
                 <span className="underlined"></span>
+
+                {/* //!you can do the check for 'opencheckout' here, and then if the opencheckout is true,
+                //!it'll have a little input box that asks for the stylists pin and has a 'done' button 
+                //!move the onClick={() => checkOut(client._id)} to this button so that this will run when the button is clicked
+                //!n the controller that the checkout function makes a call to, add a check that the pin is valid
+                //!then leave the rest of the controller as normal!! so it should change their active attribute to false ONLY if the pin is valid  */}
               </>
             );
           }

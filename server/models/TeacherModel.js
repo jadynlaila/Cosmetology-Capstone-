@@ -11,7 +11,7 @@ const TeacherSchema = new Schema({
     type: String,
     unique: true,
     required: true,
-    pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@west-mec.org/g
+    pattern: /[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@west-mec.org/gm
   },
   pin: {
       type: String,

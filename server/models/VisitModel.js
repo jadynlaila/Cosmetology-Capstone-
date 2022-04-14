@@ -22,7 +22,7 @@ const VisitSchema = new Schema({
     checkIn: {
         type: Date
     },
-    checkOut: {
+    checkOut: { 
         type: Date
     }
 })
