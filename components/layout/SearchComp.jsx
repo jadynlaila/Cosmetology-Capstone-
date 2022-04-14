@@ -7,7 +7,7 @@ import { baseURL } from '../../pages/util/baseURL'
 const SearchComp = ({clients}) => {
     const [text, setText] = useState("")
     const [loading, setLoading] = useState(false)
-    const [resualts, setResualts] = useState([])
+    const [results, setResults] = useState([])
 
 
     const handleChange = async(e) => {
@@ -20,18 +20,18 @@ const SearchComp = ({clients}) => {
                 const res = await axios.get(`${baseURL}/api/v1/search/${value}`)
 
                 if(res.data.length === 0){
-                    setResualts([])
+                    setResults([])
                     setLoading(false)
                     console.log('test1', res.data);
                 }
-                setResualts(res.data)
+                setResults(res.data)
                 console.log("test 2", res.data);
 
             } catch (error) {
                 console.log("Error Searching", error);
             }
         } else {
-            setResualts([])
+            setResults([])
         }
         setLoading(false)
     }
@@ -39,14 +39,14 @@ const SearchComp = ({clients}) => {
   return (
       <Search
       onBlur={() => {
-          resualts.length > 0 && setResualts([])
+          results.length > 0 && setResults([])
           loading && setLoading(false)
           setText("")
       }} 
       loading={loading}
       value={text}
-      resultRenderer={ResualtRenderer}
-      results={resualts || null}
+      resultRenderer={ResultRenderer}
+      results={results || null}
       onSearchChange={handleChange}
       placeholder="Find Clients"
       minCharacters={1}
@@ -55,7 +55,7 @@ const SearchComp = ({clients}) => {
   )
 }
 
-const ResualtRenderer = ({_id, name}) => {
+const ResultRenderer = ({_id, name}) => {
     return(
         <List key={_id}>
             <List.Item>
