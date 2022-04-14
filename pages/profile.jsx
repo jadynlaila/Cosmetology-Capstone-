@@ -13,7 +13,7 @@ const personalProfile = () => {
     <>
       <Navbar />
 
-      <Grid centered columns={1}>
+      <Grid centered columns={2}>
         <Grid.Column>
           <StudentProfile />
         </Grid.Column>
