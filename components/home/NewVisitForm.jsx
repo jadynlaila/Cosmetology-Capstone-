@@ -22,6 +22,7 @@ import SearchComp from "../layout/SearchComp";
 const NewVisitForm = () => {
   const [open, setOpen] = useState(false);
   const [clients, setClients] = useState([]);
+  const [openNewVisitForm, setOpenNewVisitForm] = useState(false)
 
   useEffect(() => {
     const getClients = async () => {
@@ -34,6 +35,11 @@ const NewVisitForm = () => {
     };
     getClients();
   }, []);
+
+  const openForm = (id) => {
+    console.log(id);
+    return id;
+  }
 
   return (
     <Modal
@@ -67,13 +73,25 @@ const NewVisitForm = () => {
             return (
               <div class="results">
                 <>
-                  <div className="person up" id="person">
+                  <div className="person up" id={`person ${client._id}`} onClick={() => openForm(client._id)}>
                     <h5 className="name">{client.name}</h5>
                     <h5 className="email">{client.email}</h5>
                     <h5 className="phoneNumber">{client.phone}</h5>
                   </div>
+                  <div>
+                    
+                  </div>
+                  {/* we want to be able to toggle the form here */}
+                  {/* put the form here, have it hidden by the height element, the onclick will edit the height of the elements whose id = client id that is passed on through onclick ( the id will be set to client._id) */}
+                  
+
+
+
                   <span className="underlined"></span>
                 </>
+                {/* {client._id == openForm(client._id) ? (<>hello</>) : (<>no</>)} */}
+                {/* {openNewVisitForm ? (<> hello</>): (<> </>)} */}
+                {/* check that says if client id equals whwat is returned from the openform , then the extra modal opens */}
               </div>
             );
           })}
