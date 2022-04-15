@@ -71,7 +71,7 @@
 }
 .main-container .upcoming-clients .content .person:hover,
 .main-container .active-clients .content .person:hover {
-  background-color: hsl(32deg, 100%, 81%);
+  background-color: hsl(32deg, 100%, 88%);
   cursor: pointer;
 }
 .main-container .upcoming-clients .content .person .name,
@@ -236,7 +236,7 @@
 .content {
   padding: 0 !important;
 }
-.content .form .results #person {
+.content .form .results .person {
   width: 100%;
   padding: 10px 0 10px 0;
   display: grid;
@@ -245,13 +245,13 @@
   transition: all 0.2s linear;
   border: 0.2px solid;
 }
-.content .form .results #person:hover {
+.content .form .results .person:hover {
   background: hsl(32deg, 100%, 88%);
   cursor: pointer;
 }
-.content .form .results #person .name,
-.content .form .results #person .email,
-.content .form .results #person .phoneNumber {
+.content .form .results .person .name,
+.content .form .results .person .email,
+.content .form .results .person .phoneNumber {
   margin: auto;
 }
 .content .form .results .underlined {
@@ -426,10 +426,11 @@
   z-index: 99;
   display: flex;
   align-items: center;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 #nav .image-container h1 {
   margin: auto;
+  transition: all 0.2s linear;
 }
 #nav .image-container h1:hover {
   cursor: pointer;
@@ -446,10 +447,24 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 10px;
+  padding: 15px;
 }
-#nav .identifier h1 {
+#nav .identifier h2 {
+  display: flex;
   margin: auto 0;
+  z-index: 100;
+  width: 150px;
+  height: 64px;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  align-items: center;
+  justify-content: right;
+}
+#nav .identifier h2:hover {
+  transform: translate(50);
+  width: 264px;
+  opacity: 1;
+  cursor: pointer;
 }
 #nav .nav-link {
   display: flex;
@@ -479,10 +494,21 @@
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
 
-.profile-logo {
-  border-radius: 50%;
-  border: 2px solid hsl(32deg, 100%, 74%) !important;
-  transition: all 0.5s ease;
+.logo-container {
+  position: absolute;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+}
+.logo-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: hsl(32deg, 100%, 81%);
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: 2px white solid;
 }
 
 * {

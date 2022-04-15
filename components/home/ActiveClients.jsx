@@ -7,7 +7,7 @@ import { func } from "prop-types";
 const ActiveClients = () => {
   const [clients, setClients] = useState([]);
   const [activeClients, setActiveClients] = useState([]);
-   //! add state for opencheckout here
+  const [openCheckOut, setopenCheckOut] = useState(false);
 
   useEffect(() => {
     const getClients = async () => {
@@ -55,6 +55,7 @@ const ActiveClients = () => {
                   <h5 className="date">3/30/2022</h5>
                 </div>
                 <span className="underlined"></span>
+
                 {/* //!you can do the check for 'opencheckout' here, and then if the opencheckout is true,
                 //!it'll have a little input box that asks for the stylists pin and has a 'done' button 
                 //!move the onClick={() => checkOut(client._id)} to this button so that this will run when the button is clicked

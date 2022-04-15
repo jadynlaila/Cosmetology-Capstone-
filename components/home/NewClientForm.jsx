@@ -32,7 +32,7 @@ const NewClientForm = () => {
     email: '',
     address: '',
     phone: '',
-    dob: date,
+    dob: Date,
     medicalInfo: '',
     allergies: '',
     hairCondition: '',
@@ -54,7 +54,6 @@ const NewClientForm = () => {
   
   const handleSubmit = async (e) =>{
     e.preventDefault()
-    console.log("handlesubmit running");
     try{
       console.log(newClient);
       const res = await axios.post(`${baseURL}/api/v1/client`, {newClient})

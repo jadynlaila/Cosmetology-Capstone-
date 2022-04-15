@@ -67,7 +67,7 @@
         background: white;
         // transition: $transition;
         &:hover {
-          background-color: $primary-8;
+          background-color: $primary-9;
           // color: $secondary;
           cursor: pointer;
         }
@@ -254,7 +254,7 @@
   padding: 0 !important;
   .form {
     .results {
-      #person {
+      .person {
         width: 100%;
         // border-bottom: 1px solid $grey-8;
         padding: 10px 0 10px 0;
