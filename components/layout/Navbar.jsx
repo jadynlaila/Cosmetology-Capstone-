@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 // import LoginOrSignup from "./loginOrSignup";
 // import { Button } from "semantic-ui-react";
 import isTeacher from "../../pages/profile";
-import { Button } from "semantic-ui-react";
+import { Button, Image } from "semantic-ui-react";
 import Link from "next/link";
 
 const Navbar = (isTeacher) => {
@@ -25,16 +25,22 @@ const Navbar = (isTeacher) => {
 
       {isTeacher ? (
         <div className="identifier">
-          <h1>Student</h1>
-
+        
+          <div className="logo-container">
+            {/* <div className="profile-logo"> */}
           <Image
-            className="logo profile-logo"
+            circular
             src={"/bigChung.webp"}
             alt="logo"
-            height="64"
-            width="64"
-            style="padding: 10px;"
+            size="tiny"
+            
           />
+          </div>
+          <Link href={'/profile'}>
+            <h2>Student</h2>
+            </Link>
+          
+          {/* </div> */}
         </div>
       ) : (
         <div className="identifier">
