@@ -6,7 +6,7 @@ const Signup = () => {
   const [teacherSignedIn, setTeacherSignedIn] = useState(true)
   return <>
   
-        <Header>Signup</Header>
+        <Header>&nbsp;</Header>
         {/* FORM FIELD */}
         <div className="form-container">
           {teacherSignedIn ?

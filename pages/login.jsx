@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Form, Divider, Button, Segment, Message, Label, Item, Dropdown } from "semantic-ui-react";
+import { Grid, Form, Divider, Button, Segment, Message, Label, Item, Dropdown, Icon } from "semantic-ui-react";
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
@@ -10,15 +10,15 @@ import LoginForm from "../components/layout/LoginForm";
 import axios from "axios";
 import TeacherDropdown from "../components/Signup/TeacherDropdown";
 import Stylist from "../components/layout/Stylist";
-import {baseURL} from './util/baseURL';
+import { baseURL } from './util/baseURL';
 
 
 const login = () => {
 
   //*================================STATES==============//
   const [user, setUser] = useState({
-  email: "",
-  pin: ""
+    email: "",
+    pin: ""
   })
   const [pinInput, setPinInput] = useState('')
   const [showPin, setShowPin] = useState(false)
@@ -26,24 +26,24 @@ const login = () => {
   const [formLoading, setFormLoading] = useState(false)
   const [submitDisable, setSubmitDisable] = useState(true)
   const [loading, setLoading] = useState(false)
-  
-  
-  const {email, pin} = user;
+
+
+  const { email, pin } = user;
   //*===================================HANDLERS==============//
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
 
-    setUser((prev) => ({...prev, [name]: value}))
+    setUser((prev) => ({ ...prev, [name]: value }))
 
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true)
     console.log("Test Submit", user);
     try {
-      const res = await axios.post('/api/v1/signup/login', {user})
+      const res = await axios.post('/api/v1/signup/login', { user })
       console.log("Signup Test", res);
     } catch (error) {
       seterrMsg(error)
@@ -55,22 +55,22 @@ const login = () => {
   }, [user])
 
   useEffect(() => {
-   const getTeachers = async() => {
-    setLoading(true)
-    try {
+    const getTeachers = async () => {
+      setLoading(true)
+      try {
         const res = await axios.get(`${baseURL}/api/v1/teacher/`)
         setStylist(res.data)
-    } catch (error) {
+      } catch (error) {
         console.log(error);
+      }
+      setLoading(false)
     }
-    setLoading(false)
-   }
-   getTeachers()
+    getTeachers()
   }, [])
-  
 
-  
-  
+
+
+
 
   return (
     <div id="login">
@@ -90,10 +90,12 @@ const login = () => {
           </Grid.Column>
         </Grid>
 
-        <Divider vertical fitted ></Divider>
+        <Divider vertical fitted >
+          <Icon  fitted name="arrow right" />
+        </Divider>
       </Segment>
     </div>
-    
+
   );
 };
 

@@ -7,7 +7,7 @@ const LoginForm = () => {
   const [teacherSignedIn, setTeacherSignedIn] = useState(true)
   const [isFilled, setIsFilled] = useState(false)
   return <>
-    <Header>Login</Header>
+    <Header>Your Info</Header>
     {/* FORM FIELD */}
     <div className="form-container">
       <Form>
