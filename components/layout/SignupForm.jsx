@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Input, UI, Fluid, Icon, Container, Header, Form, Label, Divider, Button} from "semantic-ui-react";
-import TeacherDropdown from "../Signup/Dropdown";
+import TeacherDropdown from "../Signup/TeacherDropdown";
 
 const Signup = () => {
   const [teacherSignedIn, setTeacherSignedIn] = useState(true)

@@ -17,18 +17,18 @@ const login = () => {
         <Grid columns={2} centered >
           <Grid.Column column={1} width={"fill"} centered>
             <div className="split-screen-container">
-              <LoginForm />
+              <Signup />
             </div>
           </Grid.Column>
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
           <Grid.Column column={2} width={'fill'}>
             <div className="split-screen-container">
-              <Signup />
+              <LoginForm />
             </div>
           </Grid.Column>
         </Grid>
 
-        <Divider vertical fitted >OR</Divider>
+        <Divider vertical fitted ></Divider>
       </Segment>
     </div>
   );

@@ -53,6 +53,7 @@ const NewVisitForm = () => {
   }, []);
 
   const openForm = (id) => {
+    
     // changes the height of the div with the id that is passed through params by the onclick button
   };
 
