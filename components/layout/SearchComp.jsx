@@ -10,15 +10,9 @@ const SearchComp = ({ clients }) => {
     const [results, setResults] = useState([])
 
 
-<<<<<<< HEAD
     const handleChange = async(e) => {
         const {value} = e.target;
         if(value === " ") return;
-=======
-    const handleChange = async (e) => {
-        const { value } = e.target;
-        if (value === " ") return
->>>>>>> 4e01f7755dc7b55447d0609a2c9ed550a26f64ca
         setText(value)
         if (value) {
             setLoading(true)
