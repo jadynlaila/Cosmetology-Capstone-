@@ -10,6 +10,7 @@ import LoginForm from "../components/layout/LoginForm";
 import axios from "axios";
 import TeacherDropdown from "../components/Signup/Dropdown";
 import Stylist from "../components/layout/Stylist";
+import {baseURL} from './util/baseURL';
 
 
 const login = () => {

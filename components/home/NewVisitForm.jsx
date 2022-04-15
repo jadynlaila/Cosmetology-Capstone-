@@ -31,7 +31,7 @@ const NewVisitForm = () => {
   });
 
   //!for now it captures the clients email, so in the controller we're gonna have to use the client email to find the client from the models
-  //!this can be reworked a different way if anyone thinks of something better, this is just how i did it for now 
+  //!this can be reworked a different way if anyone thinks of something better, this is just how i did it for now
 
   const { preferredStylist, date, time, style, notes } = newVisit;
 
@@ -56,17 +56,17 @@ const NewVisitForm = () => {
     // changes the height of the div with the id that is passed through params by the onclick button
   };
 
-  const handleSubmit = async (e) =>{
-    e.preventDefault()
-    try{
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
       console.log(newVisit);
-      const res = await axios.post(`${baseURL}/api/v1/visit`, {newVisit})
+      const res = await axios.post(`${baseURL}/api/v1/visit`, { newVisit });
       console.log(res.data);
       setOpen(false);
-    }catch (error){
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <Modal
@@ -136,7 +136,7 @@ const NewVisitForm = () => {
                         name="time"
                         placeholder="Time of Appointment"
                         value={time}
-                        type='date'
+                        type="date"
                       />
                     </Form.Field>
                     <Form.Field>
@@ -158,6 +158,13 @@ const NewVisitForm = () => {
                       />
                     </Form.Field>
                   </Form>
+                  <Button
+                    content="Submit"
+                    labelPosition="right"
+                    icon="checkmark"
+                    onClick={handleSubmit}
+                    positive
+                  />
                   {/* we want to be able to toggle the form here */}
                   {/* put the form here, have it hidden by the height element, the onclick will edit the height of the elements whose id = client id that is passed on through onclick ( the id will be set to client._id) */}
 
