@@ -1,20 +1,26 @@
 import React from "react";
 import StudentDrop from "./StudentDrop";
-import { Table,Form, Container, Button, Divider } from "semantic-ui-react";
-import Image from "next/image";
+import {
+  Table,
+  Form,
+  Container,
+  Button,
+  Divider,
+  Segment,
+  Image
+} from "semantic-ui-react";
+import ClientDrop from "./ClientDrop";
 
 const StudentProfile = () => {
   return (
     <>
-      <div className="form-container">
-        <Segment textAlign="center">
+      <div className="form-container" >
+        <Segment textAlign="center" style={{"border-top":"solid 3rem #f3941c", "border-radius": "25px 25px"}}>
           <Image
-            className="logo profile-logo"
+            avatar
             src={"/bigChung.webp"}
             alt="logo"
-            height="180"
-            width="180"
-            style="padding: 10px;"
+            style={{height:"180px", width: "180px"}}
           />
 
           <Form>
