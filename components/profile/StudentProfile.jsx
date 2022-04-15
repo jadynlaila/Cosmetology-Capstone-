@@ -14,8 +14,9 @@ import ClientDrop from "./ClientDrop";
 const StudentProfile = () => {
   return (
     <>
+    <div className="content">
       <div className="form-container" >
-        <Segment textAlign="center" style={{"border-top":"solid 3rem #f3941c", "border-radius": "25px 25px"}}>
+        <Segment textAlign="center" style={{"border-top":"solid 3rem #f3941c"}}>
           <Image
             avatar
             src={"/bigChung.webp"}
@@ -39,6 +40,7 @@ const StudentProfile = () => {
           <ClientDrop />
           <br />
         </Segment>
+      </div>
       </div>
     </>
   );
