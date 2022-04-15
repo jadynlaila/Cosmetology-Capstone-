@@ -8,8 +8,9 @@ import Signup from "../components/layout/SignupForm";
 import fill from "fill-range";
 import LoginForm from "../components/layout/LoginForm";
 import axios from "axios";
-import TeacherDropdown from "../components/Signup/Dropdown";
+import TeacherDropdown from "../components/Signup/TeacherDropdown";
 import Stylist from "../components/layout/Stylist";
+import {baseURL} from './util/baseURL';
 
 
 const login = () => {
@@ -78,27 +79,18 @@ const login = () => {
         <Grid columns={2} centered >
           <Grid.Column column={1} width={"fill"} centered>
             <div className="split-screen-container">
-              <Label>
-                <h3>Who is your Teacher?</h3>
-              </Label>
-              <Dropdown
-              placeholder='Select Teacher'
-              fluid
-              selection
-              options
-              />
-              {/* <Message error header="Oops!" content={errMsg} onDismiss={() => seterrMsg(null)} /> */}
+              <Signup />
             </div>
           </Grid.Column>
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
           <Grid.Column column={2} width={'fill'}>
             <div className="split-screen-container">
-              <Stylist />
+              <LoginForm />
             </div>
           </Grid.Column>
         </Grid>
 
-        <Divider vertical fitted >OR</Divider>
+        <Divider vertical fitted ></Divider>
       </Segment>
     </div>
     

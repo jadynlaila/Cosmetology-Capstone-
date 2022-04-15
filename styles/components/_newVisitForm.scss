@@ -1,3 +1,24 @@
 @use '../themes/defaultTheme' as *;
 @use '../util/mixins' as *;
 @use '../util/variables' as *;
+
+.header{
+  .search{
+    .search{
+      .results{
+        display: none !important;
+      }
+    }
+  }
+}
+
+.content{
+  .form{
+    .results{
+      .form{
+        display: none !important;
+        transition: $transition;
+      }
+    }
+  }
+}
