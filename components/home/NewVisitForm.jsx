@@ -126,7 +126,7 @@ const NewVisitForm = () => {
                         name="date"
                         placeholder="Date of Appointment"
                         value={date}
-                        type="Date"
+                        type='datetime-local'
                       />
                     </Form.Field>
                     <Form.Field>
