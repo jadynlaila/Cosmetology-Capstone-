@@ -148,7 +148,6 @@ const NewVisitForm = () => {
                         value={notes}
                       />
                     </Form.Field>
-                  </Form>
                   <Button
                     content="Submit"
                     labelPosition="right"
@@ -156,6 +155,7 @@ const NewVisitForm = () => {
                     onClick={handleSubmit}
                     positive
                   />
+                  </Form>
                   {/* we want to be able to toggle the form here */}
                   {/* put the form here, have it hidden by the height element, the onclick will edit the height of the elements whose id = client id that is passed on through onclick ( the id will be set to client._id) */}
 
