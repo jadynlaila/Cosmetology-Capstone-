@@ -34,7 +34,7 @@ const clientRoutes = require('./server/routes/clientRoutes');
 const stylistRoutes = require("./server/routes/stylistRoutes");
 const visitRoutes = require('./server/routes/visitRoutes');
 const teacherRoutes = require('./server/routes/teacherRoutes')
-const searchRoutes = require("./server/routes/clientRoutes")
+const searchRoutes = require("./server/routes/searchRoute")
 
 
 app.use('/api/v1/client', clientRoutes);
