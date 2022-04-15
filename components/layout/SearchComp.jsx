@@ -12,7 +12,7 @@ const SearchComp = ({clients}) => {
 
     const handleChange = async(e) => {
         const {value} = e.target;
-        if(value === " ") return 
+        if(value === " ") return;
         setText(value)
         if(value){
             setLoading(true)
