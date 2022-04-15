@@ -76,6 +76,7 @@ const createStylist = async (req, res) => {
       name,
       email: email.toLowerCase(),
       pin,
+      teacher,
       profilePicURL: req.body.profilePicURL || defaultProfilePic,
     })
 
@@ -233,13 +234,35 @@ const loginStylist = (req,res) => {
 
 }
 
+const getStylist = async(req,res) => {
+  try {
+    const {teacher}= req.body;
+    const stylists = await StylistModel.find({teacher: teacher})
+    res.status(200).json({stylists})
+    
+    
+  } catch (error) {
+   console.log("Error @ getStylist", error); 
+  }
+  
+}
+
+const getTeacher = async() => {
+  try {
+    const {teacher} = req.body;
+    
+  } catch (error) {
+    console.log("Error @ getTeacher", error);
+  }
+}
+
 
 module.exports = {
   createStylist,
   createClient,
   createTeacher,
   loginStylist,
-  
+  getStylist
 };
 
 
