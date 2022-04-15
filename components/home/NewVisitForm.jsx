@@ -127,6 +127,7 @@ const NewVisitForm = () => {
                         placeholder="Date of Appointment"
                         value={date}
                         type='datetime-local'
+<<<<<<< Updated upstream
                       />
                     </Form.Field>
                     <Form.Field>
@@ -137,6 +138,8 @@ const NewVisitForm = () => {
                         placeholder="Time of Appointment"
                         value={time}
                         type="date"
+=======
+>>>>>>> Stashed changes
                       />
                     </Form.Field>
                     <Form.Field>
