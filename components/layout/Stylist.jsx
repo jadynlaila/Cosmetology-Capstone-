@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import { Dropdown, Grid, Input, List } from 'semantic-ui-react'
 import { baseURL } from '../../pages/util/baseURL'
 
-const Stylist = ({user, userId}) => {
+const Stylist = ({user, userId, teachers}) => {
 
     const [stylists, setStylists] = useState([])
     const [loading, setLoading] = useState(false)
@@ -13,8 +13,9 @@ const Stylist = ({user, userId}) => {
         const getStylist = async() => {
             setLoading(true)
             try {
+                
                 const res = await axios.get(`${baseURL}/api/v1/teacher/stylists`)
-                setStylist(res.data)
+                setStylists(res.data)
             } catch (error) {
                 console.log(error);
             }
@@ -26,8 +27,7 @@ const Stylist = ({user, userId}) => {
 
 
   return <> (
-        {stylists ? (
-            stylists.map(stylist => {
+            {/* {stylists.map(stylist => {
                 return (
                     <List key={stylist._id} divided verticalAlign="middle">
                         <List.Item>
@@ -41,6 +41,7 @@ const Stylist = ({user, userId}) => {
                                 labeled
                                 button
                                 >
+
                                     <Dropdown.Menu>
                                         <Dropdown.Header content="Pin" />
                                         <Input icon="th" iconPosition='left' name="pin" />
@@ -52,9 +53,7 @@ const Stylist = ({user, userId}) => {
                     </List>
                 )
             })
-        ) : (
-            <h2>No Stylist</h2>
-        )}
+         } */}
     )
     </>  
 }
