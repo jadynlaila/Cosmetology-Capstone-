@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Accordion, Icon } from "semantic-ui-react";
+import { Accordion, Icon, Grid, Divider } from "semantic-ui-react";
 
 export default class ClientDrop extends Component {
   state = { activeIndex: 0 };
@@ -16,19 +16,23 @@ export default class ClientDrop extends Component {
     const { activeIndex } = this.state;
 
     return (
-      <Accordion fluid styled>
-        <Accordion.Title
-          active={activeIndex === 2}
-          index={2}
-          onClick={this.handleClick}
-        >
-          <Icon name="dropdown" />
-          Client
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === 2}>
-          <p>Client Info</p>
-        </Accordion.Content>
-      </Accordion>
+      <Grid centered columns={2}>
+        <Grid.Column>
+          <Accordion fluid styled style={{ padding: ".5rem", width: "100%" }}>
+            <Accordion.Title
+              active={activeIndex === 2}
+              index={2}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Client
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 2}>
+              <p>Client Info</p>
+            </Accordion.Content>
+          </Accordion>
+        </Grid.Column>
+      </Grid>
     );
   }
 }
