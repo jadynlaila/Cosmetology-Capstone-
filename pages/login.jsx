@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Form, Divider, Button, Segment, Message, Label, Item, Dropdown } from "semantic-ui-react";
+import { Grid, Form, Divider, Button, Segment, Message, Label, Item, Dropdown, Icon } from "semantic-ui-react";
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
@@ -8,16 +8,17 @@ import Signup from "../components/layout/SignupForm";
 import fill from "fill-range";
 import LoginForm from "../components/layout/LoginForm";
 import axios from "axios";
-import TeacherDropdown from "../components/Signup/Dropdown";
+import TeacherDropdown from "../components/Signup/TeacherDropdown";
 import Stylist from "../components/layout/Stylist";
+import { baseURL } from './util/baseURL';
 
 
 const login = () => {
 
   //*================================STATES==============//
   const [user, setUser] = useState({
-  email: "",
-  pin: ""
+    email: "",
+    pin: ""
   })
   const [pinInput, setPinInput] = useState('')
   const [showPin, setShowPin] = useState(false)
@@ -33,18 +34,18 @@ const login = () => {
   //*===================================HANDLERS==============//
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
 
-    setUser((prev) => ({...prev, [name]: value}))
+    setUser((prev) => ({ ...prev, [name]: value }))
 
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true)
     console.log("Test Submit", user);
     try {
-      const res = await axios.post('/api/v1/signup/login', {user})
+      const res = await axios.post('/api/v1/signup/login', { user })
       console.log("Signup Test", res);
     } catch (error) {
       seterrMsg(error)
@@ -104,10 +105,12 @@ const login = () => {
           </Grid.Column>
         </Grid>
 
-        <Divider vertical fitted >OR</Divider>
+        <Divider vertical fitted >
+          <Icon  fitted name="arrow right" />
+        </Divider>
       </Segment>
     </div>
-    
+
   );
 };
 

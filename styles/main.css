@@ -511,6 +511,15 @@
   border: 2px white solid;
 }
 
+.header .search .search .results {
+  display: none !important;
+}
+
+.content .form .results .form {
+  display: none !important;
+  transition: all 0.2s linear;
+}
+
 * {
   box-sizing: border-box;
 }

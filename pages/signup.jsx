@@ -5,7 +5,7 @@ import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
 import Signup from "../components/layout/SignupForm";
 import NumPad from "../components/layout/numpad";
-import TeacherDropdown from "../components/Signup/Dropdown";
+import TeacherDropdown from "../components/Signup/TeacherDropdown";
 
 
 
