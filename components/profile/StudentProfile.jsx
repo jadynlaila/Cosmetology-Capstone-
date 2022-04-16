@@ -14,12 +14,16 @@ import ClientDrop from "./ClientDrop";
 const StudentProfile = () => {
   return (
     <>
+      {/* <Segment
+            textAlign="center"
+            // style={{ borderTop: "solid 3rem #f3941c" }}
+          > */}
+      <div className="header">
+        <h2>Student Profile</h2>
+      </div>
       <div className="content">
         <div className="form-container">
-          <Segment
-            textAlign="center"
-            style={{ borderTop: "solid 3rem #f3941c" }}
-          >
+          <div className="profile-header">
             <Image
               avatar
               src={"/bigChung.webp"}
@@ -30,29 +34,30 @@ const StudentProfile = () => {
                 border: "solid 6px #cccddd",
               }}
             />
+            <h1 style={{ margin: "auto", fontSize: "3.5rem" }}>Student Name</h1>
+          </div>
+          <Divider />
 
-            <Divider />
+          <Form>
+            <Form.Group widths="equal">
+              <Form.Field label="Name" placeholder="Name" />
+              <Form.Field label="Email" placeholder="Email" />
+              <Form.Field label="Teacher" placeholder="Teacher" />
+              <Form.Field label="Hours" placeholder="Hours" />
+            </Form.Group>
+          </Form>
 
-            <Form>
-              <Form.Group widths="equal">
-                <Form.Field label="Name" placeholder="Name" />
-                <Form.Field label="Email" placeholder="Email" />
-                <Form.Field label="Teacher" placeholder="Teacher" />
-                <Form.Field label="Hours" placeholder="Hours" />
-              </Form.Group>
-            </Form>
+          <Divider />
 
-            <Divider />
-
-            <ClientDrop />
-            <br />
-            <ClientDrop />
-            <br />
-            <ClientDrop />
-            <br />
-          </Segment>
+          <ClientDrop />
+          <br />
+          <ClientDrop />
+          <br />
+          <ClientDrop />
+          <br />
         </div>
       </div>
+      {/* </Segment> */}
     </>
   );
 };

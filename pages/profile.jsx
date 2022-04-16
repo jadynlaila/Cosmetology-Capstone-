@@ -13,14 +13,11 @@ const personalProfile = () => {
   return (
     <>
       <Navbar />
-
-      <Grid centered columns={2}>
-        <Grid.Column>
-          <StudentProfile />
-
+          <div className="profile">
+            <StudentProfile />
+          </div>
           {/* <TeacherProfile /> */}
-        </Grid.Column>
-      </Grid>
+
     </>
   );
 };

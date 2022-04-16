@@ -2,7 +2,12 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 
+
+#login > .segment{
+  background-color: $secondary !important;
+}
 .grid-container {
+  color: $font-color;
   width: 100%;
   height: 100%;
   display: grid;
@@ -17,6 +22,7 @@
     background-color: $primary-5;
   }
 }
+
 .split-screen-container {
   background-color: $secondary;
   box-shadow: $dark-shadow;
@@ -24,6 +30,7 @@
   // border: 40px solid black;
   width: 75%;
   margin: 100px auto;
+  color: $font-color;
   .header {
     border-radius: $radius $radius 0 0;
     padding: 10px !important;
@@ -38,85 +45,9 @@
     }
   }
 }
-#login {
-  overflow: hidden;
-}
-#input-field {
-  // border: black 1px solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 30px auto;
-  height: 3rem;
-  user-select: none;
-  input.dottedPassword {
-    user-select: none;
-    color: $primary-5;
-    margin-left: 0.45rem;
-    margin-bottom: 0.195rem;
-    z-index: 99;
-    letter-spacing: 1.1rem;
-    height: 24px;
-    max-height: 24px;
-    width: 150px;
-    font-size: 5rem;
-    // border: blue 1px solid;
-    border-radius: $radius 0 0 $radius;
-    padding: 1;
-  }
-  // #button-backspace{
-  //   cursor: pointer;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   border-radius: 10px;
-  //   background-color: $primary-5;
-  //   padding: 5px;
-  //   position: absolute;
-  //   right: 40%;
-  //   user-select: none;
 
-  // }
-}
-
-.confirmation-dots {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  &.error {
-    animation-name: shake;
-    animation-duration: 300ms;
-  }
-
-  svg {
-    height: 24px;
-    max-height: 24px;
-    width: 139px;
-  }
-
-  .pin-circle {
-    transition: all 100ms ease-out;
-    fill: white;
-    stroke-width: 2px;
-    stroke: $primary-5;
-    outline-offset: -2px;
-    outline-width: 2px;
-
-    &.entered {
-      fill: black;
-    }
-
-    &.success {
-      fill: green;
-      stroke: green;
-    }
-
-    &.error {
-      fill: red;
-      stroke: red;
-    }
-  }
-}
+  
+  //? This is the avatar images on the searchbar for students
+  // img.ui.avatar.image{
+    //   display: flex !important;
+    // }

@@ -26,11 +26,9 @@ const login = () => {
   const [formLoading, setFormLoading] = useState(false)
   const [submitDisable, setSubmitDisable] = useState(true)
   const [loading, setLoading] = useState(false)
-  const [stylist, setStylist] = useState([])
-  const [teachers, setTeachers] = useState([])
-  
-  
-  const {email, pin} = user;
+
+
+  const { email, pin } = user;
   //*===================================HANDLERS==============//
 
   const handleChange = (e) => {
@@ -56,23 +54,23 @@ const login = () => {
     setSubmitDisable(!(email && pin));
   }, [user])
 
-  
-
   useEffect(() => {
-    const getTeachers = async() => {
+    const getTeachers = async () => {
       setLoading(true)
       try {
-          const res = await axios.get(`${baseURL}/api/v1/teacher`)
-          setTeachers(res.data)
+        const res = await axios.get(`${baseURL}/api/v1/teacher/`)
+        setStylist(res.data)
       } catch (error) {
-          console.log(error);
+        console.log(error);
       }
       setLoading(false)
-     }
-     getTeachers()
+    }
+    getTeachers()
   }, [])
 
-  
+
+
+
 
   return (
     <div id="login">
@@ -81,26 +79,13 @@ const login = () => {
         <Grid columns={2} centered >
           <Grid.Column column={1} width={"fill"} centered>
             <div className="split-screen-container">
-              <Label>
-                <h3>Who is your Teacher?</h3>
-              </Label>
-              <select>
-                {teachers.map((teacher) => {
-                  <option
-                  key={teacher._id}
-                  value={teacher.name} 
-                  >
-                    {teacher.name}
-                  </option>
-                })}
-              </select>
-              {/* <Message error header="Oops!" content={errMsg} onDismiss={() => seterrMsg(null)} /> */}
+              <Signup />
             </div>
           </Grid.Column>
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
           <Grid.Column column={2} width={'fill'}>
             <div className="split-screen-container">
-              <Stylist/>
+              <LoginForm />
             </div>
           </Grid.Column>
         </Grid>

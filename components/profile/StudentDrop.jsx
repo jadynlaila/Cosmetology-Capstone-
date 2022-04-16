@@ -16,9 +16,9 @@ export default class StudentDrop extends Component {
     const { activeIndex } = this.state;
 
     return (
-      <Grid centered columns={2}>
-        <Grid.Column>
-          <Accordion fluid styled style={{ padding: ".5rem", width: "100%" }}>
+      <Grid columns={1}>
+        <Grid.Column >
+          <Accordion fluid styled >
             <Accordion.Title
               active={activeIndex === 2}
               index={2}
