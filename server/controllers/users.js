@@ -247,10 +247,10 @@ const getStylist = async(req,res) => {
   
 }
 
-const getTeacher = async() => {
+const getTeacher = async(req, res) => {
   try {
-    const {teacher} = req.body;
-    
+    const teacher = await TeacherModel.find({});
+    res.status(200).json(teacher)
   } catch (error) {
     console.log("Error @ getTeacher", error);
   }
@@ -262,7 +262,8 @@ module.exports = {
   createClient,
   createTeacher,
   loginStylist,
-  getStylist
+  getStylist,
+  getTeacher
 };
 
 

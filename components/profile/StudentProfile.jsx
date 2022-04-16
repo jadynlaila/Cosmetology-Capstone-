@@ -7,40 +7,51 @@ import {
   Button,
   Divider,
   Segment,
-  Image
+  Image,
 } from "semantic-ui-react";
 import ClientDrop from "./ClientDrop";
 
 const StudentProfile = () => {
   return (
     <>
-    <div className="content">
-      <div className="form-container" >
-        <Segment textAlign="center" style={{"border-top":"solid 3rem #f3941c"}}>
-          <Image
-            avatar
-            src={"/bigChung.webp"}
-            alt="logo"
-            style={{height:"180px", width: "180px"}}
-          />
+      <div className="content">
+        <div className="form-container">
+          <Segment
+            textAlign="center"
+            style={{ borderTop: "solid 3rem #f3941c" }}
+          >
+            <Image
+              avatar
+              src={"/bigChung.webp"}
+              alt="logo"
+              style={{
+                height: "180px",
+                width: "180px",
+                border: "solid 6px #cccddd",
+              }}
+            />
 
-          <Form>
-            <Form.Group widths="equal">
-              <Form.Field label="Name" placeholder="Name" />
-              <Form.Field label="Email" placeholder="Email" />
-              <Form.Field label="Teacher" placeholder="Teacher" />
-              <Form.Field label="Hours" placeholder="Hours" />
-            </Form.Group>
-          </Form>
+            <Divider />
 
-          <ClientDrop />
-          <br />
-          <ClientDrop />
-          <br />
-          <ClientDrop />
-          <br />
-        </Segment>
-      </div>
+            <Form>
+              <Form.Group widths="equal">
+                <Form.Field label="Name" placeholder="Name" />
+                <Form.Field label="Email" placeholder="Email" />
+                <Form.Field label="Teacher" placeholder="Teacher" />
+                <Form.Field label="Hours" placeholder="Hours" />
+              </Form.Group>
+            </Form>
+
+            <Divider />
+
+            <ClientDrop />
+            <br />
+            <ClientDrop />
+            <br />
+            <ClientDrop />
+            <br />
+          </Segment>
+        </div>
       </div>
     </>
   );

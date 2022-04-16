@@ -6,6 +6,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
 import StudentProfile from "../components/profile/StudentProfile";
+import TeacherProfile from "../components/profile/TeacherProfile";
 
 const personalProfile = () => {
   const [isTeacher, setIsTeacher] = useState(false);
@@ -16,6 +17,8 @@ const personalProfile = () => {
       <Grid centered columns={2}>
         <Grid.Column>
           <StudentProfile />
+
+          {/* <TeacherProfile /> */}
         </Grid.Column>
       </Grid>
     </>
