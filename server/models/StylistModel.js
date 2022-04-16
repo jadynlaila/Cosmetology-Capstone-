@@ -15,8 +15,6 @@ const StylistSchema = new Schema({
       type: String,
       pattern: /^\d{4}$/,
       required: true
-    //! THIS PATTERN HASN'T BEEN DOUBLE CHECKED YET!!!!!
-    //it works np
   },
   profilePicURL: {
     type: String

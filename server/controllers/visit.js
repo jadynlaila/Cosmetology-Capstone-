@@ -17,6 +17,7 @@ const createVisit = async (req, res) => {
   } = req.body;
   try {
     const client = await ClientModel.findOne({ client: clientId });
+    
     const preferredStylist = await StylistModel.findOne({
       preferredStylist: preferredStylistId,
     });

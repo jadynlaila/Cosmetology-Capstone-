@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Button,
   Header,
@@ -11,6 +11,10 @@ import {
 import axios from "axios";
 import { baseURL } from "../../pages/util/baseURL";
 import SearchComp from "../layout/SearchComp";
+import VisitFormItems from './VisitFormItems';
+
+
+// new file that will produce search results. 
 
 //* form will ONLY collect client info. this will not create a new visit at all, just a new client
 //* the form is going to collect a name, email, address, phone number, dob, allergies, relevant medical issues  and then will have a drop down for advanced information
@@ -52,9 +56,14 @@ const NewVisitForm = () => {
     getClients();
   }, []);
 
+
+  let ref = useRef([]);
+
+
   const openForm = (id) => {
-    
-    // changes the height of the div with the id that is passed through params by the onclick button
+    console.log(ref);
+    console.log(id);
+    ref.current.style.color = 'red';
   };
 
   const handleSubmit = async (e) => {
@@ -68,6 +77,11 @@ const NewVisitForm = () => {
       console.log(error);
     }
   };
+
+
+
+
+
 
   return (
     <Modal
@@ -96,78 +110,21 @@ const NewVisitForm = () => {
       </Modal.Header>
       <Modal.Content>
         {/* FORM FIELD */}
-        <Form>
-          {clients.map((client) => {
-            return (
-              <div class="results">
-                <>
-                  <div
-                    className="person up"
-                    id={client._id}
-                    onClick={() => openForm(client._id)}
-                  >
-                    <h5 className="name">{client.name}</h5>
-                    <h5 className="email">{client.email}</h5>
-                    <h5 className="phoneNumber">{client.phone}</h5>
-                  </div>
-                  <Form>
-                    <Form.Field>
-                      <label>Preferred Stylist:</label>
-                      <input
-                        onChange={handleChange}
-                        name="preferredStylist"
-                        placeholder="Preferred Stylist"
-                        value={preferredStylist}
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Date:</label>
-                      <input
-                        onChange={handleChange}
-                        name="date"
-                        placeholder="Date of Appointment"
-                        value={date}
-                        type='datetime-local'
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Style:</label>
-                      <input
-                        onChange={handleChange}
-                        name="style"
-                        placeholder="Style"
-                        value={style}
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Notes:</label>
-                      <input
-                        onChange={handleChange}
-                        name="notes"
-                        placeholder="Notes"
-                        value={notes}
-                      />
-                    </Form.Field>
-                  <Button
-                    content="Submit"
-                    labelPosition="right"
-                    icon="checkmark"
-                    onClick={handleSubmit}
-                    positive
-                  />
-                  </Form>
-                  {/* we want to be able to toggle the form here */}
-                  {/* put the form here, have it hidden by the height element, the onclick will edit the height of the elements whose id = client id that is passed on through onclick ( the id will be set to client._id) */}
 
-                  <span className="underlined"></span>
-                </>
-                {/* {client._id == openForm(client._id) ? (<>hello</>) : (<>no</>)} */}
-                {/* {openNewVisitForm ? (<> hello</>): (<> </>)} */}
-                {/* check that says if client id equals whwat is returned from the openform , then the extra modal opens */}
-              </div>
-            );
-          })}
-        </Form>
+        {clients.map((client) => {
+          return (
+            <div class="results">
+              <>
+                <VisitFormItems name={client.name} email={client.email} phoneNumber={client.phoneNumber} clientid={client._id} />
+                {/* we want to be able to toggle the form here */}
+                {/* put the form here, have it hidden by the height element, the onclick will edit the height of the elements whose id = client id that is passed on through onclick ( the id will be set to client._id) */}
+
+                <span className="underlined"></span>
+              </>
+            </div>
+          );
+        })}
+
       </Modal.Content>
       <Modal.Actions>
         <Button color="black" onClick={() => setOpen(false)}>
