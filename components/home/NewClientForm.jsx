@@ -66,6 +66,7 @@ const NewClientForm = () => {
 
   return (
     <Modal
+    className="client-form-scroll"
     onClose={() => setOpen(false)}
     onOpen={() => setOpen(true)}
     open={open}

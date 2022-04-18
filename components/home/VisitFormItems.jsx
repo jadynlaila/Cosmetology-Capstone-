@@ -49,7 +49,7 @@ const VisitFormItems = ({ name, email, phoneNumber, clientId }) => {
             console.log(res.data);
             setOpen(false);
 
-            
+
         } catch (error) {
             console.log(error);
         }
@@ -60,67 +60,75 @@ const VisitFormItems = ({ name, email, phoneNumber, clientId }) => {
         console.log('asf')
     }
 
-    
+
 
     return (
         <>
-        <div
-            className="person up"
-            onClick={() => handleClick()}
-        >
-            <h5 className="name">{name}</h5>
-            <h5 className="email">{email}</h5>
-            <h5 className="phoneNumber">{phoneNumber}</h5>
-        </div>
+            <div
+                className="person up"
+                onClick={() => handleClick()}
+            >
+                <h5 className="name">{name}</h5>
+                <h5 className="email">{email}</h5>
+                <h5 className="phoneNumber">{phoneNumber}</h5>
+            </div>
+
             {isActive ? (
-                <Form>
-                    <Form.Field>
-                        <label>Preferred Stylist:</label>
-                        <input
-                            onChange={handleChange}
-                            name="preferredStylist"
-                            placeholder="Preferred Stylist"
-                            value={preferredStylist}
+                <div className="scaling">
+                    <Form className="transition-person">
+                        <Form.Field>
+                            <label>Preferred Stylist:</label>
+                            <input
+                                onChange={handleChange}
+                                name="preferredStylist"
+                                placeholder="Preferred Stylist"
+                                value={preferredStylist}
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Date:</label>
+                            <input
+                                onChange={handleChange}
+                                name="date"
+                                placeholder="Date of Appointment"
+                                value={date}
+                                type='datetime-local'
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Style:</label>
+                            <input
+                                onChange={handleChange}
+                                name="style"
+                                placeholder="Style"
+                                value={style}
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Notes:</label>
+                            <input
+                                onChange={handleChange}
+                                name="notes"
+                                placeholder="Notes"
+                                value={notes}
+                            />
+                        </Form.Field>
+                        <div className="submit-button-container" style={{height: "50px"}}>
+                        <Button
+                            // right
+                            style={{margin: " 0 10px 10px 10px"}}
+                            content="Submit"
+                            floated="right"
+                            
+                            icon="checkmark"
+                            onClick={handleSubmit}
+                            positive
                         />
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Date:</label>
-                        <input
-                            onChange={handleChange}
-                            name="date"
-                            placeholder="Date of Appointment"
-                            value={date}
-                            type='datetime-local'
-                        />
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Style:</label>
-                        <input
-                            onChange={handleChange}
-                            name="style"
-                            placeholder="Style"
-                            value={style}
-                        />
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Notes:</label>
-                        <input
-                            onChange={handleChange}
-                            name="notes"
-                            placeholder="Notes"
-                            value={notes}
-                        />
-                    </Form.Field>
-                    <Button
-                        content="Submit"
-                        labelPosition="right"
-                        icon="checkmark"
-                        onClick={handleSubmit}
-                        positive
-                    />
-                </Form>
+                        </div>
+                    </Form>
+                </div>
             ) : (<></>)}
-    </>
+        </>
     )
 }
 

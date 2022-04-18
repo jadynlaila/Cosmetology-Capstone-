@@ -27,7 +27,7 @@
     align-items: center;
     font-size: 4rem;
     h1 {
-      color: $font-color;
+      color: $secondary;
       margin: auto;
       transition: $transition;
       &:hover {
@@ -90,7 +90,7 @@
     }
 
     h3 {
-      color: $font-color;
+      color: $secondary;
       margin: auto;
       font-size: 2rem;
       transition: all 0.3s ease;

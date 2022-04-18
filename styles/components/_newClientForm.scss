@@ -1,3 +1,33 @@
 @use '../themes/defaultTheme' as *;
 @use '../util/mixins' as *;
 @use '../util/variables' as *;
+
+
+
+.client-form-scroll{
+  overflow: auto;
+  height: 95%;
+}
+
+.client-form-scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.client-form-scroll::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+.client-form-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.33, $primary-5),
+    color-stop(0.66, $primary-4),
+    color-stop(0.99, $primary-5)
+  );
+}
