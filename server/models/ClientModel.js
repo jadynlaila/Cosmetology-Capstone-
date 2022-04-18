@@ -1,5 +1,3 @@
-const G = require("glob");
-const { date } = require("language-tags");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -10,7 +8,7 @@ const ClientSchema = new Schema({
         pattern: /[a-zA-Z]+/g
 
     },
-    visits: { type: Schema.Types.ObjectId, ref: "Visit" },
+    visits: [{ type: Schema.Types.ObjectId, ref: "Visit" }],
     email: {
         type: String,
         required: true,

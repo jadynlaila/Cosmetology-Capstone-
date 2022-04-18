@@ -166,11 +166,5 @@ const NewClientForm = () => {
   );
 }
 
-//handlers
-
-
-// make a handle submit that will check that all required fields have something in them 
-// send an axios request to where the createClient is 
-
 
 export default NewClientForm;
