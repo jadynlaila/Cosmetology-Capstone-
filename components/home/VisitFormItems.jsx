@@ -6,7 +6,7 @@ import { baseURL } from "../../pages/util/baseURL";
 
 
 
-const VisitFormItems = ({ name, email, phoneNumber, clientId }) => {
+const VisitFormItems = ({ name, email, phoneNumber,id,  setOpen }) => {
     const [isActive, setIsActive] = useState(false);
     const [clients, setClients] = useState([]);
     const [openNewVisitForm, setOpenNewVisitForm] = useState(false);
@@ -19,13 +19,12 @@ const VisitFormItems = ({ name, email, phoneNumber, clientId }) => {
     const [newVisit, setNewVisit] = useState({
         preferredStylist: "",
         date: Date,
-        time: Date,
         style: "",
         notes: "",
-        clientId: clientId,
+        clientId: id,
     });
 
-    const { preferredStylist, date, time, style, notes } = newVisit;
+    const { preferredStylist, date, style, notes } = newVisit;
 
 
 
@@ -48,8 +47,6 @@ const VisitFormItems = ({ name, email, phoneNumber, clientId }) => {
             const res = await axios.post(`${baseURL}/api/v1/visit`, { newVisit });
             console.log(res.data);
             setOpen(false);
-
-            
         } catch (error) {
             console.log(error);
         }
@@ -57,7 +54,6 @@ const VisitFormItems = ({ name, email, phoneNumber, clientId }) => {
 
     const handleClick = async (e) => {
         setIsActive(!isActive)
-        console.log('asf')
     }
 
     

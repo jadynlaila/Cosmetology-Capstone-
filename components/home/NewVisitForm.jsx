@@ -115,7 +115,7 @@ const NewVisitForm = () => {
           return (
             <div class="results">
               <>
-                <VisitFormItems name={client.name} email={client.email} phoneNumber={client.phoneNumber} clientid={client._id} />
+                <VisitFormItems name={client.name} email={client.email} phoneNumber={client.phoneNumber} id={client._id} setOpen={setOpen} />
                 {/* we want to be able to toggle the form here */}
                 {/* put the form here, have it hidden by the height element, the onclick will edit the height of the elements whose id = client id that is passed on through onclick ( the id will be set to client._id) */}
 
