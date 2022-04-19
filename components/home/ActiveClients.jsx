@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { baseURL } from "../../pages/util/baseURL";
 import axios from "axios";
 import { Segment, Divider } from "semantic-ui-react";
-import { func } from "prop-types";
 
 const ActiveClients = () => {
   const [clients, setClients] = useState([]);
@@ -10,16 +9,16 @@ const ActiveClients = () => {
   const [openCheckOut, setopenCheckOut] = useState(false);
 
   useEffect(() => {
-    const getClients = async () => {
+    const getActiveVisits = async () => {
       try {
-        const res = await axios.get(`${baseURL}/api/v1/client`);
-        console.log(res.data.clients);
-        setClients(res.data.clients);
+        const res = await axios.get(`${baseURL}/api/v1/visit/active`);
+        console.log(res.data);
+        setActiveClients(res.data.clients);
       } catch (error) {
         console.log(error);
       }
     };
-    getClients();
+    getActiveVisits();
   }, []);
 
   const checkOut = async (id) => {
@@ -55,7 +54,6 @@ const ActiveClients = () => {
                   <h5 className="date">3/30/2022</h5>
                 </div>
                 <span className="underlined"></span>
-
                 {/* //!you can do the check for 'opencheckout' here, and then if the opencheckout is true,
                 //!it'll have a little input box that asks for the stylists pin and has a 'done' button 
                 //!move the onClick={() => checkOut(client._id)} to this button so that this will run when the button is clicked

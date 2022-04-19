@@ -1,4 +1,5 @@
 const ClientModel = require("../models/ClientModel");
+const VisitModel = require('../models/VisitModel');
 
 const getClients = async (req, res) => {
   const clients = await ClientModel.find({});
@@ -6,27 +7,39 @@ const getClients = async (req, res) => {
 };
 
 const checkOut = async (req, res) => {
-  const { id } = req.body;
-  console.log(id);
-  let person = await ClientModel.findById({ _id: id });
-  console.log(person);
-
-  person.active = false;
-  await person.save();
-
-  res.status(200).json({ person });
+  try{
+    const { id } = req.body;
+    console.log(id);
+    // let person = await ClientModel.findById({ _id: id });
+    let visit = await VisitModel.findById({_id: id})
+  
+    visit.active = false;
+    await visit.save();
+    console.log(visit);
+    res.status(200).json({ visit });
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).send('error @ checkOut')
+  }
 };
 
 const checkIn = async (req, res) => {
+  try{
     const { id } = req.body;
     console.log(id);
-    let person = await ClientModel.findById({ _id: id });
-    console.log(person);
+    let visit = await VisitModel.findById({ _id: id });
+    console.log(visit);
   
-    person.active = true;
-    await person.save();
+    visit.active = true;
+    await visit.save();
   
-    res.status(200).json({ person });
+    res.status(200).json({visit});
+  }
+  catch(error) {
+    console.log(error);
+    res.status(500).send('error @ checkIn')
+  }
 };
 
 const deleteClient = async(req,res) => {
@@ -46,6 +59,25 @@ const deleteClient = async(req,res) => {
   }
 }
 
+getVisits = async (req, res) => {
+  try {
+    const { username } = req.params;
+    const user = await UserModel.findOne({ username: username.toLowerCase() });
 
+    if (!user) {
+      return res.status(404).send("User Not Found");
+    }
 
-module.exports = { getClients, checkIn, checkOut, deleteClient };
+    const visits = await PostModel.find({ user: user._id })
+      .sort({ createdAt: -1 })
+      .populate("user")
+      .populate("comments.user");
+    return res.status(200).json(visits)
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send('server error @ getVisits')
+  }
+}
+
+module.exports = { getClients, checkIn, checkOut, deleteClient, getVisits };
+//! get visits is not in a router yet

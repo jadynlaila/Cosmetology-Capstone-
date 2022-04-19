@@ -29,11 +29,7 @@ const ClientSchema = new Schema({
         type: Date,
         required: [true, 'client must enter a dob']
     },
-    active: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
+    
 
     //* all of these can be radio buttons on the form. ~~~~~~~~~~~
     hairCondition:{

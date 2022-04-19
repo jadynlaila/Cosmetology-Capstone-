@@ -17,7 +17,7 @@ const StylistSchema = new Schema({
       required: true
   },
   profilePicURL: {
-    type: String
+    
   },
 //* tracking hours per semester
   s1hours:{
@@ -32,8 +32,6 @@ const StylistSchema = new Schema({
   s4hours: {
       type: Number
   }
- 
-
 });
 
 module.exports = mongoose.model("Stylist", StylistSchema);
