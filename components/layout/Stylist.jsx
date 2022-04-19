@@ -27,16 +27,18 @@ const Stylist = ({user, userId, teachers}) => {
 
 
   return <> (
-            {/* {stylists.map(stylist => {
+            {stylists.map(stylist => {
                 return (
                     <List key={stylist._id} divided verticalAlign="middle">
                         <List.Item>
                             <List.Content floated='right'>
                                 <h3>{stylist.name}</h3>
                                 <h3>{stylist.email}</h3>
+
+                                
                                 <Dropdown
                                 text='Enter Pin'
-                                icon="th"
+                                icon="arrow down"
                                 floating
                                 labeled
                                 button
@@ -44,7 +46,7 @@ const Stylist = ({user, userId, teachers}) => {
 
                                     <Dropdown.Menu>
                                         <Dropdown.Header content="Pin" />
-                                        <Input icon="th" iconPosition='left' name="pin" />
+                                        <Input icon="unlock" iconPosition='left' name="pin" />
                                     </Dropdown.Menu>
                                 </Dropdown>
 
@@ -53,7 +55,7 @@ const Stylist = ({user, userId, teachers}) => {
                     </List>
                 )
             })
-         } */}
+         }
     )
     </>  
 }
