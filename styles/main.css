@@ -360,8 +360,38 @@
   align-items: center !important;
   justify-self: center !important;
 }
-.ui.label span, .ui.label h3 {
+.ui.label span,
+.ui.label h3 {
   margin: auto;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#slideInModal {
+  color: rgb(0, 0, 0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 0.35rem;
+  width: 50rem;
+  margin: auto;
+  background-color: #FAF9F6;
+  position: absolute;
+}
+#slideInModal .header {
+  border-radius: 0.35rem 0.35rem 0 0;
+  padding: 10px !important;
+  width: 100% !important;
+}
+#slideInModal footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+#slideInModal footer button {
+  margin: 20px 20px 20px 0 !important;
 }
 
 #nav {

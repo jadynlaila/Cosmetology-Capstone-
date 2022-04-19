@@ -1,11 +1,15 @@
 import React, {useState} from "react";
 import { Input, UI, Fluid, Icon, Container, Header, Form, Label, Divider, Button} from "semantic-ui-react";
+import SlideInMenu from "../Signup/SlideInMenu";
 import TeacherDropdown from "../Signup/TeacherDropdown";
+// import {setOutOfFocus} from "../Signup/SlideInMenu"
 
 const Signup = () => {
   const [teacherSignedIn, setTeacherSignedIn] = useState(true)
+  const [outOfFocus, setOutOfFocus] = useState(true)
+
   return <>
-  
+
         <Header>&nbsp;</Header>
         {/* FORM FIELD */}
         <div className="form-container">
@@ -16,7 +20,9 @@ const Signup = () => {
                   Who is your Teacher?
                 </h3>
               </Label>
+              <div style={{margin: "10px"}}>
               <TeacherDropdown />
+              </div>
             </>
             :
             <Form>
@@ -45,10 +51,12 @@ const Signup = () => {
             content="Next"
             labelPosition="right"
             icon="arrow right"
-            // onClick={() => setOpen(false)}
+            onClick={() => setOutOfFocus(true)}
             positive
           />
         </footer>
+
+        <SlideInMenu/>
       
   </>;
 };
