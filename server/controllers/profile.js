@@ -144,5 +144,31 @@ const updatePassword = async (req, res) => {
   }
 };
 
+const deleteStylist = async(req,res) => {
+  try {
+    const {teacherId} = req;
+    const {stylistId} = req.params;
 
-module.exports = {getProfileStylist, getProfileTeacher, updateStylist, updateTeacher}
+    const stylist = await StylistModel.findById(stylistId)
+    if(!stylist) return res.status(404).send("Stylist not Found")
+
+    const teacher = await TeacherModel.findById(teacherId)
+    if(stylist.user !== teacherId){
+      if(stylist.role === "root"){
+        await stylist.remove()
+        return res.status(200).send("Stylist Deleted")
+      }else {
+        return res.status(401).send("Unauthorize")
+      }
+    }
+
+    await stylist.remove()
+    return res.status(200).send("Stylist Deleted")
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Server Error in deleteStylist")
+  }
+}
+
+
+module.exports = {getProfileStylist, getProfileTeacher, updateStylist, updateTeacher, deleteStylist}

@@ -29,4 +29,23 @@ const checkIn = async (req, res) => {
     res.status(200).json({ person });
 };
 
-module.exports = { getClients, checkIn, checkOut };
+const deleteClient = async(req,res) => {
+  try {
+    const {clientId} = req.params;
+
+    const client = await ClientModel.findByIdAndDelete(clientId)
+
+
+    if(!client) return res.status(404).send('Client Not Found')
+
+    await client.remove()
+    return res.status(200).send("Client Deleted")
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send('Server Error in deleteClient')
+  }
+}
+
+
+
+module.exports = { getClients, checkIn, checkOut, deleteClient };
