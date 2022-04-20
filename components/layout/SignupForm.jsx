@@ -55,7 +55,7 @@ const Signup = () => {
         <Button
           content="Next"
           labelPosition="right"
-          icon="arrow right"
+          icon="arrow right" 
           // onClick={() => setOpen(false)}
           positive
         />
