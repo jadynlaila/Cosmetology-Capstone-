@@ -42,7 +42,7 @@ const SearchComp = ({}) => {
         <>
         <div>
             <label>Find Client:</label>
-            <input type="text" style={{"border": "black solid 2px"}} onChange={(e) => handleChange(e)} />
+            <input type="text" className='search-component' onChange={(e) => handleChange(e)} />
         </div>
         <div>
             {results.map((client) => {

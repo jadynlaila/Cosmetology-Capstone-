@@ -11,57 +11,56 @@ import {
   Divider,
   Button,
 } from "semantic-ui-react";
+import SlideInMenu from "../Signup/SlideInMenu"
 import TeacherDropdown from "../Signup/TeacherDropdown";
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
 
 const Signup = () => {
-  const [teacherSignedIn, setTeacherSignedIn] = useState(true);
-  return (
-    <>
-      <Header>&nbsp;</Header>
-      {/* FORM FIELD */}
-      <div className="form-container">
-        {teacherSignedIn ? (
-          <>
-            <Label>
-              <h3>Who is your Teacher?</h3>
-            </Label>
-            <TeacherDropdown />
-          </>
-        ) : (
-          <Form>
-            <Form.Field>
-              <label>Email:</label>
-              <input placeholder="Email" />
-            </Form.Field>
-            <Form.Field>
-              <label>Password:</label>
-              <input placeholder="Password" />
-            </Form.Field>
-            <Form.Field>
-              <label>Phone Number:</label>
-              <input placeholder="Phone Number..." />
-            </Form.Field>
-            <Form.Field>
-              <label>DOB:</label>
-              <input placeholder="DOB..." />
-            </Form.Field>
-          </Form>
-        )}
-      </div>
-      <Divider fitted />
-      <footer>
-        <Button content='u a teacher my guy?' labelPosition="left" icon="lightbulb"/>
-        <Button
-          content="Next"
-          labelPosition="right"
-          icon="arrow right" 
-          // onClick={() => setOpen(false)}
-          positive
+  const [isTeacher, setIsTeacher] = useState(false)
+  const [outOfFocus, setOutOfFocus] = useState(true)
+  
+
+  return <>
+
+        <Header>&nbsp;</Header>
+        {/* FORM FIELD */}
+        <div className="form-container">
+            <>
+              <Label>
+                <h3>
+                  Who is your Teacher?
+                </h3>
+              </Label>
+              <div style={{margin: "10px"}}>
+              <TeacherDropdown />
+              </div>
+            </>
+        </div>
+        <Divider fitted/>
+        <footer>
+        <Button 
+        content='I am a Teacher' 
+        labelPosition="left" 
+        icon="lightbulb"
+        onClick={() => setIsTeacher(true)}
         />
-      </footer>
-    </>
-  );
+          <Button
+            content="Next"
+            labelPosition="right"
+            icon="arrow right"
+            onClick={() => setOutOfFocus(false)}
+            positive
+          />
+        </footer>
+
+        <SlideInMenu 
+        outOfFocus={outOfFocus}
+        setOutOfFocus={setOutOfFocus}
+        isTeacher={isTeacher}
+        setIsTeacher={setIsTeacher}
+        />
+      
+  </>;
 };
 
 export default Signup;

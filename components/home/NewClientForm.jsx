@@ -78,32 +78,32 @@ const NewClientForm = () => {
         <div className="form-container">
           <Form>
             <Form.Field>
-              <label>Name:</label>
+              <label>Name</label>
               <input onChange={handleChange} name="name" placeholder="Name" value={name}/>
             </Form.Field>
             <Form.Field>
-              <label>Email:</label>
-              <input onChange={handleChange} name="email" placeholder="Email" value={email}  />
+              <label>Email</label>
+              <input onChange={handleChange} name="email" placeholder="Example@gmail.com" value={email}  />
             </Form.Field>
             <Form.Field>
-              <label>Address:</label>
-              <input onChange={handleChange} name="address" placeholder="Address..." value={address} />
+              <label>Address</label>
+              <input onChange={handleChange} name="address" placeholder="Address" value={address} />
             </Form.Field>
             <Form.Field>
-              <label>Phone Number:</label>
-              <input onChange={handleChange} name="phone" placeholder="Phone Number..." value={phone} />
+              <label>Phone Number</label>
+              <input onChange={handleChange} name="phone" placeholder="(123)456-7890" value={phone} />
             </Form.Field>
             <Form.Field>
-              <label>DOB:</label>
-              <input onChange={handleChange} name="dob" placeholder="DOB..." value={dob} type="date" />
+              <label>Date of Birth</label>
+              <input onChange={handleChange} name="dob" placeholder="mm/dd/yyyy" value={dob} type="date" />
             </Form.Field>
             <Form.Field>
-              <label>Allergies:</label>
-              <input onChange={handleChange} name='allergies' placeholder='Allergies...' value={allergies} />
+              <label>Allergies</label>
+              <input onChange={handleChange} name='allergies' placeholder='Allergies' value={allergies} />
             </Form.Field>
             <Form.Field>
-              <label>Medical Info:</label>
-              <input onChange={handleChange} name='medicalInfo' placeholder='Relevant Medical Info...' value={medicalInfo} />
+              <label>Relevant Medical Information</label>
+              <input onChange={handleChange} name='medicalInfo' placeholder='Medical Info' value={medicalInfo} />
             </Form.Field>
 
             {/* make a button that changes a state from true to false

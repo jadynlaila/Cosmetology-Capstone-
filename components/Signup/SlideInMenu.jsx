@@ -1,24 +1,103 @@
 import React, { useState } from 'react'
-import { Header, Label } from 'semantic-ui-react'
-import {outOfFocus} from "../Signup/SlideInMenu"
+import { Header, Label, Button, Divider, Form } from 'semantic-ui-react'
 
 
-const SlideInMenu = (outOfFocus) => {
-  // const [outOfFocus, setOutOfFocus] = useState(true)
+
+const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher }) => {
   return (
     <>
-    {/* <div className="slide">
-        <div id="slideInModal"> 
-          <Header>&nbsp;</Header>
-          <div className="form-container">
-            <Label>
-              <h3>
-                ;jas;lkdfj
-              </h3>
-            </Label>
+        <div className="slide" style={{ zIndex: !outOfFocus || isTeacher ? "5" : "-1" }}>
+      {!isTeacher ?
+          <div id="slideInModal" style={{ marginRight: outOfFocus ? "3000px" : "0px" }}>
+            <Header>Student</Header>
+            <div className="form-container">
+              <Form>
+              <Form.Field>
+                  <label>Email</label>
+                  <input placeholder="Example@west-mec.org" />
+                </Form.Field>
+                <Form.Field>
+                  <label>Password</label>
+                  <input placeholder="Password" />
+                </Form.Field>
+                <Form.Field>
+                  <label>Phone Number</label>
+                  <input placeholder="(123)456-7890" />
+                </Form.Field>
+                <Form.Field>
+                  <label>Date of Birth</label>
+                  <input placeholder="mm/dd/yyyy" />
+                </Form.Field>
+              </Form>
+            </div>
+            <Divider />
+            <footer>
+              <Button
+                content="Back"
+                labelPosition="left"
+                icon="arrow left"
+                onClick={() => setOutOfFocus(true)}
+                negative
+
+              />
+              <Button
+                content="Next"
+                labelPosition="right"
+                icon="arrow right"
+
+                positive
+              />
+            </footer>
           </div>
-        </div>
-      </div> */}
+
+        :
+          <div id="slideInModal" style={{ marginRight: !isTeacher ? "3000px" : "0px" }}>
+            <Header>Teacher</Header>
+            <div className="form-container">
+              <Form>
+                <Form.Field>
+                  <label>Email</label>
+                  <input placeholder="Example@west-mec.org" />
+                </Form.Field>
+                <Form.Field>
+                  <label>Password</label>
+                  <input placeholder="Password" />
+                </Form.Field>
+                <Form.Field>
+                  <label>Phone Number</label>
+                  <input placeholder="(123)456-7890" />
+                </Form.Field>
+                <Form.Field>
+                  <label>Date of Birth</label>
+                  <input placeholder="mm/dd/yyyy" />
+                </Form.Field>
+                <Form.Field>
+                  <label>Uniqe Teacher Code</label>
+                  <input placeholder="Teacher Code" />
+                </Form.Field>
+              </Form>
+            </div>
+            <Divider />
+            <footer>
+              <Button
+                content="Back"
+                labelPosition="left"
+                icon="arrow left"
+                onClick={() => setIsTeacher(false)}
+                negative
+
+              />
+              <Button
+                content="Next"
+                labelPosition="right"
+                icon="arrow right"
+
+                positive
+              />
+            </footer>
+          </div>
+      }
+      </div>
     </>
   )
 }

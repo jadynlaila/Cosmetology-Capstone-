@@ -5,6 +5,40 @@ import axios from "axios";
 
 const UpcomingClients = ({visit, setActiveVisits, setUpcomingVisits}) => {
 
+  useEffect(() => {
+    const getClients = async () => {
+      try {
+        const res = await axios.get(`${baseURL}/api/v1/client`);
+        setClients(res.data.clients);
+
+        clients.map((client) => {
+          console.log(client);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getClients();
+  }, []);
+
+  const checkIn = async (id) => {
+    try {
+      prompt('pin here')
+      const res = await axios.put(`${baseURL}/api/v1/client/checkIn`, {id})
+      console.log(id);
+      setClients((prev) => prev.filter((client) => client._id !== id));
+
+      //!need to also update the active clients somehow
+      console.log(res.data);
+      console.log(clients);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const isUpcoming = async () => {
+
+  }
 
   return (
     <>
