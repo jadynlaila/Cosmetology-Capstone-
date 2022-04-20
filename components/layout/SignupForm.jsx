@@ -12,6 +12,7 @@ import {
   Button,
 } from "semantic-ui-react";
 import TeacherDropdown from "../Signup/TeacherDropdown";
+// import {setOutOfFocus} from "../Signup/SlideInMenu"
 
 const Signup = () => {
   const [teacherSignedIn, setTeacherSignedIn] = useState(true);
