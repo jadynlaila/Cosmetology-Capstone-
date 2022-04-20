@@ -54,9 +54,7 @@ const VisitFormItems = ({ name, email, phoneNumber,id,  setOpen }) => {
         }
     };
 
-    const handleClick = async (e) => {
-        setIsActive(!isActive)
-    }
+    
 
 
 
@@ -64,7 +62,7 @@ const VisitFormItems = ({ name, email, phoneNumber,id,  setOpen }) => {
         <>
             <div
                 className="person up"
-                onClick={() => handleClick()}
+                onClick={() => setIsActive(!isActive)}
             >
                 <h5 className="name">{name}</h5>
                 <h5 className="email">{email}</h5>
