@@ -1,6 +1,9 @@
 .main-container {
   color: rgb(0, 0, 0);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .main-container .new-visit,
 .main-container .new-client {
@@ -406,7 +409,10 @@
 }
 
 #nav {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   z-index: 99;
   overflow: hidden;
   display: flex;
@@ -508,7 +514,8 @@
   height: 64px;
 }
 .logo-container img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   background-color: hsl(32deg, 100%, 81%);
   transition: all 0.2s linear;
   cursor: pointer;
@@ -574,7 +581,19 @@
 }
 
 .scaling {
-  animation: expand 1s;
+  -webkit-animation: expand 1s;
+          animation: expand 1s;
+}
+
+@-webkit-keyframes expand {
+  from {
+    height: 1%;
+    opacity: 0;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
 }
 
 @keyframes expand {
@@ -604,7 +623,10 @@
   grid-template-columns: 8vw 8vw 8vw;
   grid-template-rows: 8vw 8vw 8vw 8vw;
   margin: 20px auto;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .container .numpad #disapear {
   background-color: transparent;
@@ -638,19 +660,17 @@
   background-color: none;
 }
 
-.search-component {
+.search-container {
   transition: all 0.2s ease;
   background-color: #FAF9F6;
   border-radius: 50px;
-  outline: none;
   margin: 2px;
   font-size: 2rem;
   padding: 10px;
   border: 1px solid black;
 }
-.search-component:active, .search-component:focus {
-  border: 2px solid black;
-  margin: 0;
+.search-container .search-component {
+  outline: none;
 }
 
 html,

@@ -7,6 +7,7 @@ import {
   Checkbox,
   Form,
   Divider,
+  Icon,
 } from "semantic-ui-react";
 import axios from "axios";
 import { baseURL } from "../../pages/util/baseURL";
@@ -36,48 +37,48 @@ const NewVisitForm = () => {
     style: "",
     notes: "",
   });
-useEffect(() => {
-  const asyncFunction = async () => {
+  useEffect(() => {
+    const asyncFunction = async () => {
 
 
-    const res = await axios.get(`${baseURL}/api/v1/client`);
-    console.log('banana', res.data.clients);
-    setResults(res.data.clients);
-  }
-  asyncFunction()
-},[])
+      const res = await axios.get(`${baseURL}/api/v1/client`);
+      console.log('banana', res.data.clients);
+      setResults(res.data.clients);
+    }
+    asyncFunction()
+  }, [])
   //!for now it captures the clients email, so in the controller we're gonna have to use the client email to find the client from the models
   //!this can be reworked a different way if anyone thinks of something better, this is just how i did it for now
 
   const { preferredStylist, date, time, style, notes } = newVisit;
 
-  const handleChange = async(e) => {
-    const {value} = e.target;
-    if(value === "") { 
-    // setText(value)
-    const res = await axios.get(`${baseURL}/api/v1/client`);
-    console.log('banana', res.data.clients);
-    setResults(res.data.clients);
+  const handleChange = async (e) => {
+    const { value } = e.target;
+    if (value === "") {
+      // setText(value)
+      const res = await axios.get(`${baseURL}/api/v1/client`);
+      console.log('banana', res.data.clients);
+      setResults(res.data.clients);
     }
     if (value) {
-        setLoading(true)
-        try {
-            const res = await axios.get(`${baseURL}/api/v1/search/${value}`)
+      setLoading(true)
+      try {
+        const res = await axios.get(`${baseURL}/api/v1/search/${value}`)
 
-            if (res.data.length === 0) {
-                setResults([])
-                setLoading(false)
-                console.log('test1', res.data);
-            }
-            setResults(res.data)
-            console.log("test 2", res.data);
-
-        } catch (error) {
-            console.log("Error Searching", error);
+        if (res.data.length === 0) {
+          setResults([])
+          setLoading(false)
+          console.log('test1', res.data);
         }
-    } 
+        setResults(res.data)
+        console.log("test 2", res.data);
+
+      } catch (error) {
+        console.log("Error Searching", error);
+      }
+    }
     setLoading(false)
-}
+  }
 
   useEffect(() => {
     const getClients = async () => {
@@ -110,16 +111,16 @@ useEffect(() => {
     >
       <Modal.Header>
         <h2>New Visit</h2>
-        <div>
-            <label>Find Client:</label>
-            <input type="text" style={{"border": "black solid 2px"}} onChange={(e) => handleChange(e)} />
+        <div className="search-container">
+          <input type="text" className="search-component" onChange={(e) => handleChange(e)} />
+          <Icon name="search"/>
         </div>
         <div class="ui right aligned category search">
         </div>
       </Modal.Header>
       <Modal.Content>
         {/* FORM FIELD */}
-       {results.map((client) => {
+        {results.map((client) => {
           return (
             <div class="results">
               <>
@@ -128,7 +129,7 @@ useEffect(() => {
               </>
             </div>
           );
-        })} 
+        })}
 
         {/* <div>
             {results.map((client) => {
@@ -149,7 +150,7 @@ useEffect(() => {
         <Button color="black" onClick={() => setOpen(false)}>
           Cancel
         </Button>
-        
+
       </Modal.Actions>
     </Modal>
   );
