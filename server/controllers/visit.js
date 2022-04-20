@@ -46,7 +46,7 @@ const getVisits = async (req, res) => {
 
 const getActiveVisits = async (req, res) => {
   try {
-    const activeVisits = await VisitModel.find({active: true});
+    const activeVisits = await VisitModel.find({active: true}).populate('client')
     console.log(`hi activeVisit ${activeVisits}`);
     return res.status(200).json(activeVisits);
   } catch (error) {
@@ -57,7 +57,7 @@ const getActiveVisits = async (req, res) => {
 
 const getUpcomingVisits = async (req, res) => {
   try {
-    const upcomingVisits = await VisitModel.find({});
+    const upcomingVisits = await VisitModel.find({}).populate("client")
     upcomingVisits.map((visit) => {
       console.log(visit);
     })

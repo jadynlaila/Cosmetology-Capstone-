@@ -3,16 +3,13 @@ import { baseURL } from "../../pages/util/baseURL";
 import axios from "axios";
 import { Segment, Divider } from "semantic-ui-react";
 
-const ActiveClients = ({visit}) => {
+const ActiveClients = ({visit, setActiveVisits, setUpcomingVisits}) => {
 
-  console.log(visit);
   return (
     <>
-      <div className="person up" onClick={() => checkOut(visit)}>
-        {/* //!change that onclick so that instead of running the checkout function, it toggles your 'opencheckout' to be true or false */}
-        <h5 className="name">{visit.name}</h5>
-        <h5 className="email">{visit.email}</h5>
-        {/* should be able to do visit.client. */}
+      <div className="person up" onClick={() => checkOut(visit)} >
+        <h5 className="name">{visit.client.name}</h5>
+        <h5 className="email">{visit.client.email}</h5>
         <h5 className="date">{visit.date}</h5>
       </div>
       <span className="underlined"></span>
