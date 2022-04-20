@@ -46,7 +46,7 @@ const getVisits = async (req, res) => {
 
 const getActiveVisits = async (req, res) => {
   try {
-    const activeVisits = await VisitModel.find({active: true});
+    const activeVisits = await VisitModel.find({active: true}).populate('client')
     console.log(`hi activeVisit ${activeVisits}`);
     return res.status(200).json(activeVisits);
   } catch (error) {
@@ -57,11 +57,10 @@ const getActiveVisits = async (req, res) => {
 
 const getUpcomingVisits = async (req, res) => {
   try {
-    const upcomingVisits = await VisitModel.find({});
+    const upcomingVisits = await VisitModel.find({}).populate("client")
     upcomingVisits.map((visit) => {
       console.log(visit);
     })
-    console.log(`hi upcomingVisit ${upcomingVisits}`)
     res.status(200).json(upcomingVisits)
   } catch (error) {
     console.log(error);
@@ -73,8 +72,10 @@ const clientCheckIn = async (req, res) => {
   const { checkInTime, visitId, stylistPin } = req.body;
   //not 100% sure if this is gonna come from the reqbody or reqparams or what....
   try {
+    if(pin === stylistPin._id){
+      
+    }
     // const stylist = await StylistModel.findOne({ pin: stylistPin });
-
     // if (!stylist) {
     //   return res.status(404).send("stylist not found");
     //   // we need to work this into the form that they can't submit the form unless the stylist pin given is valid
