@@ -1,17 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
+import { baseURL } from "../../pages/util/baseURL";
 import ActiveClients from "./ActiveClients";
 import UpcomingClients from "./UpcomingClients";
 
 const ClientList = () => {
   const [activeVisits, setActiveVisits] = useState([]);
   const [upcomingVisits, setUpcomingVisits] = useState([]);
-  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const getActiveVisits = async () => {
       try {
-        const res = await axios.get(`${baseURL}/api/v1/active`);
+        const res = await axios.get(`${baseURL}/api/v1/visit/active`);
         console.log(res.data);
         setActiveVisits(res.data);
       } catch (error) {
@@ -21,7 +21,7 @@ const ClientList = () => {
 
     const getUpcomingVisits = async () => {
       try {
-        const res = await axios.get(`${baseURL}/api/v1/upcoming`);
+        const res = await axios.get(`${baseURL}/api/v1/visit/upcoming`);
         console.log(res.data);
         setUpcomingVisits(res.data);
       } catch (error) {
@@ -60,18 +60,34 @@ const ClientList = () => {
 
   return (
     <>
-      <div className="header">Active Client</div>
-      <div className="content">
-        {activeVisits.map((visit) => {
-          return <ActiveClients setActiveVisits={setActiveVisits} setUpcomingVisits={setUpcomingVisits} />
-        })}
+      <div className="active-clients">
+        <div className="header">Active Client</div>
+        <div className="content">
+          {activeVisits.map((visit) => {
+            return (
+              <ActiveClients
+                visit={visit}
+                setActiveVisits={setActiveVisits}
+                setUpcomingVisits={setUpcomingVisits}
+              />
+            );
+          })}
+        </div>
       </div>
 
-      <div className="header">Upcoming Clients</div>
-      <div className="content">
-        {upcomingVisits.map((visit) => {
-          return <UpcomingClients visit={visit} setActiveVisits={setActiveVisits} setUpcomingVisits={setUpcomingVisits}/>
-        })}
+      <div className="upcoming-clients">
+        <div className="header">Upcoming Clients</div>
+        <div className="content">
+          {upcomingVisits.map((visit) => {
+            return (
+              <UpcomingClients
+              visit={visit}
+                setActiveVisits={setActiveVisits}
+                setUpcomingVisits={setUpcomingVisits}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );

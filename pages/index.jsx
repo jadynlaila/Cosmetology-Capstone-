@@ -8,6 +8,7 @@ import ActiveClients from '../components/home/ActiveClients'
 import UpcomingClients from '../components/home/UpcomingClients'
 import NewClientForm from '../components/home/NewClientForm'
 import NewVisitForm from '../components/home/NewVisitForm'
+import ClientList from '../components/home/ClientList'
 
 
 const index = ({ name }) => {
@@ -49,13 +50,7 @@ const index = ({ name }) => {
 
 
         <div className="client-lists">
-          <div className="active-clients">
-            <ActiveClients />
-          </div>
-
-          <div className="upcoming-clients">
-            <UpcomingClients />
-          </div>
+          <ClientList />
         </div>
 
       </main>
