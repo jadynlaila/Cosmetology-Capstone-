@@ -22,6 +22,9 @@ import VisitFormItems from './VisitFormItems';
 //* all the advanced client information can be found in the schema
 // onclick button <button class="ui button">Show Modal</button>
 const NewVisitForm = () => {
+  const [text, setText] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [results, setResults] = useState([])
   const [open, setOpen] = useState(false);
   const [clients, setClients] = useState([]);
   const [openNewVisitForm, setOpenNewVisitForm] = useState(false);
@@ -33,13 +36,48 @@ const NewVisitForm = () => {
     style: "",
     notes: "",
   });
+useEffect(() => {
+  const asyncFunction = async () => {
 
+
+    const res = await axios.get(`${baseURL}/api/v1/client`);
+    console.log('banana', res.data.clients);
+    setResults(res.data.clients);
+  }
+  asyncFunction()
+},[])
   //!for now it captures the clients email, so in the controller we're gonna have to use the client email to find the client from the models
   //!this can be reworked a different way if anyone thinks of something better, this is just how i did it for now
 
   const { preferredStylist, date, time, style, notes } = newVisit;
 
-  
+  const handleChange = async(e) => {
+    const {value} = e.target;
+    if(value === "") { 
+    // setText(value)
+    const res = await axios.get(`${baseURL}/api/v1/client`);
+    console.log('banana', res.data.clients);
+    setResults(res.data.clients);
+    }
+    if (value) {
+        setLoading(true)
+        try {
+            const res = await axios.get(`${baseURL}/api/v1/search/${value}`)
+
+            if (res.data.length === 0) {
+                setResults([])
+                setLoading(false)
+                console.log('test1', res.data);
+            }
+            setResults(res.data)
+            console.log("test 2", res.data);
+
+        } catch (error) {
+            console.log("Error Searching", error);
+        }
+    } 
+    setLoading(false)
+}
 
   useEffect(() => {
     const getClients = async () => {
@@ -72,35 +110,40 @@ const NewVisitForm = () => {
     >
       <Modal.Header>
         <h2>New Visit</h2>
+        <div>
+            <label>Find Client:</label>
+            <input type="text" style={{"border": "black solid 2px"}} onChange={(e) => handleChange(e)} />
+        </div>
         <div class="ui right aligned category search">
-          <SearchComp clients={clients} />
-          {/* <div class="ui icon input">
-            <input
-              class="prompt"
-              type="text"
-              placeholder="Search Clients"
-            ></input>
-            <i class="search icon"></i>
-          </div> */}
         </div>
       </Modal.Header>
       <Modal.Content>
         {/* FORM FIELD */}
-
-        {clients.map((client) => {
+       {results.map((client) => {
           return (
             <div class="results">
               <>
                 <VisitFormItems name={client.name} email={client.email} phoneNumber={client.phoneNumber} id={client._id} setOpen={setOpen} />
-                {/* we want to be able to toggle the form here */}
-                {/* put the form here, have it hidden by the height element, the onclick will edit the height of the elements whose id = client id that is passed on through onclick ( the id will be set to client._id) */}
-
                 <span className="underlined"></span>
               </>
             </div>
           );
-        })}
+        })} 
 
+        {/* <div>
+            {results.map((client) => {
+                return (
+                    <button key={client._id} onClick={(e) => {
+                        e.preventDefault()
+                        return <VisitFormItems name={client.name} email={client.email} phoneNumber={client.phoneNumber} id={client._id} setOpen={setOpen} />
+                    }} className="button-upcomingClients">
+                      <div class="results">
+                        <VisitFormItems name={client.name} email={client.email} phoneNumber={client.phoneNumber} id={client._id} setOpen={setOpen} />
+                      </div>
+                    </button>
+                )
+            })}
+        </div> */}
       </Modal.Content>
       <Modal.Actions>
         <Button color="black" onClick={() => setOpen(false)}>
