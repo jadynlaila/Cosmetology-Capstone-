@@ -1,9 +1,6 @@
 .main-container {
   color: rgb(0, 0, 0);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .main-container .new-visit,
 .main-container .new-client {
@@ -409,10 +406,7 @@
 }
 
 #nav {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   z-index: 99;
   overflow: hidden;
   display: flex;
@@ -514,8 +508,7 @@
   height: 64px;
 }
 .logo-container img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   background-color: hsl(32deg, 100%, 81%);
   transition: all 0.2s linear;
   cursor: pointer;
@@ -581,19 +574,7 @@
 }
 
 .scaling {
-  -webkit-animation: expand 1s;
-          animation: expand 1s;
-}
-
-@-webkit-keyframes expand {
-  from {
-    height: 1%;
-    opacity: 0;
-  }
-  to {
-    height: 100%;
-    opacity: 1;
-  }
+  animation: expand 1s;
 }
 
 @keyframes expand {
@@ -623,10 +604,7 @@
   grid-template-columns: 8vw 8vw 8vw;
   grid-template-rows: 8vw 8vw 8vw 8vw;
   margin: 20px auto;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .container .numpad #disapear {
   background-color: transparent;

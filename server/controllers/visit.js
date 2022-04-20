@@ -46,12 +46,26 @@ const getVisits = async (req, res) => {
 
 const getActiveVisits = async (req, res) => {
   try {
-    const visits = await VisitModel.find({active: true});
-    console.log(visits);
-    return res.status(200).json(visits);
+    const activeVisits = await VisitModel.find({active: true});
+    console.log(`hi activeVisit ${activeVisits}`);
+    return res.status(200).json(activeVisits);
   } catch (error) {
     console.log(error);
     res.status(50).send('error @ getActiveVisits')
+  }
+}
+
+const getUpcomingVisits = async (req, res) => {
+  try {
+    const upcomingVisits = await VisitModel.find({});
+    upcomingVisits.map((visit) => {
+      console.log(visit);
+    })
+    console.log(`hi upcomingVisit ${upcomingVisits}`)
+    res.status(200).json(upcomingVisits)
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('error @ getUpcomingVisits')
   }
 }
 
@@ -119,4 +133,4 @@ const clientCheckOut = async (req, res) => {
 
 
 
-module.exports = { createVisit, getVisits, getActiveVisits, clientCheckIn, clientCheckOut};
+module.exports = { createVisit, getVisits, getActiveVisits, clientCheckIn, clientCheckOut, getUpcomingVisits};
