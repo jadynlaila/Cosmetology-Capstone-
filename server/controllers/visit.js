@@ -61,7 +61,7 @@ const getUpcomingVisits = async (req, res) => {
     upcomingVisits.map((visit) => {
       console.log(visit);
     })
-    res.status(200).json(visits)
+    res.status(200).json(upcomingVisits)
   } catch (error) {
     console.log(error);
     res.status(500).send('error @ getUpcomingVisits')
