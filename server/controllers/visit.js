@@ -13,6 +13,8 @@ const createVisit = async (req, res) => {
       email: preferredStylist
     });
 
+    //! map through client's visits and see if the time of this visit = the time of any of their past visits.
+    //! if it does, the client cannot make a new visit at this time
     console.log(client, stylist)
 
     const visit = await new VisitModel ({
@@ -25,6 +27,7 @@ const createVisit = async (req, res) => {
     .populate('client')
     visit.save();
 
+
     
     console.log(visit);
 
@@ -36,17 +39,32 @@ const createVisit = async (req, res) => {
   }
 };
 
+const getVisits = async (req, res) => {
+  const visits = await VisitModel.find({});
+  res.status(200).json({ visits });
+}
+
+const getActiveVisits = async (req, res) => {
+  try {
+    const visits = await VisitModel.find({active: true});
+    console.log(visits);
+    return res.status(200).json(visits);
+  } catch (error) {
+    console.log(error);
+    res.status(50).send('error @ getActiveVisits')
+  }
+}
+
 const clientCheckIn = async (req, res) => {
   const { checkInTime, visitId, stylistPin } = req.body;
   //not 100% sure if this is gonna come from the reqbody or reqparams or what....
-
   try {
-    const stylist = await StylistModel.findOne({ pin: stylistPin });
+    // const stylist = await StylistModel.findOne({ pin: stylistPin });
 
-    if (!stylist) {
-      return res.status(404).send("stylist not found");
-      // we need to work this into the form that they can't submit the form unless the stylist pin given is valid
-    }
+    // if (!stylist) {
+    //   return res.status(404).send("stylist not found");
+    //   // we need to work this into the form that they can't submit the form unless the stylist pin given is valid
+    // }
     const visit = await VisitModel.findOneAndUpdate({
       id: visitId,
       checkIn: checkInTime,
@@ -57,6 +75,31 @@ const clientCheckIn = async (req, res) => {
     return res.status(500).send("Error @ clientCheckIn");
   }
 };
+
+const checkOut = async (req, res) => {
+  const { id } = req.body;
+  console.log(id);
+  let person = await ClientModel.findById({ _id: id });
+  console.log(person);
+
+  person.active = false;
+  await person.save();
+
+  res.status(200).json({ person });
+};
+
+const checkIn = async (req, res) => {
+    const { id } = req.body;
+    console.log(id);
+    let person = await ClientModel.findById({ _id: id });
+    console.log(person);
+  
+    person.active = true;
+    await person.save();
+  
+    res.status(200).json({ person });
+};
+
 
 const clientCheckOut = async (req, res) => {
   const { checkOutTime, visitId, stylistPin } = req.body;
@@ -74,25 +117,6 @@ const clientCheckOut = async (req, res) => {
   }
 };
 
-const getClientVisits = async (req, res) => {
-  try {
-    const { username } = req.params;
-    const user = await UserModel.findOne({ username: username.toLowerCase() });
 
-    if (!user) {
-      return res.status(404).send("User Not Found");
-    }
 
-    const posts = await PostModel.find({ user: user._id })
-      .sort({ createdAt: -1 })
-      .populate("user")
-      .populate("comments.user");
-
-    return res.status(200).json(posts);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Error at getUserPosts");
-  }
-};
-
-module.exports = { createVisit, clientCheckOut, clientCheckIn };
+module.exports = { createVisit, getVisits, getActiveVisits, clientCheckIn, clientCheckOut};

@@ -6,7 +6,7 @@ import axios from "axios";
 //* goes through visit model and checks for visits whose 'active' attribute are true.
 //* it's gonna have to go through the client model as well (remember the visit model has a client ref) to get their name
 //* displays their name, preferred stylist,time of appointment, and the date they scheduled
-const UpcomingClients = () => {
+const UpcomingClients = ({client}) => {
   const [clients, setClients] = useState([]);
   const [upcomingClients, setUpcomingClients] = useState([]);
 

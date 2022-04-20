@@ -40,7 +40,6 @@ const StudentProfile = () => {
 
           <Form>
             <Form.Group widths="equal">
-              <Form.Field label="Name" placeholder="Name" />
               <Form.Field label="Email" placeholder="Email" />
               <Form.Field label="Teacher" placeholder="Teacher" />
               <Form.Field label="Hours" placeholder="Hours" />

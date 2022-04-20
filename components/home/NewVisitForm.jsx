@@ -39,10 +39,7 @@ const NewVisitForm = () => {
 
   const { preferredStylist, date, time, style, notes } = newVisit;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewVisit((prev) => ({ ...prev, [name]: value }));
-  };
+  
 
   useEffect(() => {
     const getClients = async () => {
@@ -55,28 +52,6 @@ const NewVisitForm = () => {
     };
     getClients();
   }, []);
-
-
-  let ref = useRef([]);
-
-
-  const openForm = (id) => {
-    console.log(ref);
-    console.log(id);
-    ref.current.style.color = 'red';
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      console.log(newVisit);
-      const res = await axios.post(`${baseURL}/api/v1/visit`, { newVisit });
-      console.log(res.data);
-      setOpen(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
 
 
@@ -131,13 +106,7 @@ const NewVisitForm = () => {
         <Button color="black" onClick={() => setOpen(false)}>
           Cancel
         </Button>
-        <Button
-          content="Submit"
-          labelPosition="right"
-          icon="checkmark"
-          onClick={handleSubmit}
-          positive
-        />
+        
       </Modal.Actions>
     </Modal>
   );

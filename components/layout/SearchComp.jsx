@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { List, Image, Search, Item } from 'semantic-ui-react'
 import axios from 'axios'
 import { baseURL } from '../../pages/util/baseURL'
+import UpcomingClients from '../home/UpcomingClients'
 
 
-const SearchComp = ({ clients }) => {
+const SearchComp = ({}) => {
     const [text, setText] = useState("")
     const [loading, setLoading] = useState(false)
     const [results, setResults] = useState([])
@@ -12,7 +13,7 @@ const SearchComp = ({ clients }) => {
 
     const handleChange = async(e) => {
         const {value} = e.target;
-        if(value === " ") return;
+        if(value === " ") return 
         setText(value)
         if (value) {
             setLoading(true)
@@ -44,13 +45,15 @@ const SearchComp = ({ clients }) => {
                 setText("")
             }}
             loading={loading}
-            // value={text}
+            value={text}
             resultRenderer={ResultRenderer}
             results={results || null}
             onSearchChange={handleChange}
             placeholder="Find Clients"
             minCharacters={1}
-            onResultSelect=""
+            onResultSelect={(e, data) => {
+                return <UpcomingClients client={data.result.client} />
+            }}
         />
     )
 }
@@ -59,7 +62,7 @@ const ResultRenderer = ({ _id, name }) => {
     return (
         <List key={_id}>
             <List.Item>
-                <Item.Content header={name} />
+                <Item.Content header={name} as='a' />
             </List.Item>
         </List>
     )
