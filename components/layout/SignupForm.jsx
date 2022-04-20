@@ -11,20 +11,20 @@ import {
   Divider,
   Button,
 } from "semantic-ui-react";
+import SlideInMenu from "../Signup/SlideInMenu"
 import TeacherDropdown from "../Signup/TeacherDropdown";
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
 
 const Signup = () => {
-<<<<<<< HEAD
-  const [teacherSignedIn, setTeacherSignedIn] = useState(true)
+  const [isTeacher, setIsTeacher] = useState(false)
   const [outOfFocus, setOutOfFocus] = useState(true)
+  
 
   return <>
 
         <Header>&nbsp;</Header>
         {/* FORM FIELD */}
         <div className="form-container">
-          {teacherSignedIn ?
             <>
               <Label>
                 <h3>
@@ -35,90 +35,32 @@ const Signup = () => {
               <TeacherDropdown />
               </div>
             </>
-            :
-            <Form>
-              <Form.Field>
-                <label>Email:</label>
-                <input placeholder="Email" />
-              </Form.Field>
-              <Form.Field>
-                <label>Password:</label>
-                <input placeholder="Password" />
-              </Form.Field>
-              <Form.Field>
-                <label>Phone Number:</label>
-                <input placeholder="Phone Number..." />
-              </Form.Field>
-              <Form.Field>
-                <label>DOB:</label>
-                <input placeholder="DOB..." />
-              </Form.Field>
-            </Form>
-          }
         </div>
         <Divider fitted/>
         <footer>
+        <Button 
+        content='I am a Teacher' 
+        labelPosition="left" 
+        icon="lightbulb"
+        onClick={() => setIsTeacher(true)}
+        />
           <Button
             content="Next"
             labelPosition="right"
             icon="arrow right"
-            onClick={() => setOutOfFocus(true)}
+            onClick={() => setOutOfFocus(false)}
             positive
           />
         </footer>
 
-        <SlideInMenu/>
+        <SlideInMenu 
+        outOfFocus={outOfFocus}
+        setOutOfFocus={setOutOfFocus}
+        isTeacher={isTeacher}
+        setIsTeacher={setIsTeacher}
+        />
       
   </>;
-=======
-  const [teacherSignedIn, setTeacherSignedIn] = useState(true);
-  return (
-    <>
-      <Header>&nbsp;</Header>
-      {/* FORM FIELD */}
-      <div className="form-container">
-        {teacherSignedIn ? (
-          <>
-            <Label>
-              <h3>Who is your Teacher?</h3>
-            </Label>
-            <TeacherDropdown />
-          </>
-        ) : (
-          <Form>
-            <Form.Field>
-              <label>Email:</label>
-              <input placeholder="Email" />
-            </Form.Field>
-            <Form.Field>
-              <label>Password:</label>
-              <input placeholder="Password" />
-            </Form.Field>
-            <Form.Field>
-              <label>Phone Number:</label>
-              <input placeholder="Phone Number..." />
-            </Form.Field>
-            <Form.Field>
-              <label>DOB:</label>
-              <input placeholder="DOB..." />
-            </Form.Field>
-          </Form>
-        )}
-      </div>
-      <Divider fitted />
-      <footer>
-        <Button content='u a teacher my guy?' labelPosition="left" icon="lightbulb"/>
-        <Button
-          content="Next"
-          labelPosition="right"
-          icon="arrow right"
-          // onClick={() => setOpen(false)}
-          positive
-        />
-      </footer>
-    </>
-  );
->>>>>>> 854c924ad0f7f13d8980337ab2ded1f3f5a3901b
 };
 
 export default Signup;
