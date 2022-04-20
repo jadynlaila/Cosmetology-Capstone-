@@ -271,6 +271,12 @@
   background-color: #FAF9F6 !important;
 }
 
+.button-upcoming-client {
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
 #login > .segment {
   background-color: #FAF9F6 !important;
 }

@@ -77,15 +77,17 @@ const login = () => {
       <Navbar />
       <Segment>
         <Grid columns={2} centered >
-          <Grid.Column column={1} width={"fill"} centered>
+          <Grid.Column column={1} centered>
             <div className="split-screen-container">
-              <Signup />
+              {/* <Signup /> */}
+              
             </div>
           </Grid.Column>
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-          <Grid.Column column={2} width={'fill'}>
+          <Grid.Column column={2} >
             <div className="split-screen-container">
-              <LoginForm />
+              {/* <LoginForm /> */}
+              <Stylist />
             </div>
           </Grid.Column>
         </Grid>
