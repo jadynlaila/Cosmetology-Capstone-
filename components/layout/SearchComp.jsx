@@ -37,35 +37,29 @@ const SearchComp = ({}) => {
         setLoading(false)
     }
 
+    
     return (
-        <Search
-            onBlur={() => {
-                results.length > 0 && setResults([])
-                loading && setLoading(false)
-                setText("")
-            }}
-            loading={loading}
-            value={text}
-            resultRenderer={ResultRenderer}
-            results={results || null}
-            onSearchChange={handleChange}
-            placeholder="Find Clients"
-            minCharacters={1}
-            onResultSelect={(e, data) => {
-                return <UpcomingClients client={data.result.client} />
-            }}
-        />
+        <>
+        <div>
+            <label>Find Client:</label>
+            <input type="text" style={{"border": "black solid 2px"}} onChange={(e) => handleChange(e)} />
+        </div>
+        <div>
+            {results.map((client) => {
+                return (
+                    <button key={client._id} onClick={(e) => {
+                        e.preventDefault()
+                        return <UpcomingClients client={client} />
+                    }} className="button-upcomingClients">
+                        <h3 className='upcomingClient-name'>{client.name}</h3>
+                    </button>
+                )
+            })}
+        </div>
+        </>
     )
 }
 
-const ResultRenderer = ({ _id, name }) => {
-    return (
-        <List key={_id}>
-            <List.Item>
-                <Item.Content header={name} as='a' />
-            </List.Item>
-        </List>
-    )
-}
+
 
 export default SearchComp
