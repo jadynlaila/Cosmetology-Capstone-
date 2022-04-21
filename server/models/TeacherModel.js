@@ -14,9 +14,19 @@ const TeacherSchema = new Schema({
     pattern: /[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@west-mec.org/gm
   },
   pin: {
-      type: String,
-      required: true
-  }
+    type: String,
+    unique: true,
+    default: randomString = () => {
+      const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+
+      const randyAry = Array.from(
+        {length: 4},
+        () => char[Math.floor(Math.random() * char.length)]
+      )
+      const string = randyAry.join("")
+      return string
+    }
+},
 });
 
 module.exports = mongoose.model("Teacher", TeacherSchema);

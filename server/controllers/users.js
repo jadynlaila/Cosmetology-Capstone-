@@ -54,12 +54,8 @@ const createStylist = async (req, res) => {
   const {
     name,
     email,
-    clients,
     teacher,
-    s1hours,
-    s2hours,
-    s3hours,
-    s4hours,
+    profilePicURL
   } = req.body;
 
 
@@ -72,23 +68,11 @@ const createStylist = async (req, res) => {
       name,
       email: email.toLowerCase(),
       teacher,
-      profilePicURL: req.body.profilePicURL || defaultProfilePic,
+      profilePicURL: profilePicURL || defaultProfilePic,
     })
 
 
     //! Didnt know what to do with the hours
-
-
-    // const payload = {stylistID: stylist._id};
-    // jwt.sign(
-    //   payload,
-    //   process.env.JWT_SECERT,
-    //   {expiresIn: "2d"},
-    //   (err, token) => {
-    //     if(err) throw err;
-    //     res.status(200).json(token)
-    //   }
-    // )
 
     return res.status(200).json(stylist)
     
@@ -179,7 +163,7 @@ if a VALID teacher code was entered on signup, then this should run
 req.body = {name, email, pin, students}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createTeacher = async (req, res) => {
-  const { name, email, pin, students } = req.body;
+  const { name, email } = req.body;
 
   try {
     let teacher;
@@ -189,23 +173,8 @@ const createTeacher = async (req, res) => {
     teacher = new TeacherModel({
       name,
       email: email.toLowerCase(),
-      pin,
-      students,
     });
 
-    teacher.pin = await bcrypt.hash(pin, 10);
-    teacher = await teacher.save();
-
-    // const payload = { userID: user._id };
-    // jwt.sign(
-    //   payload,
-    //   process.env.JWT_SECRET,
-    //   { expiresIn: "2d" },
-    //   (err, token) => {
-    //     if (err) throw err;
-    //     res.status(200).json(token);
-    //   }
-    // );
     return res.status(200).send("Account  Created")
   } catch (error) {
     console.log(error);
@@ -219,13 +188,20 @@ const loginStylist = async(req,res) => {
   if(pin < 4) return res.status(401).send("Pin must be 4 char long")
 
   try{
+
     const stylist = await StylistModel.findOne({pin: pin})
-    if(stylist) return res.status(200).send("Login")
+    if(stylist){
+      return res.status(200).send("Login")
+    } else {
+      return res.status(404).send("Stylist not Found")
+    }
+
   } catch(error){
     console.log(error);
     return res.status(500).send("Error @ loginStylist")
   }
 
+  
 
 }
 
