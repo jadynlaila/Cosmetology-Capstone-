@@ -71,6 +71,7 @@ const NewVisitForm = () => {
           console.log('test1', res.data);
         }
         setResults(res.data)
+        console.log(results);
         console.log("test 2", res.data);
 
       } catch (error) {
@@ -124,7 +125,7 @@ const NewVisitForm = () => {
           return (
             <div class="results">
               <>
-                <VisitFormItems name={client.name} email={client.email} phoneNumber={client.phoneNumber} id={client._id} setOpen={setOpen} />
+                <VisitFormItems client={client} setOpen={setOpen} id={client._id}  />
                 <span className="underlined"></span>
               </>
             </div>

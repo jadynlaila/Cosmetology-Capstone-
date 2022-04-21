@@ -15,7 +15,7 @@ const checkOut = async (req, res) => {
   
     visit.active = false;
     await visit.save();
-    console.log(visit);
+    // console.log(visit);
     res.status(200).json({ visit });
   }
   catch(error){

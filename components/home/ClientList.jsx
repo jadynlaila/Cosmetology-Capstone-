@@ -34,11 +34,13 @@ const ClientList = () => {
 
   const checkOut = async (id) => {
     try {
-      const res = await axios.put(`${baseURL}/api/v1/client/checkOut`, { id });
+      // const res = await axios.put(`${baseURL}/api/v1/client/checkOut`, { id });
+      // console.log(id);
+      // setClients((prev) => prev.filter((client) => client._id !== id));
+      // console.log(res.data);
+      // console.log(clients);
+
       console.log(id);
-      setClients((prev) => prev.filter((client) => client._id !== id));
-      console.log(res.data);
-      console.log(clients);
     } catch (error) {
       console.log(error);
     }
@@ -46,13 +48,14 @@ const ClientList = () => {
 
   const checkIn = async (id) => {
     try {
-      const res = await axios.put(`${baseURL}/api/v1/client/checkIn`, { id });
       console.log(id);
-      setClients((prev) => prev.filter((client) => client._id !== id));
+      // const res = await axios.put(`${baseURL}/api/v1/client/checkIn`, { id });
+      // console.log(id);
+      // setClients((prev) => prev.filter((client) => client._id !== id));
 
-      //!need to also update the active clients somehow
-      console.log(res.data);
-      console.log(clients);
+      // //!need to also update the active clients somehow
+      // console.log(res.data);
+      // console.log(clients);
     } catch (error) {
       console.log(error);
     }
@@ -69,6 +72,9 @@ const ClientList = () => {
                 visit={visit}
                 setActiveVisits={setActiveVisits}
                 setUpcomingVisits={setUpcomingVisits}
+                activeVisits={activeVisits}
+                upcomingVisits={upcomingVisits}
+                checkOut={checkOut}
               />
             );
           })}
@@ -84,6 +90,9 @@ const ClientList = () => {
               visit={visit}
                 setActiveVisits={setActiveVisits}
                 setUpcomingVisits={setUpcomingVisits}
+                activeVisits={activeVisits}
+                upcomingVisits={upcomingVisits}
+                checkIn={checkIn}
               />
             );
           })}

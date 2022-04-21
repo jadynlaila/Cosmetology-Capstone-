@@ -3,19 +3,8 @@ import { baseURL } from "../../pages/util/baseURL";
 import axios from "axios";
 import { Segment, Divider } from "semantic-ui-react";
 
-const ActiveClients = ({visit, setActiveVisits, setUpcomingVisits}) => {
+const ActiveClients = ({visit, setActiveVisits, setUpcomingVisits, activeVisits, upcomingVisits, checkIn}) => {
 
-  const checkOut = async (id) => {
-    try {
-      const res = await axios.put(`${baseURL}/api/v1/client/checkOut`, { id });
-      console.log(id);
-      setClients((prev) => prev.filter((client) => client._id !== id));
-      console.log(res.data);
-      console.log(clients);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   
   return (
     <>
