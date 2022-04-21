@@ -56,6 +56,7 @@
       // padding: 7.5px;
       display: flex;
       flex-direction: column;
+      
       .underlined {
         width: auto;
         height: 1px;
@@ -63,10 +64,11 @@
       }
 
       .person {
+
         background: $secondary !important;
         width: 100%;
         // border-bottom: 1px solid $grey-8;
-        padding: 10px 0 10px 0;
+        padding: 10px;
         display: grid;
         grid-template-columns: 33% 33% 33%;
         background: white;
@@ -85,8 +87,18 @@
 
         .name,
         .time,
+        .email,
         .date {
           margin: auto;
+        }
+        .name{
+          text-align: left;
+        }
+        .time, .date{
+          text-align: right;
+        }
+        .email{
+          text-align: center;
         }
       }
     }
@@ -121,7 +133,7 @@
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid $secondary;
   justify-content: center;
   align-items: center;
 }

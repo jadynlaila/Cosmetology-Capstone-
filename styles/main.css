@@ -68,7 +68,7 @@
 .main-container .active-clients .content .person {
   background: #FAF9F6 !important;
   width: 100%;
-  padding: 10px 0 10px 0;
+  padding: 10px;
   display: grid;
   grid-template-columns: 33% 33% 33%;
   background: white;
@@ -85,11 +85,26 @@
 }
 .main-container .upcoming-clients .content .person .name,
 .main-container .upcoming-clients .content .person .time,
+.main-container .upcoming-clients .content .person .email,
 .main-container .upcoming-clients .content .person .date,
 .main-container .active-clients .content .person .name,
 .main-container .active-clients .content .person .time,
+.main-container .active-clients .content .person .email,
 .main-container .active-clients .content .person .date {
   margin: auto;
+}
+.main-container .upcoming-clients .content .person .name,
+.main-container .active-clients .content .person .name {
+  text-align: left;
+}
+.main-container .upcoming-clients .content .person .time, .main-container .upcoming-clients .content .person .date,
+.main-container .active-clients .content .person .time,
+.main-container .active-clients .content .person .date {
+  text-align: right;
+}
+.main-container .upcoming-clients .content .person .email,
+.main-container .active-clients .content .person .email {
+  text-align: center;
 }
 .main-container .radial-buttons {
   position: absolute;
@@ -120,7 +135,7 @@
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid #FAF9F6;
   justify-content: center;
   align-items: center;
 }
