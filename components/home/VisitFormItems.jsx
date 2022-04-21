@@ -6,7 +6,7 @@ import { baseURL } from "../../pages/util/baseURL";
 
 
 
-const VisitFormItems = ({ name, email, phoneNumber,id,  setOpen }) => {
+const VisitFormItems = ({ client,  setOpen, id }) => {
     const [isActive, setIsActive] = useState(false);
     const [clients, setClients] = useState([]);
     const [openNewVisitForm, setOpenNewVisitForm] = useState(false);
@@ -54,6 +54,11 @@ const VisitFormItems = ({ name, email, phoneNumber,id,  setOpen }) => {
         }
     };
 
+
+    const handleClick = async (req, res) => {
+        setIsActive(!isActive);
+        console.log(client.name, client.email, client.phone)
+    }
     
 
 
@@ -62,11 +67,11 @@ const VisitFormItems = ({ name, email, phoneNumber,id,  setOpen }) => {
         <>
             <div
                 className="person up"
-                onClick={() => setIsActive(!isActive)}
+                onClick={() => handleClick()}
             >
-                <h5 className="name">{name}</h5>
-                <h5 className="email">{email}</h5>
-                <h5 className="phoneNumber">{phoneNumber}</h5>
+                <h5 className="name">{client.name}</h5>
+                <h5 className="email">{client.email}</h5>
+                <h5 className="phoneNumber">{client.phoneNumber}</h5>
             </div>
 
             {isActive ? (

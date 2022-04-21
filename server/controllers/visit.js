@@ -4,35 +4,43 @@ const TeacherModel = require("../models/TeacherModel");
 const VisitModel = require("../models/VisitModel");
 
 const createVisit = async (req, res) => {
-  const { preferredStylist, date, style, notes, clientId} = req.body.newVisit;
+  const { preferredStylist:stylist, date, style, notes, clientId} = req.body.newVisit;
 
   try {
-    const client = await ClientModel.findOne({ client: clientId });
+    console.log(req.body.newVisit)
+    const client = await ClientModel.findById(clientId );
+    if(!client){
+      return res.status(404).send('client not found @createVisit')
+    }
+    console.log(`hi client ${client}`);
 
-    const stylist = await StylistModel.findOne({
-      email: preferredStylist
+    const preferredStylist = await StylistModel.findOne({
+      email: stylist
     });
+
+    
+  
 
     //! map through client's visits and see if the time of this visit = the time of any of their past visits.
     //! if it does, the client cannot make a new visit at this time
-    console.log(client, stylist)
 
     const visit = await new VisitModel ({
       client,
-      stylist,
+      preferredStylist,
       date,
       style,
       notes,
     })
-    .populate('client')
+    visit.populate('client')
+    visit.populate('preferredStylist')
     visit.save();
 
 
+
     
-    console.log(visit);
 
     //* not quite sure what to do with duration, checkin, and checkout yet because i think that has to be set later
-    return res.status(200).json(visit);
+    return res.status(200).json();
   } catch (error) {
     console.log(error);
     return res.status(500).send("Error @ createVisit");
@@ -40,14 +48,14 @@ const createVisit = async (req, res) => {
 };
 
 const getVisits = async (req, res) => {
-  const visits = await VisitModel.find({});
+  const visits = await VisitModel.find({})
+  // .populate('client').populate('preferredStylist')
   res.status(200).json({ visits });
 }
 
 const getActiveVisits = async (req, res) => {
   try {
     const activeVisits = await VisitModel.find({active: true}).populate('client')
-    console.log(`hi activeVisit ${activeVisits}`);
     return res.status(200).json(activeVisits);
   } catch (error) {
     console.log(error);
@@ -59,7 +67,7 @@ const getUpcomingVisits = async (req, res) => {
   try {
     const upcomingVisits = await VisitModel.find({}).populate("client")
     upcomingVisits.map((visit) => {
-      console.log(visit);
+      // console.log(visit);
     })
     res.status(200).json(upcomingVisits)
   } catch (error) {
