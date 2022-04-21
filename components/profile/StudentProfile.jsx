@@ -39,10 +39,10 @@ const StudentProfile = () => {
           <Divider />
 
           <Form>
-            <Form.Group widths="equal">
-              <Form.Field label="Email" placeholder="Email" />
-              <Form.Field label="Teacher" placeholder="Teacher" />
-              <Form.Field label="Hours" placeholder="Hours" />
+            <Form.Group widths="equal" style={{margin: "auto"}}>
+              <Form.Field style={{display: "flex", justifyContent: "center"}} label="Email" placeholder="Email" />
+              <Form.Field style={{display: "flex", justifyContent: "center"}} label="Teacher" placeholder="Teacher" />
+              <Form.Field style={{display: "flex", justifyContent: "center"}} label="Hours" placeholder="Hours" />
             </Form.Group>
           </Form>
 

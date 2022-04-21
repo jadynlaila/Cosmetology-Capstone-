@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Header, Label, Button, Divider, Form } from 'semantic-ui-react'
+import { Header, Label, Button, Divider, Form, Dropdown, Icon } from 'semantic-ui-react'
 
 
 
@@ -26,7 +26,7 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher }) => 
                 </Form.Field>
                 <Form.Field>
                   <label>Date of Birth</label>
-                  <input placeholder="mm/dd/yyyy" />
+                  <input type="date" placeholder="mm/dd/yyyy" />
                 </Form.Field>
               </Form>
             </div>
@@ -69,10 +69,24 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher }) => 
                 </Form.Field>
                 <Form.Field>
                   <label>Date of Birth</label>
-                  <input placeholder="mm/dd/yyyy" />
+                  <input type="date" placeholder="mm/dd/yyyy" />
                 </Form.Field>
                 <Form.Field>
-                  <label>Uniqe Teacher Code</label>
+                  <label>Unique Teacher Code
+                  <Dropdown 
+                  pointing="left"
+                  upward
+                  floating
+                  icon='question mark blue'
+                  >
+                    
+    <Dropdown.Menu>
+      <Dropdown.Item disabled text='This is a code that should be requested from your administrator'/>
+    </Dropdown.Menu>
+  </Dropdown>
+
+
+                  </label>
                   <input placeholder="Teacher Code" />
                 </Form.Field>
               </Form>

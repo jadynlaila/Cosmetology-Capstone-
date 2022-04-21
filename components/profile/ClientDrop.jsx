@@ -16,7 +16,7 @@ export default class ClientDrop extends Component {
     const { activeIndex } = this.state;
 
     return (
-      <Grid centered columns={2}>
+      <Grid centered>
         <Grid.Column>
           <Accordion fluid styled style={{ padding: ".5rem", width: "100%" }}>
             <Accordion.Title

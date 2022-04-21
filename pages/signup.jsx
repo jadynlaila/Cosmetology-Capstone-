@@ -7,6 +7,8 @@ import Signup from "../components/layout/SignupForm";
 import NumPad from "../components/layout/numpad";
 import TeacherDropdown from "../components/Signup/TeacherDropdown";
 import Stylist from "../components/layout/Stylist";
+import { urlAlphabet } from "nanoid";
+// import background from "../public/school-background.svg"
 
 
 
@@ -14,12 +16,12 @@ import Stylist from "../components/layout/Stylist";
 const signup = () => {
   
   return (
-    <>
+    <div style={{height: "100vh",backgroundImage: `linear-gradient(black, black), url(/school-background.svg)`, backgroundBlendMode: "saturation"}}>
       <Navbar />
       <div className="signupPage">
       <Signup/>
       </div>
-    </>
+    </div>
   );
 };
 
