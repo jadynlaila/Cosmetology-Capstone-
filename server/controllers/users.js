@@ -54,18 +54,10 @@ const createStylist = async (req, res) => {
   const {
     name,
     email,
-    pin,
-    clients,
     teacher,
-    s1hours,
-    s2hours,
-    s3hours,
-    s4hours,
+    profilePicURL
   } = req.body;
 
-  if(pin.length < 4) {
-    return res.status(401).send("Pin must be atleast 4 characters long")
-  }
 
   try {
     let stylist;
@@ -75,28 +67,14 @@ const createStylist = async (req, res) => {
     stylist = new StylistModel({
       name,
       email: email.toLowerCase(),
-      pin,
       teacher,
-      profilePicURL: req.body.profilePicURL || defaultProfilePic,
+      profilePicURL: profilePicURL || defaultProfilePic,
     })
+
 
     //! Didnt know what to do with the hours
 
-    stylist.pin = await bcrypt.hash(pin, 10)
-    stylist = await stylist.save();
-
-    // const payload = {stylistID: stylist._id};
-    // jwt.sign(
-    //   payload,
-    //   process.env.JWT_SECERT,
-    //   {expiresIn: "2d"},
-    //   (err, token) => {
-    //     if(err) throw err;
-    //     res.status(200).json(token)
-    //   }
-    // )
-
-    return res.status(200).send("Account Created")
+    return res.status(200).json(stylist)
     
   } catch (error) {
     console.log(error);
@@ -185,7 +163,7 @@ if a VALID teacher code was entered on signup, then this should run
 req.body = {name, email, pin, students}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createTeacher = async (req, res) => {
-  const { name, email, pin, students } = req.body;
+  const { name, email } = req.body;
 
   try {
     let teacher;
@@ -195,23 +173,8 @@ const createTeacher = async (req, res) => {
     teacher = new TeacherModel({
       name,
       email: email.toLowerCase(),
-      pin,
-      students,
     });
 
-    teacher.pin = await bcrypt.hash(pin, 10);
-    teacher = await teacher.save();
-
-    // const payload = { userID: user._id };
-    // jwt.sign(
-    //   payload,
-    //   process.env.JWT_SECRET,
-    //   { expiresIn: "2d" },
-    //   (err, token) => {
-    //     if (err) throw err;
-    //     res.status(200).json(token);
-    //   }
-    // );
     return res.status(200).send("Account  Created")
   } catch (error) {
     console.log(error);
@@ -219,18 +182,26 @@ const createTeacher = async (req, res) => {
   }
 };
 
-const loginStylist = (req,res) => {
-  const {pin} = req.body.stylist;
+const loginStylist = async(req,res) => {
+  const {pin} = req.body;
   if(!pin) return res.status(401).send("Invalid Pin")
   if(pin < 4) return res.status(401).send("Pin must be 4 char long")
 
   try{
-    // const stylist = await
+
+    const stylist = await StylistModel.findOne({pin: pin})
+    if(stylist){
+      return res.status(200).send("Login")
+    } else {
+      return res.status(404).send("Stylist not Found")
+    }
+
   } catch(error){
     console.log(error);
     return res.status(500).send("Error @ loginStylist")
   }
 
+  
 
 }
 
