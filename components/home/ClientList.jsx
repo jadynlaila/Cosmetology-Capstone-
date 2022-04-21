@@ -69,6 +69,8 @@ const ClientList = () => {
                 visit={visit}
                 setActiveVisits={setActiveVisits}
                 setUpcomingVisits={setUpcomingVisits}
+                activeVisits={activeVisits}
+                upcomingVisits={upcomingVisits}
               />
             );
           })}
@@ -84,6 +86,8 @@ const ClientList = () => {
               visit={visit}
                 setActiveVisits={setActiveVisits}
                 setUpcomingVisits={setUpcomingVisits}
+                activeVisits={activeVisits}
+                upcomingVisits={upcomingVisits}
               />
             );
           })}

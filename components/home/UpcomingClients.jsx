@@ -3,7 +3,7 @@ import { Segment, Divider } from "semantic-ui-react";
 import { baseURL } from "../../pages/util/baseURL";
 import axios from "axios";
 
-const UpcomingClients = ({visit, setActiveVisits, setUpcomingVisits}) => {
+const UpcomingClients = ({visit, setActiveVisits, setUpcomingVisits, activeVisits, upcomingVisits}) => {
 
   useEffect(() => {
     const getClients = async () => {
