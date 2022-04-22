@@ -54,12 +54,8 @@ const createStylist = async (req, res) => {
   const {
     name,
     email,
-    clients,
     teacher,
-    s1hours,
-    s2hours,
-    s3hours,
-    s4hours,
+    profilePicURL
   } = req.body;
 
 
@@ -72,26 +68,14 @@ const createStylist = async (req, res) => {
       name,
       email: email.toLowerCase(),
       teacher,
-      profilePicURL: req.body.profilePicURL || defaultProfilePic,
+      profilePicURL: profilePicURL || defaultProfilePic,
     })
 
 
     //! Didnt know what to do with the hours
 
-
-    // const payload = {stylistID: stylist._id};
-    // jwt.sign(
-    //   payload,
-    //   process.env.JWT_SECERT,
-    //   {expiresIn: "2d"},
-    //   (err, token) => {
-    //     if(err) throw err;
-    //     res.status(200).json(token)
-    //   }
-    // )
-
     return res.status(200).json(stylist)
-    
+
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createStylist");
@@ -139,7 +123,7 @@ const createClient = async (req, res) => {
     console.log(req.body);
     // let client = await ClientModel.find({ email: email.toLowerCase() });
     // if (client) return res.status(401).send("Email already in use");
-    
+
 
     client = new ClientModel({
       name,
@@ -162,7 +146,7 @@ const createClient = async (req, res) => {
 
     client = await client.save();
 
-    return res.status(200).json( client );
+    return res.status(200).json(client);
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createClient");
@@ -179,7 +163,7 @@ if a VALID teacher code was entered on signup, then this should run
 req.body = {name, email, pin, students}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createTeacher = async (req, res) => {
-  const { name, email, pin, students } = req.body;
+  const { name, email } = req.body;
 
   try {
     let teacher;
@@ -189,23 +173,8 @@ const createTeacher = async (req, res) => {
     teacher = new TeacherModel({
       name,
       email: email.toLowerCase(),
-      pin,
-      students,
     });
 
-    teacher.pin = await bcrypt.hash(pin, 10);
-    teacher = await teacher.save();
-
-    // const payload = { userID: user._id };
-    // jwt.sign(
-    //   payload,
-    //   process.env.JWT_SECRET,
-    //   { expiresIn: "2d" },
-    //   (err, token) => {
-    //     if (err) throw err;
-    //     res.status(200).json(token);
-    //   }
-    // );
     return res.status(200).send("Account  Created")
   } catch (error) {
     console.log(error);
@@ -213,36 +182,43 @@ const createTeacher = async (req, res) => {
   }
 };
 
-const loginStylist = async(req,res) => {
-  const {pin} = req.body;
-  if(!pin) return res.status(401).send("Invalid Pin")
-  if(pin < 4) return res.status(401).send("Pin must be 4 char long")
+const loginStylist = async (req, res) => {
+  const { pin } = req.body;
+  if (!pin) return res.status(401).send("Invalid Pin")
+  if (pin < 4) return res.status(401).send("Pin must be 4 char long")
 
-  try{
-    const stylist = await StylistModel.findOne({pin: pin})
-    if(stylist) return res.status(200).send("Login")
-  } catch(error){
+  try {
+
+    const stylist = await StylistModel.findOne({ pin: pin })
+    if (stylist) {
+      return res.status(200).send("Login")
+    } else {
+      return res.status(404).send("Stylist not Found")
+    }
+
+  } catch (error) {
     console.log(error);
     return res.status(500).send("Error @ loginStylist")
   }
 
 
+
 }
 
-const getStylist = async(req,res) => {
+const getStylist = async (req, res) => {
   try {
-    const {teacher}= req.body;
-    const stylists = await StylistModel.find({teacher: teacher})
-    res.status(200).json({stylists})
-    
-    
+    const { teacher } = req.body;
+    const stylists = await StylistModel.find({ teacher: teacher })
+    res.status(200).json({ stylists })
+
+
   } catch (error) {
-   console.log("Error @ getStylist", error); 
+    console.log("Error @ getStylist", error);
   }
-  
+
 }
 
-const getTeacher = async(req, res) => {
+const getTeacher = async (req, res) => {
   try {
     const teacher = await TeacherModel.find({});
     res.status(200).json(teacher)

@@ -13,8 +13,17 @@ const StylistSchema = new Schema({
   },
   pin: {
       type: String,
-      pattern: /^\d{4}$/,
-      required: true
+      unique: true,
+      default: randomString = () => {
+        const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+
+        const randyAry = Array.from(
+          {length: 4},
+          () => char[Math.floor(Math.random() * char.length)]
+        )
+        const string = randyAry.join("")
+        return string
+      }
   },
   profilePicURL: {
     
