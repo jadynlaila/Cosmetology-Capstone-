@@ -71,7 +71,6 @@
   padding: 10px;
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  background: white;
   border: 1px solid transparent;
   transition: all 0.15s ease-out;
   -webkit-text-stroke: black 0.2px;
@@ -293,7 +292,7 @@
 }
 
 #login > .segment {
-  background-color: #FAF9F6 !important;
+  background-color: transparent !important;
 }
 
 .grid-container {
@@ -314,7 +313,6 @@
 }
 
 .split-screen-container {
-  background-color: #FAF9F6;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   border-radius: 0.35rem;
   width: 75%;
@@ -397,7 +395,7 @@
   left: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.721);
+  background-color: rgba(219, 219, 219, 0.625);
 }
 
 #slideInModal {
@@ -406,8 +404,8 @@
   border-radius: 0.35rem;
   transition: all 0.5s ease-in;
   width: 30rem;
-  background-color: #FAF9F6;
   position: relative;
+  background-color: #FAF9F6;
 }
 #slideInModal .header {
   border-radius: 0.35rem 0.35rem 0 0;

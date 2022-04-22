@@ -73,7 +73,7 @@ const login = () => {
 
 
   return (
-    <div id="login">
+    <div id="login"  style={{height: "100vh",backgroundImage: `url(/hair-background3.png)`, backgroundSize: "cover" , backgroundBlendMode: "saturation"}}>
       <Navbar />
       <Segment>
         <Grid columns={2} centered >

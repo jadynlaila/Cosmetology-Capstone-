@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Segment, Divider, Form } from "semantic-ui-react";
 import { baseURL } from "../../pages/util/baseURL";
 import axios from "axios";
+import CheckIn from "./CheckIn";
 
 const UpcomingClients = ({
   visit,
@@ -10,6 +11,8 @@ const UpcomingClients = ({
   activeVisits,
   upcomingVisits,
   checkIn,
+  open,
+  setOpen,
 }) => {
   const [isActive, setIsActive] = useState(false);
 
@@ -34,31 +37,21 @@ const UpcomingClients = ({
     }
   };
 
+  const handleClick = async (e) => {};
+
   return (
     <>
-      <div className="person up" onClick={() => checkIn(visit)}>
-        <h5 className="name">{visit.client.name}</h5>
-        <h5 className="email">{visit.client.email}</h5>
-        <h5 className="date">{visit.date}</h5>
-      </div>
-      {isActive && (
-        <>
-          <Form onClick={() => setIsActive(!isActive)}>
-            <Form.Field>
-              <label>Pin:</label>
-              <input
-                onChange={handleChange}
-                name="pin"
-                placeholder="Pin"
-                value={pin}
-              />
-            </Form.Field>
-            <Button
-              onClick={handleSubmit}
-            />
-          </Form>
-        </>
-      )}
+      <>
+        <CheckIn
+          open={open}
+          setOpen={setOpen}
+          visit={visit}
+          setIsActive={setIsActive}
+          isActive={isActive}
+          checkIn={checkIn}
+        />
+      </>
+
       <span className="underlined"></span>
     </>
   );

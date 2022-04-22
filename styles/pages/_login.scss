@@ -4,7 +4,7 @@
 
 
 #login > .segment{
-  background-color: $secondary !important;
+  background-color: transparent !important;
 }
 .grid-container {
   color: $font-color;
@@ -24,7 +24,7 @@
 }
 
 .split-screen-container {
-  background-color: $secondary;
+  // background-color: transparent !important;
   box-shadow: $dark-shadow;
   border-radius: $radius;
   // border: 40px solid black;

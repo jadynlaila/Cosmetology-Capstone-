@@ -16,7 +16,7 @@ import { urlAlphabet } from "nanoid";
 const signup = () => {
   
   return (
-    <div style={{height: "100vh", backgroundImage: `linear-gradient(black, black), url(/school-background.svg)`, backgroundBlendMode: "saturation"}}>
+    <div style={{height: "100vh",backgroundImage: `url(/hair-background3.png)`, backgroundSize: "cover" , backgroundBlendMode: "saturation"}}>
       <Navbar />
       <div className="signupPage">
       <Signup/>
