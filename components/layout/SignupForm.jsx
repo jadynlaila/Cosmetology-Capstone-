@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import {
   Input,
   UI,
@@ -11,6 +12,7 @@ import {
   Divider,
   Button,
 } from "semantic-ui-react";
+import { baseURL } from "../../pages/util/baseURL";
 import SlideInMenu from "../Signup/SlideInMenu"
 import TeacherDropdown from "../Signup/TeacherDropdown";
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
@@ -18,6 +20,53 @@ import TeacherDropdown from "../Signup/TeacherDropdown";
 const Signup = () => {
   const [isTeacher, setIsTeacher] = useState(false)
   const [outOfFocus, setOutOfFocus] = useState(true)
+  const [teachers, setTeachers] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [teacherSelected, setTeacherSelected] = useState([])
+
+
+
+   
+
+  useEffect(() => {
+    const handleResTeach = async(e) => {
+      setLoading(true)
+      try {
+        const res = await axios.get(`${baseURL}/api/v1/teacher`)
+  
+        if(res.data.length === 0){
+          setTeachers([])
+          setLoading(false)
+        } else {
+          setTeachers(res.data)
+          console.log("Test Teach", res.data);
+        }
+      } catch (error) {
+        console.log("Error res signup",error);
+      }
+      setLoading(false)
+    }
+    handleResTeach()
+  }, [])
+  
+  const handleClick = async (e) => {
+    const {value} = e.target;
+    setTeacherSelected(value)
+    
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      const res = await axios.get(`${baseURL}/signup/stylist`)
+      
+    } catch (error) {
+      console.log("Error handleSub", error);
+    }
+
+    
+  }
   
 
   return <>
@@ -32,7 +81,13 @@ const Signup = () => {
                 </h3>
               </Label>
               <div style={{margin: "10px"}}>
-              <TeacherDropdown />
+              {teachers.map((teacher) => {
+                return (
+                  <div key={teacher._id} onClick={(e) => handleClick()}>
+                    <h2>{teacher.name}</h2>
+                  </div>
+                )
+              })}
               </div>
             </>
         </div>

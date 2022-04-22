@@ -74,6 +74,7 @@ const createStylist = async (req, res) => {
 
     //! Didnt know what to do with the hours
 
+    stylist = await stylist.save()
     return res.status(200).json(stylist)
     
   } catch (error) {
@@ -175,7 +176,8 @@ const createTeacher = async (req, res) => {
       email: email.toLowerCase(),
     });
 
-    return res.status(200).send("Account  Created")
+    teacher = await teacher.save()
+    return res.status(200).json(teacher)
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createTeacher");
