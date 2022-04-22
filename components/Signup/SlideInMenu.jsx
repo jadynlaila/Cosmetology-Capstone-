@@ -51,7 +51,7 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher }) => 
           </div>
 
         :
-          <div id="slideInModal" style={{ marginRight: !isTeacher ? "3000px" : "0px" }}>
+          <div id="slideInModal" style={{marginTop: "20px", marginRight: !isTeacher ? "3000px" : "0px" }}>
             <Header>Teacher</Header>
             <div className="form-container">
               <Form>

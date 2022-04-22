@@ -13,7 +13,7 @@ const Navbar = (isTeacher) => {
       <div className="image-container">
         <Image
           className="logo"
-          src={"/newLogo.png"}
+          src={"/logo3-1.png"}
           alt="logo"
           height="56.25"
           width="112.5"
