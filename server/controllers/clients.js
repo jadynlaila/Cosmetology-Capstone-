@@ -79,5 +79,6 @@ getVisits = async (req, res) => {
   }
 }
 
+
 module.exports = { getClients, checkIn, checkOut, deleteClient, getVisits };
 //! get visits is not in a router yet

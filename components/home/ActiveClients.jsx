@@ -3,7 +3,7 @@ import { baseURL } from "../../pages/util/baseURL";
 import axios from "axios";
 import { Segment, Divider } from "semantic-ui-react";
 
-const ActiveClients = ({visit, setActiveVisits, setUpcomingVisits, activeVisits, upcomingVisits, checkIn}) => {
+const ActiveClients = ({visit, setActiveVisits, setUpcomingVisits, activeVisits, upcomingVisits, checkIn, open, setOpen}) => {
 
   
   return (

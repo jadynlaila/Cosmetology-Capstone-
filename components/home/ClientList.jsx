@@ -6,6 +6,7 @@ import UpcomingClients from "./UpcomingClients";
 
 const ClientList = () => {
   const [activeVisits, setActiveVisits] = useState([]);
+  const [open, setOpen] = useState(false)
   const [upcomingVisits, setUpcomingVisits] = useState([]);
 
   useEffect(() => {
@@ -46,9 +47,10 @@ const ClientList = () => {
     }
   };
 
-  const checkIn = async (id) => {
+  const checkIn = async (id, setIsActive, isActive ) => {
     try {
       console.log(id);
+      setIsActive(!isActive)
       // const res = await axios.put(`${baseURL}/api/v1/client/checkIn`, { id });
       // console.log(id);
       // setClients((prev) => prev.filter((client) => client._id !== id));
@@ -68,6 +70,7 @@ const ClientList = () => {
         <div className="content">
           {activeVisits.map((visit) => {
             return (
+              <>
               <ActiveClients
                 visit={visit}
                 setActiveVisits={setActiveVisits}
@@ -75,7 +78,11 @@ const ClientList = () => {
                 activeVisits={activeVisits}
                 upcomingVisits={upcomingVisits}
                 checkOut={checkOut}
+                setOpen={setOpen}
+                open={open}
               />
+              <NewVisitForm open={open} setOpen={setOpen}/>
+              </>
             );
           })}
         </div>
@@ -93,6 +100,8 @@ const ClientList = () => {
                 activeVisits={activeVisits}
                 upcomingVisits={upcomingVisits}
                 checkIn={checkIn}
+                setOpen={setOpen}
+                open={open}
               />
             );
           })}

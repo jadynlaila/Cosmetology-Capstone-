@@ -1,0 +1,82 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { baseURL } from "../../pages/util/baseURL";
+import { Modal, Form, Button } from "semantic-ui-react";
+
+const CheckIn = ({visit, setIsActive, isActive, checkIn}) => {
+  const [open, setOpen] = useState(false);
+  const [errorMsg, seterrorMsg] = useState(null);
+  const [openAdvancedInfo, setOpenAdvancedInfo] = useState(false);
+
+  // const [checkInInfo, setCheckInInfo] = useState({
+  //   pin,
+  //   visit
+  // })
+
+  // const {pin, visit} = checkInInfo
+  
+  // const handleChange = (e) => {
+  //   const {name, value} = e.target;
+  //   setNewClient((prev) => ({ ...prev, [name]: value}));
+  // }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(newClient);
+      const res = await axios.post(`${baseURL}/api/v1/client`, { newClient });
+      console.log(res.data);
+      setOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      <Modal
+        className="client-form-scroll"
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+        open={open}
+        trigger={
+          <div
+            className="person up"
+            onClick={() => checkIn(visit, setIsActive, isActive)}
+          >
+            <h5 className="name">{visit.client.name}</h5>
+            <h5 className="email">{visit.client.email}</h5>
+            <h5 className="date">{visit.date}</h5>
+          </div>
+        }
+      >
+        <Modal.Header>Client Check In</Modal.Header>
+        {/* <Modal.Content>
+          <div className="form-container">
+            <Form>
+            <Form.Field>
+              <label>Pin</label>
+              <input onChange={handleChange} name="pin" placeholder="Enter Pin" value={pin}/>
+            </Form.Field>
+            </Form>
+          </div>
+        </Modal.Content> */}
+        <Modal.Actions>
+          <Button color="black" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+          <Button
+            content="Submit"
+            labelPosition="right"
+            icon="checkmark"
+            onClick={handleSubmit}
+            //onSubmit={handleSubmit}
+            positive
+          />
+        </Modal.Actions>
+      </Modal>
+    </>
+  );
+};
+
+export default CheckIn;
