@@ -11,111 +11,108 @@ import {
   Label,
   Divider,
   Button,
+  Dropdown,
 } from "semantic-ui-react";
 import { baseURL } from "../../pages/util/baseURL";
-import SlideInMenu from "../Signup/SlideInMenu"
+import SlideInMenu from "../Signup/SlideInMenu";
 import TeacherDropdown from "../Signup/TeacherDropdown";
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
 
 const Signup = () => {
-  const [isTeacher, setIsTeacher] = useState(false)
-  const [outOfFocus, setOutOfFocus] = useState(true)
-  const [teachers, setTeachers] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [teacherSelected, setTeacherSelected] = useState([])
-
-
-
-   
+  const [isTeacher, setIsTeacher] = useState(false);
+  const [outOfFocus, setOutOfFocus] = useState(true);
+  const [teachers, setTeachers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [teacherSelected, setTeacherSelected] = useState([]);
 
   useEffect(() => {
-    const handleResTeach = async(e) => {
-      setLoading(true)
+    const handleResTeach = async (e) => {
+      setLoading(true);
       try {
-        const res = await axios.get(`${baseURL}/api/v1/teacher`)
-  
-        if(res.data.length === 0){
-          setTeachers([])
-          setLoading(false)
+        const res = await axios.get(`${baseURL}/api/v1/teacher`);
+
+        if (res.data.length === 0) {
+          setTeachers([]);
+          setLoading(false);
         } else {
-          setTeachers(res.data)
+          setTeachers(res.data);
           console.log("Test Teach", res.data);
         }
       } catch (error) {
-        console.log("Error res signup",error);
+        console.log("Error res signup", error);
       }
-      setLoading(false)
-    }
-    handleResTeach()
-  }, [])
-  
-  const handleClick = async (e) => {
-    const {value} = e.target;
-    setTeacherSelected(value)
-    
-  }
+      setLoading(false);
+    };
+    handleResTeach();
+  }, []);
 
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    setLoading(true)
+  const handleClick = async (e) => {
+    const { value } = e.target;
+    setTeacherSelected(value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
     try {
-      const res = await axios.get(`${baseURL}/signup/stylist`)
-      
+      const res = await axios.get(`${baseURL}/signup/stylist`);
     } catch (error) {
       console.log("Error handleSub", error);
     }
+  };
 
-    
-  }
-  
-
-  return <>
-
-        <Header>&nbsp;</Header>
-        {/* FORM FIELD */}
-        <div className="form-container">
-            <>
-              <Label>
-                <h3>
-                  Who is your Teacher?
-                </h3>
-              </Label>
-              <div style={{margin: "10px"}}>
+  return (
+    <>
+      <Header>&nbsp;</Header>
+      {/* FORM FIELD */}
+      <div className="form-container">
+        <>
+          <Label>
+            <h3>Who is your Teacher?</h3>
+          </Label>
+          <Dropdown style={{marginBottom: "15px"}} placeholder="Select Teacher" fluid selection>
+            <Dropdown.Menu>
               {teachers.map((teacher) => {
                 return (
-                  <div key={teacher._id} onClick={(e) => handleClick()}>
-                    <h2>{teacher.name}</h2>
-                  </div>
-                )
+                  // <div key={teacher._id} onClick={(e) => handleClick()}>
+                  //   <h2>{teacher.name}</h2>
+                  // </div>
+                  // this will get the teacher by their id and display the text and the image property
+                  <Dropdown.Item onClick={(e) => handleClick()} key={teacher._id} {...teacher}>
+                    {teacher.name}
+                  </Dropdown.Item>
+                );
               })}
-              </div>
-            </>
-        </div>
-        <Divider fitted/>
-        <footer>
-        <Button 
-        content='I am a Teacher' 
-        labelPosition="left" 
-        icon="lightbulb"
-        onClick={() => setIsTeacher(true)}
+              </Dropdown.Menu>
+            
+          </Dropdown>
+        </>
+      </div>
+      <Divider fitted />
+      <footer>
+        <Button
+          content="I am a Teacher"
+          labelPosition="left"
+          icon="lightbulb"
+          onClick={() => setIsTeacher(true)}
         />
-          <Button
-            content="Next"
-            labelPosition="right"
-            icon="arrow right"
-            onClick={() => setOutOfFocus(false)}
-            positive
-          />
-        </footer>
+        <Button
+          content="Next"
+          labelPosition="right"
+          icon="arrow right"
+          onClick={() => setOutOfFocus(false)}
+          positive
+        />
+      </footer>
 
-        <SlideInMenu 
+      <SlideInMenu
         outOfFocus={outOfFocus}
         setOutOfFocus={setOutOfFocus}
         isTeacher={isTeacher}
         setIsTeacher={setIsTeacher}
-        />
-      
-  </>;
+      />
+    </>
+  );
 };
 
 export default Signup;
