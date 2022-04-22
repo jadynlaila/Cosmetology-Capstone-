@@ -56,7 +56,7 @@ const getVisits = async (req, res) => {
 const getActiveVisits = async (req, res) => {
   try {
     const activeVisits = await VisitModel.find({active: true}).populate('client')
-    return res.status(200).json(activeVisits);
+    return res.status(200).json(activeVisits); 8
   } catch (error) {
     console.log(error);
     res.status(50).send('error @ getActiveVisits')
