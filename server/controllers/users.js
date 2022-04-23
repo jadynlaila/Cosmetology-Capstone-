@@ -61,12 +61,12 @@ const createStylist = async (req, res) => {
 
   try {
     let stylist;
-    stylist = await StylistModel.findOne({ email: email.toLowerCase() });
+    stylist = await StylistModel.findOne({ email: email});
     if (stylist) return res.status(401).send("Email is already in use");
 
     stylist = new StylistModel({
       name,
-      email: email.toLowerCase(),
+      email: email,
       teacher,
       profilePicURL: profilePicURL || defaultProfilePic,
     })
