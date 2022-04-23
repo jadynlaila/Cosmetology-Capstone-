@@ -54,6 +54,14 @@ const StudentProfile = () => {
           <br />
           <ClientDrop />
           <br />
+
+          <Button
+          content="Next"
+          labelPosition="right"
+          icon="arrow right"
+          onClick={() => setOutOfFocus(false)}
+          positive
+        />
         </div>
       </div>
       {/* </Segment> */}

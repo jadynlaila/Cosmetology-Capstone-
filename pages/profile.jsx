@@ -7,6 +7,7 @@ import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
 import StudentProfile from "../components/profile/StudentProfile";
 import TeacherProfile from "../components/profile/TeacherProfile";
+import ClientProfile from "../components/profile/ClientProfile";
 
 const personalProfile = () => {
   const [isTeacher, setIsTeacher] = useState(false);
@@ -14,8 +15,9 @@ const personalProfile = () => {
     <>
       <Navbar />
       <div className="profile">
-        <StudentProfile />
+        {/* <StudentProfile /> */}
         {/* <TeacherProfile /> */}
+        <ClientProfile />
       </div>
     </>
   );
