@@ -14,12 +14,12 @@ import ClientDrop from "./ClientDrop";
 const TeacherProfile = () => {
   return (
     <>
+      <div className="header">
+        <h2>Teacher Profile</h2>
+      </div>
       <div className="content">
         <div className="form-container">
-          <Segment
-            textAlign="center"
-            style={{ borderTop: "solid 3rem #f3941c" }}
-          >
+          <div className="profile-header">
             <Image
               avatar
               src={"/bigChung.webp"}
@@ -27,30 +27,32 @@ const TeacherProfile = () => {
               style={{
                 height: "180px",
                 width: "180px",
-                border: "solid 5px #f3941c",
+                border: "solid 6px #cccddd",
               }}
             />
+            <h1 style={{ margin: "auto", fontSize: "3.5rem" }}>Teacher Name</h1>
+          </div>
+          <Divider />
 
-            <Divider />
+          <Form>
+            <Form.Group widths="equal">
+              <Form.Field label="Email" placeholder="Email" />
+              <Form.Field label="Teacher" placeholder="Teacher" />
+              <Form.Field label="Hours" placeholder="Hours" />
+            </Form.Group>
+          </Form>
 
-            <Form>
-              <Form.Group widths="equal">
-                <Form.Field label="Name" placeholder="Name" />
-                <Form.Field label="Email" placeholder="Email" />
-              </Form.Group>
-            </Form>
+          <Divider />
 
-            <Divider />
-
-            <StudentDrop />
-            <br />
-            <StudentDrop />
-            <br />
-            <StudentDrop />
-            <br />
-          </Segment>
+          <StudentDrop />
+          <br />
+          <StudentDrop />
+          <br />
+          <StudentDrop />
+          <br />
         </div>
       </div>
+      {/* </Segment> */}
     </>
   );
 };

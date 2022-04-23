@@ -13,11 +13,10 @@ const personalProfile = () => {
   return (
     <>
       <Navbar />
-          <div className="profile">
-            <StudentProfile />
-          </div>
-          {/* <TeacherProfile /> */}
-
+      <div className="profile">
+        <StudentProfile />
+        {/* <TeacherProfile /> */}
+      </div>
     </>
   );
 };

@@ -76,7 +76,7 @@ const createStylist = async (req, res) => {
 
     stylist = await stylist.save()
     return res.status(200).json(stylist)
-    
+
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createStylist");
@@ -124,7 +124,7 @@ const createClient = async (req, res) => {
     console.log(req.body);
     // let client = await ClientModel.find({ email: email.toLowerCase() });
     // if (client) return res.status(401).send("Email already in use");
-    
+
 
     client = new ClientModel({
       name,
@@ -147,7 +147,7 @@ const createClient = async (req, res) => {
 
     client = await client.save();
 
-    return res.status(200).json( client );
+    return res.status(200).json(client);
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createClient");
@@ -184,43 +184,43 @@ const createTeacher = async (req, res) => {
   }
 };
 
-const loginStylist = async(req,res) => {
-  const {pin} = req.body;
-  if(!pin) return res.status(401).send("Invalid Pin")
-  if(pin < 4) return res.status(401).send("Pin must be 4 char long")
+const loginStylist = async (req, res) => {
+  const { pin } = req.body;
+  if (!pin) return res.status(401).send("Invalid Pin")
+  if (pin < 4) return res.status(401).send("Pin must be 4 char long")
 
-  try{
+  try {
 
-    const stylist = await StylistModel.findOne({pin: pin})
-    if(stylist){
+    const stylist = await StylistModel.findOne({ pin: pin })
+    if (stylist) {
       return res.status(200).send("Login")
     } else {
       return res.status(404).send("Stylist not Found")
     }
 
-  } catch(error){
+  } catch (error) {
     console.log(error);
     return res.status(500).send("Error @ loginStylist")
   }
 
-  
+
 
 }
 
-const getStylist = async(req,res) => {
+const getStylist = async (req, res) => {
   try {
-    const {teacher}= req.body;
-    const stylists = await StylistModel.find({teacher: teacher})
-    res.status(200).json({stylists})
-    
-    
+    const { teacher } = req.body;
+    const stylists = await StylistModel.find({ teacher: teacher })
+    res.status(200).json({ stylists })
+
+
   } catch (error) {
-   console.log("Error @ getStylist", error); 
+    console.log("Error @ getStylist", error);
   }
-  
+
 }
 
-const getTeacher = async(req, res) => {
+const getTeacher = async (req, res) => {
   try {
     const teacher = await TeacherModel.find({});
     res.status(200).json(teacher)
