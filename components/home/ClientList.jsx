@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { baseURL } from "../../pages/util/baseURL";
 import ActiveClients from "./ActiveClients";
@@ -6,7 +6,7 @@ import UpcomingClients from "./UpcomingClients";
 
 const ClientList = () => {
   const [activeVisits, setActiveVisits] = useState([]);
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const [upcomingVisits, setUpcomingVisits] = useState([]);
 
   useEffect(() => {
@@ -47,10 +47,20 @@ const ClientList = () => {
     }
   };
 
-  const checkIn = async (id, setIsActive, isActive ) => {
+  // const checkOut = async (id) => {
+  //   try {
+  //! jadyn: refactor it so that when the form on CheckIn/CheckOut is submitted, it runs these functions, and the setClients(prev) thing down there will be done for both the active and upcomingClients thing
+  //     console.log(res.data);
+  //     console.log(clients);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const checkIn = async (id, setIsActive, isActive) => {
     try {
       console.log(id);
-      setIsActive(!isActive)
+      setIsActive(!isActive);
       // const res = await axios.put(`${baseURL}/api/v1/client/checkIn`, { id });
       // console.log(id);
       // setClients((prev) => prev.filter((client) => client._id !== id));
@@ -71,17 +81,17 @@ const ClientList = () => {
           {activeVisits.map((visit) => {
             return (
               <>
-              <ActiveClients
-                visit={visit}
-                setActiveVisits={setActiveVisits}
-                setUpcomingVisits={setUpcomingVisits}
-                activeVisits={activeVisits}
-                upcomingVisits={upcomingVisits}
-                checkOut={checkOut}
-                setOpen={setOpen}
-                open={open}
-              />
-              <NewVisitForm open={open} setOpen={setOpen}/>
+                <ActiveClients
+                  visit={visit}
+                  setActiveVisits={setActiveVisits}
+                  setUpcomingVisits={setUpcomingVisits}
+                  activeVisits={activeVisits}
+                  upcomingVisits={upcomingVisits}
+                  checkOut={checkOut}
+                  setOpen={setOpen}
+                  open={open}
+                />
+                {/* <NewVisitForm open={open} setOpen={setOpen}/> */}
               </>
             );
           })}
@@ -94,7 +104,7 @@ const ClientList = () => {
           {upcomingVisits.map((visit) => {
             return (
               <UpcomingClients
-              visit={visit}
+                visit={visit}
                 setActiveVisits={setActiveVisits}
                 setUpcomingVisits={setUpcomingVisits}
                 activeVisits={activeVisits}
