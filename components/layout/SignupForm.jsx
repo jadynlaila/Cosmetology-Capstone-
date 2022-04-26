@@ -15,11 +15,11 @@ import {
   Segment,
   Radio
 } from "semantic-ui-react";
-import {setToken} from '../../pages/util/tokenHolder'
+import { setToken } from '../../pages/util/tokenHolder'
 import { baseURL } from "../../pages/util/baseURL";
 import SlideInMenu from "../Signup/SlideInMenu";
 import TeacherDropdown from "../Signup/TeacherDropdown";
-import ImgDropDiv from "./ImgDropDiv";
+// import ImgDropDiv from "./ImgDropDiv";
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
 
 const Signup = () => {
@@ -28,21 +28,21 @@ const Signup = () => {
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [teacherSelected, setTeacherSelected] = useState([]);
-  const [formLoading, setFormLoading] = useState(false)
+  // const [formLoading, setFormLoading] = useState(false)
   const [submitDisable, setSubmitDisable] = useState(true)
-  const [media, setMedia] = useState(null)
-  const [mediaPreview, setMediaPreview] = useState(null)
-  const inputRef = useRef(null)
+  // const [media, setMedia] = useState(null)
+  // const [mediaPreview, setMediaPreview] = useState(null)
+  // const inputRef = useRef(null)
   const [resHolder, setResHolder] = useState('')
   const [highlighted, setHighlighted] = useState(false)
 
-  const [stylist, setStylist] = useState({
-    email: "",
-    name: "",
-    teacher: ""
-  })
+  // const [stylist, setStylist] = useState({
+  //   email: "",
+  //   name: "",
+  //   teacher: ""
+  // })
 
-  const {email, name} = stylist;
+  // const {email, name} = stylist;
 
   useEffect(() => {
     const handleResTeach = async (e) => {
@@ -70,47 +70,47 @@ const Signup = () => {
     setTeacherSelected(value);
   };
 
-  const handleChange = (e) => {
-    const {name, value, files} = e.target;
+  // const handleChange = (e) => {
+  //   const {name, value, files} = e.target;
 
-    if(name === "media" && files.length){
-      setMedia(files[0])
-      setMediaPreview(() => URL.createObjectURL(files[0]))
-    } else {
-      setStylist((prev) => ({...prev, [name]: value}))
-    }
+  //   if(name === "media" && files.length){
+  //     setMedia(files[0])
+  //     setMediaPreview(() => URL.createObjectURL(files[0]))
+  //   } else {
+  //     setStylist((prev) => ({...prev, [name]: value}))
+  //   }
 
-  }
+  // }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setFormLoading(true)
-    let profilePicURL;
-    if(media != null){
-      const formData = new FormData();
-      formData.append("image", media, {
-        headers: {
-          "Content=Type": "multipart/form-data"
-        }
-      })
-      const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
-      profilePicURL = res.data.src;
-    }
-    if(media !== null && !profilePicURL){
-      setFormLoading(false)
-      console.log("Error uploading Image");
-    }
-    try {
-      const res = await axios.post(`${baseURL}/api/v1/signup/stylist`, {
-        stylist, profilePicURL
-      })
-      setToken(res.data)
-    } catch (error) {
-      console.log("Eroro", error);
-    }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setFormLoading(true)
+  //   let profilePicURL;
+  //   if(media != null){
+  //     const formData = new FormData();
+  //     formData.append("image", media, {
+  //       headers: {
+  //         "Content=Type": "multipart/form-data"
+  //       }
+  //     })
+  //     const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
+  //     profilePicURL = res.data.src;
+  //   }
+  //   if(media !== null && !profilePicURL){
+  //     setFormLoading(false)
+  //     console.log("Error uploading Image");
+  //   }
+  //   try {
+  //     const res = await axios.post(`${baseURL}/api/v1/signup/stylist`, {
+  //       stylist, profilePicURL
+  //     })
+  //     setToken(res.data)
+  //   } catch (error) {
+  //     console.log("Eroro", error);
+  //   }
 
-    setFormLoading(false)
-  };
+  //   setFormLoading(false)
+  // };
 
   return (
     <>
@@ -139,11 +139,11 @@ const Signup = () => {
           </Dropdown>
         </> */}
         <Form
-        loading={formLoading}
-        onSubmit={handleSubmit}
+        // loading={formLoading}
+        // onSubmit={handleSubmit}
         >
           <Segment>
-          <ImgDropDiv
+            {/* <ImgDropDiv
             handleChange={handleChange}
             inputRef={inputRef}
             highLighted={highlighted}
@@ -152,24 +152,24 @@ const Signup = () => {
             setMedia={setMedia}
             setMediaPreview={setMediaPreview}
             media={media}
-          />
+          /> */}
 
             <label><h2>Chose your Teacher</h2></label>
             <Divider hidden />
             {teachers.map((teacher) => {
               return (
-                  <Form.Field
+                <Form.Field
                   className="radioButton"
                   control='input'
                   label={teacher.name}
                   type='radio'
                   name="htmlRadios"
                   key={teacher._id}
-                  />
+                />
               );
             })}
             <Divider hidden />
-            <Form.Input
+            {/* <Form.Input
             required
             label="Name"
             placeholder="Name"
@@ -189,14 +189,14 @@ const Signup = () => {
             icon='envelope'
             iconPosition='left'
             type="email" 
-            />
+            /> */}
           </Segment>
-          <Button
+          {/* <Button
          icon="signup"
          content="Signup"
          type="submit"
          color="green"
-        />
+        /> */}
         </Form>
       </div>
       <Divider fitted />
@@ -207,7 +207,14 @@ const Signup = () => {
           icon="lightbulb"
           onClick={() => setIsTeacher(true)}
         />
-       
+        <Button
+          content="Next"
+          labelPosition="right"
+          icon="arrow right"
+          onClick={() => setOutOfFocus(false)}
+          positive
+        />
+
       </footer>
 
       <SlideInMenu
@@ -219,5 +226,6 @@ const Signup = () => {
     </>
   );
 };
+
 
 export default Signup;

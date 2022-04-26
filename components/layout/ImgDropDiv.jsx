@@ -51,19 +51,24 @@ const ImgDropDiv = ({
                 style={{ cursor: "pointer" }}
                 {...(highLighted && { color: "green" })}
               >
-                <Header icon>
-                  <Icon name="file image outline" />
-                  Drag N Drop or Click to Upload
-                </Header>
+                <div className="dragNdrop-header">
+                  {/* <div> */}
+
+                  <div>
+                    <Icon name="file image outline" />
+                    Drag and Drop Image or Click to Upload
+                  </div>
+                  {/* </div> */}
+                </div>
               </Segment>
             ) : (
-              <Segment 
-              basic placeholder color="green"
-              
+              <Segment
+                basic placeholder 
+
               >
                 <Image
                   src={mediaPreview}
-                  size="medium"
+                  size="small"
                   centered
                   style={{ cursor: "pointer" }}
                 />
