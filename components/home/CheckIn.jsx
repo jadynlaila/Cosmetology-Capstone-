@@ -8,23 +8,23 @@ const CheckIn = ({visit, setIsActive, isActive, checkIn}) => {
   const [errorMsg, seterrorMsg] = useState(null);
   const [openAdvancedInfo, setOpenAdvancedInfo] = useState(false);
 
-  // const [checkInInfo, setCheckInInfo] = useState({
-  //   pin,
-  //   visit
-  // })
+  const [checkInInfo, setCheckInInfo] = useState({
+    pin,
+    visitInfo: visit
+  })
 
-  // const {pin, visit} = checkInInfo
+  const {pin} = checkInInfo
   
-  // const handleChange = (e) => {
-  //   const {name, value} = e.target;
-  //   setNewClient((prev) => ({ ...prev, [name]: value}));
-  // }
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setCheckInInfo((prev) => ({ ...prev, [name]: value}));
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(newClient);
-      const res = await axios.post(`${baseURL}/api/v1/client`, { newClient });
+      console.log(checkInInfo);
+      const res = await axios.put(`${baseURL}/api/v1/visit/checkIn`, { checkInInfo });
       console.log(res.data);
       setOpen(false);
     } catch (error) {
@@ -51,7 +51,7 @@ const CheckIn = ({visit, setIsActive, isActive, checkIn}) => {
         }
       >
         <Modal.Header>Client Check In</Modal.Header>
-        {/* <Modal.Content>
+        <Modal.Content>
           <div className="form-container">
             <Form>
             <Form.Field>
@@ -60,7 +60,7 @@ const CheckIn = ({visit, setIsActive, isActive, checkIn}) => {
             </Form.Field>
             </Form>
           </div>
-        </Modal.Content> */}
+        </Modal.Content>
         <Modal.Actions>
           <Button color="black" onClick={() => setOpen(false)}>
             Cancel
