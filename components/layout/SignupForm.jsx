@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
+// import {useLocation} from "react-router-dom"
 import {
   Input,
   UI,
@@ -19,6 +20,7 @@ import { setToken } from '../../pages/util/tokenHolder'
 import { baseURL } from "../../pages/util/baseURL";
 import SlideInMenu from "../Signup/SlideInMenu";
 import TeacherDropdown from "../Signup/TeacherDropdown";
+// import router from "../../server/routes/signupRoutes";
 // import ImgDropDiv from "./ImgDropDiv";
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
 
@@ -35,6 +37,8 @@ const Signup = () => {
   // const inputRef = useRef(null)
   const [resHolder, setResHolder] = useState('')
   const [highlighted, setHighlighted] = useState(false)
+  // const location = useLocation()
+
 
   // const [stylist, setStylist] = useState({
   //   email: "",
@@ -142,8 +146,8 @@ const Signup = () => {
         // loading={formLoading}
         // onSubmit={handleSubmit}
         >
-          <Segment>
-            {/* <ImgDropDiv
+          {/* <Segment> */}
+          {/* <ImgDropDiv
             handleChange={handleChange}
             inputRef={inputRef}
             highLighted={highlighted}
@@ -154,22 +158,31 @@ const Signup = () => {
             media={media}
           /> */}
 
-            <label><h2>Chose your Teacher</h2></label>
-            <Divider hidden />
-            {teachers.map((teacher) => {
-              return (
-                <Form.Field
-                  className="radioButton"
-                  control='input'
-                  label={teacher.name}
-                  type='radio'
-                  name="htmlRadios"
-                  key={teacher._id}
-                />
-              );
+          <label>Chose your Teacher</label>
+          {/* <Divider hidden /> */}
+
+
+          <Dropdown
+            placeholder='Select Teacher'
+            fluid
+            selection
+            options={teachers.map((teacher) => {
+              return {
+                key: teacher._id,
+                text: teacher.name,
+                value: teacher._id
+              }
             })}
-            <Divider hidden />
-            {/* <Form.Input
+          // control='input'
+          // label={teacher.name}
+          // type='radio'
+          // name="htmlRadios"
+          // key={teacher._id}
+          />
+
+          {/* ); */}
+          <Divider hidden />
+          {/* <Form.Input
             required
             label="Name"
             placeholder="Name"
@@ -190,12 +203,12 @@ const Signup = () => {
             iconPosition='left'
             type="email" 
             /> */}
-          </Segment>
+          {/* </Segment> */}
           {/* <Button
-         icon="signup"
-         content="Signup"
-         type="submit"
-         color="green"
+          icon="signup"
+          content="Signup"
+          type="submit"
+          color="green"
         /> */}
         </Form>
       </div>
@@ -207,13 +220,17 @@ const Signup = () => {
           icon="lightbulb"
           onClick={() => setIsTeacher(true)}
         />
-        <Button
+        {/* {router.route('/login') ? "" : */}
+        {/* {location.pathName === "/login" ? "" : */}
+          < Button
           content="Next"
-          labelPosition="right"
-          icon="arrow right"
-          onClick={() => setOutOfFocus(false)}
-          positive
+        labelPosition="right"
+        icon="arrow right"
+        onClick={() => setOutOfFocus(false)}
+        positive
         />
+      {/* } */}
+        {/* } */}
 
       </footer>
 

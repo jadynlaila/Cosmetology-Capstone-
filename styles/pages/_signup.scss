@@ -114,3 +114,14 @@
   line-height: 0%;
   
 }
+
+.instructions{
+  line-height: 0 !important;
+  text-align: center;
+  font-size: 1.2rem;
+  transform: translate(-10px);
+  i{
+    transform: translate(100px, -25px) ;
+    max-height: 3rem;
+  }
+}

@@ -313,6 +313,7 @@
 }
 
 .split-screen-container {
+  background-color: #FAF9F6 !important;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   border-radius: 0.35rem;
   width: 75%;
@@ -323,6 +324,10 @@
   border-radius: 0.35rem 0.35rem 0 0;
   padding: 10px !important;
   width: 100% !important;
+  margin: 0 !important;
+}
+.split-screen-container .form-container.login-form-container {
+  padding-bottom: 40px;
 }
 .split-screen-container footer {
   display: flex !important;
@@ -431,6 +436,17 @@
 
 .dragNdrop-header {
   line-height: 0%;
+}
+
+.instructions {
+  line-height: 0 !important;
+  text-align: center;
+  font-size: 1.2rem;
+  transform: translate(-10px);
+}
+.instructions i {
+  transform: translate(100px, -25px);
+  max-height: 3rem;
 }
 
 #nav {
@@ -566,6 +582,16 @@
 .client-form-scroll::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, hsl(32deg, 100%, 60%)), color-stop(0.66, hsl(32deg, 93%, 54%)), color-stop(0.99, hsl(32deg, 100%, 60%)));
+}
+
+#check-in {
+  max-width: 23rem;
+}
+#check-in div {
+  margin: auto;
+}
+#check-in div div form div {
+  padding: 20px;
 }
 
 #stuck-top-modal {

@@ -78,16 +78,16 @@ const login = () => {
       <Segment>
         <Grid columns={2} centered >
           <Grid.Column column={1} centered>
-            <div className="split-screen-container">
-              {/* <Signup /> */}
+            <div className="split-screen-container" >
+              <Signup />
               
             </div>
           </Grid.Column>
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
           <Grid.Column column={2} >
             <div className="split-screen-container">
-              {/* <LoginForm /> */}
-              <Stylist />
+              <LoginForm />
+              {/* <Stylist /> */}
             </div>
           </Grid.Column>
         </Grid>

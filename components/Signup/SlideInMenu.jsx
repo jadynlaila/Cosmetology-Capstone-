@@ -4,8 +4,8 @@ import ImgDropDiv from "../layout/ImgDropDiv";
 
 
 
-const SlideInMenu = ({ outOfFocus, setOutOfFocus }) => {
-  const [isTeacher, setIsTeacher] = useState(false);
+const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher }) => {
+  // const [isTeacher, setIsTeacher] = useState(false);
   // const [outOfFocus, setOutOfFocus] = useState(true);
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(false);

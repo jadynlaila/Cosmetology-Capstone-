@@ -54,7 +54,7 @@ const ImgDropDiv = ({
                 <div className="dragNdrop-header">
                   {/* <div> */}
 
-                  <div>
+                  <div className="instructions">
                     <Icon name="file image outline" />
                     Drag and Drop Image or Click to Upload
                   </div>

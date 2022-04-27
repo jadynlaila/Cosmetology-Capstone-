@@ -2,8 +2,7 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 
-
-#login > .segment{
+#login > .segment {
   background-color: transparent !important;
 }
 .grid-container {
@@ -24,7 +23,8 @@
 }
 
 .split-screen-container {
-  // background-color: transparent !important;
+  background-color: $secondary !important;
+  // background-size: cover;
   box-shadow: $dark-shadow;
   border-radius: $radius;
   // border: 40px solid black;
@@ -35,6 +35,11 @@
     border-radius: $radius $radius 0 0;
     padding: 10px !important;
     width: 100% !important;
+    margin: 0 !important;
+  }
+  .form-container.login-form-container {
+      padding-bottom: 40px;
+    
   }
   footer {
     display: flex !important;
@@ -46,8 +51,7 @@
   }
 }
 
-  
-  //? This is the avatar images on the searchbar for students
-  // img.ui.avatar.image{
-    //   display: flex !important;
-    // }
+//? This is the avatar images on the searchbar for students
+// img.ui.avatar.image{
+//   display: flex !important;
+// }

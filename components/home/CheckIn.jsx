@@ -35,7 +35,8 @@ const CheckIn = ({visit, setIsActive, isActive, checkIn}) => {
   return (
     <>
       <Modal
-        className="client-form-scroll"
+        // className="client-form-scroll"
+        id="check-in"
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
@@ -66,6 +67,7 @@ const CheckIn = ({visit, setIsActive, isActive, checkIn}) => {
             Cancel
           </Button>
           <Button
+            
             content="Submit"
             labelPosition="right"
             icon="checkmark"

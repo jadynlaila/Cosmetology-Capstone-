@@ -31,3 +31,19 @@
     color-stop(0.99, $primary-5)
   );
 }
+
+
+#check-in{
+  max-width: 23rem;
+  // display: flex !important;
+  div{
+    margin: auto;
+    div{
+      form{
+        div{
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
