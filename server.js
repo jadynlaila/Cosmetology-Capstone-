@@ -36,8 +36,10 @@ const visitRoutes = require('./server/routes/visitRoutes');
 const teacherRoutes = require('./server/routes/teacherRoutes')
 const searchRoutes = require("./server/routes/searchRoute")
 const uploadPicRoutes = require("./server/routes/uploadPicRoutes")
+const authRoute = require('./server/routes/authRoute')
 
 app.use('/api/v1/client', clientRoutes);
+app.use('/api/v1/auth', authRoute)
 app.use("/api/v1/signup", signupRoutes);
 app.use('/api/v1/visit', visitRoutes)
 app.use("/api/v1/stylist", stylistRoutes)

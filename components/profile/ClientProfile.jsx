@@ -7,7 +7,8 @@ import {
   Divider,
   Segment,
   Image,
-  Header
+  Header,
+  Grid,
 } from "semantic-ui-react";
 import VisitDrop from "./VisitDrop";
 
@@ -17,8 +18,11 @@ const ClientProfile = () => {
       <div className="header">
         <h2>Client Profile</h2>
       </div>
+
       <div className="content">
+
         <div className="form-container">
+        
           <div className="profile-header">
             <h1 style={{ margin: "auto", fontSize: "3.5rem" }}>Client Name</h1>
           </div>
@@ -26,63 +30,82 @@ const ClientProfile = () => {
           <div
             id="slideInModal"
             // style={{ marginRight: outOfFocus ? "3000px" : "0px" }}
-          >
-            <p> 
-              hair density,
-              hair porosity, 
-              hair elasticity, 
-              hair length
-            </p>
+>
             <Header>Client</Header>
-            <div className="form-container">
-              <Form>
-                <Form.Field>
-                  <label>Name</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Email</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Adress</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Phone</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>DoB</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Medical Info</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Allergies</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Hair Condition</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Scalp Condition</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Hair texture</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Growth Pattern</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Hair Density</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Hair Porosity</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Hair Elasticity</label>
-                </Form.Field>
-                <Form.Field>
-                  <label>Hair Length</label>
-                </Form.Field>
-              </Form>
-            </div>
+
+            <Grid columns={3} divided>
+              <Grid.Row>
+                <Grid.Column>
+                  <p>Name</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Hair Texture</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Medical Info</p>
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <p>Email</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Hair Density</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Allergies</p>
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <p>Adress</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Hair Porosity</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Hair Condition</p>
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <p>Phone</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Hair Elasticity</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Scalp Condition</p>
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <p>DoB</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Hair Length</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>Growth Pattern</p>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            
+            {/* <div className="form-container">
+            </div> */}
+
+            <Divider />
+
+            <VisitDrop />
+            <br />
+            <VisitDrop />
+            <br />
+            <VisitDrop />
+
             <Divider />
             <footer>
               <Button
@@ -92,23 +115,8 @@ const ClientProfile = () => {
                 onClick={() => setOutOfFocus(true)}
                 negative
               />
-              <Button
-                content="Next"
-                labelPosition="right"
-                icon="arrow right"
-                positive
-              />
             </footer>
           </div>
-
-          <Divider />
-
-          <VisitDrop />
-          <br />
-          <VisitDrop />
-          <br />
-          <VisitDrop />
-          <br />
         </div>
       </div>
     </>

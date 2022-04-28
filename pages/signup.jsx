@@ -4,10 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
 import Signup from "../components/layout/SignupForm";
-import NumPad from "../components/layout/numpad";
-import TeacherDropdown from "../components/Signup/TeacherDropdown";
-import Stylist from "../components/layout/Stylist";
-import { urlAlphabet } from "nanoid";
+
 // import background from "../public/school-background.svg"
 
 

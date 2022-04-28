@@ -17,7 +17,7 @@ import {
   Segment,
   Radio
 } from "semantic-ui-react";
-import { setToken } from '../../pages/util/tokenHolder'
+// import { setToken } from '../../pages/util/tokenHolder'
 import { baseURL } from "../../pages/util/baseURL";
 import SlideInMenu from "../Signup/SlideInMenu";
 import TeacherDropdown from "../Signup/TeacherDropdown";
