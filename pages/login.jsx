@@ -73,14 +73,17 @@ const login = () => {
 
 
   return (
-    <div id="login"  style={{height: "100vh",backgroundImage: `url(/hair-background3.png)`, backgroundSize: "cover" , backgroundBlendMode: "saturation"}}>
+    <>
+      <div className="background-hairbrushes"
+        style={{ position: "absolute", bottom: "0", right: "0", width: '300px', height: "400px", backgroundImage: `url(/pexelimg2.jpg)`, backgroundSize: "cover", backgroundBlendMode: "saturation" }}
+      ></div>
       <Navbar />
-      <Segment>
-        <Grid columns={2} centered >
+      <Segment style={{background: "transparent"}}>
+        <Grid columns={2} centered>
           <Grid.Column column={1} centered>
             <div className="split-screen-container" >
               <Signup />
-              
+
             </div>
           </Grid.Column>
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -93,11 +96,10 @@ const login = () => {
         </Grid>
 
         <Divider vertical fitted >
-          <Icon  fitted name="arrow right" />
+          <Icon fitted name="arrow right" />
         </Divider>
       </Segment>
-    </div>
-
+    </>
   );
 };
 
