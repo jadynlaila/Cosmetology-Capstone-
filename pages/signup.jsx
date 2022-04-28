@@ -11,24 +11,23 @@ import Signup from "../components/layout/SignupForm";
 
 
 const signup = () => {
-  
+
   return (
-    <div 
-    // style={{height: "100vh",backgroundImage: `url(/hair-background3.png)`, backgroundSize: "cover" , backgroundBlendMode: "saturation"}}
-    >
-      <div className="background-hairbrushes">
-        <Image
-        src={'/pexelimg1'}
-        />
-        <Image
-        src={'/pexelimg2'}
-        />
-      </div>
+    // <div
+    // // style={{height: "100vh",backgroundImage: `url(/hair-background3.png)`, backgroundSize: "cover" , backgroundBlendMode: "saturation"}}
+    // >
+    <>
+
+
       <Navbar />
+      <div className="background-hairbrushes"
+        style={{position:"absolute",bottom: "0", right:"0", width: '300px', height:"400px", backgroundImage: `url(/pexelimg2.jpg)`, backgroundSize:"cover", backgroundBlendMode: "saturation" }}
+        ></div>
+      
       <div className="signupPage">
-      <Signup/>
+        <Signup />
       </div>
-    </div>
+    </>
   );
 };
 
