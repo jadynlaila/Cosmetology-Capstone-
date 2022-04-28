@@ -33,41 +33,31 @@ const ClientList = () => {
     getActiveVisits();
   }, []);
 
+  
   const checkOut = async (id) => {
     try {
-      // const res = await axios.put(`${baseURL}/api/v1/client/checkOut`, { id });
-      // console.log(id);
-      // setClients((prev) => prev.filter((client) => client._id !== id));
-      // console.log(res.data);
-      // console.log(clients);
-
-      console.log(id);
+      // jadyn: refactor it so that when the form on CheckIn/CheckOut is submitted, it runs these functions, and the setClients(prev) thing down there will be done for both the active and upcomingClients thing
+      console.log(res.data);
+      console.log(clients);
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const checkOut = async (id) => {
-  //   try {
-  //! jadyn: refactor it so that when the form on CheckIn/CheckOut is submitted, it runs these functions, and the setClients(prev) thing down there will be done for both the active and upcomingClients thing
-  //     console.log(res.data);
-  //     console.log(clients);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  const checkIn = async (id, setIsActive, isActive) => {
+  
+  
+  const checkIn = async (checkInInfo, setOpen) => {
     try {
-      console.log(id);
-      setIsActive(!isActive);
-      // const res = await axios.put(`${baseURL}/api/v1/client/checkIn`, { id });
-      // console.log(id);
-      // setClients((prev) => prev.filter((client) => client._id !== id));
-
-      // //!need to also update the active clients somehow
-      // console.log(res.data);
-      // console.log(clients);
+      try {
+        console.log(checkInInfo);
+        const res = await axios.put(`${baseURL}/api/v1/visit/checkIn`, { checkInInfo });
+        console.log(res.data);
+        console.log(checkInInfo.visitInfo._id);
+        setUpcomingVisits((prev) => prev.filter((visit) => visit._id !== checkInInfo.visitInfo._id));
+        setActiveVisits((prev) => [checkInInfo.visitInfo, ...prev]);
+        setOpen(false);
+      } catch (error) {
+        console.log(error);
+      }
     } catch (error) {
       console.log(error);
     }

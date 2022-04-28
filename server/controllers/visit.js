@@ -81,6 +81,7 @@ const getUpcomingVisits = async (req, res) => {
 const checkIn = async (req, res) => {
   const { visitInfo, pin } = req.body.checkInInfo;
   try {
+
     const today = new Date();
     const date =
       today.getFullYear() +
@@ -96,17 +97,16 @@ const checkIn = async (req, res) => {
       return res.status(404).send("stylist not found");
     }
 
-    const visit = await VisitModel.findOneAndUpdate({
-      id: visitInfo._id,
-      checkIn: checkInTime
+    const visit = await VisitModel.findOne({
+      _id: visitInfo._id
     });
+    visit.checkIn = checkInTime
     console.log(`before active true ${visit}`)
     visit.active = true;
     await visit.save();
-    console.log(`before active true ${visit}`)
+    console.log(`after active true ${visit}`)
     
-    console.log(stylist, visitInfo, checkInTime);
-    return res.status(200).json(visit);
+    return res.status(200).json({visit});
   } catch (error) {
     console.log(error);
     return res.status(500).send("Error @ checkIn");

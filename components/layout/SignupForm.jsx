@@ -151,7 +151,7 @@ const Signup = () => {
         onSubmit={handleSubmit}
 
         >
-          {/* <Segment> */}
+          <Segment>
           {/* <ImgDropDiv
             handleChange={handleChange}
             inputRef={inputRef}

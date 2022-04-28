@@ -71,7 +71,7 @@ const CheckIn = ({visit, setIsActive, isActive, checkIn}) => {
             content="Submit"
             labelPosition="right"
             icon="checkmark"
-            onClick={handleSubmit}
+            onClick={() => checkIn(checkInInfo, setOpen)}
             //onSubmit={handleSubmit}
             positive
           />
