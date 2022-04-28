@@ -62,7 +62,8 @@
   border-radius: $radius;
   // border: 40px solid black;
   transition: all .5s ease-in;
-  width: 30rem;
+  width: 35rem;
+  // height: 90%;
   
   // !This should be fitted later for the form
   // height: 30rem;
@@ -100,3 +101,27 @@
 //   }
 // }
 
+
+
+#slideInModal > div.form-container > form > div:nth-child(1) > div > div{
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 20rem;
+  height: 20rem;
+}
+.dragNdrop-header{
+  line-height: 0%;
+  
+}
+
+.instructions{
+  line-height: 0 !important;
+  text-align: center;
+  font-size: 1.2rem;
+  transform: translate(-10px);
+  i{
+    transform: translate(100px, -25px) ;
+    max-height: 3rem;
+  }
+}

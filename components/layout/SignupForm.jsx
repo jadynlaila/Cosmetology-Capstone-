@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
+// import {useLocation} from "react-router-dom"
 import {
   Input,
   UI,
@@ -30,13 +31,14 @@ const Signup = () => {
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [teacherSelected, setTeacherSelected] = useState([]);
-  const [formLoading, setFormLoading] = useState(false)
+  // const [formLoading, setFormLoading] = useState(false)
   const [submitDisable, setSubmitDisable] = useState(true)
-  const [media, setMedia] = useState(null)
-  const [mediaPreview, setMediaPreview] = useState(null)
-  const inputRef = useRef(null)
+  // const [media, setMedia] = useState(null)
+  // const [mediaPreview, setMediaPreview] = useState(null)
+  // const inputRef = useRef(null)
   const [resHolder, setResHolder] = useState('')
   const [highlighted, setHighlighted] = useState(false)
+  // const location = useLocation()
 
   const [stylist, setStylist] = useState({
     profilePicURL: "",
@@ -149,8 +151,8 @@ const Signup = () => {
         onSubmit={handleSubmit}
 
         >
-          <Segment>
-          <ImgDropDiv
+          {/* <Segment> */}
+          {/* <ImgDropDiv
             handleChange={handleChange}
             inputRef={inputRef}
             highLighted={highlighted}
@@ -159,7 +161,10 @@ const Signup = () => {
             setMedia={setMedia}
             setMediaPreview={setMediaPreview}
             media={media}
-          />
+          /> */}
+
+          <label>Chose your Teacher</label>
+          {/* <Divider hidden /> */}
 
             {/* <label><h2>Chose your Teacher</h2></label>
             <Divider hidden />
@@ -224,7 +229,18 @@ const Signup = () => {
           icon="lightbulb"
           onClick={() => setIsTeacher(true)}
         />
-       
+        {/* {router.route('/login') ? "" : */}
+        {/* {location.pathName === "/login" ? "" : */}
+          < Button
+          content="Next"
+        labelPosition="right"
+        icon="arrow right"
+        onClick={() => setOutOfFocus(false)}
+        positive
+        />
+      {/* } */}
+        {/* } */}
+
       </footer>
 
       <SlideInMenu
@@ -236,5 +252,6 @@ const Signup = () => {
     </>
   );
 };
+
 
 export default Signup;
