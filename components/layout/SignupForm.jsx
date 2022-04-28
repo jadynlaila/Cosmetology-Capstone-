@@ -31,7 +31,7 @@ const Signup = () => {
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [teacherSelected, setTeacherSelected] = useState([]);
-  // const [formLoading, setFormLoading] = useState(false)
+  const [formLoading, setFormLoading] = useState(false)
   const [submitDisable, setSubmitDisable] = useState(true)
   // const [media, setMedia] = useState(null)
   // const [mediaPreview, setMediaPreview] = useState(null)
@@ -151,7 +151,7 @@ const Signup = () => {
         onSubmit={handleSubmit}
 
         >
-          {/* <Segment> */}
+          <Segment>
           {/* <ImgDropDiv
             handleChange={handleChange}
             inputRef={inputRef}
