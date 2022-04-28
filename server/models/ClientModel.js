@@ -29,6 +29,10 @@ const ClientSchema = new Schema({
         type: Date,
         required: [true, 'client must enter a dob']
     },
+    location: {
+        type: String,
+        enum: ['notCheckedIn', 'active', 'upcoming']
+    },
     
 
     //* all of these can be radio buttons on the form. ~~~~~~~~~~~

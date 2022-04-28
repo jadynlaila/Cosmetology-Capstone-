@@ -15,12 +15,14 @@ import {
   Segment,
   Radio
 } from "semantic-ui-react";
-import {setToken} from '../../pages/util/tokenHolder'
+
 import { baseURL } from "../../pages/util/baseURL";
 import SlideInMenu from "../Signup/SlideInMenu";
-import TeacherDropdown from "../Signup/TeacherDropdown";
 import ImgDropDiv from "./ImgDropDiv";
+import {setToken} from '../../pages/util/authUser'
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
+
+let cancel;
 
 const Signup = () => {
   const [isTeacher, setIsTeacher] = useState(false);
@@ -37,38 +39,39 @@ const Signup = () => {
   const [highlighted, setHighlighted] = useState(false)
 
   const [stylist, setStylist] = useState({
-    email: "",
+    profilePicURL: "",
+    teacher: "",
     name: "",
-    teacher: ""
+    email: "",
   })
 
-  const {email, name} = stylist;
+  const {email, name, teacher, profilePicURL} = stylist;
 
-  useEffect(() => {
-    const handleResTeach = async (e) => {
-      setLoading(true);
-      try {
-        const res = await axios.get(`${baseURL}/api/v1/teacher`);
+  // useEffect(() => {
+  //   const handleResTeach = async (e) => {
+  //     setLoading(true);
+  //     try {
+  //       const res = await axios.get(`${baseURL}/api/v1/teacher`);
 
-        if (res.data.length === 0) {
-          setTeachers([]);
-          setLoading(false);
-        } else {
-          setTeachers(res.data);
-          console.log("Test Teach", res.data);
-        }
-      } catch (error) {
-        console.log("Error res signup", error);
-      }
-      setLoading(false);
-    };
-    handleResTeach();
-  }, []);
+  //       if (res.data.length === 0) {
+  //         setTeachers([]);
+  //         setLoading(false);
+  //       } else {
+  //         setTeachers(res.data);
+  //         console.log("Test Teach", res.data);
+  //       }
+  //     } catch (error) {
+  //       console.log("Error res signup", error);
+  //     }
+  //     setLoading(false);
+  //   };
+  //   handleResTeach();
+  // }, []);
 
-  const handleClick = async (e) => {
-    const { value } = e.target;
-    setTeacherSelected(value);
-  };
+  // const handleClick = async (e) => {
+  //   const { value } = e.target;
+  //   setTeacherSelected(value);
+  // };
 
   const handleChange = (e) => {
     const {name, value, files} = e.target;
@@ -79,6 +82,7 @@ const Signup = () => {
     } else {
       setStylist((prev) => ({...prev, [name]: value}))
     }
+    console.log(stylist)
 
   }
 
@@ -95,6 +99,7 @@ const Signup = () => {
       })
       const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
       profilePicURL = res.data.src;
+      console.log("IMg src", profilePicURL);
     }
     if(media !== null && !profilePicURL){
       setFormLoading(false)
@@ -102,8 +107,9 @@ const Signup = () => {
     }
     try {
       const res = await axios.post(`${baseURL}/api/v1/signup/stylist`, {
-        stylist, profilePicURL
+        stylist
       })
+      console.log("Test resForm",res.data);
       setToken(res.data)
     } catch (error) {
       console.log("Eroro", error);
@@ -141,6 +147,7 @@ const Signup = () => {
         <Form
         loading={formLoading}
         onSubmit={handleSubmit}
+
         >
           <Segment>
           <ImgDropDiv
@@ -154,7 +161,7 @@ const Signup = () => {
             media={media}
           />
 
-            <label><h2>Chose your Teacher</h2></label>
+            {/* <label><h2>Chose your Teacher</h2></label>
             <Divider hidden />
             {teachers.map((teacher) => {
               return (
@@ -168,7 +175,17 @@ const Signup = () => {
                   />
               );
             })}
-            <Divider hidden />
+            <Divider hidden /> */}
+            <Form.Input
+            required
+            label="Teacher Name"
+            placeholder="Teacher Name"
+            name="teacher"
+            value={teacher}
+            onChange={handleChange}
+            icon="user"
+            iconPosition="left" 
+            />
             <Form.Input
             required
             label="Name"
@@ -190,13 +207,13 @@ const Signup = () => {
             iconPosition='left'
             type="email" 
             />
-          </Segment>
           <Button
          icon="signup"
          content="Signup"
          type="submit"
          color="green"
-        />
+         />
+         </Segment>
         </Form>
       </div>
       <Divider fitted />

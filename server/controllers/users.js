@@ -8,9 +8,11 @@ const defaultProfilePic = require("../util/defaultPic");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const isEmail = require("validator/lib/isEmail");
+
 const validatorPhone = require("validator/lib/isMobilePhone");
 const isAddress = /\d+\w+\s\w+\s\w+/;
+
+const isEmail = /[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@west-mec.org/gm;
 
 const getPinValid = async (req, res) => {
   const { pin } = req.params;
@@ -51,13 +53,19 @@ if there was no teacher code entered, *then* this will run
 req.body {clients, teacher, email, pin, s1hours, s2hours, s3hours, s4hours }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createStylist = async (req, res) => {
+
+  console.log(req.body);
   const {
     name,
     email,
     teacher,
     profilePicURL
-  } = req.body;
+  } = req.body.stylist;
 
+  const test = isEmail.test(email);
+  if(!(test || isEmail.test(email))){
+    return res.status(401).send("Invalid Email")
+  }
 
   try {
     let stylist;
@@ -73,9 +81,20 @@ const createStylist = async (req, res) => {
 
 
     //! Didnt know what to do with the hours
+    const payload = {stylistID: stylist._id};
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      {expiresIn: "2d"},
+      (err, token) => {
+        if(err) throw err;
+        res.status(200).json(token)
+      }
+    )
 
     stylist = await stylist.save()
     return res.status(200).json(stylist)
+
 
   } catch (error) {
     console.log(error);
