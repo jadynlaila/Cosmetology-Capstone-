@@ -3,12 +3,19 @@ import { baseURL } from "../../pages/util/baseURL";
 import axios from "axios";
 import { Segment, Divider } from "semantic-ui-react";
 
-const ActiveClients = ({visit, setActiveVisits, setUpcomingVisits, activeVisits, upcomingVisits, checkIn, open, setOpen}) => {
-
-  
+const ActiveClients = ({
+  visit,
+  setActiveVisits,
+  setUpcomingVisits,
+  activeVisits,
+  upcomingVisits,
+  checkIn,
+  open,
+  setOpen,
+}) => {
   return (
     <>
-      <div className="person up" onClick={() => checkOut(visit)} >
+      <div className="person up" onClick={() => checkOut(visit)}>
         <h5 className="name">{visit.client.name}</h5>
         <h5 className="email">{visit.client.email}</h5>
         <h5 className="date">{visit.date}</h5>
