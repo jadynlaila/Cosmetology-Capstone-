@@ -224,7 +224,7 @@ const Signup = () => {
             iconPosition='left'
             type="email" 
             /> */}
-          {/* </Segment> */}
+          </Segment>
           {/* <Button
           icon="signup"
           content="Signup"
@@ -232,6 +232,7 @@ const Signup = () => {
           color="green"
         /> */}
         </Form>
+        <Divider />
       </div>
       <Divider fitted />
       <footer>
@@ -280,6 +281,7 @@ const Signup = () => {
         setOutOfFocus={setOutOfFocus}
         isTeacher={isTeacher}
         setIsTeacher={setIsTeacher}
+        teachers={teachers}
       />
     </>
   );
