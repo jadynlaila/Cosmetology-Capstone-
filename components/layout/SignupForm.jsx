@@ -224,7 +224,7 @@ const Signup = () => {
             iconPosition='left'
             type="email" 
             /> */}
-          {/* </Segment> */}
+          </Segment>
           {/* <Button
           icon="signup"
           content="Signup"
