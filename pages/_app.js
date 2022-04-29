@@ -9,8 +9,6 @@ import axios from 'axios'
 
 function MyApp({ Component, pageProps }) {
   return <Component user={pageProps.user} {...pageProps} />
-
-  
 }
 
 MyApp.getInitialProps = async({ctx, Component}) => {

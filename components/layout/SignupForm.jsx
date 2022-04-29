@@ -232,6 +232,7 @@ const Signup = () => {
           color="green"
         /> */}
         </Form>
+        <Divider />
       </div>
       <Divider fitted />
       <footer>
@@ -280,6 +281,7 @@ const Signup = () => {
         setOutOfFocus={setOutOfFocus}
         isTeacher={isTeacher}
         setIsTeacher={setIsTeacher}
+        teachers={teachers}
       />
     </>
   );
