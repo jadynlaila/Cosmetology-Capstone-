@@ -41,8 +41,6 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
   }
 
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true)
