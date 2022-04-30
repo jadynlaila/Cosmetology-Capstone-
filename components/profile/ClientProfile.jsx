@@ -123,6 +123,13 @@ const ClientProfile = () => {
             onClick={() => setOutOfFocus(true)}
             negative
           />
+          <Button
+            content="Edit"
+            labelPosition="edit"
+            icon="edit"
+            // onClick={() => setOutOfFocus(true)}
+            negative
+          />
         </footer>
       </div>
     </>
