@@ -34,11 +34,13 @@ const ClientList = () => {
   }, []);
 
   
-  const checkOut = async (id) => {
+  const checkOut = async (checkOutInfo, setOpen) => {
     try {
-      // jadyn: refactor it so that when the form on CheckIn/CheckOut is submitted, it runs these functions, and the setClients(prev) thing down there will be done for both the active and upcomingClients thing
+      console.log(checkOutInfo);
+      const res = await axios.put(`${baseURL}/api/v1/visit/checkOut`, {checkOutInfo});
       console.log(res.data);
-      console.log(clients);
+      setActiveVisits((prev) => prev.filter((visit) => visit._id !== checkOutInfo.visitInfo._id))
+      setOpen(false);
     } catch (error) {
       console.log(error);
     }

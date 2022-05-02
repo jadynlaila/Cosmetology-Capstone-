@@ -20,19 +20,7 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
     setCheckInInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      console.log(checkInInfo);
-      const res = await axios.put(`${baseURL}/api/v1/visit/checkIn`, {
-        checkInInfo,
-      });
-      console.log(res.data);
-      setOpen(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
 
   return (
     <>

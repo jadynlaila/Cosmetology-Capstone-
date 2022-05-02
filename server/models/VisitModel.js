@@ -25,10 +25,10 @@ const VisitSchema = new Schema({
     checkOut: { 
         type: Date
     },
-    active: {
-        type: Boolean,
-        required: true,
-        default: false
+    location: {
+        type: String,
+        default: 'ready',
+        enum: ['ready', 'upcoming', 'active', 'completed']
     }
 })
 

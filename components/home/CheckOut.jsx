@@ -3,36 +3,23 @@ import axios from "axios";
 import { baseURL } from "../../pages/util/baseURL";
 import { Modal, Form, Button } from "semantic-ui-react";
 
-const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
+const CheckOut = ({ visit, setIsActive, isActive, checkOut }) => {
   const [open, setOpen] = useState(false);
   const [errorMsg, seterrorMsg] = useState(null);
   const [openAdvancedInfo, setOpenAdvancedInfo] = useState(false);
 
-  const [checkInInfo, setCheckInInfo] = useState({
+  const [checkOutInfo, setCheckOutInfo] = useState({
     pin,
     visitInfo: visit,
   });
 
-  const { pin } = checkInInfo;
+  const { pin } = checkOutInfo;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCheckInInfo((prev) => ({ ...prev, [name]: value }));
+    setCheckOutInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      console.log(checkInInfo);
-      const res = await axios.put(`${baseURL}/api/v1/visit/checkIn`, {
-        checkInInfo,
-      });
-      console.log(res.data);
-      setOpen(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <>
@@ -45,7 +32,7 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
         trigger={
           <div
             className="person up"
-            onClick={() => checkIn(visit, setIsActive, isActive)}
+            onClick={() => checkOut(visit, setIsActive, isActive)}
           >
             <h5 className="name">{visit.client.name}</h5>
             <h5 className="email">{visit.client.email}</h5>
@@ -79,7 +66,7 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
             content="Submit"
             labelPosition="right"
             icon="checkmark"
-            onClick={() => checkIn(checkInInfo, setOpen)}
+            onClick={() => checkOut(checkOutInfo, setOpen)}
             //onSubmit={handleSubmit}
             positive
           />
@@ -89,4 +76,4 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
   );
 };
 
-export default CheckIn;
+export default CheckOut;
