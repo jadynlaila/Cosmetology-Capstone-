@@ -2,6 +2,8 @@ const StylistModel = require("../models/StylistModel");
 const ClientModel = require("../models/ClientModel");
 const TeacherModel = require("../models/TeacherModel");
 const VisitModel = require("../models/VisitModel");
+const { createFalse } = require("typescript");
+const { filter } = require("language-tags");
 
 const createVisit = async (req, res) => {
   const {
@@ -54,11 +56,10 @@ const getVisits = async (req, res) => {
 
 const getActiveVisits = async (req, res) => {
   try {
-    const activeVisits = await VisitModel.find({ active: true }).populate(
+    const activeVisits = await VisitModel.find({ location: 'active' }).populate(
       "client"
     );
     return res.status(200).json(activeVisits);
-    8;
   } catch (error) {
     console.log(error);
     res.status(50).send("error @ getActiveVisits");
@@ -67,10 +68,29 @@ const getActiveVisits = async (req, res) => {
 
 const getUpcomingVisits = async (req, res) => {
   try {
-    const upcomingVisits = await VisitModel.find({}).populate("client");
-    upcomingVisits.map((visit) => {
-      // console.log(visit);
+    const date = new Date();
+    const oneDay = 1000 * 60 * 60 * 24 
+    date.setTime(date.getTime() + oneDay)
+    const readyVisits = await VisitModel.find({location: 'ready'}).populate("client");
+    // const date =
+    //   today.getFullYear() +
+    //   "-" +
+    //   (today.getMonth() + 1) +
+    //   "-" +
+    //   today.getDate();
+
+    const now = date.getTime()
+
+    readyVisits.filter(each => each.date.getTime() < now + oneDay || now - oneDay)
+
+    readyVisits.map((visit) => {
+      const visitDate = visit.date;
+      console.log(visitDate);
+      console.log(visitDate.toString());
+      console.log(date)
+      console.log(date.toString())
     });
+    const upcomingVisits = [];
     res.status(200).json(upcomingVisits);
   } catch (error) {
     console.log(error);
@@ -102,7 +122,7 @@ const checkIn = async (req, res) => {
     });
     visit.checkIn = checkInTime
     console.log(`before active true ${visit}`)
-    visit.active = true;
+    visit.location = 'active';
     await visit.save();
     console.log(`after active true ${visit}`)
     
@@ -114,7 +134,7 @@ const checkIn = async (req, res) => {
 };
 
 const checkOut = async (req, res) => {
-  const { visitInfo, pin } = req.body.checkInInfo;
+  const { visitInfo, pin } = req.body.checkOutInfo;
   try {
     const today = new Date();
     const date =
@@ -131,11 +151,12 @@ const checkOut = async (req, res) => {
       return res.status(404).send("stylist not found");
     }
 
-    const visit = await VisitModel.findOneAndUpdate({
-      id: visitInfo._id,
-      checkOut: checkOutTime,
-      active: true
+    const visit = await VisitModel.findOne({
+      _id: visitInfo._id
     });
+    visit.checkOut = checkOutTime
+    visit.location = 'completed';
+    await visit.save();
     
     
     

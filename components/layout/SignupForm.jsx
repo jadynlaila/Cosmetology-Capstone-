@@ -26,6 +26,9 @@ import { data } from "jquery";
 // import router from "../../server/routes/signupRoutes";
 // import ImgDropDiv from "./ImgDropDiv";
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
+import router from "../../server/routes/signupRoutes";
+import ImgDropDiv from "./ImgDropDiv";
+import { setOutOfFocus } from "../Signup/SlideInMenu"
 
 const Signup = () => {
 
@@ -44,22 +47,22 @@ const Signup = () => {
   const [teachers, setTeachers] = useState([]);
   const [teacherSelected, setTeacherSelected] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [formLoading, setFormLoading] = useState(false)
+  const [formLoading, setFormLoading] = useState(false)
   const [submitDisable, setSubmitDisable] = useState(true)
-  // const [media, setMedia] = useState(null)
-  // const [mediaPreview, setMediaPreview] = useState(null)
-  // const inputRef = useRef(null)
+  const [media, setMedia] = useState(null)
+  const [mediaPreview, setMediaPreview] = useState(null)
+  const inputRef = useRef(null)
   const [resHolder, setResHolder] = useState('')
   const [highlighted, setHighlighted] = useState(false)
   // const location = useLocation()
 
-  // const [stylist, setStylist] = useState({
-  //   email: "",
-  //   name: "",
-  //   teacher: ""
-  // })
+  const [stylist, setStylist] = useState({
+    email: "",
+    name: "",
+    teacher: ""
+  })
 
-  // const {email, name} = stylist;
+  const { email, name } = stylist;
 
   useEffect(() => {
     const handleResTeach = async (e) => {
@@ -87,47 +90,47 @@ const Signup = () => {
     setTeacherSelected(value);
   };
 
-  // const handleChange = (e) => {
-  //   const {name, value, files} = e.target;
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
 
-  //   if(name === "media" && files.length){
-  //     setMedia(files[0])
-  //     setMediaPreview(() => URL.createObjectURL(files[0]))
-  //   } else {
-  //     setStylist((prev) => ({...prev, [name]: value}))
-  //   }
+    if (name === "media" && files.length) {
+      setMedia(files[0])
+      setMediaPreview(() => URL.createObjectURL(files[0]))
+    } else {
+      setStylist((prev) => ({ ...prev, [name]: value }))
+    }
 
-  // }
+  }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setFormLoading(true)
-  //   let profilePicURL;
-  //   if(media != null){
-  //     const formData = new FormData();
-  //     formData.append("image", media, {
-  //       headers: {
-  //         "Content=Type": "multipart/form-data"
-  //       }
-  //     })
-  //     const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
-  //     profilePicURL = res.data.src;
-  //   }
-  //   if(media !== null && !profilePicURL){
-  //     setFormLoading(false)
-  //     console.log("Error uploading Image");
-  //   }
-  //   try {
-  //     const res = await axios.post(`${baseURL}/api/v1/signup/stylist`, {
-  //       stylist, profilePicURL
-  //     })
-  //     setToken(res.data)
-  //   } catch (error) {
-  //     console.log("Eroro", error);
-  //   }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormLoading(true)
+    let profilePicURL;
+    if (media != null) {
+      const formData = new FormData();
+      formData.append("image", media, {
+        headers: {
+          "Content=Type": "multipart/form-data"
+        }
+      })
+      const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
+      profilePicURL = res.data.src;
+    }
+    if (media !== null && !profilePicURL) {
+      setFormLoading(false)
+      console.log("Error uploading Image");
+    }
+    try {
+      const res = await axios.post(`${baseURL}/api/v1/signup/stylist`, {
+        stylist, profilePicURL
+      })
+      setToken(res.data)
+    } catch (error) {
+      console.log("Eroro", error);
+    }
 
-  //   setFormLoading(false)
-  // };
+    setFormLoading(false)
+  };
 
   const router = useRouter()
   // const pathname = router.pathname
@@ -139,12 +142,12 @@ const Signup = () => {
       <Header>&nbsp;</Header>
       {/* FORM FIELD */}
       <div className="form-container">
-        {teacherDivOpen ?
+        {/* {teacherDivOpen ?
           <Message positive>
             Select your name from the Dropdown
           </Message> :
           ""
-        }
+        } */}
         {/* <>
           <Label>
             <h3>Who is your Teacher?</h3>
@@ -153,13 +156,13 @@ const Signup = () => {
             <Dropdown.Menu>
               {teachers.map((teacher) => {
                 return (
-                  // <div key={teacher._id} onClick={(e) => handleClick()}>
-                  //   <h2>{teacher.name}</h2>
-                  // </div>
+                  <div key={teacher._id} onClick={(e) => handleClick()}>
+                    <h2>{teacher.name}</h2>
+                  </div>
                   // this will get the teacher by their id and display the text and the image property
-                  <Dropdown.Item onClick={(e) => handleClick()} key={teacher._id} {...teacher}>
-                    {teacher.name}
-                  </Dropdown.Item>
+                  // <Dropdown.Item onClick={(e) => handleClick()} key={teacher._id} {...teacher}>
+                  //   {teacher.name}
+                  // </Dropdown.Item>
                 );
               })}
               </Dropdown.Menu>
@@ -167,11 +170,11 @@ const Signup = () => {
           </Dropdown>
         </> */}
         <Form
-        // loading={formLoading}
-        // onSubmit={handleSubmit}
+          loading={formLoading}
+          onSubmit={handleSubmit}
         >
           {/* <Segment> */}
-            {/* <ImgDropDiv
+          {/* <ImgDropDiv
             handleChange={handleChange}
             inputRef={inputRef}
             highLighted={highlighted}
@@ -182,33 +185,34 @@ const Signup = () => {
             media={media}
           /> */}
 
-            <label>{teacherDivOpen ? "" : "Select Your Teacher"}</label>
-            {/* <Divider hidden /> */}
+          <label>{teacherDivOpen ? "" : "Select Your Teacher"}</label>
+          {/* <Divider hidden /> */}
 
 
-            <Dropdown
-              placeholder='Select Teacher'
-              require
-              fluid
-              selection
-              options={teachers.map((teacher) => {
-                return {
-                  key: teacher._id,
-                  text: teacher.name,
-                  value: teacher._id
-                }
-              })}
-              // !logs the value: teacher._id
-              onChange={(e, data) => console.log(data.value)}
-            // control='input'
-            // label={teacher.name}
-            // type='radio'
-            // name="htmlRadios"
-            // key={teacher._id}
-            />
-            {/* ); */}
-            <Divider hidden />
-            {/* <Form.Input
+          <Dropdown
+            placeholder='Select Teacher'
+            require
+            fluid
+            selection
+            options={teachers.map((teacher) => {
+              return {
+                key: teacher._id,
+                text: teacher.name,
+                value: teacher._id
+              }
+            })}
+            // !logs the value: teacher._id
+            onChange={(e, data) => console.log(data.value)}
+          // control='input'
+          // label={teacher.name}
+          // type='radio'
+          // name="htmlRadios"
+          // key={teacher._id}
+          />
+          </Form>
+          {/* ); */}
+          {/* <Divider hidden /> */}
+          {/* <Form.Input
             required
             label="Name"
             placeholder="Name"
@@ -235,7 +239,7 @@ const Signup = () => {
           content="Signup"
           type="submit"
           color="green"
-        /> */}
+        />
         </Form>
         {/* <Divider /> */}
       </div>

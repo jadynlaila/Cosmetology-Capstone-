@@ -6,10 +6,6 @@ import CheckIn from "./CheckIn";
 
 const UpcomingClients = ({
   visit,
-  setActiveVisits,
-  setUpcomingVisits,
-  activeVisits,
-  upcomingVisits,
   checkIn,
   open,
   setOpen,
@@ -28,29 +24,18 @@ const UpcomingClients = ({
 
   const { pin } = setCheckInInfo;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      console.log(checkInInfo);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  const handleClick = async (e) => {};
 
   return (
     <>
-      <>
-        <CheckIn
-          open={open}
-          setOpen={setOpen}
-          visit={visit}
-          setIsActive={setIsActive}
-          isActive={isActive}
-          checkIn={checkIn}
-        />
-      </>
+      <CheckIn
+        open={open}
+        setOpen={setOpen}
+        visit={visit}
+        setIsActive={setIsActive}
+        isActive={isActive}
+        checkIn={checkIn}
+      />
 
       <span className="underlined"></span>
     </>

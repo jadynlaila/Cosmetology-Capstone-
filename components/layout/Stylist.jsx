@@ -8,24 +8,22 @@ const Stylist = ({ user, userId, teachers }) => {
   const [loading, setLoading] = useState(false);
   const [stylistLoading, setStylistLoading] = useState(false);
 
-
-    const handleGetStylist = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get(`${baseURL}/api/v1/teacher/stylists`);
-        setStylists(res.data);
-        console.log("test 4", res.data);
-      } catch (error) {
-        console.log(error);
-      }
-      setLoading(false);
+  const handleGetStylist = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${baseURL}/api/v1/teacher/stylists`);
+      setStylists(res.data);
+      console.log("test 4", res.data);
+    } catch (error) {
+      console.log(error);
     }
-  
+    setLoading(false);
+  };
+
   return (
-    
     <div>
       {stylists.map((stylist) => {
-      console.log("test 4",stylists)
+        console.log("test 4", stylists);
         return (
           <List key={stylist._id} divided verticalAlign="middle">
             <List.Item>
@@ -50,8 +48,7 @@ const Stylist = ({ user, userId, teachers }) => {
           </List>
         );
       })}
-      </div>
-
+    </div>
   );
 };
 

@@ -17,7 +17,7 @@ const personalProfile = () => {
       <div className="profile">
         {/* <StudentProfile /> */}
         {/* <TeacherProfile /> */}
-        <ClientProfile />
+        <StudentProfile />
       </div>
     </>
   );
