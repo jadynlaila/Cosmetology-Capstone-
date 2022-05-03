@@ -22,6 +22,7 @@ import { baseURL } from "../../pages/util/baseURL";
 import SlideInMenu from "../Signup/SlideInMenu";
 import TeacherDropdown from "../Signup/TeacherDropdown";
 import { useRouter } from 'next/router'
+import { data } from "jquery";
 // import router from "../../server/routes/signupRoutes";
 // import ImgDropDiv from "./ImgDropDiv";
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
@@ -33,7 +34,7 @@ const Signup = () => {
   // ! This should be used as the conditional to retrieve for teachers to login
   const [teacherDivOpen, setTeacherDivOpen] = useState(false)
   // 
-  
+
   // * This is used exclusively on the signinPage, its just used as the conditional to open slideInMenu.jsx
   const [isTeacher, setIsTeacher] = useState(false);
   // * this is the same as isTeacher but its just the default, a more appropriate name would be isStudent
@@ -130,6 +131,9 @@ const Signup = () => {
 
   const router = useRouter()
   // const pathname = router.pathname
+  const handleDropDownSelect = (event, data) => {
+    console.log(data.value);
+  };
   return (
     <>
       <Header>&nbsp;</Header>
@@ -166,8 +170,8 @@ const Signup = () => {
         // loading={formLoading}
         // onSubmit={handleSubmit}
         >
-          <Segment>
-          {/* <ImgDropDiv
+          {/* <Segment> */}
+            {/* <ImgDropDiv
             handleChange={handleChange}
             inputRef={inputRef}
             highLighted={highlighted}
@@ -178,32 +182,33 @@ const Signup = () => {
             media={media}
           /> */}
 
-          <label>{teacherDivOpen ? "" : "Select Your Teacher"}</label>
-          {/* <Divider hidden /> */}
+            <label>{teacherDivOpen ? "" : "Select Your Teacher"}</label>
+            {/* <Divider hidden /> */}
 
 
-          <Dropdown
-            placeholder='Select Teacher'
-            require
-            fluid
-            selection
-            options={teachers.map((teacher) => {
-              return {
-                key: teacher._id,
-                text: teacher.name,
-                value: teacher._id
-              }
-            })}
-          // control='input'
-          // label={teacher.name}
-          // type='radio'
-          // name="htmlRadios"
-          // key={teacher._id}
-          />
-
-          {/* ); */}
-          <Divider hidden />
-          {/* <Form.Input
+            <Dropdown
+              placeholder='Select Teacher'
+              require
+              fluid
+              selection
+              options={teachers.map((teacher) => {
+                return {
+                  key: teacher._id,
+                  text: teacher.name,
+                  value: teacher._id
+                }
+              })}
+              // !logs the value: teacher._id
+              onChange={(e, data) => console.log(data.value)}
+            // control='input'
+            // label={teacher.name}
+            // type='radio'
+            // name="htmlRadios"
+            // key={teacher._id}
+            />
+            {/* ); */}
+            <Divider hidden />
+            {/* <Form.Input
             required
             label="Name"
             placeholder="Name"
@@ -224,7 +229,7 @@ const Signup = () => {
             iconPosition='left'
             type="email" 
             /> */}
-          </Segment>
+          {/* </Segment> */}
           {/* <Button
           icon="signup"
           content="Signup"
@@ -232,7 +237,7 @@ const Signup = () => {
           color="green"
         /> */}
         </Form>
-        <Divider />
+        {/* <Divider /> */}
       </div>
       <Divider fitted />
       <footer>
@@ -243,11 +248,11 @@ const Signup = () => {
           <Button
             content="I am a Teacher"
             labelPosition="left"
-            icon={teacherDivOpen? "check" : "lightbulb"}
-            color={teacherDivOpen? "grey" : "green"}
-            onClick={() => {setTeacherDivOpen(!teacherDivOpen)}}
-            
-            
+            icon={teacherDivOpen ? "check" : "lightbulb"}
+            color={teacherDivOpen ? "grey" : "green"}
+            onClick={() => { setTeacherDivOpen(!teacherDivOpen) }}
+
+
           />
           :
 
@@ -273,7 +278,7 @@ const Signup = () => {
             positive
           />
         }
-        
+
       </footer>
 
       <SlideInMenu
