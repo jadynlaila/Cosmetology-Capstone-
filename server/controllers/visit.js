@@ -80,16 +80,17 @@ const getUpcomingVisits = async (req, res) => {
     //   today.getDate();
 
     const now = date.getTime()
+    const visits = readyVisits.filter(each => each.date.getTime() > now + oneDay || each.date.getTime() < now - oneDay)
+    console.log(`name and name3 should log ${visits}`);
 
-    readyVisits.filter(each => each.date.getTime() < now + oneDay || now - oneDay)
 
-    readyVisits.map((visit) => {
-      const visitDate = visit.date;
-      console.log(visitDate);
-      console.log(visitDate.toString());
-      console.log(date)
-      console.log(date.toString())
-    });
+    // readyVisits.map((visit) => {
+    //   const visitDate = visit.date;
+    //   console.log(visitDate);
+    //   console.log(visitDate.toString());
+    //   console.log(date)
+    //   console.log(date.toString())
+    // });
     const upcomingVisits = [];
     res.status(200).json(upcomingVisits);
   } catch (error) {

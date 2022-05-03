@@ -41,4 +41,4 @@ const StylistSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model("Stylist", StylistSchema);
+module.exports =mongoose.models.Stylist || mongoose.model("Stylist", StylistSchema);
