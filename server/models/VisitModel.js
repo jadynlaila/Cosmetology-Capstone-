@@ -27,8 +27,8 @@ const VisitSchema = new Schema({
     },
     location: {
         type: String,
-        default: 'ready',
-        enum: ['ready', 'upcoming', 'active', 'completed']
+        default: 'upcoming',
+        enum: ['upcoming', 'active', 'completed']
     }
 })
 

@@ -68,25 +68,32 @@ const getActiveVisits = async (req, res) => {
 
 const getUpcomingVisits = async (req, res) => {
   try {
-    const date = new Date();
-    const oneDay = 1000 * 60 * 60 * 24 
-    date.setTime(date.getTime() + oneDay)
-    const readyVisits = await VisitModel.find({location: 'ready'}).populate("client");
-    // const date =
+    // const today = new Date();
+    // const oneDay = 1000 * 60 * 60 * 24 
+    // date.setTime(date.getTime() + oneDay)
+    let upcomingVisits = await VisitModel.find({location: 'upcoming'}).populate("client");
+    console.log(upcomingVisits);
+    upcomingVisits = upcomingVisits.sort(function(a,b){
+      console.log(b.date, a.date);
+      return a.date - b.date;
+    });
+    console.log(upcomingVisits);
+    // const dateee =
     //   today.getFullYear() +
     //   "-" +
     //   (today.getMonth() + 1) +
     //   "-" +
     //   today.getDate();
 
-    const now = date.getTime()
-    const visits = readyVisits.filter(each => each.date.getTime() > now + oneDay || each.date.getTime() < now - oneDay)
-    console.log(`name and name3 should log ${visits}`);
+    // const now = date.getTime()
+    // const visits = readyVisits.filter(each => each.date.getTime() > now + oneDay || each.date.getTime() < now - oneDay)
+    // console.log(`name and name3 should log ${visits}`);
     
 
-    readyVisits.map((visit) => {
-      console.log(visit.date.toString().split('-'));
-    })
+    // console.log(dateee.toString());
+    // readyVisits.map((visit) => {
+    //   console.log(visit.date.toString());
+    // })
 
 
     // readyVisits.map((visit) => {
@@ -96,7 +103,6 @@ const getUpcomingVisits = async (req, res) => {
     //   console.log(date)
     //   console.log(date.toString())
     // });
-    const upcomingVisits = [];
     res.status(200).json(upcomingVisits);
   } catch (error) {
     console.log(error);
