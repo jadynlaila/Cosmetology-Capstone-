@@ -82,6 +82,11 @@ const getUpcomingVisits = async (req, res) => {
     const now = date.getTime()
     const visits = readyVisits.filter(each => each.date.getTime() > now + oneDay || each.date.getTime() < now - oneDay)
     console.log(`name and name3 should log ${visits}`);
+    
+
+    readyVisits.map((visit) => {
+      console.log(visit.date.toString().split('-'));
+    })
 
 
     // readyVisits.map((visit) => {
