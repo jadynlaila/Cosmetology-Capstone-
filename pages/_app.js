@@ -12,29 +12,5 @@ function MyApp({ Component, pageProps }) {
   return <Component />
 }
 
-// MyApp.getInitialProps = async({ctx, Component}) => {
-//   const {token} = parseCookies(ctx)
-
-//   let pageProps = {};
-
-//   if(Component.getInitialProps){
-//     pageProps = await Component.pageProps(ctx)
-//   }
-
-//   const protectedRoutes = ['/[user]'];
-//   const isProtectedRoute = protectedRoutes.includes(ctx.pathname)
-
-//   if(!token){
-//     isProtectedRoute && redirectUser(ctx, '/signup/login')
-//   } else {
-//     try {
-//       const res = await axios.get()
-//     } catch (error) {
-//       destroyCookie(ctx, "token")
-//       redirectUser(ctx, "/signup/login")
-//     }
-//   }
-//   return {pageProps}
-// }
 
 export default MyApp

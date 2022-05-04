@@ -3,7 +3,7 @@ import { Grid, Form, Divider, Button, Icon, Ui, Fluid, Input, Container, Modal, 
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
-import Signup from "../components/layout/SignupForm";
+// import Signup from "../components/layout/SignupForm";
 // import Signup from "../components/layout/SignupForm";
 
 // import background from "../public/school-background.svg"
@@ -14,9 +14,6 @@ import Signup from "../components/layout/SignupForm";
 const signup = () => {
 
   return (
-    // <div
-    // // style={{height: "100vh",backgroundImage: `url(/hair-background3.png)`, backgroundSize: "cover" , backgroundBlendMode: "saturation"}}
-    // >
     <>
 
 
@@ -26,7 +23,7 @@ const signup = () => {
         ></div>
       
       <div className="signupPage">
-        <Signup />
+        {/* <Signup/> */}
       </div>
     </>
   );

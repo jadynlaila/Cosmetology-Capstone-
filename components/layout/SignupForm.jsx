@@ -42,7 +42,7 @@ const Signup = () => {
     teacher: ""
   })
 
-  const {email, name} = stylist;
+  const { email, name } = stylist;
 
   useEffect(() => {
     const handleResTeach = async (e) => {
@@ -71,13 +71,13 @@ const Signup = () => {
   };
 
   const handleChange = (e) => {
-    const {name, value, files} = e.target;
+    const { name, value, files } = e.target;
 
-    if(name === "media" && files.length){
+    if (name === "media" && files.length) {
       setMedia(files[0])
       setMediaPreview(() => URL.createObjectURL(files[0]))
     } else {
-      setStylist((prev) => ({...prev, [name]: value}))
+      setStylist((prev) => ({ ...prev, [name]: value }))
     }
 
   }
@@ -86,7 +86,7 @@ const Signup = () => {
     e.preventDefault();
     setFormLoading(true)
     let profilePicURL;
-    if(media != null){
+    if (media != null) {
       const formData = new FormData();
       formData.append("image", media, {
         headers: {
@@ -96,7 +96,7 @@ const Signup = () => {
       const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
       profilePicURL = res.data.src;
     }
-    if(media !== null && !profilePicURL){
+    if (media !== null && !profilePicURL) {
       setFormLoading(false)
       console.log("Error uploading Image");
     }
@@ -139,8 +139,8 @@ const Signup = () => {
           </Dropdown>
         </> */}
         <Form
-        loading={formLoading}
-        onSubmit={handleSubmit}
+          loading={formLoading}
+          onSubmit={handleSubmit}
         >
           <Segment>
           <ImgDropDiv

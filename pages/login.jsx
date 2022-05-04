@@ -79,7 +79,7 @@ const login = () => {
       ></div>
       <Navbar />
       <Segment style={{background: "transparent"}}>
-        <Grid columns={2} centered>
+        <Grid columns={2} centered inverted>
           <Grid.Column column={1} centered>
             <div className="split-screen-container" >
               <Signup />

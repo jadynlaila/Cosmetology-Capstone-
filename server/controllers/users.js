@@ -5,7 +5,6 @@ const VisitModel = require("../models/VisitModel");
 
 
 const defaultProfilePic = require("../util/defaultPic");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 
