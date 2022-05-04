@@ -13,13 +13,13 @@ import {
   Button,
   Dropdown,
   Segment,
-  Radio
+  Radio,
 } from "semantic-ui-react";
 import { baseURL } from "../../pages/util/baseURL";
 import SlideInMenu from "../Signup/SlideInMenu";
 import TeacherDropdown from "../Signup/TeacherDropdown";
 import ImgDropDiv from "./ImgDropDiv";
-import {setToken} from '../../pages/util/authUser'
+import { setToken } from "../../pages/util/authUser";
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
 
 const Signup = () => {
@@ -28,21 +28,23 @@ const Signup = () => {
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [teacherSelected, setTeacherSelected] = useState([]);
-  const [formLoading, setFormLoading] = useState(false)
-  const [submitDisable, setSubmitDisable] = useState(true)
-  const [media, setMedia] = useState(null)
-  const [mediaPreview, setMediaPreview] = useState(null)
-  const inputRef = useRef(null)
-  const [resHolder, setResHolder] = useState('')
-  const [highlighted, setHighlighted] = useState(false)
+  const [formLoading, setFormLoading] = useState(false);
+  const [submitDisable, setSubmitDisable] = useState(true);
+  const [media, setMedia] = useState(null);
+  const [mediaPreview, setMediaPreview] = useState(null);
+  const inputRef = useRef(null);
+  const [resHolder, setResHolder] = useState("");
+  const [highlighted, setHighlighted] = useState(false);
+  const [selectedTeacher, setSelectedTeacher] = useState([])
 
   const [stylist, setStylist] = useState({
     email: "",
     name: "",
-    teacher: ""
-  })
+    teacher: '',
+  });
 
-  const { email, name } = stylist;
+  const { email, name, teacher } = stylist;
+  const radios = useRef(new Array(3).fill(''))
 
   useEffect(() => {
     const handleResTeach = async (e) => {
@@ -65,138 +67,126 @@ const Signup = () => {
     handleResTeach();
   }, []);
 
-  const handleClick = async (e) => {
-    const { value } = e.target;
-    setTeacherSelected(value);
-  };
+
+  
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
     if (name === "media" && files.length) {
-      setMedia(files[0])
-      setMediaPreview(() => URL.createObjectURL(files[0]))
+      setMedia(files[0]);
+      setMediaPreview(() => URL.createObjectURL(files[0]));
     } else {
-      setStylist((prev) => ({ ...prev, [name]: value }))
+      setStylist((prev) => ({ ...prev, [name]: value }));
+      console.log(radios);
+
     }
+  };
+
+  const selectTeacher = (e) => {
+    const {name, value} = e.target
+    setStylist((prev) => ({...prev, [name]: value}))
+    console.log(e);
+    console.log(radios);
 
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormLoading(true)
+    console.log(stylist);
+    setFormLoading(true);
     let profilePicURL;
     if (media != null) {
       const formData = new FormData();
       formData.append("image", media, {
         headers: {
-          "Content=Type": "multipart/form-data"
-        }
-      })
+          "Content=Type": "multipart/form-data",
+        },
+      });
       const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
       profilePicURL = res.data.src;
     }
     if (media !== null && !profilePicURL) {
-      setFormLoading(false)
+      setFormLoading(false);
       console.log("Error uploading Image");
     }
     try {
       const res = await axios.post(`${baseURL}/api/v1/signup/stylist`, {
-        stylist, profilePicURL
-      })
-      setToken(res.data)
+        stylist,
+        profilePicURL,
+      });
+      setToken(res.data);
     } catch (error) {
       console.log("Eroro", error);
     }
 
-    setFormLoading(false)
+    setFormLoading(false);
   };
+
+
+
 
   return (
     <>
       <Header>&nbsp;</Header>
-      {/* FORM FIELD */}
       <div className="form-container">
-        {/* <>
-          <Label>
-            <h3>Who is your Teacher?</h3>
-          </Label>
-          <Dropdown style={{marginBottom: "15px"}} placeholder="Select Teacher" fluid selection>
-            <Dropdown.Menu>
-              {teachers.map((teacher) => {
-                return (
-                  // <div key={teacher._id} onClick={(e) => handleClick()}>
-                  //   <h2>{teacher.name}</h2>
-                  // </div>
-                  // this will get the teacher by their id and display the text and the image property
-                  <Dropdown.Item onClick={(e) => handleClick()} key={teacher._id} {...teacher}>
-                    {teacher.name}
-                  </Dropdown.Item>
-                );
-              })}
-              </Dropdown.Menu>
-            
-          </Dropdown>
-        </> */}
-        <Form
-          loading={formLoading}
-          onSubmit={handleSubmit}
-        >
+        <Form loading={formLoading} onSubmit={handleSubmit}>
           <Segment>
-          <ImgDropDiv
-            handleChange={handleChange}
-            inputRef={inputRef}
-            highLighted={highlighted}
-            setHighlighted={setHighlighted}
-            mediaPreview={mediaPreview}
-            setMedia={setMedia}
-            setMediaPreview={setMediaPreview}
-            media={media}
-          />
+            <ImgDropDiv
+              handleChange={handleChange}
+              inputRef={inputRef}
+              highLighted={highlighted}
+              setHighlighted={setHighlighted}
+              mediaPreview={mediaPreview}
+              setMedia={setMedia}
+              setMediaPreview={setMediaPreview}
+              media={media}
+            />
 
-            <label><h2>Choose your Teacher</h2></label>
+            <label>
+              <h2>Choose your Teacher</h2>
+            </label>
             <Divider hidden />
-            {teachers.map((teacher) => {
+            {teachers.map((each,i) => {
               return (
-                  <Form.Field
+                <input
                   className="radioButton"
-                  control='input'
-                  label={teacher.name}
-                  type='radio'
-                  name="htmlRadios"
-                  key={teacher._id}
-                  />
+                  control="input"
+                  type="radio"
+                  name="teacher"
+                  value={each.name}
+                  key={each._id}
+                  onChange={selectTeacher}
+                  ref = {((value) => {
+                    radios.current[i] = value
+                  })}
+                />
               );
             })}
             <Divider hidden />
             <Form.Input
-            required
-            label="Name"
-            placeholder="Name"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            icon="user"
-            iconPosition="left" 
+              required
+              label="Name"
+              placeholder="Name"
+              name="name"
+              value={name}
+              onChange={handleChange}
+              icon="user"
+              iconPosition="left"
             />
             <Form.Input
-            required
-            label="Email"
-            placeholder="Email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            icon='envelope'
-            iconPosition='left'
-            type="email" 
+              required
+              label="Email"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              icon="envelope"
+              iconPosition="left"
+              type="email"
             />
           </Segment>
-          <Button
-         icon="signup"
-         content="Signup"
-         type="submit"
-         color="green"
-        />
+          <Button icon="signup" content="Signup" type="submit" color="green" />
         </Form>
       </div>
       <Divider fitted />
@@ -207,7 +197,6 @@ const Signup = () => {
           icon="lightbulb"
           onClick={() => setIsTeacher(true)}
         />
-       
       </footer>
 
       <SlideInMenu
