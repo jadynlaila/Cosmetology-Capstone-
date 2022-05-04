@@ -10,6 +10,7 @@ import {
   Image,
 } from "semantic-ui-react";
 import ClientDrop from "./ClientDrop";
+import ClientProfile from "./ClientProfile";
 
 const StudentProfile = () => {
   return (
@@ -39,29 +40,44 @@ const StudentProfile = () => {
           <Divider />
 
           <Form>
-            <Form.Group widths="equal" style={{margin: "auto"}}>
-              <Form.Field style={{display: "flex", justifyContent: "center"}} label="Email" placeholder="Email" />
-              <Form.Field style={{display: "flex", justifyContent: "center"}} label="Teacher" placeholder="Teacher" />
-              <Form.Field style={{display: "flex", justifyContent: "center"}} label="Hours" placeholder="Hours" />
+            <Form.Group widths="equal" style={{ margin: "auto" }}>
+              <Form.Field
+                style={{ display: "flex", justifyContent: "center" }}
+                label="Email"
+                placeholder="Email"
+              />
+              <Form.Field
+                style={{ display: "flex", justifyContent: "center" }}
+                label="Teacher"
+                placeholder="Teacher"
+              />
+              <Form.Field
+                style={{ display: "flex", justifyContent: "center" }}
+                label="Hours"
+                placeholder="Hours"
+              />
             </Form.Group>
           </Form>
 
           <Divider />
 
-          <ClientDrop />
+          <Button style={{marginBottom:"2em"}}>Client 1</Button>
+          {/* Temporary buttons, subject to change */}
+
+          <ClientProfile />
           <br />
-          <ClientDrop />
+          <Button style={{marginBottom:"2em"}}>Client 2</Button>
           <br />
-          <ClientDrop />
+          <Button style={{marginBottom:"2em"}}>Client 3</Button>
           <br />
 
           <Button
-          content="Next"
-          labelPosition="right"
-          icon="arrow right"
-          onClick={() => setOutOfFocus(false)}
-          positive
-        />
+            content="Next"
+            labelPosition="right"
+            icon="arrow right"
+            onClick={() => setOutOfFocus(false)}
+            positive
+          />
         </div>
       </div>
       {/* </Segment> */}

@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
-// import {useLocation} from "react-router-dom"
 import {
-  Message,
   Input,
   UI,
   Fluid,
@@ -17,36 +15,19 @@ import {
   Segment,
   Radio
 } from "semantic-ui-react";
-// import { setToken } from '../../pages/util/tokenHolder'
 import { baseURL } from "../../pages/util/baseURL";
 import SlideInMenu from "../Signup/SlideInMenu";
 import TeacherDropdown from "../Signup/TeacherDropdown";
-import { useRouter } from 'next/router'
-import { data } from "jquery";
-// import router from "../../server/routes/signupRoutes";
-// import ImgDropDiv from "./ImgDropDiv";
-// import {setOutOfFocus} from "../Signup/SlideInMenu"
-import router from "../../server/routes/signupRoutes";
 import ImgDropDiv from "./ImgDropDiv";
-import { setOutOfFocus } from "../Signup/SlideInMenu"
+import {setToken} from '../../pages/util/authUser'
+// import {setOutOfFocus} from "../Signup/SlideInMenu"
 
 const Signup = () => {
-
-
-  // * TeacherDivOpen: opens the div that displays message for teacher to select their name from the dropdown
-  // ! This should be used as the conditional to retrieve for teachers to login
-  const [teacherDivOpen, setTeacherDivOpen] = useState(false)
-  // 
-
-  // * This is used exclusively on the signinPage, its just used as the conditional to open slideInMenu.jsx
   const [isTeacher, setIsTeacher] = useState(false);
-  // * this is the same as isTeacher but its just the default, a more appropriate name would be isStudent
   const [outOfFocus, setOutOfFocus] = useState(true);
-  // 
-
   const [teachers, setTeachers] = useState([]);
-  const [teacherSelected, setTeacherSelected] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [teacherSelected, setTeacherSelected] = useState([]);
   const [formLoading, setFormLoading] = useState(false)
   const [submitDisable, setSubmitDisable] = useState(true)
   const [media, setMedia] = useState(null)
@@ -54,7 +35,6 @@ const Signup = () => {
   const inputRef = useRef(null)
   const [resHolder, setResHolder] = useState('')
   const [highlighted, setHighlighted] = useState(false)
-  // const location = useLocation()
 
   const [stylist, setStylist] = useState({
     email: "",
@@ -132,22 +112,11 @@ const Signup = () => {
     setFormLoading(false)
   };
 
-  const router = useRouter()
-  // const pathname = router.pathname
-  const handleDropDownSelect = (event, data) => {
-    console.log(data.value);
-  };
   return (
     <>
       <Header>&nbsp;</Header>
       {/* FORM FIELD */}
       <div className="form-container">
-        {/* {teacherDivOpen ?
-          <Message positive>
-            Select your name from the Dropdown
-          </Message> :
-          ""
-        } */}
         {/* <>
           <Label>
             <h3>Who is your Teacher?</h3>
@@ -156,13 +125,13 @@ const Signup = () => {
             <Dropdown.Menu>
               {teachers.map((teacher) => {
                 return (
-                  <div key={teacher._id} onClick={(e) => handleClick()}>
-                    <h2>{teacher.name}</h2>
-                  </div>
+                  // <div key={teacher._id} onClick={(e) => handleClick()}>
+                  //   <h2>{teacher.name}</h2>
+                  // </div>
                   // this will get the teacher by their id and display the text and the image property
-                  // <Dropdown.Item onClick={(e) => handleClick()} key={teacher._id} {...teacher}>
-                  //   {teacher.name}
-                  // </Dropdown.Item>
+                  <Dropdown.Item onClick={(e) => handleClick()} key={teacher._id} {...teacher}>
+                    {teacher.name}
+                  </Dropdown.Item>
                 );
               })}
               </Dropdown.Menu>
@@ -173,8 +142,8 @@ const Signup = () => {
           loading={formLoading}
           onSubmit={handleSubmit}
         >
-          {/* <Segment> */}
-          {/* <ImgDropDiv
+          <Segment>
+          <ImgDropDiv
             handleChange={handleChange}
             inputRef={inputRef}
             highLighted={highlighted}
@@ -183,36 +152,24 @@ const Signup = () => {
             setMedia={setMedia}
             setMediaPreview={setMediaPreview}
             media={media}
-          /> */}
-
-          <label>{teacherDivOpen ? "" : "Select Your Teacher"}</label>
-          {/* <Divider hidden /> */}
-
-
-          <Dropdown
-            placeholder='Select Teacher'
-            require
-            fluid
-            selection
-            options={teachers.map((teacher) => {
-              return {
-                key: teacher._id,
-                text: teacher.name,
-                value: teacher._id
-              }
-            })}
-            // !logs the value: teacher._id
-            onChange={(e, data) => console.log(data.value)}
-          // control='input'
-          // label={teacher.name}
-          // type='radio'
-          // name="htmlRadios"
-          // key={teacher._id}
           />
-          </Form>
-          {/* ); */}
-          {/* <Divider hidden /> */}
-          {/* <Form.Input
+
+            <label><h2>Chose your Teacher</h2></label>
+            <Divider hidden />
+            {teachers.map((teacher) => {
+              return (
+                  <Form.Field
+                  className="radioButton"
+                  control='input'
+                  label={teacher.name}
+                  type='radio'
+                  name="htmlRadios"
+                  key={teacher._id}
+                  />
+              );
+            })}
+            <Divider hidden />
+            <Form.Input
             required
             label="Name"
             placeholder="Name"
@@ -232,57 +189,25 @@ const Signup = () => {
             icon='envelope'
             iconPosition='left'
             type="email" 
-            /> */}
-          {/* </Segment> */}
-          {/* <Button
-          icon="signup"
-          content="Signup"
-          type="submit"
-          color="green"
+            />
+          </Segment>
+          <Button
+         icon="signup"
+         content="Signup"
+         type="submit"
+         color="green"
         />
         </Form>
-        {/* <Divider /> */}
       </div>
       <Divider fitted />
       <footer>
-        {/*//* Uses pathname to decide which version of signupform to show */}
-        {router.pathname === "/login" ?
-
-
-          <Button
-            content="I am a Teacher"
-            labelPosition="left"
-            icon={teacherDivOpen ? "check" : "lightbulb"}
-            color={teacherDivOpen ? "grey" : "green"}
-            onClick={() => { setTeacherDivOpen(!teacherDivOpen) }}
-
-
-          />
-          :
-
-          <Button
-            content="I am a Teacher"
-            labelPosition="left"
-            icon="lightbulb"
-            onClick={() => setIsTeacher(true)}
-          />
-        }
-        {/* {router.route('/login') ? "" : */}
-        {router.pathname === "/login" ?
-          " "
-
-
-          :
-
-          < Button
-            content="Next"
-            labelPosition="right"
-            icon="arrow right"
-            onClick={() => setOutOfFocus(false)}
-            positive
-          />
-        }
-
+        <Button
+          content="I am a Teacher"
+          labelPosition="left"
+          icon="lightbulb"
+          onClick={() => setIsTeacher(true)}
+        />
+       
       </footer>
 
       <SlideInMenu
@@ -290,11 +215,9 @@ const Signup = () => {
         setOutOfFocus={setOutOfFocus}
         isTeacher={isTeacher}
         setIsTeacher={setIsTeacher}
-        teachers={teachers}
       />
     </>
   );
 };
-
 
 export default Signup;

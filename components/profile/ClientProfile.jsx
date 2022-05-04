@@ -38,10 +38,10 @@ const ClientProfile = () => {
   // {results.map((client) => {
   return (
     <>
-      <div id="slideInModal">
+      <div id="slideInModal" >
         <Header>Client</Header>
 
-        <Grid columns={3} divided>
+        <Grid columns={3} divided style={{margin: "5px"}}>
           <Grid.Row>
             <Grid.Column>
               <p>Name</p>
@@ -124,6 +124,7 @@ const ClientProfile = () => {
             negative
           />
           <Button
+          color="green"
             content="Edit"
             labelPosition="edit"
             icon="edit"
