@@ -7,7 +7,6 @@ import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
 import StudentProfile from "../components/profile/StudentProfile";
 import TeacherProfile from "../components/profile/TeacherProfile";
-import ClientProfile from "../components/profile/ClientProfile";
 
 const personalProfile = () => {
   const [isTeacher, setIsTeacher] = useState(false);
@@ -15,9 +14,10 @@ const personalProfile = () => {
     <>
       <Navbar />
       <div className="profile">
-        {/* <StudentProfile /> */}
-        {/* <TeacherProfile /> */}
         <StudentProfile />
+        {/* If you want to remove that client profile thing you can just comment that out in the client profile compnent, trying\ to make it as a popup when you click it */}
+        
+        {/* <TeacherProfile /> */}
       </div>
     </>
   );
