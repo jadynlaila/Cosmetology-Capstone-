@@ -154,7 +154,7 @@ const Signup = () => {
             media={media}
           />
 
-            <label><h2>Chose your Teacher</h2></label>
+            <label><h2>Choose your Teacher</h2></label>
             <Divider hidden />
             {teachers.map((teacher) => {
               return (
