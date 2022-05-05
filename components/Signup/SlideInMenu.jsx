@@ -78,8 +78,8 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
     <>
       <div className="slide" style={{ zIndex: !outOfFocus || isTeacher ? "5" : "-1" }}>
         {!isTeacher ?
-          <div id="slideInModal" style={{ marginRight: outOfFocus ? "3000px" : "0px" }}>
-            <Header>Student</Header>
+          <div id="slideInModal" style={{ marginTop: '50px', marginRight: outOfFocus ? "3000px" : "0px" }}>
+            <Header>Student Signup</Header>
             <div className="form-container">
               <Form
                 loading={formLoading}
@@ -145,43 +145,49 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
           </div>
 
           :
-          <div id="slideInModal" style={{ marginTop: "20px", marginRight: !isTeacher ? "3000px" : "0px" }}>
+          <div id="slideInModal" style={{ marginTop: "50px", marginRight: !isTeacher ? "3000px" : "0px" }}>
             <Header>Teacher</Header>
             <div className="form-container">
-              <Form>
+              <Form
+                loading={formLoading}
+                onSubmit={handleSubmit}
+              >
                 <Form.Field>
-                  <label>Email</label>
-                  <input placeholder="Example@west-mec.org" />
+                  <ImgDropDiv
+                    handleChange={handleChange}
+                    inputRef={inputRef}
+                    highLighted={highlighted}
+                    setHighlighted={setHighlighted}
+                    mediaPreview={mediaPreview}
+                    setMedia={setMedia}
+                    setMediaPreview={setMediaPreview}
+                    media={media}
+                  />
                 </Form.Field>
                 <Form.Field>
-                  <label>Password</label>
-                  <input placeholder="Password" />
+                  <Form.Input
+                    required
+                    label="Name"
+                    placeholder="Name"
+                    name="name"
+                    value={name}
+                    onChange={handleChange}
+                    icon="user"
+                    iconPosition="left"
+                  />
                 </Form.Field>
                 <Form.Field>
-                  <label>Phone Number</label>
-                  <input placeholder="(123)456-7890" />
-                </Form.Field>
-                <Form.Field>
-                  <label>Date of Birth</label>
-                  <input type="date" placeholder="mm/dd/yyyy" />
-                </Form.Field>
-                <Form.Field>
-                  <label>Unique Teacher Code
-                    <Dropdown
-                      pointing="left"
-                      upward
-                      floating
-                      icon='question mark blue'
-                    >
-
-                      <Dropdown.Menu>
-                        <Dropdown.Item disabled text='This is a code that should be requested from your administrator' />
-                      </Dropdown.Menu>
-                    </Dropdown>
-
-
-                  </label>
-                  <input placeholder="Teacher Code" />
+                  <Form.Input
+                    required
+                    label="Email"
+                    placeholder="Email"
+                    name="email"
+                    value={email}
+                    onChange={handleChange}
+                    icon='envelope'
+                    iconPosition='left'
+                    type="email"
+                  />
                 </Form.Field>
               </Form>
             </div>

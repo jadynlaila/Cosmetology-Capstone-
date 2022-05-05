@@ -75,29 +75,31 @@ const login = () => {
   return (
     <>
       <div className="background-hairbrushes"
-        style={{ position: "absolute", bottom: "0", right: "0", width: '300px', height: "400px", backgroundImage: `url(/pexelimg2.jpg)`, backgroundSize: "cover", backgroundBlendMode: "saturation" }}
+        style={{ position: "absolute", bottom: "0", right: "0", width: '300px', height: "400px", backgroundImage: `url(/pexelimg2.png)`, backgroundSize: "cover", backgroundBlendMode: "saturation" }}
       ></div>
       <Navbar />
-      <Segment style={{background: "transparent"}}>
-        <Grid columns={2} centered inverted>
-          <Grid.Column column={1} centered>
-            <div className="split-screen-container" >
-              <Signup />
+      <Segment style={{ background: "transparent" }}>
+        <Grid columns='equal' divided centered>
+          <Grid.Row hidden color="white" textAlign="center">
+            <Grid.Column centered>
+              <div className="split-screen-container" >
+                <Signup />
 
-            </div>
-          </Grid.Column>
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-          <Grid.Column column={2} >
-            <div className="split-screen-container">
-              <LoginForm />
-              {/* <Stylist /> */}
-            </div>
-          </Grid.Column>
+              </div>
+            </Grid.Column>
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+            <Grid.Column >
+              <div className="split-screen-container">
+                <LoginForm />
+                {/* <Stylist /> */}
+              </div>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
 
-        <Divider vertical fitted >
+        {/* <Divider vertical fitted >
           <Icon fitted name="arrow right" />
-        </Divider>
+        </Divider> */}
       </Segment>
     </>
   );

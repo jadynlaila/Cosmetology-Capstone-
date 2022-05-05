@@ -26,17 +26,17 @@ const LoginForm = () => {
     pin: ""
   })
 
-  const {pin} = loginPin
+  const { pin } = loginPin
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
 
-      setLoginPin((prev) => ({...prev, [name]: value}))
-      console.log(pin);
+    setLoginPin((prev) => ({ ...prev, [name]: value }))
+    console.log(pin);
 
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true)
     try {
@@ -50,7 +50,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <Header>Your Info</Header>
+      <Header>Check In</Header>
       {/* FORM FIELD */}
       <div className="form-container login-form-container">
         <Form loading={formLoading} onSubmit={handleSubmit}>
@@ -63,20 +63,20 @@ const LoginForm = () => {
             <input placeholder="Password" />
           </Form.Field> */}
           <Form.Input
-           required
-           label="Pin"
-           placeholder="xxxx"
-           name="pin"
-           type="password"
-           value={pin}
-           onChange={handleChange}
-           icon="th"
-           iconPosition="left"
+            required
+            label="Pin"
+            placeholder="xxxx"
+            name="pin"
+            type="password"
+            value={pin}
+            onChange={handleChange}
+            icon="th"
+            iconPosition="left"
           />
-          <Button icon="signup" content="Login" type="submit" color="green" />
+      <Divider />
         </Form>
+          <Button icon="signup" content="Login" type="submit" color="green" />
       </div>
-      <Divider fitted />
       {/* <footer>
         <Button
           content="Next"
