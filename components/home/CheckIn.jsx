@@ -37,13 +37,14 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
           >
             <h5 className="name">{visit.client.name}</h5>
             <h5 className="email">{visit.client.email}</h5>
-            <h5 className="date">{visit.date}</h5>
+            <h5 className="date">{visit.date.toString()}</h5>
           </div>
         }
       >
         <Modal.Header>Client Check In</Modal.Header>
         <Modal.Content>
           <div className="form-container">
+            <div>Email: {visit.client.email}</div>
             <Form>
               <Form.Field>
                 <label>Pin</label>

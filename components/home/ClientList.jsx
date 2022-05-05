@@ -115,38 +115,3 @@ const ClientList = () => {
 
 export default ClientList;
 
-//  {/* {activeClients.map((client) => {
-//           if (client.active) {
-//             return (
-//               <>
-//                 <div className="person up" onClick={() => checkOut(client._id)}>
-//                   {/* //change that onclick so that instead of running the checkout function, it toggles your 'opencheckout' to be true or false */}
-//                   <h5 className="name">{client.name}</h5>
-//                   <h5 className="time">11:13 pm</h5>
-//                   <h5 className="date">3/30/2022</h5>
-//                 </div>
-//                 <span className="underlined"></span>
-//                 {/* //you can do the check for 'opencheckout' here, and then if the opencheckout is true,
-//                 //it'll have a little input box that asks for the stylists pin and has a 'done' button
-//                 //move the onClick={() => checkOut(client._id)} to this button so that this will run when the button is clicked
-//                 //n the controller that the checkout function makes a call to, add a check that the pin is valid
-//                 //then leave the rest of the controller as normal!! so it should change their active attribute to false ONLY if the pin is valid  */}
-//               </>
-//             );
-//           }
-//         })}
-
-// {clients.map((client) => {
-//     // needs check if they are upcoming or not
-//     return (
-//       <>
-//         <div className="person up" onClick={() => checkIn(client._id)}>
-//           <h5 className="name">{client.name}</h5>
-//           <h5 className="time">11:13 pm</h5>
-//           <h5 className="date">3/30/2022</h5>
-//         </div>
-//         <span className="underlined"> &#160;</span>
-//         {/* <Divider fitted/> */}
-//       </>
-//     );
-//   })}

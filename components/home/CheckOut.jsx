@@ -36,7 +36,7 @@ const CheckOut = ({ visit, setIsActive, isActive, checkOut }) => {
           >
             <h5 className="name">{visit.client.name}</h5>
             <h5 className="email">{visit.client.email}</h5>
-            <h5 className="date">{visit.date}</h5>
+            <h5 className="date">{visit.date.toString()}</h5>
           </div>
         }
       >
