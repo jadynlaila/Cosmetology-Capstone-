@@ -44,7 +44,6 @@ const Signup = () => {
   });
 
   const { email, name, teacher } = stylist;
-  const radios = useRef(new Array(3).fill(''))
 
   useEffect(() => {
     const handleResTeach = async (e) => {
@@ -65,7 +64,10 @@ const Signup = () => {
       setLoading(false);
     };
     handleResTeach();
-  }, []);
+  }, []);  
+  
+  const radios = useRef(new Array(teachers.length).fill(''))
+
 
 
 
