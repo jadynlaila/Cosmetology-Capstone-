@@ -46,7 +46,13 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
           <div className="form-container">
             <Form>
               <Form.Field>
+                {console.log(visit)}
                 <label>Pin</label>
+                  <div>Name: {visit.client.name}</div>
+                  <div>Email: {visit.client.email}</div>
+                  <div>Prefered Stylist: {visit.client.preferredStylist}</div>
+                  {visit.date &&  <div>Email: {visit.client.email}</div>}
+
                 <input
                   onChange={handleChange}
                   name="pin"
