@@ -140,11 +140,11 @@ const Signup = () => {
 
   return (
     <>
-      <Header>&nbsp;</Header>
+      <Header>Signup</Header>
       <div className="form-container">
         <Form loading={formLoading} onSubmit={handleSubmit}>
-          <Segment>
-            <ImgDropDiv
+          {/* <Segment> */}
+            {/* <ImgDropDiv
               handleChange={handleChange}
               inputRef={inputRef}
               highLighted={highlighted}
@@ -153,15 +153,18 @@ const Signup = () => {
               setMedia={setMedia}
               setMediaPreview={setMediaPreview}
               media={media}
-            />
+            /> */}
 
             <label>
-              <h2>Choose your Teacher</h2>
+              <h2>Select Teacher</h2>
             </label>
-            <Divider hidden />
+            {/* <Divider hidden /> */}
+            <div className="radio-button-container">
+
             {teachers.map((each, i) => {
               return (
                 <>
+                <div style={{padding: '5px'}}>
                   <input
                     className="radioButton"
                     control="input"
@@ -176,10 +179,12 @@ const Signup = () => {
                     id={each._id}
                   />
                   <label for={each._id}>{each.name}</label>
+                  </div>
                 </>
               );
             })}
-            <Divider hidden />
+            </div>
+            {/* <Divider hidden />
             <Form.Input
               required
               label="Name"
@@ -200,9 +205,10 @@ const Signup = () => {
               icon="envelope"
               iconPosition="left"
               type="email"
-            />
-          </Segment>
-          <Button icon="signup" content="Signup" type="submit" color="green" />
+            /> */}
+          {/* </Segment> */}
+          {/* <Button icon="signup" content="Signup" type="submit" color="green" /> */}
+
         </Form>
       </div>
       <Divider fitted />
@@ -212,6 +218,13 @@ const Signup = () => {
           labelPosition="left"
           icon="lightbulb"
           onClick={() => setIsTeacher(true)}
+        />
+        <Button
+          content="Next"
+          labelPosition="right"
+          icon="arrow right"
+          onClick={() => setOutOfFocus(false)}
+          positive
         />
       </footer>
 
