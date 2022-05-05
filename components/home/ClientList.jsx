@@ -33,33 +33,35 @@ const ClientList = () => {
     getActiveVisits();
   }, []);
 
-  
   const checkOut = async (checkOutInfo, setOpen) => {
     try {
       console.log(checkOutInfo);
-      const res = await axios.put(`${baseURL}/api/v1/visit/checkOut`, {checkOutInfo});
+      const res = await axios.put(`${baseURL}/api/v1/visit/checkOut`, {
+        checkOutInfo,
+      });
       console.log(res.data);
-      setActiveVisits((prev) => prev.filter((visit) => visit._id !== checkOutInfo.visitInfo._id))
+      setActiveVisits((prev) =>
+        prev.filter((visit) => visit._id !== checkOutInfo.visitInfo._id)
+      );
       setOpen(false);
     } catch (error) {
       console.log(error);
     }
   };
-  
-  
+
   const checkIn = async (checkInInfo, setOpen) => {
     try {
-      try {
-        console.log(checkInInfo);
-        const res = await axios.put(`${baseURL}/api/v1/visit/checkIn`, { checkInInfo });
-        console.log(res.data);
-        console.log(checkInInfo.visitInfo._id);
-        setUpcomingVisits((prev) => prev.filter((visit) => visit._id !== checkInInfo.visitInfo._id));
-        setActiveVisits((prev) => [checkInInfo.visitInfo, ...prev]);
-        setOpen(false);
-      } catch (error) {
-        console.log(error);
-      }
+      console.log(checkInInfo);
+      const res = await axios.put(`${baseURL}/api/v1/visit/checkIn`, {
+        checkInInfo,
+      });
+      console.log(res.data);
+      console.log(checkInInfo.visitInfo._id);
+      setUpcomingVisits((prev) =>
+        prev.filter((visit) => visit._id !== checkInInfo.visitInfo._id)
+      );
+      setActiveVisits((prev) => [checkInInfo.visitInfo, ...prev]);
+      setOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -68,7 +70,7 @@ const ClientList = () => {
   return (
     <>
       <div className="active-clients">
-        <div className="header">Active Client</div>
+        <div className="header">Active Clients</div>
         <div className="content">
           {activeVisits.map((visit) => {
             return (
@@ -114,4 +116,3 @@ const ClientList = () => {
 };
 
 export default ClientList;
-

@@ -101,10 +101,10 @@ const checkIn = async (req, res) => {
       _id: visitInfo._id
     });
     visit.checkIn = checkInTime
-    console.log(`before active true ${visit}`)
+    visit.stylist = stylist;
     visit.location = 'active';
     await visit.save();
-    console.log(`after active true ${visit}`)
+    console.log(`stylist done ${visit}`)
     
     return res.status(200).json({visit});
   } catch (error) {

@@ -18,6 +18,8 @@ const CheckOut = ({ visit, setIsActive, isActive, checkOut }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCheckOutInfo((prev) => ({ ...prev, [name]: value }));
+    console.log(visit.date);
+    console.log(visit.date.toString());
   };
 
 
@@ -32,15 +34,14 @@ const CheckOut = ({ visit, setIsActive, isActive, checkOut }) => {
         trigger={
           <div
             className="person up"
-            onClick={() => checkOut(visit, setIsActive, isActive)}
           >
             <h5 className="name">{visit.client.name}</h5>
             <h5 className="email">{visit.client.email}</h5>
-            <h5 className="date">{visit.date.toString()}</h5>
+            <h5 className="date">{visit.date}</h5>
           </div>
         }
       >
-        <Modal.Header>Client Check In</Modal.Header>
+        <Modal.Header>Client Check Out</Modal.Header>
         <Modal.Content>
           <div className="form-container">
             <Form>

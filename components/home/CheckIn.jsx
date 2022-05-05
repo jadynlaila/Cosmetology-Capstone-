@@ -33,7 +33,6 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
         trigger={
           <div
             className="person up"
-            onClick={() => checkIn(visit, setIsActive, isActive)}
           >
             <h5 className="name">{visit.client.name}</h5>
             <h5 className="email">{visit.client.email}</h5>
