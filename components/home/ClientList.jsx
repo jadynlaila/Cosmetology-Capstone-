@@ -13,7 +13,6 @@ const ClientList = () => {
     const getActiveVisits = async () => {
       try {
         const res = await axios.get(`${baseURL}/api/v1/visit/active`);
-        console.log(res.data);
         setActiveVisits(res.data);
       } catch (error) {
         console.log(error);
@@ -23,7 +22,6 @@ const ClientList = () => {
     const getUpcomingVisits = async () => {
       try {
         const res = await axios.get(`${baseURL}/api/v1/visit/upcoming`);
-        console.log(res.data);
         setUpcomingVisits(res.data);
       } catch (error) {
         console.log(error);
@@ -33,33 +31,30 @@ const ClientList = () => {
     getActiveVisits();
   }, []);
 
-  
   const checkOut = async (checkOutInfo, setOpen) => {
     try {
-      console.log(checkOutInfo);
-      const res = await axios.put(`${baseURL}/api/v1/visit/checkOut`, {checkOutInfo});
-      console.log(res.data);
-      setActiveVisits((prev) => prev.filter((visit) => visit._id !== checkOutInfo.visitInfo._id))
+      const res = await axios.put(`${baseURL}/api/v1/visit/checkOut`, {
+        checkOutInfo,
+      });
+      setActiveVisits((prev) =>
+        prev.filter((visit) => visit._id !== checkOutInfo.visitInfo._id)
+      );
       setOpen(false);
     } catch (error) {
       console.log(error);
     }
   };
-  
-  
+
   const checkIn = async (checkInInfo, setOpen) => {
     try {
-      try {
-        console.log(checkInInfo);
-        const res = await axios.put(`${baseURL}/api/v1/visit/checkIn`, { checkInInfo });
-        console.log(res.data);
-        console.log(checkInInfo.visitInfo._id);
-        setUpcomingVisits((prev) => prev.filter((visit) => visit._id !== checkInInfo.visitInfo._id));
-        setActiveVisits((prev) => [checkInInfo.visitInfo, ...prev]);
-        setOpen(false);
-      } catch (error) {
-        console.log(error);
-      }
+      const res = await axios.put(`${baseURL}/api/v1/visit/checkIn`, {
+        checkInInfo,
+      });
+      setUpcomingVisits((prev) =>
+        prev.filter((visit) => visit._id !== checkInInfo.visitInfo._id)
+      );
+      setActiveVisits((prev) => [checkInInfo.visitInfo, ...prev]);
+      setOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -68,7 +63,7 @@ const ClientList = () => {
   return (
     <>
       <div className="active-clients">
-        <div className="header">Active Client</div>
+        <div className="header">Active Clients</div>
         <div className="content">
           {activeVisits.map((visit) => {
             return (
@@ -114,39 +109,3 @@ const ClientList = () => {
 };
 
 export default ClientList;
-
-//  {/* {activeClients.map((client) => {
-//           if (client.active) {
-//             return (
-//               <>
-//                 <div className="person up" onClick={() => checkOut(client._id)}>
-//                   {/* //change that onclick so that instead of running the checkout function, it toggles your 'opencheckout' to be true or false */}
-//                   <h5 className="name">{client.name}</h5>
-//                   <h5 className="time">11:13 pm</h5>
-//                   <h5 className="date">3/30/2022</h5>
-//                 </div>
-//                 <span className="underlined"></span>
-//                 {/* //you can do the check for 'opencheckout' here, and then if the opencheckout is true,
-//                 //it'll have a little input box that asks for the stylists pin and has a 'done' button
-//                 //move the onClick={() => checkOut(client._id)} to this button so that this will run when the button is clicked
-//                 //n the controller that the checkout function makes a call to, add a check that the pin is valid
-//                 //then leave the rest of the controller as normal!! so it should change their active attribute to false ONLY if the pin is valid  */}
-//               </>
-//             );
-//           }
-//         })}
-
-// {clients.map((client) => {
-//     // needs check if they are upcoming or not
-//     return (
-//       <>
-//         <div className="person up" onClick={() => checkIn(client._id)}>
-//           <h5 className="name">{client.name}</h5>
-//           <h5 className="time">11:13 pm</h5>
-//           <h5 className="date">3/30/2022</h5>
-//         </div>
-//         <span className="underlined"> &#160;</span>
-//         {/* <Divider fitted/> */}
-//       </>
-//     );
-//   })}

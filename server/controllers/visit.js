@@ -7,7 +7,7 @@ const { filter } = require("language-tags");
 
 const createVisit = async (req, res) => {
   const {
-    preferredStylist: stylist,
+    preferredStylist,
     date,
     style,
     notes,
@@ -20,11 +20,6 @@ const createVisit = async (req, res) => {
     if (!client) {
       return res.status(404).send("client not found @createVisit");
     }
-    console.log(`hi client ${client}`);
-
-    const preferredStylist = await StylistModel.findOne({
-      email: stylist,
-    });
 
     //! map through client's visits and see if the time of this visit = the time of any of their past visits.
     //! if it does, the client cannot make a new visit at this time
@@ -44,7 +39,7 @@ const createVisit = async (req, res) => {
     return res.status(200).json();
   } catch (error) {
     console.log(error);
-    return res.status(500).send("Error @ createVisit");
+    return res.status(500).send("Error @ createVisit"); 
   }
 };
 
@@ -68,41 +63,10 @@ const getActiveVisits = async (req, res) => {
 
 const getUpcomingVisits = async (req, res) => {
   try {
-    // const today = new Date();
-    // const oneDay = 1000 * 60 * 60 * 24 
-    // date.setTime(date.getTime() + oneDay)
     let upcomingVisits = await VisitModel.find({location: 'upcoming'}).populate("client");
-    console.log(upcomingVisits);
     upcomingVisits = upcomingVisits.sort(function(a,b){
-      console.log(b.date, a.date);
       return a.date - b.date;
     });
-    console.log(upcomingVisits);
-    // const dateee =
-    //   today.getFullYear() +
-    //   "-" +
-    //   (today.getMonth() + 1) +
-    //   "-" +
-    //   today.getDate();
-
-    // const now = date.getTime()
-    // const visits = readyVisits.filter(each => each.date.getTime() > now + oneDay || each.date.getTime() < now - oneDay)
-    // console.log(`name and name3 should log ${visits}`);
-    
-
-    // console.log(dateee.toString());
-    // readyVisits.map((visit) => {
-    //   console.log(visit.date.toString());
-    // })
-
-
-    // readyVisits.map((visit) => {
-    //   const visitDate = visit.date;
-    //   console.log(visitDate);
-    //   console.log(visitDate.toString());
-    //   console.log(date)
-    //   console.log(date.toString())
-    // });
     res.status(200).json(upcomingVisits);
   } catch (error) {
     console.log(error);
@@ -133,10 +97,10 @@ const checkIn = async (req, res) => {
       _id: visitInfo._id
     });
     visit.checkIn = checkInTime
-    console.log(`before active true ${visit}`)
+    visit.stylist = stylist;
     visit.location = 'active';
     await visit.save();
-    console.log(`after active true ${visit}`)
+    console.log(`stylist done ${visit}`)
     
     return res.status(200).json({visit});
   } catch (error) {

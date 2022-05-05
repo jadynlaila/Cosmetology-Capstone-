@@ -56,9 +56,9 @@ const Navbar = (isTeacher) => {
         </div>
       )}
       <div className="nav-link">
-        <Link href="/signup">
+        {/* <Link href="/signup">
           <Button className="signup">New User?</Button>
-        </Link>
+        </Link> */}
         <Link href="/login">
           <h3>{loggedIn ? "Logout" : "Login"}</h3>
         </Link>

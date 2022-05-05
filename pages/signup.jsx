@@ -19,7 +19,7 @@ const signup = () => {
 
       <Navbar />
       <div className="background-hairbrushes"
-        style={{position:"absolute",bottom: "0", right:"0", width: '300px', height:"400px", backgroundImage: `url(/pexelimg2.jpg)`, backgroundSize:"cover", backgroundBlendMode: "saturation" }}
+        style={{position:"absolute",bottom: "0", right:"0", width: '300px', height:"400px", backgroundImage: `url(/pexelimg2.png)`, backgroundSize:"cover", backgroundBlendMode: "saturation" }}
         ></div>
       
       <div className="signupPage">
