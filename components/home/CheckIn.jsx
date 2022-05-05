@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { baseURL } from "../../pages/util/baseURL";
 import { Modal, Form, Button } from "semantic-ui-react";
+import { visitEachChild } from "typescript";
 
 const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
   const [open, setOpen] = useState(false);
@@ -44,37 +45,36 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
             {visit.client.name && <div>Name: {visit.client.name}</div>}
             {visit.client.email && <div>Email: {visit.client.email}</div>}
             {visit.preferredStylist && (
-              <div>Prefered Stylist: {visit.client.preferredStylist}</div>
+              <div>Preferred Stylist: {visit.preferredStylist}</div>
             )}
             {visit.date && <div>Email: {visit.client.email}</div>}
             {visit.style && <div>Requested Style: {visit.style}</div>}
             {visit.notes && <div>Notes: {visit.notes}</div>}
             {visit.client.number && <div>Number: {visit.client.number}</div>}
-            {visit.hairCondition && (
-              <div>Hair Condition: {visit.hairCondition}</div>
+            {visit.client.hairCondition && (
+              <div>Hair Condition: {visit.client.hairCondition}</div>
             )}
-            {visit.scalpCondition && (
-              <div>Scalp Condition: {visit.scalpCondition}</div>
+            {visit.client.scalpCondition && (
+              <div>Scalp Condition: {visit.client.scalpCondition}</div>
             )}
-            {visit.hairTexture && <div>Hair Texture: {visit.hairTexture}</div>}
-            {visit.growthPatterns && (
-              <div>Growth Patterns: {visit.growthPatterns}</div>
+            {visit.client.hairTexture && <div>Hair Texture: {visit.client.hairTexture}</div>}
+            {visit.client.growthPatterns && (
+              <div>Growth Patterns: {visit.client.growthPatterns}</div>
             )}
-            {visit.hairDensity && <div>Hair Density: {visit.hairDensity}</div>}
-            {visit.hairPorosity && (
-              <div>Hair Porosity: {visit.hairPorosity}</div>
+            {visit.client.hairDensity && <div>Hair Density: {visit.client.hairDensity}</div>}
+            {visit.client.hairPorosity && (
+              <div>Hair Porosity: {visit.client.hairPorosity}</div>
             )}
-            {visit.hairElasticity && (
-              <div>Hair Elasticity: {visit.hairElasticity}</div>
+            {visit.client.hairElasticity && (
+              <div>Hair Elasticity: {visit.client.hairElasticity}</div>
             )}
-            {visit.hairLength && <div>Hair Length: {visit.hairLength}</div>}
-            {visit.allergies && <div>Allergies: {visit.allergies}</div>}
-            {visit.medicalInfo && (
-              <div>Relevant Medical Info: {visit.medicalInfo}</div>
+            {visit.client.hairLength && <div>Hair Length: {visit.client.hairLength}</div>}
+            {visit.client.allergies && <div>Allergies: {visit.client.allergies}</div>}
+            {visit.client.medicalInfo && (
+              <div>Relevant Medical Info: {visit.client.medicalInfo}</div>
             )}
             <Form>
               <Form.Field>
-                {console.log(visit)}
 
                 <label>Pin</label>
 

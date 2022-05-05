@@ -13,7 +13,6 @@ const ClientList = () => {
     const getActiveVisits = async () => {
       try {
         const res = await axios.get(`${baseURL}/api/v1/visit/active`);
-        console.log(res.data);
         setActiveVisits(res.data);
       } catch (error) {
         console.log(error);
@@ -23,7 +22,6 @@ const ClientList = () => {
     const getUpcomingVisits = async () => {
       try {
         const res = await axios.get(`${baseURL}/api/v1/visit/upcoming`);
-        console.log(res.data);
         setUpcomingVisits(res.data);
       } catch (error) {
         console.log(error);
@@ -35,11 +33,9 @@ const ClientList = () => {
 
   const checkOut = async (checkOutInfo, setOpen) => {
     try {
-      console.log(checkOutInfo);
       const res = await axios.put(`${baseURL}/api/v1/visit/checkOut`, {
         checkOutInfo,
       });
-      console.log(res.data);
       setActiveVisits((prev) =>
         prev.filter((visit) => visit._id !== checkOutInfo.visitInfo._id)
       );
@@ -51,12 +47,9 @@ const ClientList = () => {
 
   const checkIn = async (checkInInfo, setOpen) => {
     try {
-      console.log(checkInInfo);
       const res = await axios.put(`${baseURL}/api/v1/visit/checkIn`, {
         checkInInfo,
       });
-      console.log(res.data);
-      console.log(checkInInfo.visitInfo._id);
       setUpcomingVisits((prev) =>
         prev.filter((visit) => visit._id !== checkInInfo.visitInfo._id)
       );

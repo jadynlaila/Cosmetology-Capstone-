@@ -42,7 +42,6 @@ const NewVisitForm = () => {
 
 
       const res = await axios.get(`${baseURL}/api/v1/client`);
-      console.log('banana', res.data.clients);
       setResults(res.data.clients);
     }
     asyncFunction()
@@ -57,7 +56,6 @@ const NewVisitForm = () => {
     if (value === "") {
       // setText(value)
       const res = await axios.get(`${baseURL}/api/v1/client`);
-      console.log('banana', res.data.clients);
       setResults(res.data.clients);
     }
     if (value) {

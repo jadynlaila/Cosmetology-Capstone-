@@ -20,7 +20,6 @@ const createVisit = async (req, res) => {
     if (!client) {
       return res.status(404).send("client not found @createVisit");
     }
-    console.log(`hi client ${client}`);
 
     //! map through client's visits and see if the time of this visit = the time of any of their past visits.
     //! if it does, the client cannot make a new visit at this time
@@ -65,12 +64,9 @@ const getActiveVisits = async (req, res) => {
 const getUpcomingVisits = async (req, res) => {
   try {
     let upcomingVisits = await VisitModel.find({location: 'upcoming'}).populate("client");
-    console.log(upcomingVisits);
     upcomingVisits = upcomingVisits.sort(function(a,b){
-      console.log(b.date, a.date);
       return a.date - b.date;
     });
-    console.log(upcomingVisits);
     res.status(200).json(upcomingVisits);
   } catch (error) {
     console.log(error);
