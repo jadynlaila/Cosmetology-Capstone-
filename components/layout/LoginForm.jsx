@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import {
   Input,
@@ -6,35 +7,77 @@ import {
   Icon,
   Container,
   Header,
-  Form,
   Label,
   Divider,
   Button,
+  Form
 } from "semantic-ui-react";
+import { setToken } from "../../pages/util/authUser";
+import { baseURL } from "../../pages/util/baseURL";
 import StudentDropdown from "../Login/StudentDropdown";
 // import router from "../../server/routes/signupRoutes";
 
 const LoginForm = () => {
   const [teacherSignedIn, setTeacherSignedIn] = useState(true);
   const [isFilled, setIsFilled] = useState(false);
+  const [formLoading, setFormLoading] = useState(false)
+
+  const [loginPin, setLoginPin] = useState({
+    pin: ""
+  })
+
+  const {pin} = loginPin
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+
+      setLoginPin((prev) => ({...prev, [name]: value}))
+      console.log(pin);
+
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    setFormLoading(true)
+    try {
+      const res = await axios.post(`${baseURL}/api/v1/signup/login`)
+      setToken(res.data)
+    } catch (error) {
+      console.log("Error", error);
+    }
+    setFormLoading(false)
+  }
+
   return (
     <>
       <Header>Your Info</Header>
       {/* FORM FIELD */}
       <div className="form-container login-form-container">
-        <Form>
-          <Form.Field>
+        <Form loading={formLoading} onSubmit={handleSubmit}>
+          {/* <Form.Field>
             <label>Username</label>
             <StudentDropdown />
           </Form.Field>
           <Form.Field>
             <label>Password</label>
             <input placeholder="Password" />
-          </Form.Field>
+          </Form.Field> */}
+          <Form.Input
+           required
+           label="Pin"
+           placeholder="xxxx"
+           name="pin"
+           type="password"
+           value={pin}
+           onChange={handleChange}
+           icon="th"
+           iconPosition="left"
+          />
+          <Button icon="signup" content="Login" type="submit" color="green" />
         </Form>
       </div>
       <Divider fitted />
-      <footer>
+      {/* <footer>
         <Button
           content="Next"
           labelPosition="right"
@@ -42,7 +85,7 @@ const LoginForm = () => {
           {...(isFilled ? "" : " disabled")}
           positive
         />
-      </footer>
+      </footer> */}
     </>
   );
 };
