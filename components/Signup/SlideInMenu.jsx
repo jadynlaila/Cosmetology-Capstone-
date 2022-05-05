@@ -17,15 +17,16 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
   const [highlighted, setHighlighted] = useState(false)
 
 
-  const [stylist, setStylist] = useState({
+  const [teacher, setTeacher] = useState({
     email: "",
+    password: "",
     name: "",
     teacher: ""
   })
   const [submitDisable, setSubmitDisable] = useState(true)
 
 
-  const { email, name } = stylist;
+  const { email, name } = teacher;
 
 
   const handleChange = (e) => {
@@ -60,8 +61,8 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
       console.log("Error uploading Image");
     }
     try {
-      const res = await axios.post(`${baseURL}/api/v1/signup/stylist`, {
-        stylist, profilePicURL
+      const res = await axios.post(`${baseURL}/api/v1/signup/teacher`, {
+        teacher, profilePicURL
       })
       setToken(res.data)
     } catch (error) {

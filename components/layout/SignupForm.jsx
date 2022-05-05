@@ -68,7 +68,7 @@ const Signup = () => {
   }, []);
 
 
-  
+
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -78,24 +78,30 @@ const Signup = () => {
       setMediaPreview(() => URL.createObjectURL(files[0]));
     } else {
       setStylist((prev) => ({ ...prev, [name]: value }));
-      console.log(radios);
-
+      console.log(stylist);
     }
   };
 
-  const selectTeacher = (e) => {
-    const {name, value} = e.target
-    setStylist((prev) => ({...prev, [name]: value}))
-    console.log(e);
-    console.log(radios);
-
+  const selectTeacher = () => {
+    let value = '';
+    let name = '';
+    console.log(radios.current);
+    radios.current.map((each) => {
+      if (each.checked) {
+        console.log(each.id, each.name);
+        value = each.id;
+        name = each.name;
+      }
+    })
+    setStylist((prev) => ({ ...prev, [name]: value }));
+    console.log(stylist);
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(stylist);
     setFormLoading(true);
-    let profilePicURL;
+    let profilePicURL = '';
     if (media != null) {
       const formData = new FormData();
       formData.append("image", media, {
@@ -105,11 +111,15 @@ const Signup = () => {
       });
       const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
       profilePicURL = res.data.src;
+      profilePicURL = profilePicURL.toString();
+      console.log(`hi profilepic ${profilePicURL}`)
     }
     if (media !== null && !profilePicURL) {
       setFormLoading(false);
       console.log("Error uploading Image");
     }
+
+    console.log(`pfp ${profilePicURL}`)
     try {
       const res = await axios.post(`${baseURL}/api/v1/signup/stylist`, {
         stylist,
@@ -147,20 +157,24 @@ const Signup = () => {
               <h2>Choose your Teacher</h2>
             </label>
             <Divider hidden />
-            {teachers.map((each,i) => {
+            {teachers.map((each, i) => {
               return (
-                <input
-                  className="radioButton"
-                  control="input"
-                  type="radio"
-                  name="teacher"
-                  value={each.name}
-                  key={each._id}
-                  onChange={selectTeacher}
-                  ref = {((value) => {
-                    radios.current[i] = value
-                  })}
-                />
+                <>
+                  <input
+                    className="radioButton"
+                    control="input"
+                    type="radio"
+                    name="teacher"
+                    value={each.name}
+                    key={each._id}
+                    onChange={selectTeacher}
+                    ref={((value) => {
+                      radios.current[i] = value
+                    })}
+                    id={each._id}
+                  />
+                  <label for={each._id}>{each.name}</label>
+                </>
               );
             })}
             <Divider hidden />
