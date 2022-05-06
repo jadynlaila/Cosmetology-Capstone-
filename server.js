@@ -37,6 +37,7 @@ const teacherRoutes = require('./server/routes/teacherRoutes')
 const searchRoutes = require("./server/routes/searchRoute")
 const uploadPicRoutes = require("./server/routes/uploadPicRoutes")
 const authRoute = require('./server/routes/authRoute')
+const emailRoute = require('./server/routes/emailRoutes')
 
 app.use('/api/v1/client', clientRoutes);
 app.use('/api/v1/auth', authRoute)
@@ -46,7 +47,7 @@ app.use("/api/v1/stylist", stylistRoutes)
 app.use("/api/v1/teacher", teacherRoutes)
 app.use("/api/v1/search", searchRoutes)
 app.use('/api/v1/uploads', uploadPicRoutes)
-
+app.use('/api/v1/email', emailRoute);
 // //Experimental
 // app.use("/api/v1/profile", profileRoutes)
 

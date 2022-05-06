@@ -4,7 +4,7 @@ import ImgDropDiv from "../layout/ImgDropDiv";
 
 
 
-const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teachers }) => {
+const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teachers, setStylist, stylist, handleSubmit, handleChange }) => {
   // const [isTeacher, setIsTeacher] = useState(false);
   // const [outOfFocus, setOutOfFocus] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -26,51 +26,53 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
   const [submitDisable, setSubmitDisable] = useState(true)
 
 
-  const { email, name } = teacher;
+  const { teacherEmail, teacherName } = teacher;
+  const { email, name } = stylist;
 
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
 
-    if (name === "media" && files.length) {
-      setMedia(files[0])
-      setMediaPreview(() => URL.createObjectURL(files[0]))
-    } else {
-      setStylist((prev) => ({ ...prev, [name]: value }))
-    }
+  // const handleChange = (e) => {
+  //   const { name, value, files } = e.target;
 
-  }
+  //   if (name === "media" && files.length) {
+  //     setMedia(files[0])
+  //     setMediaPreview(() => URL.createObjectURL(files[0]))
+  //   } else {
+  //     setStylist((prev) => ({ ...prev, [name]: value }))
+  //   }
+
+  // }
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setFormLoading(true)
-    let profilePicURL;
-    if (media != null) {
-      const formData = new FormData();
-      formData.append("image", media, {
-        headers: {
-          "Content=Type": "multipart/form-data"
-        }
-      })
-      const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
-      profilePicURL = res.data.src;
-    }
-    if (media !== null && !profilePicURL) {
-      setFormLoading(false)
-      console.log("Error uploading Image");
-    }
-    try {
-      const res = await axios.post(`${baseURL}/api/v1/signup/teacher`, {
-        teacher, profilePicURL
-      })
-      setToken(res.data)
-    } catch (error) {
-      console.log("Eroro", error);
-    }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setFormLoading(true)
+  //   let profilePicURL;
+  //   if (media != null) {
+  //     const formData = new FormData();
+  //     formData.append("image", media, {
+  //       headers: {
+  //         "Content=Type": "multipart/form-data"
+  //       }
+  //     })
+  //     const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
+  //     profilePicURL = res.data.src;
+  //   }
+  //   if (media !== null && !profilePicURL) {
+  //     setFormLoading(false)
+  //     console.log("Error uploading Image");
+  //   }
+  //   try {
+  //     const res = await axios.post(`${baseURL}/api/v1/signup/teacher`, {
+  //       teacher, profilePicURL
+  //     })
+  //     setToken(res.data)
+  //   } catch (error) {
+  //     console.log("Eroro", error);
+  //   }
 
-    setFormLoading(false)
-  };
+  //   setFormLoading(false)
+  // };
 
 
 
@@ -140,6 +142,7 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
                 type="submit"
                 color="green"
                 labelPosition='right'
+                onClick={handleSubmit}
               />
             </footer>
           </div>

@@ -55,16 +55,16 @@ const createStylist = async (req, res) => {
 
   console.log(req.body);
   const {
-    name,
-    email,
-    teacher,
     profilePicURL
   } = req.body;
+  const {
+    name, email, teacher
+  } = req.body.stylist
 
-  const test = isEmail.test(email);
-  if(!(test || isEmail.test(email))){
-    return res.status(401).send("Invalid Email")
-  }
+  // const test = isEmail.test(email);
+  // if(!(test || isEmail.test(email))){
+  //   return res.status(401).send("Invalid Email")
+  // }
 
   try {
     let stylist;
@@ -79,17 +79,6 @@ const createStylist = async (req, res) => {
     })
 
 
-    //! Didnt know what to do with the hours
-    // const payload = {stylistID: stylist._id};
-    // jwt.sign(
-    //   payload,
-    //   process.env.JWT_SECRET,
-    //   {expiresIn: "2d"},
-    //   (err, token) => {
-    //     if(err) throw err;
-    //     res.status(200).json(token)
-    //   }
-    // )
 
     stylist = await stylist.save()
     return res.status(200).json(stylist)

@@ -101,7 +101,8 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(stylist);
+    console.log(`${stylist}`);
+    console.log(`hi stylistname ${stylist.name}`)
     setFormLoading(true);
     let profilePicURL = '';
     if (media != null) {
@@ -233,6 +234,10 @@ const Signup = () => {
         setOutOfFocus={setOutOfFocus}
         isTeacher={isTeacher}
         setIsTeacher={setIsTeacher}
+        setStylist={setStylist}
+        stylist={stylist}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
       />
     </>
   );
