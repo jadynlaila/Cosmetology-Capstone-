@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Input,
   UI,
@@ -30,9 +30,10 @@ const LoginForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setLoginPin((prev) => ({ ...prev, [name]: value }))
-    console.log(pin);
+  
+      setLoginPin((prev) => ({ ...prev, [name]: value }))
+      console.log(pin);
+  
 
   }
 
@@ -42,6 +43,7 @@ const LoginForm = () => {
     try {
       const res = await axios.post(`${baseURL}/api/v1/signup/login`)
       setToken(res.data)
+      console.log("pinSub", res.data);
     } catch (error) {
       console.log("Error", error);
     }
@@ -74,8 +76,8 @@ const LoginForm = () => {
             iconPosition="left"
           />
       <Divider />
+          <Button icon="signup" content="Login" type="submit"  />
         </Form>
-          <Button icon="signup" content="Login" type="submit" color="green" />
       </div>
       {/* <footer>
         <Button
