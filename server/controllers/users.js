@@ -59,7 +59,7 @@ const createStylist = async (req, res) => {
     email,
     teacher,
     profilePicURL
-  } = req.body.stylist;
+  } = req.body;
 
   const test = isEmail.test(email);
   if(!(test || isEmail.test(email))){
@@ -80,16 +80,16 @@ const createStylist = async (req, res) => {
 
 
     //! Didnt know what to do with the hours
-    const payload = {stylistID: stylist._id};
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      {expiresIn: "2d"},
-      (err, token) => {
-        if(err) throw err;
-        res.status(200).json(token)
-      }
-    )
+    // const payload = {stylistID: stylist._id};
+    // jwt.sign(
+    //   payload,
+    //   process.env.JWT_SECRET,
+    //   {expiresIn: "2d"},
+    //   (err, token) => {
+    //     if(err) throw err;
+    //     res.status(200).json(token)
+    //   }
+    // )
 
     stylist = await stylist.save()
     return res.status(200).json(stylist)
