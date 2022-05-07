@@ -21,6 +21,7 @@ const LoginForm = () => {
   const [teacherSignedIn, setTeacherSignedIn] = useState(true);
   const [isFilled, setIsFilled] = useState(false);
   const [formLoading, setFormLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const [loginPin, setLoginPin] = useState({
     pin: ""
@@ -43,7 +44,7 @@ const LoginForm = () => {
     try {
       const res = await axios.post(`${baseURL}/api/v1/signup/login`)
       setToken(res.data)
-      console.log("pinSub", res.data);
+      console.log("Login", res.data);
     } catch (error) {
       console.log("Error", error);
     }
@@ -69,10 +70,17 @@ const LoginForm = () => {
             label="Pin"
             placeholder="xxxx"
             name="pin"
-            type="password"
             value={pin}
             onChange={handleChange}
-            icon="th"
+            icon={{
+              name: showPassword ? "eye slash" : "eye",
+              link: true,
+              circular: true,
+              onClick: () => {
+                setShowPassword(!showPassword)
+              }
+            }}
+            type={showPassword ? "text" : "password"}
             iconPosition="left"
           />
       <Divider />
