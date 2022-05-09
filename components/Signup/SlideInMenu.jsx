@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Header, Label, Button, Divider, Form, Dropdown, Icon } from 'semantic-ui-react'
 import ImgDropDiv from "../layout/ImgDropDiv";
+import axios from 'axios';
+import { baseURL } from "../../pages/util/baseURL";
+
 
 
 
@@ -21,58 +24,58 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
     email: "",
     password: "",
     name: "",
-    teacher: ""
+    pin: ""
   })
   const [submitDisable, setSubmitDisable] = useState(true)
 
 
-  const { teacherEmail, teacherName } = teacher;
+  const { teacherEmail, teacherName, pin, password } = teacher;
   const { email, name } = stylist;
 
 
 
-  // const handleChange = (e) => {
-  //   const { name, value, files } = e.target;
+  const handleTeacherChange = (e) => {
+    const { name, value, files } = e.target;
 
-  //   if (name === "media" && files.length) {
-  //     setMedia(files[0])
-  //     setMediaPreview(() => URL.createObjectURL(files[0]))
-  //   } else {
-  //     setStylist((prev) => ({ ...prev, [name]: value }))
-  //   }
+    if (name === "media" && files.length) {
+      setMedia(files[0])
+      setMediaPreview(() => URL.createObjectURL(files[0]))
+    } else {
+      setTeacher((prev) => ({ ...prev, [name]: value }))
+    }
 
-  // }
+  }
 
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setFormLoading(true)
-  //   let profilePicURL;
-  //   if (media != null) {
-  //     const formData = new FormData();
-  //     formData.append("image", media, {
-  //       headers: {
-  //         "Content=Type": "multipart/form-data"
-  //       }
-  //     })
-  //     const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
-  //     profilePicURL = res.data.src;
-  //   }
-  //   if (media !== null && !profilePicURL) {
-  //     setFormLoading(false)
-  //     console.log("Error uploading Image");
-  //   }
-  //   try {
-  //     const res = await axios.post(`${baseURL}/api/v1/signup/teacher`, {
-  //       teacher, profilePicURL
-  //     })
-  //     setToken(res.data)
-  //   } catch (error) {
-  //     console.log("Eroro", error);
-  //   }
+  const handleTeacherSubmit = async (e) => {
+    e.preventDefault();
+    setFormLoading(true)
+    let profilePicURL;
+    if (media != null) {
+      const formData = new FormData();
+      formData.append("image", media, {
+        headers: {
+          "Content=Type": "multipart/form-data"
+        }
+      })
+      const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
+      profilePicURL = res.data.src;
+    }
+    if (media !== null && !profilePicURL) {
+      setFormLoading(false)
+      console.log("Error uploading Image");
+    }
+    try {
+      const res = await axios.post(`${baseURL}/api/v1/signup/teacher`, {
+        teacher, profilePicURL
+      })
+      setToken(res.data)
+    } catch (error) {
+      console.log("Eroro", error);
+    }
 
-  //   setFormLoading(false)
-  // };
+    setFormLoading(false)
+  };
 
 
 
@@ -172,9 +175,9 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
                     required
                     label="Name"
                     placeholder="Name"
-                    name="name"
-                    value={name}
-                    onChange={handleChange}
+                    name="teacherName"
+                    value={teacherName}
+                    onChange={handleTeacherChange}
                     icon="user"
                     iconPosition="left"
                   />
@@ -184,9 +187,35 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
                     required
                     label="Email"
                     placeholder="Email"
-                    name="email"
-                    value={email}
-                    onChange={handleChange}
+                    name="teacherEmail"
+                    value={teacherEmail}
+                    onChange={handleTeacherChange}
+                    icon='envelope'
+                    iconPosition='left'
+                    type="email"
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <Form.Input
+                    required
+                    label="Teacher Code"
+                    placeholder="code"
+                    name="pin"
+                    value={pin}
+                    onChange={handleTeacherChange}
+                    icon='envelope'
+                    iconPosition='left'
+                    type="email"
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <Form.Input
+                    required
+                    label="Password"
+                    placeholder="Password"
+                    name="password"
+                    value={password}
+                    onChange={handleTeacherChange}
                     icon='envelope'
                     iconPosition='left'
                     type="email"
@@ -209,6 +238,7 @@ const SlideInMenu = ({ outOfFocus, setOutOfFocus, isTeacher, setIsTeacher, teach
                 content="Signup"
                 type="submit"
                 color="green"
+                onClick={handleTeacherSubmit}
               />
             </footer>
           </div>

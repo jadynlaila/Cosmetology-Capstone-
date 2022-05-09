@@ -171,16 +171,22 @@ if a VALID teacher code was entered on signup, then this should run
 req.body = {name, email, pin, students}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createTeacher = async (req, res) => {
-  const { name, email } = req.body;
+  console.log(req.body.teacher);
+  const { teacherName: name, teacherEmail: email, pin, password } = req.body.teacher;
 
   try {
     let teacher;
     teacher = await TeacherModel.findOne({ email: email.toLowerCase() });
     if (teacher) return res.status(401).send("Email already in use");
 
+    if(pin!== '1109'){
+      return res.status(401).send('Invalid Teacher Code')
+    }
+
     teacher = new TeacherModel({
       name,
       email: email.toLowerCase(),
+      password
     });
 
     teacher = await teacher.save()

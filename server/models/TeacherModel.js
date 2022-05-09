@@ -13,20 +13,24 @@ const TeacherSchema = new Schema({
     required: true,
     pattern: /[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@west-mec.org/gm
   },
-  pin: {
-    type: String,
-    unique: true,
-    default: randomString = () => {
-      const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-
-      const randyAry = Array.from(
-        {length: 4},
-        () => char[Math.floor(Math.random() * char.length)]
-      )
-      const string = randyAry.join("")
-      return string
-    }
-},
+  password: {
+      type: String,
+      required: [true, "You must provide a password"]
+  }
 });
 
 module.exports = mongoose.model("Teacher", TeacherSchema);
+
+// pin: {
+//   type: String,
+//   unique: true,
+//   default: randomString = () => {
+//     const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+
+//     const randyAry = Array.from(
+//       {length: 4},
+//       () => char[Math.floor(Math.random() * char.length)]
+//     )
+//     const string = randyAry.join("")
+//     return string
+//   },
