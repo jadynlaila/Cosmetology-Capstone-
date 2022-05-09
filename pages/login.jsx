@@ -78,9 +78,10 @@ const login = () => {
         style={{ position: "absolute", bottom: "0", right: "0", width: '300px', height: "400px", backgroundImage: `url(/pexelimg2.png)`, backgroundSize: "cover", backgroundBlendMode: "saturation" }}
       ></div>
       <Navbar />
-      <Segment style={{ background: "transparent" }}>
-        <Grid columns='equal' divided centered>
-          <Grid.Row hidden color="white" textAlign="center">
+      {/* <Segment style={{ background: "transparent" }}> */}
+      <div style={{padding: "50px"}}>
+        <Grid columns='equal' hidden centered padded>
+          <Grid.Row hidden divided color="white" textAlign="center">
             <Grid.Column centered>
               <div className="split-screen-container" >
                 <Signup />
@@ -96,11 +97,12 @@ const login = () => {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-
+      </div>
         {/* <Divider vertical fitted >
           <Icon fitted name="arrow right" />
         </Divider> */}
-      </Segment>
+      {/* </Segment> */}
+      
     </>
   );
 };
