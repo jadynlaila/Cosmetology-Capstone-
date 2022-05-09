@@ -66,6 +66,7 @@ const VisitFormItems = ({ client, setOpen, id }) => {
             <Form.Field>
               <label>Preferred Stylist:</label>
               <input
+                required
                 onChange={handleChange}
                 name="preferredStylist"
                 placeholder="Preferred Stylist"
@@ -75,6 +76,7 @@ const VisitFormItems = ({ client, setOpen, id }) => {
             <Form.Field>
               <label>Date:</label>
               <input
+                required
                 onChange={handleChange}
                 name="date"
                 placeholder="Date of Appointment"
@@ -85,6 +87,7 @@ const VisitFormItems = ({ client, setOpen, id }) => {
             <Form.Field>
               <label>Style:</label>
               <input
+                required
                 onChange={handleChange}
                 name="style"
                 placeholder="Style"
@@ -94,6 +97,7 @@ const VisitFormItems = ({ client, setOpen, id }) => {
             <Form.Field>
               <label>Notes:</label>
               <input
+                required
                 onChange={handleChange}
                 name="notes"
                 placeholder="Notes"
