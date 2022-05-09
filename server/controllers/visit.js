@@ -20,7 +20,7 @@ const createVisit = async (req, res) => {
     if (!client) {
       return res.status(404).send("client not found @createVisit");
     }
-
+console.log(preferredStylist)
     //! map through client's visits and see if the time of this visit = the time of any of their past visits.
     //! if it does, the client cannot make a new visit at this time
 
@@ -32,7 +32,6 @@ const createVisit = async (req, res) => {
       notes,
     });
     visit.populate("client");
-    visit.populate("preferredStylist");
     visit.save();
 
     //* not quite sure what to do with duration, checkin, and checkout yet because i think that has to be set later

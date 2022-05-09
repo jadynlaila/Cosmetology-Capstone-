@@ -14,6 +14,12 @@ const CheckOut = ({ visit, setIsActive, isActive, checkOut }) => {
   });
 
   const { pin } = checkOutInfo;
+  let date = new Date(visit.date).toString().split(':');
+  date = date[0] + ':' + date[1];
+  date = date.split(' ')
+  date = date[0] + ' ' + date[1] + ' ' + date[2] + ' ' + date[4]
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +43,7 @@ const CheckOut = ({ visit, setIsActive, isActive, checkOut }) => {
           >
             <h5 className="name">{visit.client.name}</h5>
             <h5 className="email">{visit.client.email}</h5>
-            <h5 className="date">{visit.date}</h5>
+            <h5 className="date">{date.toString()}</h5>
           </div>
         }
       >
