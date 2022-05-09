@@ -1,0 +1,15 @@
+@use "../themes/defaultTheme" as *;
+@use "../util/mixins" as *;
+@use "../util/variables" as *;
+
+.checkIn-form-container {
+  padding: 30px;
+  .details-checkIn {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    // border: $grey-5 solid 1px;
+    div {
+      margin: 0 !important;
+    }
+  }
+}

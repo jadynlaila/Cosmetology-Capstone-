@@ -11,13 +11,16 @@ const Navbar = (isTeacher) => {
   return (
     <div id="nav">
       <div className="image-container">
+      <Link href={"/"}>
         <Image
+        
           className="logo"
           src={"/logo3-1.png"}
           alt="logo"
           height="56.25"
           width="112.5"
         />
+        </Link>
         <Link href={"/"}>
             <h1>Hairstyling</h1>
         </Link>

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { baseURL } from "../../pages/util/baseURL";
-import { Modal, Form, Button } from "semantic-ui-react";
+import { Modal, Form, Button, Dropdown, Icon} from "semantic-ui-react";
 import { visitEachChild } from "typescript";
 
 const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
   const [open, setOpen] = useState(false);
   const [errorMsg, seterrorMsg] = useState(null);
   const [openAdvancedInfo, setOpenAdvancedInfo] = useState(false);
-
+  const [manualDropdownOpen, setManualDropdownOpen] = useState(false)
   const [checkInInfo, setCheckInInfo] = useState({
     pin,
     visitInfo: visit,
@@ -41,38 +41,55 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
       >
         <Modal.Header>Client Check In</Modal.Header>
         <Modal.Content>
-          <div className="form-container">
-            {visit.client.name && <div>Name: {visit.client.name}</div>}
-            {visit.client.email && <div>Email: {visit.client.email}</div>}
-            {visit.preferredStylist && (
-              <div>Preferred Stylist: {visit.preferredStylist}</div>
-            )}
-            {visit.date && <div>Email: {visit.client.email}</div>}
-            {visit.style && <div>Requested Style: {visit.style}</div>}
-            {visit.notes && <div>Notes: {visit.notes}</div>}
-            {visit.client.number && <div>Number: {visit.client.number}</div>}
-            {visit.client.hairCondition && (
-              <div>Hair Condition: {visit.client.hairCondition}</div>
-            )}
-            {visit.client.scalpCondition && (
-              <div>Scalp Condition: {visit.client.scalpCondition}</div>
-            )}
-            {visit.client.hairTexture && <div>Hair Texture: {visit.client.hairTexture}</div>}
-            {visit.client.growthPatterns && (
-              <div>Growth Patterns: {visit.client.growthPatterns}</div>
-            )}
-            {visit.client.hairDensity && <div>Hair Density: {visit.client.hairDensity}</div>}
-            {visit.client.hairPorosity && (
-              <div>Hair Porosity: {visit.client.hairPorosity}</div>
-            )}
-            {visit.client.hairElasticity && (
-              <div>Hair Elasticity: {visit.client.hairElasticity}</div>
-            )}
-            {visit.client.hairLength && <div>Hair Length: {visit.client.hairLength}</div>}
-            {visit.client.allergies && <div>Allergies: {visit.client.allergies}</div>}
-            {visit.client.medicalInfo && (
-              <div>Relevant Medical Info: {visit.client.medicalInfo}</div>
-            )}
+          <div className="checkIn-form-container">
+            <div className="manual-dropdown"
+            >
+              {!manualDropdownOpen ?
+              <> 
+              <Icon name="caret right"  onClick={() => {
+                setManualDropdownOpen(!manualDropdownOpen)
+              }}></Icon> </>:<>
+              
+              <Icon name="caret down" 
+              onClick={() => {
+                setManualDropdownOpen(!manualDropdownOpen)
+
+              }}
+              />
+              {visit.client.name && <div className="details-checkIn"> <div> Name:</div> <div> {visit.client.name}</div></div>}
+              {visit.client.email && <div className="details-checkIn"> <div> Email:</div> <div> {visit.client.email}</div></div>}
+              {visit.preferredStylist && (
+                <div className="details-checkIn"> <div> Preferred Stylist:</div> <div>{visit.preferredStylist}</div></div>
+              )}
+              {visit.date && <div className="details-checkIn"> <div> Email:</div> <div>{visit.client.email}</div></div>}
+              {visit.style && <div className="details-checkIn"> <div> Requested Style:</div> <div>{visit.style}</div></div>}
+              {visit.notes && <div className="details-checkIn"> <div> Notes: </div> <div>{visit.notes}</div></div>}
+              {visit.client.number && <div className="details-checkIn" > <div> Number:</div> <div>{visit.client.number}</div></div>}
+              {visit.client.hairCondition && (
+                <div className="details-checkIn"> <div>Hair Condition:</div> <div> {visit.client.hairCondition}</div></div>
+              )}
+              {visit.client.scalpCondition && (
+                <div className="details-checkIn"> <div> Scalp Condition:</div> <div>{visit.client.scalpCondition}</div></div>
+              )}
+              {visit.client.hairTexture && <div className="details-checkIn"> <div> Hair Texture:</div> <div> {visit.client.hairTexture}</div></div>}
+              {visit.client.growthPatterns && (
+                <div className="details-checkIn"> <div> Growth Patterns:</div> <div> {visit.client.growthPatterns}</div></div>
+              )}
+              {visit.client.hairDensity && <div className="details-checkIn"> <div> Hair Density:</div> <div> {visit.client.hairDensity}</div></div>}
+              {visit.client.hairPorosity && (
+                <div className="details-checkIn"> <div> Hair Porosity: </div> <div> {visit.client.hairPorosity}</div></div>
+              )}
+              {visit.client.hairElasticity && (
+                <div className="details-checkIn"> <div> Hair Elasticity:</div> <div>{visit.client.hairElasticity}</div></div>
+              )}
+              {visit.client.hairLength && <div className="details-checkIn"> <div> Hair Length:</div> <div>{visit.client.hairLength}</div></div>}
+              {visit.client.allergies && <div className="details-checkIn"> <div> Allergies:</div> <div>{visit.client.allergies}</div></div>}
+              {visit.client.medicalInfo && (
+                <div className="details-checkIn"><div>Relevant Medical Info:</div>  <div>{visit.client.medicalInfo}</div></div>
+              )}
+              </>
+              }
+              </div>
             <Form>
               <Form.Field>
 

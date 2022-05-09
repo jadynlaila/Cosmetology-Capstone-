@@ -728,6 +728,17 @@
   outline: none;
 }
 
+.checkIn-form-container {
+  padding: 30px;
+}
+.checkIn-form-container .details-checkIn {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.checkIn-form-container .details-checkIn div {
+  margin: 0 !important;
+}
+
 html,
 body {
   overflow-x: hidden !important;
