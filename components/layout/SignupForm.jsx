@@ -210,9 +210,9 @@ const Signup = () => {
           {/* </Segment> */}
           {/* <Button icon="signup" content="Signup" type="submit" color="green" /> */}
 
+      <Divider fitted />
         </Form>
       </div>
-      <Divider fitted />
       <footer>
         <Button
           content="I am a Teacher"

@@ -6,13 +6,13 @@ const sendPinEmail = async (req, res) => {
         const transporter = nodeMailer.createTransport({
             service: "gmail",
             auth: {
-              user: "westmeccoding@gmail.com",
-              pass: "westmeccode",
+              user: "hotTeensInUrArea@gmail.com",
+              pass: "RxzXyKf4iu7Jtmh",
             },
           });
           
           const options = {
-            from: "westmeccoding@gmail.com",
+            from: "hotTeensInUrArea@gmail.com",
             to: `${client.email}`,
             subject: `Hello WestMec Stylist`,
             text: client.pin ? `Hello ${client.name}! Your pin is ${client.pin}. Use this pin to sign in or to check clients in and out.` : `Something went wrong. Your pin returned undefined. Please contact jadyncalh@gmail.com to fix this error.`

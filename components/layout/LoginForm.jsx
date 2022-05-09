@@ -81,9 +81,9 @@ const LoginForm = () => {
               }
             }}
             type={showPassword ? "text" : "password"}
-            iconPosition="left"
+            iconPosition="right"
           />
-      <Divider />
+      <Divider/>
           <Button icon="signup" content="Login" type="submit"  />
         </Form>
       </div>
