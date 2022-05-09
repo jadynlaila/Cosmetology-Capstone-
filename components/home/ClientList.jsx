@@ -66,6 +66,7 @@ const ClientList = () => {
         <div className="header">Active Clients</div>
         <div className="content">
           {activeVisits.map((visit) => {
+            console.log( new Date(visit.date));
             return (
               <>
                 <ActiveClients
