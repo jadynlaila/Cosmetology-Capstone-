@@ -36,6 +36,7 @@ const VisitFormItems = ({ client, setOpen, id }) => {
   }, []);
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
     try {
       console.log(newVisit);
@@ -45,7 +46,8 @@ const VisitFormItems = ({ client, setOpen, id }) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  
+};
 
   const handleClick = async (req, res) => {
     setIsActive(!isActive);
@@ -77,9 +79,10 @@ const VisitFormItems = ({ client, setOpen, id }) => {
               <input
                 onChange={handleChange}
                 name="date"
-                placeholder="Date of Appointment"
+                // placeholder="Date of Appointment" does nothing anymore
                 value={date}
                 type="datetime-local"
+                required="true"
               />
             </Form.Field>
             <Form.Field>
