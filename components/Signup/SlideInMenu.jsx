@@ -86,7 +86,7 @@ const SlideInMenu = ({
     } catch (error) {
       console.log("Eroro", error);
     }
-
+    setTeacherSignedUp(true);
     setFormLoading(false);
   };
 
@@ -98,7 +98,31 @@ const SlideInMenu = ({
       >
         {!isTeacher ? (
           studentSignedUp ? (
-            <></>
+            <>
+              <div
+                id="slideInModal"
+                style={{
+                  marginTop: "50px",
+                  marginRight: outOfFocus ? "3000px" : "0px",
+                }}
+              >
+                <Header>Student Signup</Header>
+                <div>Your account has been successfully made! Check your email for your new pin.
+                  You can then use this pin to log in and to check clients in and out. 
+                </div>
+                <footer>
+                  {/* style this div so its in smaller text */}
+                <div> Don't see the email? Contact jadyncalh@gmail.com </div>
+                <Button
+                  content="Back"
+                  labelPosition="left"
+                  icon="arrow left"
+                  onClick={() => setStudentSignedUp(false)}
+                  negative
+                />
+              </footer>
+              </div>
+            </>
           ) : (
             <div
               id="slideInModal"
@@ -170,7 +194,29 @@ const SlideInMenu = ({
             </div>
           )
         ) : teacherSignedUp ? (
-          <></>
+          <>
+          <div
+                id="slideInModal"
+                style={{
+                  marginTop: "50px",
+                  marginRight: outOfFocus ? "" : "0px",
+                }}
+              >
+                <Header>Student Signup</Header>
+                <div>Your account has been successfully made! Use the password you created as a pin to login!
+                </div>
+                <footer>
+                  {/* style this div so its in smaller text */}
+                <div> Having trouble logging in? Contact jadyncalh@gmail.com </div>
+                <Button
+                  content="Back"
+                  labelPosition="left"
+                  icon="arrow left"
+                  onClick={() => setTeacherSignedUp(false)}
+                  negative
+                />
+              </footer>
+              </div></>
         ) : (
           <div
             id="slideInModal"

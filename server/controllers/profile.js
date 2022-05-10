@@ -14,16 +14,47 @@ const getProfileStylist = async (req, res) => {
   try {
     const {id} = req.params;
     const stylist = await StylistModel.findOne({_id: id})
+    //! populate stylist here
     if(!stylist) return res.status(404).send("Stylist not Found :|")
-
     return res.status(200).json(stylist)
-
-    
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ getProfileStylist");
   }
 };
+
+// const getProfile = async (req, res) => {
+//   try {
+//     const { username } = req.params;
+
+//     const user = await UserModel.findOne({ username: username.toLowerCase() });
+//     if (!user) {
+//       return res.status(404).send("No User Found");
+//     }
+
+//     const profile = await ProfileModel.findOne({ user: user._id }).populate(
+//       "user"
+//     );
+
+//     const profileFollowStats = await FollowerModel.findOne({ user: user._id });
+
+//     return res.status(200).json({
+//       profile,
+//       followersLength:
+//         profileFollowStats.followers.length > 0
+//           ? profileFollowStats.followers.length
+//           : 0,
+//       followingLength:
+//         profileFollowStats.following.length > 0
+//           ? profileFollowStats.following.length
+//           : 0,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(500).send("Error at getProfile");
+//   }
+// };
+
 const getProfileTeacher = async (req, res) => {
   try {
     const {id} = req.params;

@@ -3,15 +3,14 @@ const ClientModel = require("../models/ClientModel");
 const TeacherModel = require("../models/TeacherModel");
 const VisitModel = require("../models/VisitModel");
 
-
 const defaultProfilePic = require("../util/defaultPic");
 const jwt = require("jsonwebtoken");
-
 
 const validatorPhone = require("validator/lib/isMobilePhone");
 const isAddress = /\d+\w+\s\w+\s\w+/;
 
-const isEmail = /[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@west-mec.org/gm;
+const isEmail =
+  /[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@west-mec.org/gm;
 
 const getPinValid = async (req, res) => {
   const { pin } = req.params;
@@ -52,14 +51,9 @@ if there was no teacher code entered, *then* this will run
 req.body {clients, teacher, email, pin, s1hours, s2hours, s3hours, s4hours }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createStylist = async (req, res) => {
-
   console.log(req.body);
-  const {
-    profilePicURL
-  } = req.body;
-  const {
-    name, email, teacher
-  } = req.body.stylist
+  const { profilePicURL } = req.body;
+  const { name, email, teacher } = req.body.stylist;
 
   // const test = isEmail.test(email);
   // if(!(test || isEmail.test(email))){
@@ -68,7 +62,7 @@ const createStylist = async (req, res) => {
 
   try {
     let stylist;
-    stylist = await StylistModel.findOne({ email: email});
+    stylist = await StylistModel.findOne({ email: email });
     if (stylist) return res.status(401).send("Email is already in use");
 
     stylist = new StylistModel({
@@ -76,14 +70,10 @@ const createStylist = async (req, res) => {
       email: email,
       teacher,
       profilePicURL: profilePicURL || defaultProfilePic,
-    })
+    });
 
-
-
-    stylist = await stylist.save()
-    return res.status(200).json(stylist)
-
-
+    stylist = await stylist.save();
+    return res.status(200).json(stylist);
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createStylist");
@@ -118,7 +108,7 @@ const createClient = async (req, res) => {
     hairLength,
     allergies,
     medicalInfo,
-    active
+    active,
   } = req.body.newClient;
 
   // if(!isEmail(email)) return res.status(401).send("InValid")
@@ -131,7 +121,6 @@ const createClient = async (req, res) => {
     console.log(req.body);
     // let client = await ClientModel.find({ email: email.toLowerCase() });
     // if (client) return res.status(401).send("Email already in use");
-
 
     client = new ClientModel({
       name,
@@ -149,7 +138,7 @@ const createClient = async (req, res) => {
       hairLength,
       allergies,
       medicalInfo,
-      active
+      active,
     });
 
     client = await client.save();
@@ -172,25 +161,30 @@ req.body = {name, email, pin, students}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const createTeacher = async (req, res) => {
   console.log(req.body.teacher);
-  const { teacherName: name, teacherEmail: email, pin, password } = req.body.teacher;
+  const {
+    teacherName: name,
+    teacherEmail: email,
+    pin,
+    password,
+  } = req.body.teacher;
 
   try {
     let teacher;
     teacher = await TeacherModel.findOne({ email: email.toLowerCase() });
     if (teacher) return res.status(401).send("Email already in use");
 
-    if(pin!== '1109'){
-      return res.status(401).send('Invalid Teacher Code')
+    if (pin !== "1109") {
+      return res.status(401).send("Invalid Teacher Code");
     }
 
     teacher = new TeacherModel({
       name,
       email: email.toLowerCase(),
-      password
+      password,
     });
 
-    teacher = await teacher.save()
-    return res.status(200).json(teacher)
+    teacher = await teacher.save();
+    return res.status(200).json(teacher);
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createTeacher");
@@ -198,50 +192,56 @@ const createTeacher = async (req, res) => {
 };
 
 const loginStylist = async (req, res) => {
-  const { pin } = req.body;
-  if (!pin) return res.status(401).send("Invalid Pin")
-  if (pin.length < 4) return res.status(401).send("Pin must be 4 char long")
+  const { pin } = req.body.loginPin;
+  console.log(`reqbodyloginpin ${req.body.loginPin}`);
+  // if (!pin) return res.status(401).send("No pin entered")
+  // if (pin.length < 4) return res.status(401).send("Pin must be 4 char long")
 
   try {
-
-    const stylist = await StylistModel.findOne({ pin: pin })
+    //!need to make this work for teachers too
+    const stylist = await StylistModel.findOne({ pin: pin });
+    // populate stylsit here
     if (stylist) {
-      return res.status(200).send("Login")
+      console.log(stylist);
+      const payload = { userId: stylist._id };
+      console.log(payload);
+      jwt.sign(
+        payload,
+        process.env.JWT_SECRET,
+        { expiresIn: "2d" },
+        (err, token) => {
+          if (err) throw err;
+          res.status(200).json(token);
+        }
+      );
     } else {
-      return res.status(404).send("Stylist not Found")
+      console.log(pin);
+      return res.status(404).send("Stylist not Found");
     }
-
   } catch (error) {
     console.log(error);
-    return res.status(500).send("Error @ loginStylist")
+    return res.status(500).send("Error @ loginStylist");
   }
-
-
-
-}
+};
 
 const getStylist = async (req, res) => {
   try {
     const { teacher } = req.body;
-    const stylists = await StylistModel.find({ teacher: teacher })
-    res.status(200).json({ stylists })
-
-
+    const stylists = await StylistModel.find({ teacher: teacher });
+    res.status(200).json({ stylists });
   } catch (error) {
     console.log("Error @ getStylist", error);
   }
-
-}
+};
 
 const getTeacher = async (req, res) => {
   try {
     const teacher = await TeacherModel.find({});
-    res.status(200).json(teacher)
+    res.status(200).json(teacher);
   } catch (error) {
     console.log("Error @ getTeacher", error);
   }
-}
-
+};
 
 module.exports = {
   createStylist,
@@ -249,7 +249,5 @@ module.exports = {
   createTeacher,
   loginStylist,
   getStylist,
-  getTeacher
+  getTeacher,
 };
-
-

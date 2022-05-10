@@ -103,7 +103,7 @@ const Signup = () => {
     e.preventDefault();
     console.log(`${stylist}`);
     console.log(`hi stylistname ${stylist.name}`)
-    setFormLoading(true);
+    // setFormLoading(true);
     let profilePicURL = '';
     if (media != null) {
       const formData = new FormData();
@@ -115,7 +115,7 @@ const Signup = () => {
       const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
       profilePicURL = res.data.src;
       profilePicURL = profilePicURL.toString();
-      console.log(`hi profilepic ${profilePicURL}`)
+      setStudentSignedUp(true);      
     }
     if (media !== null && !profilePicURL) {
       setFormLoading(false);
@@ -132,8 +132,7 @@ const Signup = () => {
     } catch (error) {
       console.log("Eroro", error);
     }
-
-    setFormLoading(false);
+    // setFormLoading(false);
   };
 
 
