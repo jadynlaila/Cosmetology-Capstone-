@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import StudentDrop from "./StudentDrop";
 import {
   Table,
@@ -13,6 +13,9 @@ import ClientDrop from "./ClientDrop";
 import ClientProfile from "./ClientProfile";
 
 const StudentProfile = () => {
+
+  const [isTeacher, setIsTeacher] = useState(false);
+  const [outOfFocus, setOutOfFocus] = useState(true);
   return (
     <>
       {/* <Segment
