@@ -200,7 +200,7 @@ const createTeacher = async (req, res) => {
 const loginStylist = async (req, res) => {
   const { pin } = req.body;
   if (!pin) return res.status(401).send("Invalid Pin")
-  if (pin < 4) return res.status(401).send("Pin must be 4 char long")
+  if (pin.length < 4) return res.status(401).send("Pin must be 4 char long")
 
   try {
 
