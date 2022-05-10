@@ -184,6 +184,10 @@ const SlideInMenu = ({
               <Form loading={formLoading} onSubmit={handleSubmit}>
                 <Form.Field>
                   <ImgDropDiv
+
+            
+
+
                     handleChange={handleChange}
                     inputRef={inputRef}
                     highLighted={highlighted}

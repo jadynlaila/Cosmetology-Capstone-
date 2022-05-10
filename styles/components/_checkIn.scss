@@ -4,12 +4,47 @@
 
 .checkIn-form-container {
   padding: 30px;
-  .details-checkIn {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    // border: $grey-5 solid 1px;
-    div {
-      margin: 0 !important;
+}
+
+.details-checkIn {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  // border: $grey-5 solid 1px;
+  div {
+    margin: 0 !important;
+  }
+}
+.manual-dropdown {
+  justify-content: left;
+  // padding: 10px;
+  // border: red 1px solid;
+  .clickable {
+    width: fit-content;
+    margin: 0 !important;
+    padding: 0;
+    // border: red 1px solid;
+    &:hover {
+      cursor: pointer;
     }
+  }
+}
+
+.page-filler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.details-container {
+  position: absolute;
+  background: $secondary;
+  // bottom: -225px;
+  left: -31vw;
+  top: 0;
+  border-radius: $radius;
+  width: 29vw;
+  .header {
+    border: 4px solid $primary-4;
+    border-radius: $radius $radius 0 0;
   }
 }

@@ -731,12 +731,47 @@
 .checkIn-form-container {
   padding: 30px;
 }
-.checkIn-form-container .details-checkIn {
+
+.details-checkIn {
+  border: 1px solid white;
   display: grid;
   grid-template-columns: 50% 50%;
 }
-.checkIn-form-container .details-checkIn div {
+.details-checkIn div {
   margin: 0 !important;
+}
+
+.manual-dropdown {
+  justify-content: left;
+}
+.manual-dropdown .clickable {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 !important;
+  padding: 0;
+}
+.manual-dropdown .clickable:hover {
+  cursor: pointer;
+}
+
+.page-filler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-container {
+  position: absolute;
+  background: #FAF9F6;
+  left: -31vw;
+  top: 0;
+  border-radius: 0.35rem;
+  width: 29vw;
+}
+.details-container .header {
+  border: 4px solid hsl(32deg, 93%, 54%);
+  border-radius: 0.35rem 0.35rem 0 0;
 }
 
 html,
