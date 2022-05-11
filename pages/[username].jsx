@@ -5,9 +5,7 @@ import { baseURL } from '../pages/util/baseURL'
 import { parseCookies } from "nookies";
 import { Grid, Placeholder } from "semantic-ui-react";
 import Cookies from "js-cookie";
-// import { NoProfilePost } from "../components/layout/NoData";
-// import { PlaceholderPosts } from "../components/layout/PlaceHolderGroup";
-// import Followers from "../components/profile/followers";
+
 
 const ProfilePage = ({
   errorLoading,
@@ -19,6 +17,7 @@ const ProfilePage = ({
 }) => {
   const router = useRouter();
   const { username } = router.query;
+  console.log(username);
   const ownAccount = profile.user._id === user._id;
 
   const [posts, setPosts] = useState([]);
@@ -107,13 +106,16 @@ const ProfilePage = ({
 
 ProfilePage.getInitialProps = async (ctx) => {
   try {
-    const { username } = ctx.query;
+    const { id } = ctx.query;
     console.log(ctx.query);
     const { token } = parseCookies(ctx);
-    const res = await axios.get(`${baseURL}/api/v1/profile/${username}`, {
+    const res = await axios.get(`${baseURL}/api/v1/stylist/profile/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-
+    //!dont know how to make this work for teachers, i guess i could do a little check if req is empty then i just do an axios call to the stylist routes instead
+    //! or we can make the axios call do both searching for a stylists and a teachers profile at the same time
+    //!we could refactor it so that instead of two controllers searching for either a stylist or a teacher's profile- 
+    //!we could have one controller that can handle both
     console.log(res.data);
     // const { profile, followersLength, followingLength } = res.data;
     // return { profile, followersLength, followingLength };
@@ -121,5 +123,6 @@ ProfilePage.getInitialProps = async (ctx) => {
     return { errorLoading: true };
   }
 };
+
 
 export default ProfilePage;

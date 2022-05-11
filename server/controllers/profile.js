@@ -12,11 +12,12 @@ req.params {id}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const getProfileStylist = async (req, res) => {
   try {
-    const {id} = req.params;
-    const stylist = await StylistModel.findOne({_id: id})
-    //! populate stylist here
+    console.log(req.query);
+    const {id} = req.query;
+    const stylist = await StylistModel.findOne({_id: id}).populate('visits');
+    //! maybe populate stylist here
     if(!stylist) return res.status(404).send("Stylist not Found :|")
-    return res.status(200).json(stylist)
+    return res.status(200).send(stylist)
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ getProfileStylist");
