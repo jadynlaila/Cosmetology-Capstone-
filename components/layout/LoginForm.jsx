@@ -42,7 +42,8 @@ const LoginForm = () => {
     e.preventDefault();
     setFormLoading(true)
     try {
-      const res = await axios.post(`${baseURL}/api/v1/signup/login`)
+      const res = await axios.post(`${baseURL}/api/v1/signup/login`, {loginPin})
+      console.log(res.data);
       setToken(res.data)
       console.log("Login", res.data);
     } catch (error) {

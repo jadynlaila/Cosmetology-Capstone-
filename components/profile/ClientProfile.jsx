@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from "react";
 import {
   Table,
   Form,
@@ -10,13 +11,12 @@ import {
   Grid,
 } from "semantic-ui-react";
 import VisitDrop from "./VisitDrop";
-import React, { useState, useEffect, useRef } from "react";
 
 const ClientProfile = ({ outOfFocus, setOutOfFocus, active, setActive }) => {
   return (
     <div
       className="slide"
-      style={{ zIndex: !outOfFocus || isTeacher ? "5" : "-1" }}
+      style={{ zIndex: !outOfFocus || active ? "5" : "-1" }}
     >
       {!active ? (
         <div
