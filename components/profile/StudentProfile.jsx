@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import StudentDrop from "./StudentDrop";
 import {
@@ -14,7 +15,7 @@ import ClientProfile from "./ClientProfile";
 
 const StudentProfile = () => {
 
-  const [isTeacher, setIsTeacher] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const [outOfFocus, setOutOfFocus] = useState(true);
   return (
     <>
