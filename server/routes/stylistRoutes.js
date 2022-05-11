@@ -16,8 +16,7 @@ more here:
 
 */
 
-router.route('/profile/:id').get(getProfileStylist).put(updateStylist)
-router.route("/clock").post(loginStylist)
+router.route('/profile').get(getProfileStylist).put(updateStylist)
 router.route("/profile/hours/:id").put(createHours)
 
 

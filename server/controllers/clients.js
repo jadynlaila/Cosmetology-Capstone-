@@ -71,7 +71,6 @@ getVisits = async (req, res) => {
     const visits = await PostModel.find({ user: user._id })
       .sort({ createdAt: -1 })
       .populate("user")
-      .populate("comments.user");
     return res.status(200).json(visits)
   } catch (error) {
     console.log(error);

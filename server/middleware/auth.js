@@ -1,15 +1,14 @@
 const jwt = require("jsonwebtoken");
 
-const auth = (req, res, next) => {
+const authMiddleware = (req, res, next) => {
     //console.log('test 5', req.headers);
     try {
         if(!req.headers.authorization || !req.headers.authorization.split(" ")[0] === "Bearer"){
             res.status(401).send("Unauthorized")
         }
         const token = req.headers.authorization.split(" ")[1];
-        //console.log('test 4', token);
         const {userId} = jwt.verify(token, process.env.JWT_SECRET)
-        //console.log('test 6', userId);
+
         req.userId = userId
         next()
     } catch (error) {
@@ -18,4 +17,4 @@ const auth = (req, res, next) => {
     }
 }
 
-module.exports = {auth}
+module.exports = {authMiddleware}

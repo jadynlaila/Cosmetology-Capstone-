@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const StylistSchema = new Schema({
   name: { type: String, required: true },
-  clients: { type: Schema.Types.ObjectId, ref: "Client" },
+  visits: [{ type: Schema.Types.ObjectId, ref: "Visit" }],
   teacher: { type: Schema.Types.String, ref: "Stylist" },
   email: {
     type: String,

@@ -92,6 +92,9 @@ const checkIn = async (req, res) => {
       return res.status(404).send("stylist not found");
     }
 
+    // setCheckOutInfo((prev) => ({ ...prev, [name]: value }));
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
     const visit = await VisitModel.findOne({
       _id: visitInfo._id
     });
@@ -101,6 +104,9 @@ const checkIn = async (req, res) => {
     await visit.save();
     console.log(`stylist done ${visit}`)
     
+    stylist.visits = [...stylist.visits, visit._id]
+    await stylist.save();
+
     return res.status(200).json({visit});
   } catch (error) {
     console.log(error);
