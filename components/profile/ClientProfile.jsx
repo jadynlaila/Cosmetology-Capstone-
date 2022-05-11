@@ -104,7 +104,7 @@ const ClientProfile = ({ outOfFocus, setOutOfFocus, active, setActive }) => {
               content="Back"
               labelPosition="left"
               icon="arrow left"
-              // onClick={() => setOutOfFocus(true)}
+              onClick={() => setOutOfFocus(true)}
               negative
             />
             <Button

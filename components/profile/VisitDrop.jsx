@@ -28,7 +28,7 @@ export default class VisitDrop extends Component {
               Visit
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 2}>
-              <p>Info</p>
+              {/* <p>{visit.client.style}</p> */}
             </Accordion.Content>
           </Accordion>
         </Grid.Column>
