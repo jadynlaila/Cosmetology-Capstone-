@@ -342,22 +342,74 @@
   padding: 10px;
 }
 
-.profile {
-  overflow: hidden;
-  background-color: #FAF9F6;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.profile .profile-container {
+  overflow-y: auto;
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 50px;
   border-radius: 0.35rem;
-  width: 65%;
-  margin: 40px auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-.profile .header {
-  border-radius: 0.35rem 0.35rem 0 0;
+.profile .profile-container .header {
   padding: 10px !important;
   width: 100% !important;
 }
-.profile .content .form-container .profile-header {
+.profile .profile-container .content .form-container {
+  padding-top: 40px;
+}
+.profile .profile-container .content .form-container .profile-header {
   display: flex;
   gap: 15px;
+}
+
+#__next > div.profile > div > div > div > div.ui.grid > div.three.wide.column {
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  max-height: 650px;
+  overflow-y: auto;
+  padding: 10px;
+  margin-bottom: 30px;
+  margin-top: 14px;
+}
+
+.clientName {
+  font-size: 1.5em;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+}
+.clientName:hover {
+  text-shadow: 0px 0px 1px hsl(32deg, 100%, 60%);
+  cursor: pointer;
+}
+
+.clientName::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+  bottom: -4px;
+  /****** 
+  optional values below 
+  ******/
+  /* center - (optional) use with adjusting width   */
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 0;
+  background: white;
+  /* optional animation */
+  transition: 0.5s;
+}
+
+.clientName:hover::after {
+  width: 70%;
+  background: orange;
 }
 
 .signupPage {
@@ -776,7 +828,7 @@
 
 html,
 body {
-  overflow-x: hidden !important;
+  overflow: hidden !important;
   padding: 0;
   margin: 0;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
