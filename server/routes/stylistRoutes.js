@@ -1,5 +1,5 @@
 const { getProfileStylist, getProfileTeacher, updateStylist } = require("../controllers/profile");
-const { loginStylist } = require("../controllers/users");
+const { loginStylist, createHours } = require("../controllers/users");
 
 const router = require("express").Router();
 
@@ -18,6 +18,7 @@ more here:
 
 router.route('/profile/:id').get(getProfileStylist).put(updateStylist)
 router.route("/clock").post(loginStylist)
+router.route("/profile/hours/:id").put(createHours)
 
 
 
