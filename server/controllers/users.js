@@ -252,9 +252,16 @@ const createHours = async(req,res) => {
       s4hours
     } = req.body;
 
-    const stylist = await StylistModel.updateMany({s1hours: s1hours, s2hours: s2hours, s3hours: s3hours, s4hours: s4hours})
+    const {userId} = req.params;
 
-    res.status(200).json(stylist)
+    const stylist = await StylistModel.findOne({id: userId});
+
+    const stylistHours = await StylistModel.updateMany({s1hours: s1hours, s2hours: s2hours, s3hours: s3hours, s4hours: s4hours})
+
+
+    
+
+    res.status(200).json()
 
   } catch (error) {
     console.log("Error @ createHours");

@@ -54,19 +54,19 @@ const login = () => {
     setSubmitDisable(!(email && pin));
   }, [user])
 
-  useEffect(() => {
-    const getTeachers = async () => {
-      setLoading(true)
-      try {
-        const res = await axios.get(`${baseURL}/api/v1/teacher/`)
-        setStylist(res.data)
-      } catch (error) {
-        console.log(error);
-      }
-      setLoading(false)
-    }
-    getTeachers()
-  }, [])
+  // useEffect(() => {
+  //   const getTeachers = async () => {
+  //     setLoading(true)
+  //     try {
+  //       const res = await axios.get(`${baseURL}/api/v1/teacher/`)
+  //       setStylist(res.data)
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //     setLoading(false)
+  //   }
+  //   getTeachers()
+  // }, [])
 
 
 

@@ -12,6 +12,10 @@ import {
 } from "semantic-ui-react";
 import VisitDrop from "./VisitDrop";
 
+// Idk if I got this wrong or something but don't we need to add the clients the stylists have "styled in their model or is there another way to do it?
+
+
+
 const ClientProfile = () => {
   const [clientTabOpen, setClientTabOpen] = useState(false)
   return (
