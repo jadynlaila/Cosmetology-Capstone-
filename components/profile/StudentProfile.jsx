@@ -203,6 +203,7 @@ const StudentProfile = () => {
               positive
             />
           </div>
+          <Divider />
         </div>
       </div>
       {/* </Segment> */}
