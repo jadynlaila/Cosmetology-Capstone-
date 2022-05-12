@@ -2,25 +2,100 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 
+// .profile {
+//   overflow: hidden;
+//   background-color: $secondary;
+//   box-shadow: $dark-shadow;
+//   border-radius: $radius;
+//   // border: 40px solid black;
+//   width: 80%;
+//   margin: 40px auto;
 .profile {
-  overflow: hidden;
-  background-color: $secondary;
-  box-shadow: $dark-shadow;
-  border-radius: $radius;
-  // border: 40px solid black;
-  width: 65%;
-  margin: 40px auto;
-  .header {
-    border-radius: $radius $radius 0 0;
-    padding: 10px !important;
-    width: 100% !important;
-  }
-  .content {
-    .form-container {
-      .profile-header {
-        display: flex;
-        gap: 15px;
+  .profile-container {
+    overflow-y: auto;
+
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 50px;
+    border-radius: $radius;
+    box-shadow: $dark-shadow;
+
+    .header {
+      // border-radius: $radius $radius 0 0;
+      padding: 10px !important;
+      width: 100% !important;
+      // background: transparent I !important;
+    }
+    .content {
+      .form-container {
+        padding-top: 40px;
+        .profile-header {
+          display: flex;
+          gap: 15px;
+        }
       }
     }
   }
+}
+
+#__next > div.profile > div > div > div > div.ui.grid > div.three.wide.column {
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  max-height: 650px;
+  overflow-y: auto;
+  // margin: 1px;
+  padding: 10px;
+  margin-bottom: 30px;
+  margin-top: 14px;
+}
+
+.clientName {
+  font-size: 1.5em;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+
+  &:hover {
+    text-shadow: 0px 0px 1px $primary-5;
+    cursor: pointer;
+
+    // transform: scale(.9);
+  }
+  
+}
+.clientName::after{
+  position: absolute;
+  content: '';
+  height: 2px;
+/* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+  bottom: -4px; 
+
+
+ /****** 
+ optional values below 
+ ******/
+  
+  /* center - (optional) use with adjusting width   */
+  margin: 0 auto;
+left: 0;
+  right: 0;
+width: 0;
+background: white;
+
+/* optional animation */
+-o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+.clientName:hover::after{
+  width: 70%;
+    background: orange;
 }
