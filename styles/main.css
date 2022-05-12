@@ -223,18 +223,18 @@
     flex-direction: column;
   }
 }
-.content::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #f5f5f5;
   border-radius: 10px;
 }
 
-.content::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
-  background-color: #f5f5f5;
+  background-color: transparent;
 }
 
-.content::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, hsl(32deg, 100%, 60%)), color-stop(0.66, hsl(32deg, 93%, 54%)), color-stop(0.99, hsl(32deg, 100%, 60%)));
 }
@@ -345,7 +345,7 @@
 .profile .profile-container {
   overflow-y: auto;
   position: absolute;
-  top: -5px;
+  top: 25px;
   bottom: -5px;
   left: 0;
   right: 0;
@@ -367,10 +367,10 @@
   gap: 15px;
 }
 
-#__next > div.profile > div > div > div > div.ui.grid > div.three.wide.column {
+#__next > div.profile > div > div > div > div.fullscreen-container > div.ui.grid > div.center.aligned.three.wide.column {
   border-radius: 10px;
   border: 1px solid lightgrey;
-  max-height: 650px;
+  height: 650px;
   overflow-y: auto;
   padding: 10px;
   margin-bottom: 30px;
@@ -410,6 +410,16 @@
 .clientName:hover::after {
   width: 70%;
   background: orange;
+}
+
+#center-on-screen {
+  display: flex;
+  border-radius: 10px;
+  background: white;
+  position: absolute;
+  top: 75px;
+  right: 25px;
+  left: 25px;
 }
 
 .signupPage {

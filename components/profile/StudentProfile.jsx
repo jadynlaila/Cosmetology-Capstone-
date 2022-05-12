@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import StudentDrop from "./StudentDrop";
 import {
+  Search,
   Grid,
   Table,
   Form,
@@ -11,6 +12,7 @@ import {
   Segment,
   Image,
   Modal,
+  Icon,
 } from "semantic-ui-react";
 import ClientDrop from "./ClientDrop";
 import ClientProfile from "./ClientProfile";
@@ -130,66 +132,29 @@ const StudentProfile = () => {
                   </Grid.Column>
                 </Grid>
               </div> :
-              <div className="fullscreen-container slide" style={{ zIndex: "5" }}
+              <div className="fullscreen-container slide" style={{ zIndex: "2" }}
 
-                onClick={() => {
-                  setFullscreen(!fullscreen)
-                }}
+                // onClick={() => {
+                //   setFullscreen(!fullscreen)
+                // }}
               >
-                <div id="slideInModal" style={{width: "75vw !important"}}>
+                <div id="center-on-screen" style={{width: "75vw !important"}}>
                   <div className="make-fullscreen">
-                    <Button icon="zoom-out" floated="right"
-                    onClick={() => {
-                      setFullscreen(!fullscreen)
-                    }}></Button>
+                    
                   </div>
 
                   <Grid>
-
-                    <Grid.Column width="3" textAlign="center">
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 1</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 2</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                      <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                      <br />
-                    </Grid.Column>
-                    <Grid.Column floated="right" width="13">
-                      <ClientProfile />
+                    <Grid.Column   floated="right" width="16">
+                      <Grid.Row style={{display: "flex" ,padding: "10px"}}>
+                        <Search></Search>
+                    <Button icon="close orange large" 
+                    style={{position: "absolute", right: "10px"}}
+                    onClick={() => {
+                      setFullscreen(!fullscreen)
+                    }}>
+                    </Button>
+                      </Grid.Row>
+                      <ClientProfile  />
                     </Grid.Column>
                   </Grid>
                 </div>

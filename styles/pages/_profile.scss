@@ -15,7 +15,7 @@
     overflow-y: auto;
 
     position: absolute;
-    top: -5px;
+    top: 25px;
     bottom: -5px;
     left: 0;
     right: 0;
@@ -43,10 +43,17 @@
   }
 }
 
-#__next > div.profile > div > div > div > div.ui.grid > div.three.wide.column {
+#__next
+  > div.profile
+  > div
+  > div
+  > div
+  > div.fullscreen-container
+  > div.ui.grid
+  > div.center.aligned.three.wide.column {
   border-radius: 10px;
   border: 1px solid lightgrey;
-  max-height: 650px;
+  height: 650px;
   overflow-y: auto;
   // margin: 1px;
   padding: 10px;
@@ -66,36 +73,49 @@
 
     // transform: scale(.9);
   }
-  
 }
-.clientName::after{
+.clientName::after {
   position: absolute;
-  content: '';
+  content: "";
   height: 2px;
-/* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
-  bottom: -4px; 
+  /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+  bottom: -4px;
 
-
- /****** 
+  /****** 
  optional values below 
  ******/
-  
+
   /* center - (optional) use with adjusting width   */
   margin: 0 auto;
-left: 0;
+  left: 0;
   right: 0;
-width: 0;
-background: white;
+  width: 0;
+  background: white;
 
-/* optional animation */
--o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  transition:.5s;
+  /* optional animation */
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-.clientName:hover::after{
+.clientName:hover::after {
   width: 70%;
-    background: orange;
+  background: orange;
+}
+
+#center-on-screen {
+  display: flex;
+  border-radius: 10px;
+  background: white;
+  position: absolute;
+  top: 75px;
+  // bottom: 0;
+  right: 25px;
+  left: 25px;
+}
+
+.make-fullscreen {
+  
 }
