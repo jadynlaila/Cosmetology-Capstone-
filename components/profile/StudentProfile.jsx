@@ -204,46 +204,6 @@ const StudentProfile = () => {
             />
           </div>
           <Divider />
-
-          <Form>
-            <Form.Group widths="equal" style={{ margin: "auto" }}>
-              <Form.Field
-                style={{ display: "flex", justifyContent: "center" }}
-                label="Email"
-                placeholder="Email"
-              />
-              <Form.Field
-                style={{ display: "flex", justifyContent: "center" }}
-                label="Teacher"
-                placeholder="Teacher"
-              />
-              <Form.Field
-                style={{ display: "flex", justifyContent: "center" }}
-                label="Hours"
-                placeholder="Hours"
-              />
-            </Form.Group>
-          </Form>
-
-          <Divider />
-
-          <Button style={{marginBottom:"2em"}}>Client 1</Button>
-          {/* Temporary buttons, subject to change */}
-
-          {/* <ClientProfile /> */}
-          <br />
-          <Button style={{marginBottom:"2em"}}>Client 2</Button>
-          <br />
-          <Button style={{marginBottom:"2em"}}>Client 3</Button>
-          <br />
-
-          <Button
-            content="Next"
-            labelPosition="right"
-            icon="arrow right"
-            onClick={() => setOutOfFocus(false)}
-            positive
-          />
         </div>
       </div>
       {/* </Segment> */}
