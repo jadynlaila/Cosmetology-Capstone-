@@ -43,7 +43,7 @@ app.use('/api/v1/client', clientRoutes);
 app.use('/api/v1/auth', authRoute)
 app.use("/api/v1/signup", signupRoutes);
 app.use('/api/v1/visit', visitRoutes)
-app.use("/api/v1/stylist", stylistRoutes)
+app.use("/api/v1/stylist", authRoute, stylistRoutes)
 app.use("/api/v1/teacher", teacherRoutes)
 app.use("/api/v1/search", searchRoutes)
 app.use('/api/v1/uploads', uploadPicRoutes)
