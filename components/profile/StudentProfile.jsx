@@ -68,7 +68,7 @@ const StudentProfile = () => {
           <Button style={{marginBottom:"2em"}}>Client 1</Button>
           {/* Temporary buttons, subject to change */}
 
-          <ClientProfile />
+          {/* <ClientProfile /> */}
           <br />
           <Button style={{marginBottom:"2em"}}>Client 2</Button>
           <br />
