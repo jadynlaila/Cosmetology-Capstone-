@@ -353,7 +353,8 @@
   background-color: #f5f5f5;
 }
 
-.profile-container, ::webkit-scrollbar-thumb {
+.profile-container,
+::webkit-scrollbar-thumb {
   border-radius: 10px;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, hsl(32deg, 100%, 60%)), color-stop(0.66, hsl(32deg, 93%, 54%)), color-stop(0.99, hsl(32deg, 100%, 60%)));
 }
@@ -413,7 +414,6 @@
   position: relative;
 }
 .clientName:hover {
-  text-shadow: 0px 0px 1px hsl(32deg, 100%, 60%);
   cursor: pointer;
 }
 
@@ -424,7 +424,7 @@
   /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
   bottom: -4px;
   /****** 
-  optional values below 
+   optional values below 
   ******/
   /* center - (optional) use with adjusting width   */
   margin: 0 auto;
@@ -438,7 +438,7 @@
 
 .clientName:hover::after {
   width: 70%;
-  background: orange;
+  background: hsl(32deg, 100%, 60%);
 }
 
 #center-on-screen {

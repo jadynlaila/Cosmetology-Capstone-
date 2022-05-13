@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import LoginOrSignup from "./loginOrSignup";
 // import { Button } from "semantic-ui-react";
 import isTeacher from "../../pages/profile";
-import { Button, Image } from "semantic-ui-react";
+import { Button, Image, Icon } from "semantic-ui-react";
 import Link from "next/link";
 
 const Navbar = (isTeacher) => {
@@ -22,7 +22,9 @@ const Navbar = (isTeacher) => {
         />
         </Link>
         <Link href={"/"}>
-            <h1>Hairstyling</h1>
+            <h1>Hairstyling 
+              {/* <Icon name="angle double right"/> */}
+            </h1>
         </Link>
       </div>
 
@@ -63,7 +65,9 @@ const Navbar = (isTeacher) => {
           <Button className="signup">New User?</Button>
         </Link> */}
         <Link href="/login">
-          <h3>{loggedIn ? "Logout" : "Login"}</h3>
+          <h3>Dashboard &nbsp;
+            <Icon name="dashboard"/>
+          </h3>
         </Link>
       </div>
     </div>

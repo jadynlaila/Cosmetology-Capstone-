@@ -78,7 +78,7 @@ const StudentProfile = () => {
             {!fullscreen ?
               <div className="fullscreen-container">
                 <div className="make-fullscreen">
-                  <Button icon="magnify" floated="right" onClick={() => {
+                  <Button icon="expand" floated="right" onClick={() => {
                     setFullscreen(!fullscreen)
                   }}></Button>
                 </div>
@@ -147,7 +147,7 @@ const StudentProfile = () => {
                     <Grid.Column   floated="right" width="16">
                       <Grid.Row style={{display: "flex" ,padding: "10px"}}>
                         <Search></Search>
-                    <Button icon="close orange large" 
+                    <Button icon="close red large" 
                     style={{position: "absolute", right: "10px"}}
                     onClick={() => {
                       setFullscreen(!fullscreen)
