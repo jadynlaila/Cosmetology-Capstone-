@@ -13,12 +13,12 @@ req.params {id}
 const getProfileStylist = async (req, res) => {
   try {
     console.log(req.query);
-    const {id} = req.query;
-    const stylist = await StylistModel.findOne({_id: id}).populate('visits');
+    const { id } = req.query;
+    const stylist = await StylistModel.findOne({ _id: id }).populate("visits");
     //! maybe populate stylist here
     console.log(`getprofilestylist ${getProfileStylist}`);
-    if(!stylist) return res.status(404).send("Stylist not Found :|")
-    return res.status(200).json(stylist)
+    if (!stylist) return res.status(404).send("Stylist not Found :|");
+    return res.status(200).json(stylist);
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ getProfileStylist");
@@ -59,9 +59,9 @@ const getProfileStylist = async (req, res) => {
 
 const getProfileTeacher = async (req, res) => {
   try {
-    const {id} = req.params;
-    const teacher = await TeacherModel.findOne({_id: id})
-    if(!teacher) return res.status(404).send("Teacher not Found :|")
+    const { id } = req.params;
+    const teacher = await TeacherModel.findOne({ _id: id });
+    if (!teacher) return res.status(404).send("Teacher not Found :|");
 
     return res.status(200).json(teacher);
   } catch (error) {
@@ -78,30 +78,31 @@ req.params {stylistId}
 
 const updateStylist = async (req, res) => {
   const {
-    body: {email, name, profilePicURL},
-    params: {id}
+    body: { email, name, profilePicURL },
+    params: { id },
   } = req;
   try {
-    if(!email){
-      return res.status(200).send("Please update Email or leave the same")
-      
+    if (!email) {
+      return res.status(200).send("Please update Email or leave the same");
     }
-    if(!name){
-      return res.status(200).send("Please update Name or leave the same")
+    if (!name) {
+      return res.status(200).send("Please update Name or leave the same");
     }
-    if(!profilePicURL){
-      return res.status(200).send("Please update Profile Picture or leave the same")
+    if (!profilePicURL) {
+      return res
+        .status(200)
+        .send("Please update Profile Picture or leave the same");
     }
 
     const stylist = await StylistModel.findByIdAndUpdate(
-      {_id: id},
+      { _id: id },
       req.body,
-      {new: true, runValidators: true}
-    )
-    if(!stylist){
-      return res.status(200).send(`No stylist with id of ${id}`)
+      { new: true, runValidators: true }
+    );
+    if (!stylist) {
+      return res.status(200).send(`No stylist with id of ${id}`);
     }
-    return res.status(200).json({stylist});
+    return res.status(200).json({ stylist });
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ updateStylist");
@@ -134,33 +135,31 @@ req.params {teacherId}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const updateTeacher = async (req, res) => {
   const {
-    body: {email, name},
-    params: {id}
+    body: { email, name },
+    params: { id },
   } = req;
   try {
-    if(!email){
-      return res.status(200).send("Please update Email or leave the same")
-      
+    if (!email) {
+      return res.status(200).send("Please update Email or leave the same");
     }
-    if(!name){
-      return res.status(200).send("Please update Name or leave the same")
+    if (!name) {
+      return res.status(200).send("Please update Name or leave the same");
     }
 
     const teacher = await TeacherModel.findByIdAndUpdate(
-      {_id: id},
+      { _id: id },
       req.body,
-      {new: true, runValidators: true}
-    )
-    if(!teacher){
-      return res.status(200).send(`No Teacher with id of ${id}`)
+      { new: true, runValidators: true }
+    );
+    if (!teacher) {
+      return res.status(200).send(`No Teacher with id of ${id}`);
     }
-    return res.status(200).json({teacher});
+    return res.status(200).json({ teacher });
   } catch (error) {
     console.log(error);
     return res.status(500).send("server error @ updateTeacher");
   }
 };
-
 
 const updateProfile = async (req, res) => {
   try {
@@ -177,31 +176,36 @@ const updatePassword = async (req, res) => {
   }
 };
 
-const deleteStylist = async(req,res) => {
+const deleteStylist = async (req, res) => {
   try {
-    const {teacherId} = req;
-    const {stylistId} = req.params;
+    const { teacherId } = req;
+    const { stylistId } = req.params;
 
-    const stylist = await StylistModel.findById(stylistId)
-    if(!stylist) return res.status(404).send("Stylist not Found")
+    const stylist = await StylistModel.findById(stylistId);
+    if (!stylist) return res.status(404).send("Stylist not Found");
 
-    const teacher = await TeacherModel.findById(teacherId)
-    if(stylist.user !== teacherId){
-      if(stylist.role === "root"){
-        await stylist.remove()
-        return res.status(200).send("Stylist Deleted")
-      }else {
-        return res.status(401).send("Unauthorize")
+    const teacher = await TeacherModel.findById(teacherId);
+    if (stylist.user !== teacherId) {
+      if (stylist.role === "root") {
+        await stylist.remove();
+        return res.status(200).send("Stylist Deleted");
+      } else {
+        return res.status(401).send("Unauthorize");
       }
     }
 
-    await stylist.remove()
-    return res.status(200).send("Stylist Deleted")
+    await stylist.remove();
+    return res.status(200).send("Stylist Deleted");
   } catch (error) {
     console.log(error);
-    return res.status(500).send("Server Error in deleteStylist")
+    return res.status(500).send("Server Error in deleteStylist");
   }
-}
+};
 
-
-module.exports = {getProfileStylist, getProfileTeacher, updateStylist, updateTeacher, deleteStylist}
+module.exports = {
+  getProfileStylist,
+  getProfileTeacher,
+  updateStylist,
+  updateTeacher,
+  deleteStylist,
+};
