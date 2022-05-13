@@ -243,30 +243,26 @@ const getTeacher = async (req, res) => {
   }
 };
 
-const createHours = async(req,res) => {
+const createHours = async (req, res) => {
   try {
-    const {
-      s1hours,
-      s2hours,
-      s3hours,
-      s4hours
-    } = req.body;
+    const { s1hours, s2hours, s3hours, s4hours } = req.body;
 
-    const {userId} = req.params;
+    const { userId } = req.params;
 
-    const stylist = await StylistModel.findOne({id: userId});
+    const stylist = await StylistModel.findOne({ id: userId });
 
-    const stylistHours = await StylistModel.updateMany({s1hours: s1hours, s2hours: s2hours, s3hours: s3hours, s4hours: s4hours})
+    const stylistHours = await StylistModel.updateMany({
+      s1hours: s1hours,
+      s2hours: s2hours,
+      s3hours: s3hours,
+      s4hours: s4hours,
+    });
 
-
-    
-
-    res.status(200).json()
-
+    res.status(200).json();
   } catch (error) {
     console.log("Error @ createHours");
   }
-}
+};
 
 module.exports = {
   createStylist,
@@ -275,5 +271,5 @@ module.exports = {
   loginStylist,
   getStylist,
   getTeacher,
-  createHours
+  createHours,
 };

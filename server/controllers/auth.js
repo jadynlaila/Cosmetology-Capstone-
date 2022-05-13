@@ -14,7 +14,7 @@ const getUserAuth = async (req, res) => {
     //! make sure this actually works for teacher
     //!populate everything i need
     //checked 5/12 at 2:30 and both userId and user are defined and accurate
-    return res.status(200).json({user});
+    return res.status(200).json({ user });
     //!user might need to be in an object
   } catch (err) {
     console.log(err);

@@ -6,13 +6,7 @@ const { createFalse } = require("typescript");
 const { filter } = require("language-tags");
 
 const createVisit = async (req, res) => {
-  const {
-    preferredStylist,
-    date,
-    style,
-    notes,
-    clientId,
-  } = req.body.newVisit;
+  const { preferredStylist, date, style, notes, clientId } = req.body.newVisit;
 
   try {
     console.log(req.body.newVisit);
@@ -20,7 +14,7 @@ const createVisit = async (req, res) => {
     if (!client) {
       return res.status(404).send("client not found @createVisit");
     }
-console.log(preferredStylist)
+    console.log(preferredStylist);
     //! map through client's visits and see if the time of this visit = the time of any of their past visits.
     //! if it does, the client cannot make a new visit at this time
 
@@ -38,7 +32,7 @@ console.log(preferredStylist)
     return res.status(200).json();
   } catch (error) {
     console.log(error);
-    return res.status(500).send("Error @ createVisit"); 
+    return res.status(500).send("Error @ createVisit");
   }
 };
 
@@ -50,7 +44,7 @@ const getVisits = async (req, res) => {
 
 const getActiveVisits = async (req, res) => {
   try {
-    const activeVisits = await VisitModel.find({ location: 'active' }).populate(
+    const activeVisits = await VisitModel.find({ location: "active" }).populate(
       "client"
     );
     return res.status(200).json(activeVisits);
@@ -62,8 +56,10 @@ const getActiveVisits = async (req, res) => {
 
 const getUpcomingVisits = async (req, res) => {
   try {
-    let upcomingVisits = await VisitModel.find({location: 'upcoming'}).populate("client");
-    upcomingVisits = upcomingVisits.sort(function(a,b){
+    let upcomingVisits = await VisitModel.find({
+      location: "upcoming",
+    }).populate("client");
+    upcomingVisits = upcomingVisits.sort(function (a, b) {
       return a.date - b.date;
     });
     res.status(200).json(upcomingVisits);
@@ -76,7 +72,6 @@ const getUpcomingVisits = async (req, res) => {
 const checkIn = async (req, res) => {
   const { visitInfo, pin } = req.body.checkInInfo;
   try {
-
     const today = new Date();
     const date =
       today.getFullYear() +
@@ -94,20 +89,20 @@ const checkIn = async (req, res) => {
 
     // setCheckOutInfo((prev) => ({ ...prev, [name]: value }));
     //!!!!!!!!!!!!!!!!!!!!!!!!!!
-    
+
     const visit = await VisitModel.findOne({
-      _id: visitInfo._id
+      _id: visitInfo._id,
     });
-    visit.checkIn = checkInTime
+    visit.checkIn = checkInTime;
     visit.stylist = stylist;
-    visit.location = 'active';
+    visit.location = "active";
     await visit.save();
-    console.log(`stylist done ${visit}`)
-    
-    stylist.visits = [...stylist.visits, visit._id]
+    console.log(`stylist done ${visit}`);
+
+    stylist.visits = [...stylist.visits, visit._id];
     await stylist.save();
 
-    return res.status(200).json({visit});
+    return res.status(200).json({ visit });
   } catch (error) {
     console.log(error);
     return res.status(500).send("Error @ checkIn");
@@ -133,14 +128,12 @@ const checkOut = async (req, res) => {
     }
 
     const visit = await VisitModel.findOne({
-      _id: visitInfo._id
+      _id: visitInfo._id,
     });
-    visit.checkOut = checkOutTime
-    visit.location = 'completed';
+    visit.checkOut = checkOutTime;
+    visit.location = "completed";
     await visit.save();
-    
-    
-    
+
     console.log(stylist, visitInfo, checkOutTime);
     return res.status(200).json(visit);
   } catch (error) {
@@ -148,7 +141,6 @@ const checkOut = async (req, res) => {
     return res.status(500).send("Error @ checkOut");
   }
 };
-
 
 module.exports = {
   createVisit,
