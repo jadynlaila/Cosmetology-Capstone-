@@ -10,12 +10,41 @@
 //   // border: 40px solid black;
 //   width: 80%;
 //   margin: 40px auto;
+
+
+
+
+.profile-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.profile-container::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+.profile-container, ::webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.33, $primary-5),
+    color-stop(0.66, $primary-4),
+    color-stop(0.99, $primary-5)
+  );
+}
+
+
+
 .profile {
   .profile-container {
     overflow-y: auto;
 
     position: absolute;
-    top: 25px;
+    top: 70px;
     bottom: -5px;
     left: 0;
     right: 0;
@@ -33,7 +62,7 @@
     }
     .content {
       .form-container {
-        padding-top: 40px;
+        padding-top: 0px;
         .profile-header {
           display: flex;
           gap: 15px;
@@ -51,6 +80,7 @@
   > div.fullscreen-container
   > div.ui.grid
   > div.center.aligned.three.wide.column {
+
   border-radius: 10px;
   border: 1px solid lightgrey;
   height: 650px;
@@ -59,6 +89,28 @@
   padding: 10px;
   margin-bottom: 30px;
   margin-top: 14px;
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+  
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f5f5f5;
+  }
+  
+  &::webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-image: linear-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.33, $primary-5),
+      color-stop(0.66, $primary-4),
+      color-stop(0.99, $primary-5)
+    );
+  }
 }
 
 .clientName {
