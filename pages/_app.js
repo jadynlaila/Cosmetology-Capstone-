@@ -43,7 +43,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
 
       //before : if (user) !isProtectedRoute && redirectUser(ctx, "/");
       //after:
-      if (user) !isProtectedRoute && redirectUser(ctx, `/${user}`);
+      //if (user) !isProtectedRoute && redirectUser(ctx, `/${user}`);
       //!this is gonna need to redirect them to the profile page instead
       pageProps.user = user;
     } catch (error) {
