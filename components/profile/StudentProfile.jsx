@@ -134,28 +134,26 @@ const StudentProfile = () => {
               </div> :
               <div className="fullscreen-container slide" style={{ zIndex: "2" }}
 
-                // onClick={() => {
-                //   setFullscreen(!fullscreen)
-                // }}
+              // onClick={() => {
+              //   setFullscreen(!fullscreen)
+              // }}
               >
-                <div id="center-on-screen" style={{width: "75vw !important"}}>
-                  <div className="make-fullscreen">
-                    
-                  </div>
+                <div id="center-on-screen" style={{ margin: 'auto', width: "100vw !important" }}>
 
-                  <Grid>
-                    <Grid.Column   floated="right" width="16">
-                      <Grid.Row style={{display: "flex" ,padding: "10px"}}>
-                        <Search></Search>
-                    <Button icon="close red large" 
-                    style={{position: "absolute", right: "10px"}}
-                    onClick={() => {
-                      setFullscreen(!fullscreen)
-                    }}>
-                    </Button>
-                      </Grid.Row>
-                      <ClientProfile  />
-                    </Grid.Column>
+
+                  <Grid style={{ margin: "auto" }}>
+                    {/* <Grid.Column  floated="right" width="16"> */}
+                    <Grid.Row style={{}}>
+                      <Button circular icon="close red large"
+                        style={{ margin: '10px auto' }}
+                        onClick={() => {
+                          setFullscreen(!fullscreen)
+                        }}>
+                      </Button>
+                      <Search style={{ position: "absolute", right: "40px", top: "50px" }}></Search>
+                    </Grid.Row>
+                    <ClientProfile />
+                    {/* </Grid.Column> */}
                   </Grid>
                 </div>
               </div>

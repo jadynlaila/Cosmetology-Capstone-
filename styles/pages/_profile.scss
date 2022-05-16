@@ -108,7 +108,7 @@
   }
 }
 
-.clientName {
+.clientName, .studentName {
   font-size: 1.5em;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -121,7 +121,7 @@
     // transform: scale(.9);
   }
 }
-.clientName::after {
+.clientName::after, .studentName::after {
   position: absolute;
   content: "";
   height: 2px;
@@ -147,7 +147,7 @@
   transition: 0.5s;
 }
 
-.clientName:hover::after {
+.clientName:hover::after, .studentName:hover::after {
   width: 70%;
   // height: 135%;
   background: $primary-5;
@@ -166,5 +166,5 @@
   left: 25px;
 }
 
-.make-fullscreen {
-}
+// .make-fullscreen {
+// }

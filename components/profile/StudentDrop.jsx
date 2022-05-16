@@ -28,7 +28,16 @@ export default class StudentDrop extends Component {
               Student
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 2}>
-              <p>Student Info</p>
+              <div className="studentName" style={{ marginBottom: "1em" }}>Student 1</div>
+              <br />
+              <div className="studentName" style={{ marginBottom: "1em" }}>Student 2</div>
+              <br />
+              <div className="studentName" style={{ marginBottom: "1em" }}>Student 3</div>
+              <br />
+              <div className="studentName" style={{ marginBottom: "1em" }}>Student 4</div>
+              <br />
+              <div className="studentName" style={{ marginBottom: "1em" }}>Student 5</div>
+              <br />
             </Accordion.Content>
           </Accordion>
         </Grid.Column>

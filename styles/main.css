@@ -407,17 +407,17 @@
   background-image: linear-gradient(linear, left bottom, left top, color-stop(0.33, hsl(32deg, 100%, 60%)), color-stop(0.66, hsl(32deg, 93%, 54%)), color-stop(0.99, hsl(32deg, 100%, 60%)));
 }
 
-.clientName {
+.clientName, .studentName {
   font-size: 1.5em;
   transition: all 0.3s ease;
   text-decoration: none;
   position: relative;
 }
-.clientName:hover {
+.clientName:hover, .studentName:hover {
   cursor: pointer;
 }
 
-.clientName::after {
+.clientName::after, .studentName::after {
   position: absolute;
   content: "";
   height: 2px;
@@ -436,7 +436,7 @@
   transition: 0.5s;
 }
 
-.clientName:hover::after {
+.clientName:hover::after, .studentName:hover::after {
   width: 70%;
   background: hsl(32deg, 100%, 60%);
 }
