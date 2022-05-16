@@ -223,7 +223,7 @@ const Signup = () => {
           content="Next"
           labelPosition="right"
           icon="arrow right"
-          onClick={() => setOutOfFocus(false)}
+          onClick={() => teacher && setOutOfFocus(false)}
           positive
         />
       </footer>

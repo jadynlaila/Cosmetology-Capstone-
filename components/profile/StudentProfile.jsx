@@ -17,7 +17,9 @@ import {
 import ClientDrop from "./ClientDrop";
 import ClientProfile from "./ClientProfile";
 
-const StudentProfile = () => {
+const StudentProfile = ({user}) => {
+
+  console.log(`student profile user`, user);
 
   // const [isActive, setIsActive] = useState(false);
   // const [outOfFocus, setOutOfFocus] = useState(true);
