@@ -3,7 +3,8 @@ const TeacherModel = require("../models/TeacherModel");
 
 const getUserAuth = async (req, res) => {
   const { userId } = req;
-  // if (!id) return res.status(500).send("No User Found");
+  //works correctly as of 5/16 1:50 when routed to http://localhost:3000/6261ec2489762450a9d52f6a
+  if (!userId) return res.status(500).send("No User Found");
 
   try {
     let user = await StylistModel.findById(userId);
@@ -13,8 +14,7 @@ const getUserAuth = async (req, res) => {
     // user.populate
     //! make sure this actually works for teacher
     //!populate everything i need
-    //checked 5/12 at 2:30 and both userId and user are defined and accurate
-    return res.status(200).json({ user });
+    return res.status(200).json(user);
     //!user might need to be in an object
   } catch (err) {
     console.log(err);
