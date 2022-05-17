@@ -17,13 +17,12 @@ import {
 import ClientDrop from "./ClientDrop";
 import ClientProfile from "./ClientProfile";
 
-const StudentProfile = ({user}) => {
-
+const StudentProfile = ({ user }) => {
   console.log(`student profile user`, user);
 
   // const [isActive, setIsActive] = useState(false);
   // const [outOfFocus, setOutOfFocus] = useState(true);
-  const [fullscreen, setFullscreen] = useState(false)
+  const [fullscreen, setFullscreen] = useState(false);
   return (
     <>
       {/* <Segment
@@ -34,7 +33,6 @@ const StudentProfile = ({user}) => {
         <h2>Student Profile</h2>
       </div> */}
       <div className="profile-container">
-
         <div className="content">
           <div className="form-container">
             <div className="profile-header">
@@ -48,7 +46,7 @@ const StudentProfile = ({user}) => {
                   border: "solid 6px #cccddd",
                 }}
               />
-              <h1 style={{ margin: "auto", fontSize: "4rem" }}>Student Name</h1>
+              <h1 style={{ margin: "auto", fontSize: "4rem" }}>{user.name}</h1>
             </div>
             <Divider />
 
@@ -76,90 +74,75 @@ const StudentProfile = ({user}) => {
 
             {/* Temporary buttons, subject to change */}
 
-
-            {!fullscreen ?
+            {!fullscreen ? (
               <div className="fullscreen-container">
                 <div className="make-fullscreen">
-                  <Button icon="expand" floated="right" onClick={() => {
-                    setFullscreen(!fullscreen)
-                  }}></Button>
+                  <Button
+                    icon="expand"
+                    floated="right"
+                    onClick={() => {
+                      setFullscreen(!fullscreen);
+                    }}
+                  ></Button>
                 </div>
 
                 <Grid>
-
                   <Grid.Column width="3" textAlign="center">
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 1</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 2</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
-                    <div className="clientName" style={{ marginBottom: "2em" }}>Client 3</div>
-                    <br />
+                    {user.clients.map((client) => {
+                      return (
+                        <div
+                          className="clientName"
+                          style={{ marginBottom: "2em" }}
+                        >
+                          {client.name}
+                        </div>
+                      );
+                    })}
                   </Grid.Column>
+                  
                   <Grid.Column floated="right" width="13">
                     <ClientProfile />
                   </Grid.Column>
                 </Grid>
-              </div> :
-              <div className="fullscreen-container slide" style={{ zIndex: "2" }}
+              </div>
+            ) : (
+              <div
+                className="fullscreen-container slide"
+                style={{ zIndex: "2" }}
 
-              // onClick={() => {
-              //   setFullscreen(!fullscreen)
-              // }}
+                // onClick={() => {
+                //   setFullscreen(!fullscreen)
+                // }}
               >
-                <div id="center-on-screen" style={{ margin: 'auto', width: "100vw !important" }}>
-
-
+                <div
+                  id="center-on-screen"
+                  style={{ margin: "auto", width: "100vw !important" }}
+                >
                   <Grid style={{ margin: "auto" }}>
                     {/* <Grid.Column  floated="right" width="16"> */}
                     <Grid.Row style={{}}>
-                      <Button circular icon="close red large"
-                        style={{ margin: '10px auto' }}
+                      <Button
+                        circular
+                        icon="close red large"
+                        style={{ margin: "10px auto" }}
                         onClick={() => {
-                          setFullscreen(!fullscreen)
-                        }}>
-                      </Button>
-                      <Search style={{ position: "absolute", right: "40px", top: "50px" }}></Search>
+                          setFullscreen(!fullscreen);
+                        }}
+                      ></Button>
+                      <Search
+                        style={{
+                          position: "absolute",
+                          right: "40px",
+                          top: "50px",
+                        }}
+                      ></Search>
                     </Grid.Row>
                     <ClientProfile />
                     {/* </Grid.Column> */}
                   </Grid>
                 </div>
               </div>
-            }
+            )}
             <Button
               content="Next"
               labelPosition="right"
@@ -175,7 +158,5 @@ const StudentProfile = ({user}) => {
     </>
   );
 };
-
-
 
 export default StudentProfile;

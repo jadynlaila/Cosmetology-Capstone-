@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const StylistSchema = new Schema({
   name: { type: String, required: true },
   visits: [{ type: Schema.Types.ObjectId, ref: "Visit" }],
+  clients: [{type: Schema.Types.ObjectId, ref: "Client"}],
   teacher: { type: Schema.Types.String, ref: "Stylist" },
+  // when we're sorting the people by teacher, we may need to make this shcema.types.objectid
   email: {
     type: String,
     unique: true,

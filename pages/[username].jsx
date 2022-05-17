@@ -16,12 +16,11 @@ const ProfilePage = (
   // const { id } = router.query;
   // console.log(`id from router.query ${id}`);
   // const ownAccount = stylist._id === user._id;
-  // console.log(`own account ? ${ownAccount}`)
   console.log(pageProps)
   const {user} = pageProps;
-
-  const [loading, setLoading] = useState(false);
   
+  // console.log(`own account ? ${ownAccount}`)
+  const [loading, setLoading] = useState(false);
   // useEffect(() => {
   //   const getPosts = async () => {
   //     setLoading(true);
@@ -48,11 +47,7 @@ const ProfilePage = (
     <>
       <Navbar/>
       <div className="profile">
-          <StudentProfile user={user} />
-          //!if user.password exists then display the teacherprofile instead
-          {/* If you want to remove that client profile thing you can just comment that out in the client profile compnent, trying\ to make it as a popup when you click it */}
-          {/* <TeacherProfile /> */}
-        
+          {user.password ? <TeacherProfile user={user} /> : <StudentProfile user={user} />}
           </div>
     </>
   );
