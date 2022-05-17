@@ -30,7 +30,7 @@ const TeacherProfile = () => {
             <div className="profile-header">
               <Image
                 avatar
-                src={"/bigChung.webp"}
+                src={"/defaultAvatar.jpg"}
                 alt="logo"
                 style={{
                   height: "180px",
@@ -78,7 +78,7 @@ const TeacherProfile = () => {
                 <Grid>
 
                   <Grid.Column width="3" textAlign="center">
-                    <div className="year session">
+                    <div className="year session" style={{}}>
 
                       {/* {//!these will display the different years and sessions, can be created by the teacher and is just for their organization purposes} */}
                       <StudentDrop />

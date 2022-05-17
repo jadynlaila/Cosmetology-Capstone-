@@ -38,6 +38,7 @@ export default class StudentDrop extends Component {
               <br />
               <div className="studentName" style={{ marginBottom: "1em" }}>Student 5</div>
               <br />
+              
             </Accordion.Content>
           </Accordion>
         </Grid.Column>
