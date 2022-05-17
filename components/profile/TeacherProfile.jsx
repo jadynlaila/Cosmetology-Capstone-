@@ -16,6 +16,7 @@ import {
 } from "semantic-ui-react";
 import ClientDrop from "./ClientDrop";
 import ClientProfile from "./ClientProfile";
+import IncomingStudents from "./IncomingStudents";
 
 
 const TeacherProfile = () => {
@@ -94,7 +95,7 @@ const TeacherProfile = () => {
                   </Grid.Column>
                   <Grid.Column width="3" textAlign="center">
                     <div className="incoming-students">
-                      <div className="studentName" style={{fontSize: '1em'}}>NewStudent McStudent</div>
+                      <IncomingStudents />
                     </div>
                   </Grid.Column>
 
@@ -148,13 +149,7 @@ const TeacherProfile = () => {
                 </div>
               </div>
             }
-            <Button
-              content="Next"
-              labelPosition="right"
-              icon="arrow right"
-              // onClick={() => setOutOfFocus(false)}
-              positive
-            />
+            
           </div>
           <Divider />
         </div>

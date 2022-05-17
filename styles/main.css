@@ -442,11 +442,14 @@
 }
 
 #center-on-screen {
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   border-radius: 10px;
   background: white;
   position: absolute;
   top: 75px;
+  bottom: 0;
   right: 25px;
   left: 25px;
 }
