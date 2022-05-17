@@ -16,6 +16,7 @@ import {
 } from "semantic-ui-react";
 import ClientDrop from "./ClientDrop";
 import ClientProfile from "./ClientProfile";
+import IncomingStudents from "./IncomingStudents";
 
 
 const TeacherProfile = () => {
@@ -30,7 +31,7 @@ const TeacherProfile = () => {
             <div className="profile-header">
               <Image
                 avatar
-                src={"/bigChung.webp"}
+                src={"/defaultAvatar.jpg"}
                 alt="logo"
                 style={{
                   height: "180px",
@@ -78,7 +79,7 @@ const TeacherProfile = () => {
                 <Grid>
 
                   <Grid.Column width="3" textAlign="center">
-                    <div className="year session">
+                    <div className="year session" style={{}}>
 
                       {/* {//!these will display the different years and sessions, can be created by the teacher and is just for their organization purposes} */}
                       <StudentDrop />
@@ -87,6 +88,8 @@ const TeacherProfile = () => {
                       <br />
                       <StudentDrop />
                       <br />
+                      <Button icon='plus'>Add more</Button>
+
                     </div>
                   </Grid.Column>
                   <Grid.Column width="10">
@@ -94,7 +97,7 @@ const TeacherProfile = () => {
                   </Grid.Column>
                   <Grid.Column width="3" textAlign="center">
                     <div className="incoming-students">
-                      <div className="studentName" style={{fontSize: '1em'}}>NewStudent McStudent</div>
+                      <IncomingStudents />
                     </div>
                   </Grid.Column>
 
@@ -148,13 +151,7 @@ const TeacherProfile = () => {
                 </div>
               </div>
             }
-            <Button
-              content="Next"
-              labelPosition="right"
-              icon="arrow right"
-              // onClick={() => setOutOfFocus(false)}
-              positive
-            />
+            
           </div>
           <Divider />
         </div>

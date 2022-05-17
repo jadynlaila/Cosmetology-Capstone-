@@ -7,6 +7,7 @@ import {
   Form,
   Dropdown,
   Icon,
+  Grid,
 } from "semantic-ui-react";
 import ImgDropDiv from "../layout/ImgDropDiv";
 import axios from "axios";
@@ -108,19 +109,19 @@ const SlideInMenu = ({
               >
                 <Header>Student Signup</Header>
                 <div>Your account has been successfully made! Check your email for your new pin.
-                  You can then use this pin to log in and to check clients in and out. 
+                  You can then use this pin to log in and to check clients in and out.
                 </div>
                 <footer>
                   {/* style this div so its in smaller text */}
-                <div> Don't see the email? Contact jadyncalh@gmail.com </div>
-                <Button
-                  content="Back"
-                  labelPosition="left"
-                  icon="arrow left"
-                  onClick={() => setStudentSignedUp(false)}
-                  negative
-                />
-              </footer>
+                  <div> Don't see the email? Contact jadyncalh@gmail.com </div>
+                  <Button
+                    content="Back"
+                    labelPosition="left"
+                    icon="arrow left"
+                    onClick={() => setStudentSignedUp(false)}
+                    negative
+                  />
+                </footer>
               </div>
             </>
           ) : (
@@ -195,19 +196,19 @@ const SlideInMenu = ({
           )
         ) : teacherSignedUp ? (
           <>
-          <div
-                id="slideInModal"
-                style={{
-                  marginTop: "50px",
-                  marginRight: outOfFocus ? "" : "0px",
-                }}
-              >
-                <Header>Student Signup</Header>
-                <div>Your account has been successfully made! Use the password you created as a pin to login!
-                </div>
-                <footer>
-                  {/* style this div so its in smaller text */}
-                <div> Having trouble logging in? Contact jadyncalh@gmail.com </div>
+            <div
+              id="slideInModal"
+              style={{
+                marginTop: "50px",
+                marginRight: outOfFocus ? "" : "0px",
+              }}
+            >
+              <Header>Student Signup</Header>
+              <div style={{margin: "15px"}}>Your account has been successfully made! Use the password you created as a pin to login!
+              </div>
+              <footer>
+                {/* style this div so its in smaller text */}
+                <div style={{margin: "25px"}}> Having trouble logging in? Contact jadyncalh@gmail.com </div>
                 <Button
                   content="Back"
                   labelPosition="left"
@@ -216,10 +217,10 @@ const SlideInMenu = ({
                   negative
                 />
               </footer>
-              </div></>
+            </div></>
         ) : (
           <div
-            id="slideInModal"
+            id="teacherSlideInModal"
             style={{
               marginTop: "50px",
               marginRight: !isTeacher ? "3000px" : "0px",
@@ -230,10 +231,6 @@ const SlideInMenu = ({
               <Form loading={formLoading} onSubmit={handleSubmit}>
                 <Form.Field>
                   <ImgDropDiv
-
-            
-
-
                     handleChange={handleChange}
                     inputRef={inputRef}
                     highLighted={highlighted}
@@ -244,57 +241,72 @@ const SlideInMenu = ({
                     media={media}
                   />
                 </Form.Field>
-                <Form.Field>
-                  <Form.Input
-                    required
-                    label="Name"
-                    placeholder="Name"
-                    name="teacherName"
-                    value={teacherName}
-                    onChange={handleTeacherChange}
-                    icon="user"
-                    iconPosition="left"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Form.Input
-                    required
-                    label="Email"
-                    placeholder="Email"
-                    name="teacherEmail"
-                    value={teacherEmail}
-                    onChange={handleTeacherChange}
-                    icon="envelope"
-                    iconPosition="left"
-                    type="email"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Form.Input
-                    required
-                    label="Teacher Code"
-                    placeholder="code"
-                    name="pin"
-                    value={pin}
-                    onChange={handleTeacherChange}
-                    icon="envelope"
-                    iconPosition="left"
-                    type="email"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Form.Input
-                    required
-                    label="Password"
-                    placeholder="Password"
-                    name="password"
-                    value={password}
-                    onChange={handleTeacherChange}
-                    icon="envelope"
-                    iconPosition="left"
-                    type="email"
-                  />
-                </Form.Field>
+                <Grid>
+                  <Grid.Column width="8">
+                    <Grid.Row>
+                      <Form.Field>
+                        <Form.Input
+                          required
+                          label="Name"
+                          placeholder="Name"
+                          name="teacherName"
+                          value={teacherName}
+                          onChange={handleTeacherChange}
+                          icon="user"
+                          iconPosition="left"
+                        />
+                      </Form.Field>
+                    </Grid.Row>
+
+                    <Grid.Row>
+                      <Form.Field>
+                        <Form.Input
+                          required
+                          label="Email"
+                          placeholder="Email"
+                          name="teacherEmail"
+                          value={teacherEmail}
+                          onChange={handleTeacherChange}
+                          icon="envelope"
+                          iconPosition="left"
+                          type="email"
+                        />
+                      </Form.Field>
+                    </Grid.Row>
+                  </Grid.Column>
+                  <Grid.Column width="8">
+                    <Grid.Row>
+                      <Form.Field>
+                        <Form.Input
+                          required
+                          label="Password"
+                          placeholder="Password"
+                          name="password"
+                          value={password}
+                          onChange={handleTeacherChange}
+                          icon="envelope"
+                          iconPosition="left"
+                          type="email"
+                        />
+                      </Form.Field>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Form.Field>
+                        <Form.Input
+                          required
+                          label="Teacher Code"
+                          placeholder="code"
+                          name="pin"
+                          value={pin}
+                          onChange={handleTeacherChange}
+                          icon="envelope"
+                          iconPosition="left"
+                          type="email"
+                        />
+                      </Form.Field>
+                    </Grid.Row>
+                  </Grid.Column>
+                </Grid>
               </Form>
             </div>
             <Divider />

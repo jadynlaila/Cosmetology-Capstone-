@@ -89,7 +89,39 @@
     }
   }
 }
+#teacherSlideInModal {
+  color: $font-color;
+  box-shadow: $dark-shadow;
+  border-radius: $radius;
+  // border: 40px solid black;
+  transition: all .5s ease-in;
+  width: 45rem;
+  // height: 90%;
+  
+  // !This should be fitted later for the form
+  // height: 30rem;
+  // !
+  // margin:  auto;
+  // background-color: $secondary;
+  position: relative;
+  // margin: auto;
+  background-color: $secondary;
+  
 
+  .header {
+    border-radius: $radius $radius 0 0;
+    padding: 10px !important;
+    width: 100% !important;
+  }
+  footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    button {
+      margin: 20px 20px 20px 0 !important;
+    }
+  }
+}
 // .ui.label {
 //   display: flex !important;
 //   background-color: transparent !important;
