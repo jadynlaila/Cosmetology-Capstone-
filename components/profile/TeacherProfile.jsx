@@ -87,6 +87,8 @@ const TeacherProfile = () => {
                       <br />
                       <StudentDrop />
                       <br />
+                      <Button icon='plus'>Add more</Button>
+
                     </div>
                   </Grid.Column>
                   <Grid.Column width="10">
