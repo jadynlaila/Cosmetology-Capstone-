@@ -6,14 +6,14 @@ import isTeacher from "../../pages/profile";
 import { Button, Image, Icon } from "semantic-ui-react";
 import Link from "next/link";
 
-const Navbar = (isTeacher) => {
+const Navbar = (isTeacher, pageProps) => {
+  console.log(pageProps);
   const [loggedIn, setLoggedIn] = useState(false);
   return (
     <div id="nav">
       <div className="image-container">
       <Link href={"/"}>
         <Image
-        
           className="logo"
           src={"/logo3-1.png"}
           alt="logo"
@@ -73,5 +73,6 @@ const Navbar = (isTeacher) => {
     </div>
   );
 };
+
 
 export default Navbar;
