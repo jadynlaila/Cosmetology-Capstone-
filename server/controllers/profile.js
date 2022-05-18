@@ -14,7 +14,7 @@ const getProfileStylist = async (req, res) => {
   try {
     console.log(`hello reqqery ${req.query}`);
     const { id } = req.query;
-    const stylist = await StylistModel.findOne({ _id: id }).populate("visits");
+    const stylist = await StylistModel.findOne({ _id: id }).populate("visits").populate('clients')
     //! maybe populate stylist here
     console.log(`getprofilestylist ${getProfileStylist}`);
     if (!stylist) return res.status(404).send("Stylist not Found :|");

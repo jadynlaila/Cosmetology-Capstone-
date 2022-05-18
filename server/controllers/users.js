@@ -65,12 +65,27 @@ const createStylist = async (req, res) => {
     stylist = await StylistModel.findOne({ email: email });
     if (stylist) return res.status(401).send("Email is already in use");
 
+    console.log(`teacher `, teacher);
     stylist = new StylistModel({
       name,
       email: email,
       teacher,
       profilePicURL: profilePicURL || defaultProfilePic,
     });
+    const teacherFound = await TeacherModel.findOne({_id: teacher})
+    console.log('teacher', teacherFound)
+
+    const payload = { userId: stylist._id };
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: "2d" },
+      (err, token) => {
+        if (err) throw err;
+        res.status(200).json(token);
+      }
+    );
+
 
     stylist = await stylist.save();
     return res.status(200).json(stylist);
@@ -184,6 +199,8 @@ const createTeacher = async (req, res) => {
     });
 
     teacher = await teacher.save();
+
+    console.log(`teacher created`, teacher)
     return res.status(200).json(teacher);
   } catch (error) {
     console.log(error);

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Accordion, Icon, Grid, Divider } from "semantic-ui-react";
+import { Accordion, Icon, Grid, Divider, Button } from "semantic-ui-react";
 
 export default class StudentDrop extends Component {
   state = { activeIndex: 0 };
@@ -16,6 +16,7 @@ export default class StudentDrop extends Component {
     const { activeIndex } = this.state;
 
     return (
+      <>
       <Grid columns={1}>
         <Grid.Column >
           <Accordion fluid styled >
@@ -38,10 +39,12 @@ export default class StudentDrop extends Component {
               <br />
               <div className="studentName" style={{ marginBottom: "1em" }}>Student 5</div>
               <br />
+              
             </Accordion.Content>
           </Accordion>
         </Grid.Column>
       </Grid>
+      </>
     );
   }
 }

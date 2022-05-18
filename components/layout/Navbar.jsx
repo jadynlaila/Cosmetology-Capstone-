@@ -35,7 +35,7 @@ const Navbar = (isTeacher) => {
             {/* <div className="profile-logo"> */}
           <Image
             circular
-            src={"/bigChung.webp"}
+            src={"/defaultAvatar.jpg"}
             alt="logo"
             size="tiny"
             

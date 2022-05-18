@@ -86,9 +86,11 @@ const checkIn = async (req, res) => {
     if (!stylist) {
       return res.status(404).send("stylist not found");
     }
+    stylist.clients = [...stylist.clients, visitInfo.client]
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // setCheckOutInfo((prev) => ({ ...prev, [name]: value }));
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
 
     const visit = await VisitModel.findOne({
       _id: visitInfo._id,

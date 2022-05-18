@@ -442,11 +442,14 @@
 }
 
 #center-on-screen {
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   border-radius: 10px;
   background: white;
   position: absolute;
   top: 75px;
+  bottom: 0;
   right: 25px;
   left: 25px;
 }
@@ -518,6 +521,29 @@
   justify-content: flex-end !important;
 }
 #slideInModal footer button {
+  margin: 20px 20px 20px 0 !important;
+}
+
+#teacherSlideInModal {
+  color: rgb(0, 0, 0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 0.35rem;
+  transition: all 0.5s ease-in;
+  width: 45rem;
+  position: relative;
+  background-color: #FAF9F6;
+}
+#teacherSlideInModal .header {
+  border-radius: 0.35rem 0.35rem 0 0;
+  padding: 10px !important;
+  width: 100% !important;
+}
+#teacherSlideInModal footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+#teacherSlideInModal footer button {
   margin: 20px 20px 20px 0 !important;
 }
 
@@ -859,6 +885,9 @@
   top: 0;
   border-radius: 0.35rem;
   width: 29vw;
+}
+.details-container .details-checkIn {
+  padding: 2px;
 }
 .details-container .header {
   border: 4px solid hsl(32deg, 93%, 54%);
