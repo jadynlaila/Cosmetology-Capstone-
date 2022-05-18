@@ -36,6 +36,7 @@ const Signup = () => {
   const [resHolder, setResHolder] = useState("");
   const [highlighted, setHighlighted] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState([])
+  const [studentSignedUp, setStudentSignedUp] = useState(false)
 
   const [stylist, setStylist] = useState({
     email: "",
