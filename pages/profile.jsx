@@ -16,8 +16,7 @@ const personalProfile = () => {
       <Navbar/>
       <div className="profile">
           {/* <StudentProfile /> */}
-          {/* If you want to remove that client profile thing you can just comment that out in the client profile compnent, trying\ to make it as a popup when you click it */}
-
+          
           <TeacherProfile />
         
           </div>
