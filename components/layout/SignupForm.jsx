@@ -36,6 +36,7 @@ const Signup = () => {
   const [resHolder, setResHolder] = useState("");
   const [highlighted, setHighlighted] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState([])
+  const [studentSignedUp, setStudentSignedUp] = useState(false)
 
   const [stylist, setStylist] = useState({
     email: "",
@@ -161,7 +162,8 @@ const Signup = () => {
             {/* <Divider hidden /> */}
             <div className="radio-button-container">
 
-            {teachers.map((each, i) => {
+            {teachers.length !== 0 ? 
+            (teachers.map((each, i) => {
               return (
                 <>
                 <div style={{padding: '5px'}}>
@@ -182,7 +184,7 @@ const Signup = () => {
                   </div>
                 </>
               );
-            })}
+            })): <>No teachers found.<br/>Create a new teacher account first!</>}
             </div>
             {/* <Divider hidden />
             <Form.Input
@@ -235,6 +237,8 @@ const Signup = () => {
         setIsTeacher={setIsTeacher}
         setStylist={setStylist}
         stylist={stylist}
+        teachers={teachers}
+        setTeachers={setTeachers}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />

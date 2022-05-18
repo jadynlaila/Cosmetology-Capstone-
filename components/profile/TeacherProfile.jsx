@@ -17,6 +17,7 @@ import {
 import ClientDrop from "./ClientDrop";
 import ClientProfile from "./ClientProfile";
 import IncomingStudents from "./IncomingStudents";
+import StudentView from "./StudentView";
 
 
 const TeacherProfile = () => {
@@ -76,11 +77,12 @@ const TeacherProfile = () => {
                   }}></Button>
                 </div>
 
-                <Grid>
 
+
+
+                <Grid>
                   <Grid.Column width="3" textAlign="center">
                     <div className="year session" style={{}}>
-
                       {/* {//!these will display the different years and sessions, can be created by the teacher and is just for their organization purposes} */}
                       <StudentDrop />
                       <br />
@@ -89,69 +91,57 @@ const TeacherProfile = () => {
                       <StudentDrop />
                       <br />
                       <Button icon='plus'>Add more</Button>
-
                     </div>
                   </Grid.Column>
                   <Grid.Column width="10">
-                    <ClientProfile />
+                    <StudentView/>
                   </Grid.Column>
                   <Grid.Column width="3" textAlign="center">
                     <div className="incoming-students">
                       <IncomingStudents />
                     </div>
                   </Grid.Column>
-
                 </Grid>
               </div> :
               <div className="fullscreen-container slide" style={{ zIndex: "2" }}
-
-              // onClick={() => {
-              //   setFullscreen(!fullscreen)
-              // }}
               >
                 <div id="center-on-screen" style={{ width: "75vw !important" }}>
                   <div className="make-fullscreen">
-
                   </div>
-
                   <Grid>
-                    
-                      <Grid.Row style={{ }}>
-                        <Button circular icon="close red large"
-                          style={{margin: '10px auto'}}
-                          onClick={() => {
-                            setFullscreen(!fullscreen)
-                          }}>
-                        </Button>
-                      </Grid.Row>
-                      <Grid.Row>
-                        <Grid style={{marginLeft: "50px"}}>
-
-
-                          <Grid.Column width="3" textAlign="center">
-                            <div className="year session">
-
-                              {/* {//!these will display the different years and sessions, can be created by the teacher and is just for their organization purposes} */}
-                              <StudentDrop />
-                              <br />
-                              <StudentDrop />
-                              <br />
-                              <StudentDrop />
-                              <br />
-                            </div>
-                          </Grid.Column>
-                          <Grid.Column width="12">
-                            <ClientProfile />
-                          </Grid.Column>
-                        </Grid>
-                      </Grid.Row>
-
-                    
+                    <Grid.Row style={{}}>
+                      <Button circular icon="close red large"
+                        style={{ margin: '10px auto' }}
+                        onClick={() => {
+                          setFullscreen(!fullscreen)
+                        }}>
+                      </Button>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Grid style={{ marginLeft: "50px" }}>
+                        <Grid.Column width="3" textAlign="center">
+                          <div className="year session">
+                            {/* {//!these will display the different years and sessions, can be created by the teacher and is just for their organization purposes} */}
+                            <StudentDrop />
+                            <br />
+                            <StudentDrop />
+                            <br />
+                            <StudentDrop />
+                            <br />
+                          </div>
+                        </Grid.Column>
+                        <Grid.Column width="12">
+                          <StudentView />
+                        </Grid.Column>
+                      </Grid>
+                    </Grid.Row>
                   </Grid>
+
+
+
                 </div>
               </div>
             }
-            
           </div>
           <Divider />
         </div>

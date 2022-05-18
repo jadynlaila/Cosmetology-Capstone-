@@ -26,7 +26,7 @@ export default class StudentDrop extends Component {
               onClick={this.handleClick}
             >
               <Icon name="dropdown" />
-              Student
+              Class/Session name
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 2}>
               <div className="studentName" style={{ marginBottom: "1em" }}>Student 1</div>

@@ -38,7 +38,7 @@ const StudentProfile = ({ user }) => {
             <div className="profile-header">
               <Image
                 avatar
-                src={"/bigChung.webp"}
+                src={"/defaultAvatar.jpg"}
                 alt="logo"
                 style={{
                   height: "180px",

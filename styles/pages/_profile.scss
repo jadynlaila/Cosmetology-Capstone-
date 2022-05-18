@@ -170,3 +170,24 @@
 
 // .make-fullscreen {
 // }
+
+
+.add-to-class{
+  padding: 10px;
+  margin: 10px;
+  background-color: rgb(23, 192, 23);
+  border-radius: 10px;
+  &:hover{
+    background-color: rgb(25, 207, 25);
+    cursor: pointer;
+  }
+}
+.select-class{
+  display: flex;
+  padding: 50px;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}

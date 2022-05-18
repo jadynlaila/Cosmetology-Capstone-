@@ -12,13 +12,13 @@ req.params {id}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const getProfileStylist = async (req, res) => {
   try {
-    console.log(`hello reqqery ${req.query}`);
     const { id } = req.query;
-    const stylist = await StylistModel.findOne({ _id: id }).populate("visits").populate('clients')
-    //! maybe populate stylist here
-    console.log(`getprofilestylist ${getProfileStylist}`);
-    if (!stylist) return res.status(404).send("Stylist not Found :|");
-    return res.status(200).json({stylist});
+    let user = await StylistModel.findOne({ _id: id }).populate("visits").populate('clients')
+    if (!user) {
+       user = await TeacherModel.findOne({_id: id}).populate("students")
+    }
+    console.log('helllo usser', user)
+    return res.status(200).json({user});
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ getProfileStylist");
