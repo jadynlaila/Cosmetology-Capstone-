@@ -84,7 +84,6 @@ const VisitFormItems = ({ client, setOpen, id }) => {
                 // placeholder="Date of Appointment" does nothing anymore
                 value={date}
                 type="datetime-local"
-                required="true"
               />
             </Form.Field>
             <Form.Field>

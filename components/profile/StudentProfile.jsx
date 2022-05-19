@@ -24,6 +24,12 @@ const StudentProfile = ({ user }) => {
   // const [isActive, setIsActive] = useState(false);
   // const [outOfFocus, setOutOfFocus] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
+  const [selectedClient, setSelectedClient] = useState(user.clients[0])
+
+  const selectClient = (client) => {
+    setSelectedClient(client);
+    console.log(selectedClient);
+  }
   return (
     <>
       {/* <Segment
@@ -95,6 +101,7 @@ const StudentProfile = ({ user }) => {
                         <div
                           className="clientName"
                           style={{ marginBottom: "2em" }}
+                          onClick={() => {selectClient(client)}}
                         >
                           {client.name}
                         </div>
@@ -103,7 +110,7 @@ const StudentProfile = ({ user }) => {
                   </Grid.Column>
                   
                   <Grid.Column floated="right" width="13">
-                    <ClientProfile />
+                    <ClientProfile selectedClient={selectedClient} selectClient={selectClient}/>
                   </Grid.Column>
                 </Grid>
               </div>
@@ -139,7 +146,7 @@ const StudentProfile = ({ user }) => {
                         }}
                       ></Search>
                     </Grid.Row>
-                    <ClientProfile />
+                    <ClientProfile selectedClient={selectedClient} selectClient={selectClient}/>
                     {/* </Grid.Column> */}
                   </Grid>
                 </div>

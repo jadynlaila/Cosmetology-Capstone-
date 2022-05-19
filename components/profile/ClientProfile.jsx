@@ -16,8 +16,10 @@ import VisitDrop from "./VisitDrop";
 
 
 
-const ClientProfile = () => {
+const ClientProfile = ({selectedClient, selectClient}) => {
   const [clientTabOpen, setClientTabOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  console.log(selectedClient);
   return (
     <div style={{borderRadius: "10px", border: "1px solid lightgrey", padding: "10px" }}>
       <Header style={{borderRadius: "10px" }}>Client</Header>
@@ -25,72 +27,75 @@ const ClientProfile = () => {
       <Grid columns={3} divided style={{border: "1px solid lightgrey", margin: "5px", borderRadius: "10px" }}>
         <Grid.Row>
           <Grid.Column>
-            <p>Name</p>
+            <p>Name: {selectedClient.name}</p>
           </Grid.Column>
           <Grid.Column>
-            <p>Hair Texture:</p>
+            <p>Hair Texture: {selectedClient.hairTexture}</p>
           </Grid.Column>
           <Grid.Column>
-            <p>Medical Info:</p>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>
-            <p>Email</p>
-          </Grid.Column>
-          <Grid.Column>
-            <p>Hair Density:</p>
-          </Grid.Column>
-          <Grid.Column>
-            <p>Allergies:</p>
+            <p>Medical Info: {selectedClient.medicalInfo}</p>
           </Grid.Column>
         </Grid.Row>
 
         <Grid.Row>
           <Grid.Column>
-            <p>Adress</p>
+            <p>Email: {selectedClient.email}</p>
           </Grid.Column>
           <Grid.Column>
-            <p>Hair Porosity:</p>
+            <p>Hair Density: {selectedClient.hairDensity}</p>
           </Grid.Column>
           <Grid.Column>
-            <p>Hair Condition:</p>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>
-            <p>Phone</p>
-          </Grid.Column>
-          <Grid.Column>
-            <p>Hair Elasticity:</p>
-          </Grid.Column>
-          <Grid.Column>
-            <p>Scalp Condition:</p>
+            <p>Allergies: {selectedClient.allergies}</p>
           </Grid.Column>
         </Grid.Row>
 
         <Grid.Row>
           <Grid.Column>
-            <p>DoB</p>
+            <p>Address: {selectedClient.address}</p>
           </Grid.Column>
           <Grid.Column>
-            <p>Hair Length:</p>
+            <p>Hair Porosity: {selectedClient.hairPorosity}</p>
           </Grid.Column>
           <Grid.Column>
-            <p>Growth Pattern:</p>
+            <p>Hair Condition: {selectedClient.hairCondition}</p>
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column>
+            <p>Phone: {selectedClient.phone}</p>
+          </Grid.Column>
+          <Grid.Column>
+            <p>Hair Elasticity: {selectedClient.hairElasticity}</p>
+          </Grid.Column>
+          <Grid.Column>
+            <p>Scalp Condition: {selectedClient.scalpCondition}</p>
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column>
+            <p>DoB: {selectedClient.dob}</p>
+          </Grid.Column>
+          <Grid.Column>
+            <p>Hair Length: {selectedClient.hairLength}</p>
+          </Grid.Column>
+          <Grid.Column>
+            <p>Growth Pattern: {selectedClient.growthPatterns}</p>
           </Grid.Column>
         </Grid.Row>
       </Grid>
 
       <Divider />
-
-      <VisitDrop />
-      <br />
-      <VisitDrop />
-      <br />
-      <VisitDrop />
+      {selectedClient.visits.map((visit) => {
+        console.log(visit);
+        return (
+          <>
+          <VisitDrop visit={visit} open={open} setOpen={setOpen}/>
+          <br />
+          </>
+        )
+      })}
 
       <Divider />
       <footer>

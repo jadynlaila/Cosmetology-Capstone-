@@ -13,11 +13,12 @@ req.params {id}
 const getProfileStylist = async (req, res) => {
   try {
     const { id } = req.query;
-    let user = await StylistModel.findOne({ _id: id }).populate("visits").populate('clients')
+    let user = await StylistModel.findOne({ _id: id }).populate("visits").populate('clients');
+      
     if (!user) {
        user = await TeacherModel.findOne({_id: id}).populate("students")
     }
-    console.log('helllo usser', user)
+    console.log('helllo usser',await user)
     return res.status(200).json({user});
   } catch (error) {
     console.log(error);
