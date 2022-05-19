@@ -36,6 +36,7 @@ const Signup = () => {
   const [resHolder, setResHolder] = useState("");
   const [highlighted, setHighlighted] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState([])
+  const [studentSignedUp, setStudentSignedUp] = useState(false)
 
   const [stylist, setStylist] = useState({
     email: "",
@@ -142,6 +143,8 @@ const Signup = () => {
     <>
       <Header>Signup</Header>
       <div className="form-container">
+
+
         <Form loading={formLoading} onSubmit={handleSubmit}>
           {/* <Segment> */}
             {/* <ImgDropDiv
@@ -161,7 +164,8 @@ const Signup = () => {
             {/* <Divider hidden /> */}
             <div className="radio-button-container">
 
-            {teachers.map((each, i) => {
+            {teachers.length !== 0 ? 
+            (teachers.map((each, i) => {
               return (
                 <>
                 <div style={{padding: '5px'}}>
@@ -177,12 +181,13 @@ const Signup = () => {
                       radios.current[i] = value
                     })}
                     id={each._id}
+                    required
                   />
                   <label for={each._id}>{each.name}</label>
                   </div>
                 </>
               );
-            })}
+            })): <>No teachers found.<br/>Create a new teacher account first!</>}
             </div>
             {/* <Divider hidden />
             <Form.Input
@@ -211,7 +216,10 @@ const Signup = () => {
 
       <Divider fitted />
         </Form>
+
+
       </div>
+
       <footer>
         <Button
           content="I am a Teacher"
@@ -224,6 +232,8 @@ const Signup = () => {
           labelPosition="right"
           icon="arrow right"
           onClick={() => teacher && setOutOfFocus(false)}
+
+          
           positive
         />
       </footer>
@@ -235,6 +245,8 @@ const Signup = () => {
         setIsTeacher={setIsTeacher}
         setStylist={setStylist}
         stylist={stylist}
+        teachers={teachers}
+        setTeachers={setTeachers}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />

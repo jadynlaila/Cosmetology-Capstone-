@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const authMiddleware = (req, res, next) => {
     //console.log('test 5', req.headers);
     try {
-        if(!req.headers.authorization || !req.headers.authorization.split(" ")[0] === "Bearer"){
+        if(!req.headers.authorization || !req.headers.authorization.split(" ")[1] === "Bearer"){
             res.status(401).send("Unauthorized")
         }
         const token = req.headers.authorization.split(" ")[1];

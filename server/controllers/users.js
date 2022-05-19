@@ -71,9 +71,21 @@ const createStylist = async (req, res) => {
       teacher,
       profilePicURL: profilePicURL || defaultProfilePic,
     });
-
     stylist = await stylist.save();
-    return res.status(200).json(stylist);
+    let teacherFound = await TeacherModel.findOne({ _id: teacher });
+    teacherFound.students = [...teacherFound.students, stylist._id];
+    teacherFound = await teacherFound.save();
+    console.log("teacher", teacherFound);
+    const payload = { userId: stylist._id };
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: "2d" },
+      (err, token) => {
+        if (err) throw err;
+        res.status(200).json(token);
+      }
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createStylist");
@@ -184,7 +196,18 @@ const createTeacher = async (req, res) => {
     });
 
     teacher = await teacher.save();
-    return res.status(200).json(teacher);
+
+    console.log(`teacher created`, teacher);
+    const payload = { userId: teacher._id };
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: "2d" },
+      (err, token) => {
+        if (err) throw err;
+        res.status(200).json(token);
+      }
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createTeacher");
@@ -199,11 +222,13 @@ const loginStylist = async (req, res) => {
 
   try {
     //!need to make this work for teachers too
-    const stylist = await StylistModel.findOne({ pin: pin });
-    // populate stylsit here
-    if (stylist) {
-      console.log(stylist);
-      const payload = { userId: stylist._id };
+    let user = await StylistModel.findOne({ pin: pin });
+    if(!user) {
+      user = await TeacherModel.findOne({password: pin})
+    }
+    if (user) {
+      console.log(user);
+      const payload = { userId: user._id };
       console.log(payload);
       jwt.sign(
         payload,
@@ -214,6 +239,7 @@ const loginStylist = async (req, res) => {
           res.status(200).json(token);
         }
       );
+    
     } else {
       console.log(pin);
       return res.status(404).send("Stylist not Found");
@@ -264,6 +290,14 @@ const createHours = async (req, res) => {
   }
 };
 
+const pinResend = async(req,res) => {
+  const {email} = req.body
+
+  const stylist = await StylistModel.findOne({email: email})
+
+  res.status(200).json(stylist.pin)
+}
+
 module.exports = {
   createStylist,
   createClient,
@@ -272,4 +306,5 @@ module.exports = {
   getStylist,
   getTeacher,
   createHours,
+  pinResend
 };

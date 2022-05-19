@@ -15,6 +15,7 @@ import {
 import { setToken } from "../../pages/util/authUser";
 import { baseURL } from "../../pages/util/baseURL";
 import StudentDropdown from "../Login/StudentDropdown";
+import ForgotPinModal from '../layout/ForgotPinModal'
 // import router from "../../server/routes/signupRoutes";
 
 const LoginForm = () => {
@@ -87,6 +88,8 @@ const LoginForm = () => {
       <Divider/>
           <Button icon="signup" content="Login" type="submit"  />
         </Form>
+        <Divider />
+        <ForgotPinModal />
       </div>
       {/* <footer>
         <Button

@@ -23,6 +23,7 @@ const SlideInMenu = ({
   stylist,
   handleSubmit,
   handleChange,
+  setTeachers
 }) => {
   // const [isTeacher, setIsTeacher] = useState(false);
   // const [outOfFocus, setOutOfFocus] = useState(true);
@@ -89,6 +90,9 @@ const SlideInMenu = ({
     }
     setTeacherSignedUp(true);
     setFormLoading(false);
+    console.log('teahcerhihihheyhey', teacher)
+    setTeachers((prev) => [...prev, teacher]);
+    console.log(teachers, teacher);
   };
 
   return (
