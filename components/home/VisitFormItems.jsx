@@ -68,7 +68,7 @@ const VisitFormItems = ({ client, setOpen, id }) => {
             <Form.Field>
               <label>Preferred Stylist:</label>
               <input
-                required
+                required="true"
                 onChange={handleChange}
                 name="preferredStylist"
                 placeholder="Preferred Stylist"
@@ -78,7 +78,7 @@ const VisitFormItems = ({ client, setOpen, id }) => {
             <Form.Field>
               <label>Date:</label>
               <input
-                required
+                required="true"
                 onChange={handleChange}
                 name="date"
                 // placeholder="Date of Appointment" does nothing anymore
@@ -89,7 +89,7 @@ const VisitFormItems = ({ client, setOpen, id }) => {
             <Form.Field>
               <label>Style:</label>
               <input
-                required
+                required="true"
                 onChange={handleChange}
                 name="style"
                 placeholder="Style"
@@ -99,7 +99,7 @@ const VisitFormItems = ({ client, setOpen, id }) => {
             <Form.Field>
               <label>Notes:</label>
               <input
-                required
+                required="true"
                 onChange={handleChange}
                 name="notes"
                 placeholder="Notes"
