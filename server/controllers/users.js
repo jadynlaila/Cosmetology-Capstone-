@@ -290,6 +290,14 @@ const createHours = async (req, res) => {
   }
 };
 
+const pinResend = async(req,res) => {
+  const {email} = req.body
+
+  const stylist = await StylistModel.findOne({email: email})
+
+  res.status(200).json(stylist.pin)
+}
+
 module.exports = {
   createStylist,
   createClient,
@@ -298,4 +306,5 @@ module.exports = {
   getStylist,
   getTeacher,
   createHours,
+  pinResend
 };

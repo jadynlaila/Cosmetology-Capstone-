@@ -181,6 +181,7 @@ const Signup = () => {
                       radios.current[i] = value
                     })}
                     id={each._id}
+                    required
                   />
                   <label for={each._id}>{each.name}</label>
                   </div>
