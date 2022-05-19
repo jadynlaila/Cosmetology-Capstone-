@@ -7,19 +7,19 @@ import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
 import StudentProfile from "../components/profile/StudentProfile";
 import TeacherProfile from "../components/profile/TeacherProfile";
+import Placeholdercomp from "../components/Login/Placeholdercomp";
 
 const personalProfile = () => {
   const [isTeacher, setIsTeacher] = useState(false);
   return (
     <>
-    
-      <Navbar/>
+      <Navbar />
       <div className="profile">
-          {/* <StudentProfile /> */}
-          
-          <TeacherProfile />
-        
-          </div>
+        {/* <StudentProfile /> */}
+
+        <TeacherProfile />
+      </div>
+      <Placeholdercomp />
     </>
   );
 };

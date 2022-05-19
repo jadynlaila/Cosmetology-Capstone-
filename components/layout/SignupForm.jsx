@@ -143,6 +143,8 @@ const Signup = () => {
     <>
       <Header>Signup</Header>
       <div className="form-container">
+
+
         <Form loading={formLoading} onSubmit={handleSubmit}>
           {/* <Segment> */}
             {/* <ImgDropDiv
@@ -213,7 +215,10 @@ const Signup = () => {
 
       <Divider fitted />
         </Form>
+
+
       </div>
+
       <footer>
         <Button
           content="I am a Teacher"
@@ -226,6 +231,8 @@ const Signup = () => {
           labelPosition="right"
           icon="arrow right"
           onClick={() => teacher && setOutOfFocus(false)}
+
+          
           positive
         />
       </footer>

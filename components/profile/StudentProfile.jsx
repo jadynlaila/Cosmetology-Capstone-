@@ -16,6 +16,7 @@ import {
 } from "semantic-ui-react";
 import ClientDrop from "./ClientDrop";
 import ClientProfile from "./ClientProfile";
+import Placeholdercomp from "../Login/Placeholdercomp";
 
 const StudentProfile = ({ user }) => {
   console.log(`student profile user`, user);
@@ -48,6 +49,7 @@ const StudentProfile = ({ user }) => {
               />
               <h1 style={{ margin: "auto", fontSize: "4rem" }}>{user.name}</h1>
             </div>
+
             <Divider />
 
             <Form>
@@ -154,6 +156,8 @@ const StudentProfile = ({ user }) => {
           <Divider />
         </div>
       </div>
+
+      
       {/* </Segment> */}
     </>
   );
