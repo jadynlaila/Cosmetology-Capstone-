@@ -60,7 +60,7 @@ const TeacherProfile = () => {
                   placeholder="Hours"
                 />
               </Form.Group>
-            </Form>
+            </Form> 
 
             <Divider />
 
