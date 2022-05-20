@@ -19,6 +19,9 @@ const ProfilePage = (
   // const ownAccount = stylist._id === user._id;
   console.log(pageProps)
   const {user} = pageProps;
+  if(!user) {
+    return ('no user found. please sign in')
+  }
   console.log(user.password);
   
   // console.log(`own account ? ${ownAccount}`)

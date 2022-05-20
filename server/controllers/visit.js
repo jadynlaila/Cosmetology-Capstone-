@@ -149,6 +149,13 @@ const checkOut = async (req, res) => {
   }
 };
 
+const getVisit = async (req, res) => {
+  const {id} = req.params;
+  const visit = await VisitModel.findOne({_id: id});
+  console.log('visit getvisit', visit)
+  return res.status(200).json(visit);
+}
+
 module.exports = {
   createVisit,
   getVisits,
@@ -156,4 +163,5 @@ module.exports = {
   checkIn,
   checkOut,
   getUpcomingVisits,
+  getVisit
 };
