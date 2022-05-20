@@ -25,7 +25,7 @@ const ProfilePage = (
   console.log(user.password);
   
   // console.log(`own account ? ${ownAccount}`)
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // useEffect(() => {
   //   const getPosts = async () => {
   //     setLoading(true);

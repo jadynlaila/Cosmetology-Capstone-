@@ -81,7 +81,7 @@ const Login = () => {
       {/* <Segment style={{ background: "transparent" }}> */}
       <div style={{padding: "50px"}}>
         <Grid columns='equal' hidden centered padded>
-          <Grid.Row hidden divided color="white" textAlign="center">
+          <Grid.Row hidden divided textAlign="center">
             <Grid.Column centered>
               <div className="split-screen-container" >
                 <Signup />
