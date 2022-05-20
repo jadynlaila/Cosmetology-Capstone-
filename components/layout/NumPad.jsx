@@ -19,18 +19,18 @@ const NumPad = ({ setPinInput }) => {
 
       <div className="container">
         <div className="numpad">
-          <div class="button" onClick={() => setPinInput((prev) => prev + '1')} accessKey="1">1</div>
-          <div class="button" onClick={() => setPinInput((prev) => prev + '2')} accessKey="2">2</div>
-          <div class="button" onClick={() => setPinInput((prev) => prev + '3')} accessKey="3">3</div>
-          <div class="button" onClick={() => setPinInput((prev) => prev + '4')} accessKey="4">4</div>
-          <div class="button" onClick={() => setPinInput((prev) => prev + '5')} accessKey="5">5</div>
-          <div class="button" onClick={() => setPinInput((prev) => prev + '6')} accessKey="6">6</div>
-          <div class="button" onClick={() => setPinInput((prev) => prev + '7')} accessKey="7">7</div>
-          <div class="button" onClick={() => setPinInput((prev) => prev + '8')} accessKey="8">8</div>
-          <div class="button" onClick={() => setPinInput((prev) => prev + '9')} accessKey="9">9</div>
-          <div id="disapear" class="button disapear" ></div>
-          <div class="button" onClick={() => setPinInput((prev) => prev + '0')} accessKey="0">0</div>
-          <div id="disapear" class="button disapear" ></div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '1')} accessKey="1">1</div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '2')} accessKey="2">2</div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '3')} accessKey="3">3</div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '4')} accessKey="4">4</div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '5')} accessKey="5">5</div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '6')} accessKey="6">6</div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '7')} accessKey="7">7</div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '8')} accessKey="8">8</div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '9')} accessKey="9">9</div>
+          <div id="disapear" className="button disapear" ></div>
+          <div className="button" onClick={() => setPinInput((prev) => prev + '0')} accessKey="0">0</div>
+          <div id="disapear" className="button disapear" ></div>
         </div>
       </div>
     </>

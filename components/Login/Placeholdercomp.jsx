@@ -14,6 +14,7 @@ const Placeholdercomp = () => {
         <Image
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/2048px-Eo_circle_green_checkmark.svg.png"
           size="small"
+          alt="img"
           style={{ marginLeft: "auto", marginRight: "auto" }}
         />
         <Card.Content>

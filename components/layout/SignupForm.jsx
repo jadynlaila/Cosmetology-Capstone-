@@ -183,7 +183,7 @@ const Signup = () => {
                     id={each._id}
                     required
                   />
-                  <label for={each._id}>{each.name}</label>
+                  <label htmlFor={each._id}>{each.name}</label>
                   </div>
                 </>
               );

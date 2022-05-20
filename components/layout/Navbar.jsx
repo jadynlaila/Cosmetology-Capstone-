@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import Image from "next/image";
 // import LoginOrSignup from "./loginOrSignup";
 // import { Button } from "semantic-ui-react";
-import isTeacher from "../../pages/profile";
+import isTeacher from "../../pages/profile.page";
 import { Button, Image, Icon } from "semantic-ui-react";
 import Link from "next/link";
 

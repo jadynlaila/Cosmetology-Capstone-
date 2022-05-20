@@ -9,7 +9,7 @@ import StudentProfile from "../components/profile/StudentProfile";
 import TeacherProfile from "../components/profile/TeacherProfile";
 import Placeholdercomp from "../components/Login/Placeholdercomp";
 
-const personalProfile = () => {
+const PersonalProfile = () => {
   const [isTeacher, setIsTeacher] = useState(false);
   return (
     <>
@@ -24,4 +24,4 @@ const personalProfile = () => {
   );
 };
 
-export default personalProfile;
+export default PersonalProfile;

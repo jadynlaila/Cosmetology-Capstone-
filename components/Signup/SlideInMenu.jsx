@@ -117,7 +117,7 @@ const SlideInMenu = ({
                 </div>
                 <footer>
                   {/* style this div so its in smaller text */}
-                  <div> Don't see the email? Contact jadyncalh@gmail.com </div>
+                  <div> Don`t see the email? Contact jadyncalh@gmail.com </div>
                   <Button
                     content="Back"
                     labelPosition="left"

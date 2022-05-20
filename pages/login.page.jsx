@@ -13,11 +13,11 @@ import Stylist from "../components/layout/Stylist";
 import { baseURL } from './util/baseURL';
 
 
-const login = () => {
+const Login = () => {
 
   //*================================STATES==============//
   const [user, setUser] = useState({
-    email: "",
+    email: "", 
     pin: ""
   })
   const [pinInput, setPinInput] = useState('')
@@ -52,7 +52,7 @@ const login = () => {
 
   useEffect(() => {
     setSubmitDisable(!(email && pin));
-  }, [user])
+  }, [user, email, pin])
 
   // useEffect(() => {
   //   const getTeachers = async () => {
@@ -107,4 +107,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

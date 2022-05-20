@@ -78,7 +78,6 @@ const VisitFormItems = ({ client, setOpen, id }) => {
             <Form.Field>
               <label>Date:</label>
               <input
-                required
                 onChange={handleChange}
                 name="date"
                 // placeholder="Date of Appointment" does nothing anymore
