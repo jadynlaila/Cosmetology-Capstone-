@@ -3,7 +3,7 @@ import { Grid, Form, Divider, Button, Segment, Message, Label, Item, Dropdown, I
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
-import NumPad from "../components/layout/numpad";
+// import NumPad from "../components/layout/numpad";
 import Signup from "../components/layout/SignupForm";
 import fill from "fill-range";
 import LoginForm from "../components/layout/LoginForm";
