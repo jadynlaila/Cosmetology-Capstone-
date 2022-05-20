@@ -99,6 +99,7 @@ const StudentProfile = ({ user }) => {
                     {user.clients.map((client) => {
                       return (
                         <div
+                        key={client._id}
                           className="clientName"
                           style={{ marginBottom: "2em" }}
                           onClick={() => {selectClient(client)}}

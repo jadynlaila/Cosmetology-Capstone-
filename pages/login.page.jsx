@@ -3,7 +3,7 @@ import { Grid, Form, Divider, Button, Segment, Message, Label, Item, Dropdown, I
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/layout/Navbar";
-import NumPad from "../components/layout/numpad";
+// import NumPad from "../components/layout/numpad";
 import Signup from "../components/layout/SignupForm";
 import fill from "fill-range";
 import LoginForm from "../components/layout/LoginForm";
@@ -13,11 +13,11 @@ import Stylist from "../components/layout/Stylist";
 import { baseURL } from './util/baseURL';
 
 
-const login = () => {
+const Login = () => {
 
   //*================================STATES==============//
   const [user, setUser] = useState({
-    email: "",
+    email: "", 
     pin: ""
   })
   const [pinInput, setPinInput] = useState('')
@@ -52,7 +52,7 @@ const login = () => {
 
   useEffect(() => {
     setSubmitDisable(!(email && pin));
-  }, [user])
+  }, [user, email, pin])
 
   // useEffect(() => {
   //   const getTeachers = async () => {
@@ -81,7 +81,7 @@ const login = () => {
       {/* <Segment style={{ background: "transparent" }}> */}
       <div style={{padding: "50px"}}>
         <Grid columns='equal' hidden centered padded>
-          <Grid.Row hidden divided color="white" textAlign="center">
+          <Grid.Row hidden divided textAlign="center">
             <Grid.Column centered>
               <div className="split-screen-container" >
                 <Signup />
@@ -107,4 +107,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

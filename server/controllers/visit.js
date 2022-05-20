@@ -151,6 +151,7 @@ const checkOut = async (req, res) => {
 
 const getVisit = async (req, res) => {
   const {id} = req.params;
+  console.log(id);
   const visit = await VisitModel.findOne({_id: id});
   console.log('visit getvisit', visit)
   return res.status(200).json(visit);

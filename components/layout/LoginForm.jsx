@@ -16,6 +16,8 @@ import { setToken } from "../../pages/util/authUser";
 import { baseURL } from "../../pages/util/baseURL";
 import StudentDropdown from "../Login/StudentDropdown";
 import ForgotPinModal from '../layout/ForgotPinModal'
+import Router from "next/router";
+
 // import router from "../../server/routes/signupRoutes";
 
 const LoginForm = () => {
@@ -44,9 +46,11 @@ const LoginForm = () => {
     setFormLoading(true)
     try {
       const res = await axios.post(`${baseURL}/api/v1/signup/login`, {loginPin})
-      console.log(res.data);
       setToken(res.data)
-      console.log("Login", res.data);
+      // console.log("Login", res.data);
+      const rest = await axios.post(`${baseURL}/api/v1/signup/getUserByPin`, {email})
+      console.log('routertest', rest.data);
+      Router.push(rest.data._id)
     } catch (error) {
       console.log("Error", error);
     }
@@ -55,7 +59,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <Header>Check In</Header>
+      <Header>Sign In</Header>
       {/* FORM FIELD */}
       <div className="form-container login-form-container">
         <Form loading={formLoading} onSubmit={handleSubmit}>

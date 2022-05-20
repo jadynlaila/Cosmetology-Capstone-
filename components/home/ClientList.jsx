@@ -100,6 +100,7 @@ const ClientList = () => {
                 checkIn={checkIn}
                 setOpen={setOpen}
                 open={open}
+                key={visit._id}
               />
             );
           })}

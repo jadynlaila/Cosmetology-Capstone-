@@ -15,6 +15,7 @@ const Placeholdercomp = () => {
           src="https://media.istockphoto.com/vectors/thumb-up-winking-emoticon-vector-id1015429508"
           // ^  Just a placeholder, thought it was funny lol
           size="small"
+          alt="img"
           style={{ marginLeft: "auto", marginRight: "auto" }}
         />
         <Card.Content>

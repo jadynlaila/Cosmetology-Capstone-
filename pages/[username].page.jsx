@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { baseURL } from '../pages/util/baseURL'
+import { baseURL } from './util/baseURL'
 import { parseCookies } from "nookies";
 import Navbar from "../components/layout/Navbar";
 import StudentProfile from "../components/profile/StudentProfile";
@@ -25,7 +25,7 @@ const ProfilePage = (
   console.log(user.password);
   
   // console.log(`own account ? ${ownAccount}`)
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // useEffect(() => {
   //   const getPosts = async () => {
   //     setLoading(true);

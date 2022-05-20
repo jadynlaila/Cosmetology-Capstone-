@@ -114,16 +114,16 @@ const NewVisitForm = () => {
           <input type="text" className="search-component" onChange={(e) => handleChange(e)} />
           <Icon name="search"/>
         </div>
-        <div class="ui right aligned category search">
+        <div className="ui right aligned category search">
         </div>
       </Modal.Header>
       <Modal.Content>
         {/* FORM FIELD */}
         {results.map((client) => {
           return (
-            <div class="results">
+            <div className="results" key={client._id}>
               <>
-                <VisitFormItems client={client} setOpen={setOpen} id={client._id}  />
+                <VisitFormItems client={client} setOpen={setOpen} id={client._id} />
                 <span className="underlined"></span>
               </>
             </div>
