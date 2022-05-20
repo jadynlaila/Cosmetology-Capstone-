@@ -28,7 +28,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     //! double check that this actually redirects them to login
   } else {
     if (Component.getInitialProps) {
-      console.log(Component)
+      // console.log(Component)
       pageProps = await Component.getInitialProps(ctx);
     }
     try {
@@ -38,7 +38,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
         },
       });
 
-      const userId  = res.data._id;
+      // const userId  = res.data._id;
       console.log(`appjs user ${res.data._id}`)
       //when theres no {} around stylist in getprofilestylist, res.data.name works 5/16
       //!is this actually being passed from res.data
