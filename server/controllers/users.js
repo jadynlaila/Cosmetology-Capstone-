@@ -214,6 +214,33 @@ const createTeacher = async (req, res) => {
   }
 };
 
+const getUserByPin = async (req, res) => {
+  const { pin } = req.body.loginPin;
+  let user = await StylistModel.findOne({ pin: pin });
+  if (!user) {
+    user = await TeacherModel.findOne({ password: pin });
+  }
+  if (user) {
+    return res.status(200).json(user);
+  } else {
+    return res.status(401).send("No user found");
+  }
+};
+
+const getUserByEmail = async (req, res) => {
+  const { email } = req.body;
+  console.log(`reqbody of getuserbyemaiol`, req.body)
+  let user = await StylistModel.findOne({ email: email });
+  if (!user) {
+    user = await TeacherModel.findOne({ email: email });
+  }
+  if (user) {
+    return res.status(200).json(user);
+  } else {
+    return res.status(401).send("No user found");
+  }
+};
+
 const loginStylist = async (req, res) => {
   const { pin } = req.body.loginPin;
   console.log(`reqbodyloginpin ${req.body.loginPin}`);
@@ -223,8 +250,8 @@ const loginStylist = async (req, res) => {
   try {
     //!need to make this work for teachers too
     let user = await StylistModel.findOne({ pin: pin });
-    if(!user) {
-      user = await TeacherModel.findOne({password: pin})
+    if (!user) {
+      user = await TeacherModel.findOne({ password: pin });
     }
     if (user) {
       console.log(user);
@@ -239,7 +266,6 @@ const loginStylist = async (req, res) => {
           res.status(200).json(token);
         }
       );
-    
     } else {
       console.log(pin);
       return res.status(404).send("Stylist not Found");
@@ -290,13 +316,13 @@ const createHours = async (req, res) => {
   }
 };
 
-const pinResend = async(req,res) => {
-  const {email} = req.body
+const pinResend = async (req, res) => {
+  const { email } = req.body;
 
-  const stylist = await StylistModel.findOne({email: email})
+  const stylist = await StylistModel.findOne({ email: email });
 
-  res.status(200).json(stylist.pin)
-}
+  res.status(200).json(stylist.pin);
+};
 
 module.exports = {
   createStylist,
@@ -306,5 +332,7 @@ module.exports = {
   getStylist,
   getTeacher,
   createHours,
-  pinResend
+  pinResend,
+  getUserByPin,
+  getUserByEmail
 };

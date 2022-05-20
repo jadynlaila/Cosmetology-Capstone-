@@ -20,6 +20,8 @@ import SlideInMenu from "../Signup/SlideInMenu";
 import TeacherDropdown from "../Signup/TeacherDropdown";
 import ImgDropDiv from "./ImgDropDiv";
 import { setToken } from "../../pages/util/authUser";
+import Router from "next/router";
+
 // import {setOutOfFocus} from "../Signup/SlideInMenu"
 
 const Signup = () => {
@@ -35,13 +37,13 @@ const Signup = () => {
   const inputRef = useRef(null);
   const [resHolder, setResHolder] = useState("");
   const [highlighted, setHighlighted] = useState(false);
-  const [selectedTeacher, setSelectedTeacher] = useState([])
-  const [studentSignedUp, setStudentSignedUp] = useState(false)
+  const [selectedTeacher, setSelectedTeacher] = useState([]);
+  const [studentSignedUp, setStudentSignedUp] = useState(false);
 
   const [stylist, setStylist] = useState({
     email: "",
     name: "",
-    teacher: '',
+    teacher: "",
   });
 
   const { email, name, teacher } = stylist;
@@ -65,13 +67,9 @@ const Signup = () => {
       setLoading(false);
     };
     handleResTeach();
-  }, []);  
-  
-  const radios = useRef(new Array(teachers.length).fill(''))
+  }, []);
 
-
-
-
+  const radios = useRef(new Array(teachers.length).fill(""));
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -86,8 +84,8 @@ const Signup = () => {
   };
 
   const selectTeacher = () => {
-    let value = '';
-    let name = '';
+    let value = "";
+    let name = "";
     console.log(radios.current);
     radios.current.map((each) => {
       if (each.checked) {
@@ -95,17 +93,17 @@ const Signup = () => {
         value = each.id;
         name = each.name;
       }
-    })
+    });
     setStylist((prev) => ({ ...prev, [name]: value }));
     console.log(stylist);
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(`${stylist}`);
-    console.log(`hi stylistname ${stylist.name}`)
+    console.log(`hi stylistname ${stylist.name}`);
     // setFormLoading(true);
-    let profilePicURL = '';
+    let profilePicURL = "";
     if (media != null) {
       const formData = new FormData();
       formData.append("image", media, {
@@ -116,38 +114,39 @@ const Signup = () => {
       const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
       profilePicURL = res.data.src;
       profilePicURL = profilePicURL.toString();
-      setStudentSignedUp(true);      
+      setStudentSignedUp(true);
     }
     if (media !== null && !profilePicURL) {
       setFormLoading(false);
       console.log("Error uploading Image");
     }
 
-    console.log(`pfp ${profilePicURL}`)
+    console.log(`pfp ${profilePicURL}`);
     try {
       const res = await axios.post(`${baseURL}/api/v1/signup/stylist`, {
         stylist,
         profilePicURL,
       });
       setToken(res.data);
+      let userEmail = res.data.email
+      console.log('useremail', userEmail)
+      //!useremail is undefined
+      const rest = await axios.post(`${baseURL}/api/v1/signup/getUserByEmail`, {userEmail})
+      console.log('routertest', rest.data);
+      Router.push(rest.data._id)
     } catch (error) {
       console.log("Eroro", error);
     }
     // setFormLoading(false);
   };
 
-
-
-
   return (
     <>
       <Header>Signup</Header>
       <div className="form-container">
-
-
         <Form loading={formLoading} onSubmit={handleSubmit}>
           {/* <Segment> */}
-            {/* <ImgDropDiv
+          {/* <ImgDropDiv
               handleChange={handleChange}
               inputRef={inputRef}
               highLighted={highlighted}
@@ -158,38 +157,44 @@ const Signup = () => {
               media={media}
             /> */}
 
-            <label>
-              <h2>Select Teacher</h2>
-            </label>
-            {/* <Divider hidden /> */}
-            <div className="radio-button-container">
-
-            {teachers.length !== 0 ? 
-            (teachers.map((each, i) => {
-              return (
-                <>
-                <div style={{padding: '5px'}}>
-                  <input
-                    className="radioButton"
-                    control="input"
-                    type="radio"
-                    name="teacher"
-                    value={each.name}
-                    key={each._id}
-                    onChange={selectTeacher}
-                    ref={((value) => {
-                      radios.current[i] = value
-                    })}
-                    id={each._id}
-                    required
-                  />
-                  <label htmlFor={each._id}>{each.name}</label>
-                  </div>
-                </>
-              );
-            })): <>No teachers found.<br/>Create a new teacher account first!</>}
-            </div>
-            {/* <Divider hidden />
+          <label>
+            <h2>Select Teacher</h2>
+          </label>
+          {/* <Divider hidden /> */}
+          <div className="radio-button-container">
+            {teachers.length !== 0 ? (
+              teachers.map((each, i) => {
+                return (
+                  <>
+                    <div style={{ padding: "5px" }}>
+                      <input
+                        className="radioButton"
+                        control="input"
+                        type="radio"
+                        name="teacher"
+                        value={each.name}
+                        key={each._id}
+                        onChange={selectTeacher}
+                        ref={(value) => {
+                          radios.current[i] = value;
+                        }}
+                        id={each._id}
+                        required
+                      />
+                      <label htmlFor={each._id}>{each.name}</label>
+                    </div>
+                  </>
+                );
+              })
+            ) : (
+              <>
+                No teachers found.
+                <br />
+                Create a new teacher account first!
+              </>
+            )}
+          </div>
+          {/* <Divider hidden />
             <Form.Input
               required
               label="Name"
@@ -214,10 +219,8 @@ const Signup = () => {
           {/* </Segment> */}
           {/* <Button icon="signup" content="Signup" type="submit" color="green" /> */}
 
-      <Divider fitted />
+          <Divider fitted />
         </Form>
-
-
       </div>
 
       <footer>
@@ -232,8 +235,6 @@ const Signup = () => {
           labelPosition="right"
           icon="arrow right"
           onClick={() => teacher && setOutOfFocus(false)}
-
-          
           positive
         />
       </footer>
