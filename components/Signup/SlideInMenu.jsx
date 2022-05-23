@@ -12,6 +12,10 @@ import {
 import ImgDropDiv from "../layout/ImgDropDiv";
 import axios from "axios";
 import { baseURL } from "../../pages/util/baseURL";
+import Router from "next/router";
+
+
+
 
 const SlideInMenu = ({
   outOfFocus,
@@ -85,6 +89,7 @@ const SlideInMenu = ({
         profilePicURL,
       });
       setToken(res.data);
+      Router.push(`/${teacher._id}`)
     } catch (error) {
       console.log("Eroro", error);
     }
