@@ -229,7 +229,7 @@ const getUserByPin = async (req, res) => {
 
 const getUserByEmail = async (req, res) => {
   const { email } = req.body;
-  console.log(`reqbody of getuserbyemaiol`, req.body)
+  console.log(`reqbody of getuserbyemaiol`, req)
   let user = await StylistModel.findOne({ email: email });
   if (!user) {
     user = await TeacherModel.findOne({ email: email });
