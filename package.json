@@ -2,7 +2,10 @@
   "name": "cosmetology",
   "version": "1.0.0",
   "description": "<!-- BASIC INFORMATION -->\r - name * \r     - string\r - image \r     - string\r - email * \r     - string\r     - use regex to check if its a westmec email\r     - must be unique\r - visits * \r     - array of visit refs \r - service * \r     - string\r     - what does the client want\r - address * \r     - string\r - number * \r     - string\r     - must be unique\r     - regex",
-  "main": "next.config.js",
+  "main": "server.js",
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "ansi-styles": "^4.3.0",
     "axios": "^0.26.1",
@@ -33,11 +36,7 @@
     "typescript": "^4.6.2",
     "validator": "^13.7.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "build": "next build"
-  },
+
   "author": "",
   "license": "ISC",
   "repository": {
