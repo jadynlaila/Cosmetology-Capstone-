@@ -1,7 +1,8 @@
-import React from "react";
-import { Form, Image, Popup, Card, Rating } from "semantic-ui-react";
+import React, {useState} from "react";
+import { Form, Image,Icon, Popup, Card, Rating, Modal } from "semantic-ui-react";
 
 const Placeholdercomp = () => {
+    const [open, setOpen] = useState(true)
   return (
     <div>
       {/* <Form>
@@ -9,25 +10,28 @@ const Placeholdercomp = () => {
         <Form.Input style={{color: "red"}}>Congratulations!</Form.Input>
         <Form.Input>Please check your Email for your PIN</Form.Input>
       </Form> */}
-
-      <Card style={{backgroundColor: "#f2f2f2"}}>
-        <Image
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/2048px-Eo_circle_green_checkmark.svg.png"
-          size="small"
-          alt="img"
-          style={{ marginLeft: "auto", marginRight: "auto" }}
-        />
-        <Card.Content>
-          <Card.Header style={{ textAlign: "center" }}>
-            Congratulations!
-          </Card.Header>
-          <Card.Description>
-            Your account has been successfully created. Please check your email
-            for your PIN.
-          </Card.Description>
-        </Card.Content>
-      </Card>
-    </div>
+      <Modal
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      closeIcon
+      >
+        <Modal.Header icon style={{ textAlign: "center" }}>
+          <h1>Success</h1>
+          
+          <Icon
+          name="check green"
+          size="huge"
+          />
+        </Modal.Header>
+      <Modal.Content>
+        <Modal.Description>
+          Your account has been successfully created. Please check your email
+          for your PIN.
+        </Modal.Description>
+      </Modal.Content>
+    </Modal>
+    </div >
   );
 };
 
