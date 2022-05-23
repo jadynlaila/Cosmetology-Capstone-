@@ -13,7 +13,7 @@ const checkOut = async (req, res) => {
     // let person = await ClientModel.findById({ _id: id });
     let visit = await VisitModel.findById({ _id: id });
 
-    visit.active = false;
+    visit.location = 'completed';
     await visit.save();
     // console.log(visit);
     res.status(200).json({ visit });
@@ -30,7 +30,7 @@ const checkIn = async (req, res) => {
     let visit = await VisitModel.findById({ _id: id });
     console.log(visit);
 
-    visit.active = true;
+    visit.location = 'active';
     await visit.save();
 
     res.status(200).json({ visit });
