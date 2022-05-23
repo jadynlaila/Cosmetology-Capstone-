@@ -10,25 +10,25 @@ const ClientList = () => {
   const [upcomingVisits, setUpcomingVisits] = useState([]);
 
   useEffect(() => {
-    // const getActiveVisits = async () => {
-    //   try {
-    //     const res = await axios.get(`${baseURL}/api/v1/visit/active`);
-    //     setActiveVisits(res.data);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
+    const getActiveVisits = async () => {
+      try {
+        const res = await axios.get(`${baseURL}/api/v1/visit/active`);
+        setActiveVisits(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    // const getUpcomingVisits = async () => {
-    //   try {
-    //     const res = await axios.get(`${baseURL}/api/v1/visit/upcoming`);
-    //     setUpcomingVisits(res.data);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // getUpcomingVisits();
-    // getActiveVisits();
+    const getUpcomingVisits = async () => {
+      try {
+        const res = await axios.get(`${baseURL}/api/v1/visit/upcoming`);
+        setUpcomingVisits(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUpcomingVisits();
+    getActiveVisits();
   }, []);
 
   const checkOut = async (checkOutInfo, setOpen) => {
