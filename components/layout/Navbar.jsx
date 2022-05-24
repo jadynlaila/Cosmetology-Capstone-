@@ -11,42 +11,35 @@ const Navbar = (isTeacher) => {
   return (
     <div id="nav">
       <div className="image-container">
-      <Link href={"/"}>
-        <Image
-        
-          className="logo"
-          src={"/logo3-1.png"}
-          alt="logo"
-          height="56.25"
-          width="112.5"
-        />
+        <Link href={"/"}>
+          <Image
+            className="logo"
+            src={"/logo3-1.png"}
+            alt="logo"
+            height="56.25"
+            width="112.5"
+          />
         </Link>
         <Link href={"/"}>
-            <h1>Hairstyling 
-              {/* <Icon name="angle double right"/> */}
-            </h1>
+          <h1>
+            Hairstyling
+            {/* <Icon name="angle double right"/> */}
+          </h1>
         </Link>
       </div>
 
-      {isTeacher ? (
+      {/* {isTeacher ? (
         <div className="identifier">
-        
-          <div className="logo-container">
+          <div className="logo-container"> */}
             {/* <div className="profile-logo"> */}
-          <Image
-            circular
-            src={"/bigChung.webp"}
-            alt="logo"
-            size="tiny"
-            
-          />
+            {/* <Image circular src={"/bigChung.webp"} alt="logo" size="tiny" />
           </div>
-          <Link href={'/profile'}>
+          <Link href={"/profile"}>
             <h2>Student</h2>
-            </Link>
-          
+          </Link> */}
+
           {/* </div> */}
-        </div>
+        {/* </div>
       ) : (
         <div className="identifier">
           <h1>Teacher</h1>
@@ -59,17 +52,18 @@ const Navbar = (isTeacher) => {
             width="53.95"
           />
         </div>
-      )}
-      <div className="nav-link">
+      )} */}
+      {/* <div className="nav-link"> */}
         {/* <Link href="/signup">
           <Button className="signup">New User?</Button>
         </Link> */}
-        <Link href="/login">
-          <h3>Dashboard &nbsp;
-            <Icon name="dashboard"/>
+        {/* <Link href="/login">
+          <h3>
+            Dashboard &nbsp;
+            <Icon name="dashboard" />
           </h3>
-        </Link>
-      </div>
+        </Link> */}
+      {/* </div> */}
     </div>
   );
 };
