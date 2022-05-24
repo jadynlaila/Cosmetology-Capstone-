@@ -22,32 +22,25 @@ const Navbar = (isTeacher, pageProps) => {
           />
         </Link>
         <Link href={"/"}>
-          <h1>Hairstyling
+          <h1>
+            Hairstyling
             {/* <Icon name="angle double right"/> */}
           </h1>
         </Link>
       </div>
 
-      {isTeacher ? (
+      {/* {isTeacher ? (
         <div className="identifier">
-
-          {/* <div className="logo-container"> */}
+          <div className="logo-container"> */}
             {/* <div className="profile-logo"> */}
-            {/* <Image
-              circular
-              src={"/defaultAvatar.jpg"}
-              alt="logo"
-              size="tiny"
-
-            />
-          </div> */}
-          
-          {/* <Link href={'/profile'}>
+            {/* <Image circular src={"/bigChung.webp"} alt="logo" size="tiny" />
+          </div>
+          <Link href={"/profile"}>
             <h2>Student</h2>
           </Link> */}
 
           {/* </div> */}
-        </div>
+        {/* </div>
       ) : (
         <div className="identifier">
           <h1>Teacher</h1>
@@ -60,16 +53,17 @@ const Navbar = (isTeacher, pageProps) => {
             width="53.95"
           />
         </div>
-      )}
+      )} */}
       {/* <div className="nav-link"> */}
         {/* <Link href="/signup">
           <Button className="signup">New User?</Button>
         </Link> */}
-        {/* <Link href="/login"> */}
-          {/* <h3>Dashboard &nbsp; */}
-            {/* <Icon name="dashboard" /> */}
-          {/* </h3> */}
-        {/* </Link> */}
+        {/* <Link href="/login">
+          <h3>
+            Dashboard &nbsp;
+            <Icon name="dashboard" />
+          </h3>
+        </Link> */}
       {/* </div> */}
     </div>
   );
