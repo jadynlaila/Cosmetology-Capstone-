@@ -70,7 +70,7 @@ const getUpcomingVisits = async (req, res) => {
 };
 
 const checkIn = async (req, res) => {
-  const { visitInfo, pin } = req.body.checkInInfo;
+  const { visitInfo, pin:stylist } = req.body.checkInInfo;
   try {
     const today = new Date();
     const date =
@@ -82,10 +82,12 @@ const checkIn = async (req, res) => {
     const time =
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     const checkInTime = date + " " + time;
-    const stylist = await StylistModel.findOne({ pin: pin });
-    if (!stylist) {
-      return res.status(404).send("stylist not found");
-    }
+    // const stylist = await StylistModel.findOne({ pin: pin });
+    // if (!stylist) {
+    //   return res.status(404).send("stylist not found");
+    // }
+
+    
 
     // setCheckOutInfo((prev) => ({ ...prev, [name]: value }));
     //!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -99,8 +101,8 @@ const checkIn = async (req, res) => {
     await visit.save();
     console.log(`stylist done ${visit}`);
 
-    stylist.visits = [...stylist.visits, visit._id];
-    await stylist.save();
+    // stylist.visits = [...stylist.visits, visit._id];
+    // await stylist.save();
 
     return res.status(200).json({ visit });
   } catch (error) {
@@ -110,7 +112,7 @@ const checkIn = async (req, res) => {
 };
 
 const checkOut = async (req, res) => {
-  const { visitInfo, pin } = req.body.checkOutInfo;
+  const { visitInfo, pin:stylist } = req.body.checkOutInfo;
   try {
     const today = new Date();
     const date =
@@ -122,10 +124,10 @@ const checkOut = async (req, res) => {
     const time =
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     const checkOutTime = date + " " + time;
-    const stylist = await StylistModel.findOne({ pin: pin });
-    if (!stylist) {
-      return res.status(404).send("stylist not found");
-    }
+    // const stylist = await StylistModel.findOne({ pin: pin });
+    // if (!stylist) {
+    //   return res.status(404).send("stylist not found");
+    // }
 
     const visit = await VisitModel.findOne({
       _id: visitInfo._id,
@@ -134,7 +136,7 @@ const checkOut = async (req, res) => {
     visit.location = "completed";
     await visit.save();
 
-    console.log(stylist, visitInfo, checkOutTime);
+    console.log(visitInfo, checkOutTime);
     return res.status(200).json(visit);
   } catch (error) {
     console.log(error);

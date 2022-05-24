@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const VisitSchema = new Schema({
   client: { type: Schema.Types.ObjectId, ref: "Client" },
-  stylist: { type: Schema.Types.ObjectId, ref: "Stylist" },
+  // stylist: { type: Schema.Types.ObjectId, ref: "Stylist" },
+  stylist: { type: String},
   preferredStylist: { type: String },
   date: {
     type: Date,
