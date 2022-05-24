@@ -72,12 +72,12 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
             <Form>
               <Form.Field>
 
-                <label>Pin</label>
+                <label>Stylist Name</label>
 
                 <input
                   onChange={handleChange}
                   name="pin"
-                  placeholder="Enter Pin"
+                  placeholder="First Last"
                   value={pin}
                   tabIndex="0"
                   autoFocus
