@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import Image from "next/image";
 // import LoginOrSignup from "./loginOrSignup";
 // import { Button } from "semantic-ui-react";
-import isTeacher from "../../pages/profile.page";
+// import isTeacher from "../../pages/profile.page";
 import { Button, Image, Icon } from "semantic-ui-react";
 import Link from "next/link";
 
@@ -12,39 +12,40 @@ const Navbar = (isTeacher, pageProps) => {
   return (
     <div id="nav">
       <div className="image-container">
-      <Link href={"/"}>
-        <Image
-          className="logo"
-          src={"/logo3-1.png"}
-          alt="logo"
-          height="56.25"
-          width="112.5"
-        />
+        <Link href={"/"}>
+          <Image
+            className="logo"
+            src={"/logo3-1.png"}
+            alt="logo"
+            height="56.25"
+            width="112.5"
+          />
         </Link>
         <Link href={"/"}>
-            <h1>Hairstyling 
-              {/* <Icon name="angle double right"/> */}
-            </h1>
+          <h1>Hairstyling
+            {/* <Icon name="angle double right"/> */}
+          </h1>
         </Link>
       </div>
 
       {isTeacher ? (
         <div className="identifier">
-        
-          <div className="logo-container">
+
+          {/* <div className="logo-container"> */}
             {/* <div className="profile-logo"> */}
-          <Image
-            circular
-            src={"/defaultAvatar.jpg"}
-            alt="logo"
-            size="tiny"
-            
-          />
-          </div>
-          <Link href={'/profile'}>
-            <h2>Student</h2>
-            </Link>
+            {/* <Image
+              circular
+              src={"/defaultAvatar.jpg"}
+              alt="logo"
+              size="tiny"
+
+            />
+          </div> */}
           
+          {/* <Link href={'/profile'}>
+            <h2>Student</h2>
+          </Link> */}
+
           {/* </div> */}
         </div>
       ) : (
@@ -60,16 +61,16 @@ const Navbar = (isTeacher, pageProps) => {
           />
         </div>
       )}
-      <div className="nav-link">
+      {/* <div className="nav-link"> */}
         {/* <Link href="/signup">
           <Button className="signup">New User?</Button>
         </Link> */}
-        <Link href="/login">
-          <h3>Dashboard &nbsp;
-            <Icon name="dashboard"/>
-          </h3>
-        </Link>
-      </div>
+        {/* <Link href="/login"> */}
+          {/* <h3>Dashboard &nbsp; */}
+            {/* <Icon name="dashboard" /> */}
+          {/* </h3> */}
+        {/* </Link> */}
+      {/* </div> */}
     </div>
   );
 };
