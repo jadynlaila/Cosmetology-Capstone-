@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { baseURL } from "../../pages/util/baseURL";
 import { Modal, Form, Button, Dropdown, Icon, Header } from "semantic-ui-react";
-import { visitEachChild } from "typescript";
+// import { visitEachChild } from "typescript";
 
 const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
   const [open, setOpen] = useState(false);
