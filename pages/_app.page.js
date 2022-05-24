@@ -11,7 +11,7 @@ import { baseURL } from './util/baseURL'
 
 function MyApp({ Component, pageProps }) {
   // return <Component user={pageProps.user} {...pageProps} />
-  return <Component {...pageProps} />
+  return <Component />
 }
 
 
@@ -28,7 +28,6 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     //! double check that this actually redirects them to login
   } else {
     if (Component.getInitialProps) {
-      // console.log(Component)
       pageProps = await Component.getInitialProps(ctx);
     }
     try {
@@ -38,16 +37,15 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
         },
       });
 
-      // const userId  = res.data._id;
-      console.log(`appjs user ${res.data._id}`)
-      //when theres no {} around stylist in getprofilestylist, res.data.name works 5/16
+      console.log(res.data)
+      const { user } = res.data;
       //!is this actually being passed from res.data
 
       //before : if (user) !isProtectedRoute && redirectUser(ctx, "/");
       //after:
-      // if (userId) !isProtectedRoute && redirectUser(ctx, `/${userId}`);
+      //if (user) !isProtectedRoute && redirectUser(ctx, `/${user}`);
       //!this is gonna need to redirect them to the profile page instead
-      // pageProps.userId = userId;
+      pageProps.user = user;
     } catch (error) {
       console.log(error);
       destroyCookie(ctx, "token");
