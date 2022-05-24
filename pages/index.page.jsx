@@ -11,7 +11,7 @@ import NewVisitForm from '../components/home/NewVisitForm'
 import ClientList from '../components/home/ClientList'
 
 
-const index = ({ name }) => {
+const Index = ({ name }) => {
   //! What is name? 
   //? Is that the for the pin for clocking in?
 
@@ -58,4 +58,4 @@ const index = ({ name }) => {
   )
 }
 
-export default index
+export default Index

@@ -5,7 +5,7 @@ import "semantic-ui-css/semantic.min.css"
 import { destroyCookie, parseCookies } from 'nookies'
 import { redirectUser } from './util/authUser'
 import axios from 'axios'
-import { baseURL } from '../pages/util/baseURL'
+import { baseURL } from './util/baseURL'
 
 
 

@@ -68,6 +68,7 @@ const ImgDropDiv = ({
               >
                 <Image
                   src={mediaPreview}
+                  alt="default image"
                   size="small"
                   centered
                   style={{ cursor: "pointer" }}

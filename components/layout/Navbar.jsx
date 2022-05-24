@@ -2,11 +2,12 @@ import React, { useState } from "react";
 // import Image from "next/image";
 // import LoginOrSignup from "./loginOrSignup";
 // import { Button } from "semantic-ui-react";
-import isTeacher from "../../pages/profile";
+// import isTeacher from "../../pages/profile.page";
 import { Button, Image, Icon } from "semantic-ui-react";
 import Link from "next/link";
 
-const Navbar = (isTeacher) => {
+const Navbar = (isTeacher, pageProps) => {
+  console.log(pageProps);
   const [loggedIn, setLoggedIn] = useState(false);
   return (
     <div id="nav">
@@ -21,25 +22,32 @@ const Navbar = (isTeacher) => {
           />
         </Link>
         <Link href={"/"}>
-          <h1>
-            Hairstyling
+          <h1>Hairstyling
             {/* <Icon name="angle double right"/> */}
           </h1>
         </Link>
       </div>
 
-      {/* {isTeacher ? (
+      {isTeacher ? (
         <div className="identifier">
-          <div className="logo-container"> */}
+
+          {/* <div className="logo-container"> */}
             {/* <div className="profile-logo"> */}
-            {/* <Image circular src={"/bigChung.webp"} alt="logo" size="tiny" />
-          </div>
-          <Link href={"/profile"}>
+            {/* <Image
+              circular
+              src={"/defaultAvatar.jpg"}
+              alt="logo"
+              size="tiny"
+
+            />
+          </div> */}
+          
+          {/* <Link href={'/profile'}>
             <h2>Student</h2>
           </Link> */}
 
           {/* </div> */}
-        {/* </div>
+        </div>
       ) : (
         <div className="identifier">
           <h1>Teacher</h1>
@@ -52,20 +60,20 @@ const Navbar = (isTeacher) => {
             width="53.95"
           />
         </div>
-      )} */}
+      )}
       {/* <div className="nav-link"> */}
         {/* <Link href="/signup">
           <Button className="signup">New User?</Button>
         </Link> */}
-        {/* <Link href="/login">
-          <h3>
-            Dashboard &nbsp;
-            <Icon name="dashboard" />
-          </h3>
-        </Link> */}
+        {/* <Link href="/login"> */}
+          {/* <h3>Dashboard &nbsp; */}
+            {/* <Icon name="dashboard" /> */}
+          {/* </h3> */}
+        {/* </Link> */}
       {/* </div> */}
     </div>
   );
 };
+
 
 export default Navbar;
