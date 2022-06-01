@@ -53,17 +53,17 @@ const Navbar = (isTeacher) => {
           />
         </div>
       )} */}
-      {/* <div className="nav-link"> */}
-        {/* <Link href="/signup">
+      <div className="nav-link">
+        <Link href="/signup">
           <Button className="signup">New User?</Button>
-        </Link> */}
-        {/* <Link href="/login">
+        </Link> 
+        <Link href="/login">
           <h3>
             Dashboard &nbsp;
             <Icon name="dashboard" />
           </h3>
-        </Link> */}
-      {/* </div> */}
+        </Link>
+      </div>
     </div>
   );
 };

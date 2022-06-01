@@ -52,11 +52,11 @@ const CheckOut = ({ visit, setIsActive, isActive, checkOut }) => {
           <div className="form-container">
             <Form>
               <Form.Field>
-                <label>Stylist Name</label>
+                <label>Stylist Pin</label>
                 <input
                   onChange={handleChange}
                   name="pin"
-                  placeholder="First Last"
+                  placeholder="1234"
                   value={pin}
                   tabIndex="0"
                   autoFocus

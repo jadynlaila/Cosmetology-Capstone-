@@ -136,6 +136,7 @@ const Signup = () => {
   };
 
 
+  
 
 
   return (
@@ -160,8 +161,11 @@ const Signup = () => {
             </label>
             {/* <Divider hidden /> */}
             <div className="radio-button-container">
+          {teachers.length == 0 ? (<>
+            <div style={{padding: '5px'}}>No teachers found. Create a teacher account first!</div>
 
-            {teachers.map((each, i) => {
+          </>) : 
+            ((            teachers.map((each, i) => {
               return (
                 <>
                 <div style={{padding: '5px'}}>
@@ -182,7 +186,8 @@ const Signup = () => {
                   </div>
                 </>
               );
-            })}
+            })) )}
+
             </div>
             {/* <Divider hidden />
             <Form.Input
