@@ -25,6 +25,27 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
     setCheckInInfo((prev) => ({ ...prev, [name]: value }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(visit.client)
+  //   let profilePicURL = '';
+  //   if (media != null) {
+  //     const formData = new FormData();
+  //     formData.append("image", media, {
+  //       headers: {
+  //         "Content=Type": "multipart/form-data",
+  //       },
+  //     });
+  //     const res = await axios.post(`${baseURL}/api/v1/uploads`, formData);
+  //     profilePicURL = res.data.src;
+  //     profilePicURL = profilePicURL.toString();
+  //     setStudentSignedUp(true);      
+  //   }
+  //   if (media !== null && !profilePicURL) {
+  //     setFormLoading(false);
+  //     console.log("Error uploading Image");
+  //   }
+
   return (
     <>
       <Modal
@@ -95,7 +116,7 @@ const CheckIn = ({ visit, setIsActive, isActive, checkIn }) => {
             labelPosition="right"
             icon="checkmark"
             onClick={() => checkIn(checkInInfo, setOpen)}
-            //onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
             positive
           />
         </Modal.Actions>

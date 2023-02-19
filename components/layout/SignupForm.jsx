@@ -36,6 +36,7 @@ const Signup = () => {
   const [resHolder, setResHolder] = useState("");
   const [highlighted, setHighlighted] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState([])
+  const [noTeacherSelected, setNoTeacherSelected] = useState(false)
 
   const [stylist, setStylist] = useState({
     email: "",
@@ -142,8 +143,10 @@ const Signup = () => {
   return (
     <>
       <Header>Signup</Header>
+
       <div className="form-container">
         <Form loading={formLoading} onSubmit={handleSubmit}>
+      <div style={{position: 'absolute', bottom: '0px', right: '5px', paddingTop: '20rem' }}>{noTeacherSelected && <>Please select a teacher before continuing!</>}</div>
           {/* <Segment> */}
             {/* <ImgDropDiv
               handleChange={handleChange}
@@ -191,26 +194,26 @@ const Signup = () => {
             </div>
             {/* <Divider hidden />
             <Form.Input
-              required
-              label="Name"
-              placeholder="Name"
-              name="name"
-              value={name}
-              onChange={handleChange}
-              icon="user"
-              iconPosition="left"
+            required
+            label="Name"
+            placeholder="Name"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            icon="user"
+            iconPosition="left"
             />
             <Form.Input
-              required
-              label="Email"
-              placeholder="Email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              icon="envelope"
-              iconPosition="left"
-              type="email"
-            /> */}
+            required
+            label="Email"
+            placeholder="Email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            icon="envelope"
+            iconPosition="left"
+            type="email"
+          /> */}
           {/* </Segment> */}
           {/* <Button icon="signup" content="Signup" type="submit" color="green" /> */}
 
@@ -228,7 +231,7 @@ const Signup = () => {
           content="Next"
           labelPosition="right"
           icon="arrow right"
-          onClick={() => setOutOfFocus(false)}
+          onClick={() => teacher ? (setOutOfFocus(false), setNoTeacherSelected(false)): setNoTeacherSelected(true)}
           positive
         />
       </footer>

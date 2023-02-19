@@ -51,7 +51,7 @@ const ClientList = () => {
         checkInInfo,
       });
       setUpcomingVisits((prev) =>
-        prev.filter((visit) => visit._id !== checkInInfo.visitInfo._id)
+      prev.filter((visit) => visit._id !== checkInInfo.visitInfo._id)
       );
       setActiveVisits((prev) => [checkInInfo.visitInfo, ...prev]);
       setOpen(false);
@@ -59,6 +59,7 @@ const ClientList = () => {
       console.log(error);
     }
   };
+
 
   return (
     <>

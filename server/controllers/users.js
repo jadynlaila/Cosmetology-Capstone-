@@ -64,16 +64,32 @@ const createStylist = async (req, res) => {
     let stylist;
     stylist = await StylistModel.findOne({ email: email });
     if (stylist) return res.status(401).send("Email is already in use");
-
+    
     stylist = new StylistModel({
       name,
       email: email,
       teacher,
       profilePicURL: profilePicURL || defaultProfilePic,
     });
+    
+    const teacherFind = await TeacherModel.findOne({pin: teacher});
+    teacherFind.students = [stylist, ...teacherFind.students];
 
     stylist = await stylist.save();
-    return res.status(200).json(stylist);
+    console.log(stylist._id, 'id');
+
+    const payload = { user: stylist._id };
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: "2d" },
+      (err, token) => {
+        if (err) throw err;
+        res.status(200).json(token);
+      }
+    );
+    
+    // return res.status(200).json(stylist);
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error @ createStylist");

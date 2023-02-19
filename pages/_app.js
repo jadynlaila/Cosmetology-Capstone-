@@ -37,7 +37,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
         },
       });
 
-      console.log(res.data)
+      console.log(res.data, 'res.data in appjs')
       const { user } = res.data;
       //!is this actually being passed from res.data
 

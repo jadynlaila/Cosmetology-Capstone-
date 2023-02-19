@@ -48,22 +48,19 @@ const ProfilePage = ({
 
 ProfilePage.getInitialProps = async (ctx) => {
   try {
-    const { id } = ctx.query;
-    console.log(ctx.query);
+    const { username } = ctx.query;
+    console.log(username, 'ctxquery',);
     const { token } = parseCookies(ctx);
-    const res = await axios.get(`${baseURL}/api/v1/stylist/profile/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    //!dont know how to make this work for teachers, i guess i could do a little check if req is empty then i just do an axios call to the stylist routes instead
-    //!or we can make the axios call do both searching for a stylists and a teachers profile at the same time
-    //!we could refactor it so that instead of two controllers searching for either a stylist or a teacher's profile- 
-    //!we could have one controller that can handle both
-    console.log(`res.data in the getinitialprops`);
-    // const { profile, followersLength, followingLength } = res.data;
-    // return { profile, followersLength, followingLength };
-    const {stylist} = res.data;
-    console.log(`initial props ${stylist}`);
-    return {stylist}
+    console.log('tokenparse', token)
+    // const res = await axios.get(`${baseURL}/api/v1/stylist/profile/${id}`, {
+    //   headers: { Authorization: `Bearer ${token}` },
+    // });
+    // console.log(`res.data in the getinitialprops`);
+    // // const { profile, followersLength, followingLength } = res.data;
+    // // return { profile, followersLength, followingLength };
+    // const {stylist} = res.data;
+    // console.log(`initial props ${stylist}`);
+    // return {stylist}
   } catch (error) {
     return { errorLoading: true };
   }

@@ -2,8 +2,8 @@ const StylistModel = require("../models/StylistModel");
 const ClientModel = require("../models/ClientModel");
 const TeacherModel = require("../models/TeacherModel");
 const VisitModel = require("../models/VisitModel");
-const { createFalse } = require("typescript");
-const { filter } = require("language-tags");
+// const { createFalse } = require("typescript");
+// const { filter } = require("language-tags");
 
 const createVisit = async (req, res) => {
   const { preferredStylist, date, style, notes, clientId } = req.body.newVisit;
@@ -70,6 +70,7 @@ const getUpcomingVisits = async (req, res) => {
 };
 
 const checkIn = async (req, res) => {
+  console.log("===")
   const { visitInfo, pin } = req.body.checkInInfo;
   try {
     const today = new Date();
@@ -89,7 +90,7 @@ const checkIn = async (req, res) => {
 
     
 
-    // setCheckOutInfo((prev) => ({ ...prev, [name]: value }));
+    //setCheckOutInfo((prev) => ({ ...prev, [name]: value }));
     //!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     const visit = await VisitModel.findOne({
@@ -101,8 +102,8 @@ const checkIn = async (req, res) => {
     await visit.save();
     console.log(`stylist done ${visit}`);
 
-    // stylist.visits = [...stylist.visits, visit._id];
-    // await stylist.save();
+    stylist.visits = [...stylist.visits, visit._id];
+    await stylist.save();
 
     return res.status(200).json({ visit });
   } catch (error) {
